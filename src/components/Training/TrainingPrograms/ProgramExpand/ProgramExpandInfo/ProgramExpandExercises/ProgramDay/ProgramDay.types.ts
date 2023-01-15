@@ -1,4 +1,4 @@
-import {Day} from "../../../../../../../redux/training-reducer.types";
+import {Day} from "../../../../../../../store/training-reducer.types";
 
 
 export type ProgramDayProps = {

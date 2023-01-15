@@ -1,14 +1,14 @@
 import styles from './TrainingPrograms.module.scss'
 import {connect, useDispatch, useSelector} from "react-redux";
 import ProgramsListLinks from "./ProgramList/ProgramsListLinks";
-import {addComment, addProgram, editProgram} from "./../../../redux/training-reducer";
+import {addComment, addProgram, editProgram} from "../../../store/training-reducer";
 import {Route, Routes} from "react-router-dom";
 import ProgramCreateButton from "./ProgramCreateButton/ProgramCreateButton";
 import React, {useEffect, useState} from "react";
 import ProgramExpand from "./ProgramExpand/ProgramExpand";
-import { getPrograms } from "./../../../redux/training-selectors";
+import { getPrograms } from "../../../store/training-selectors";
 import CreateProgramForm from "./ProgramCreate/CreateProgramForm";
-import {fetchPrograms} from "./../../../redux/ActionCreators";
+import {fetchPrograms} from "../../../store/ActionCreators";
 
 
 const TrainingProgramsContainer = ({
