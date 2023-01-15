@@ -1,8 +1,8 @@
-import {getExercises} from "../../../../store/training-selectors";
+import {getExercises} from 'store/training-selectors';
 import {connect} from "react-redux";
 import Exercise from "./Exercise/Exercise";
 import React from "react";
-import {AppStateType} from "../../../../store/redux-store";
+import {AppStateType} from 'store/redux-store';
 import {ListOfExercisesContainerProps, MapDispatchToProps, MapStateToProps, OwnProps} from "./ListOfExercises.types";
 
 

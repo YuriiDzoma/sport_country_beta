@@ -1,4 +1,4 @@
-import {AddComment, AddProgram, EditProgram, Program} from "redux/training-reducer.types";
+import {AddComment, AddProgram, EditProgram, Program} from 'store/training-reducer.types';
 
 export type MapStateToProps = {
     programs: Program[]
