@@ -23,7 +23,7 @@ export type exerciseWiki = {
 }
 
 export type Program = {
-    id: number
+    id: string
     title: string
     typeOf: string
     days: Day[]

@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {Program, TrainingState} from 'redux/training-slice.types';
+import { TrainingState } from 'redux/training-slice.types';
 
 
 const initialState: TrainingState = {
