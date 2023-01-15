@@ -1,0 +1,23 @@
+@import "0style.scss";
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.container {
+  max-width: 768px;
+  background-color: rgba(140, 185, 46, 0.36);
+  width: 100%;
+  min-height: 800px;
+}
+
+.content {
+  background-color: rgba(154, 192, 76, 0.36);
+  height: 100%;
+}
+
+//.navbarWithContent {
+//  position: fixed;
+//}

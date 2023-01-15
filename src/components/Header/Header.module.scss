@@ -1,0 +1,37 @@
+.header_wrapper {
+  position: relative;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  span {
+    font-size: 16px;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    border-bottom: rgba(0, 0, 0, 0.15) 1px solid;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100px;
+    border-bottom: rgba(0, 0, 0, 0.15) 1px solid;
+  }
+
+  a{
+    color: black;
+  }
+}
+
+.loginActive {
+  color: #7a461d;
+  font-weight: 500;
+}

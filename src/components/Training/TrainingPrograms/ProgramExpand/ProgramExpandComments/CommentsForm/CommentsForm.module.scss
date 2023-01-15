@@ -1,0 +1,29 @@
+
+.writeComments {
+  margin: 0 0 20px 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  &_area {
+    width: 70%;
+
+    textarea {
+      width: 90%;
+      height: 50px;
+      border-radius: 6px;
+      padding: 4px;
+      border: 1px solid #97d7ec;
+    }
+  }
+
+  &_send {
+    button{
+      padding: 6px 7px 7px 7px;
+      background-color: #d2e7ee;
+      border: 1px solid #97d7ec;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+  }
+}

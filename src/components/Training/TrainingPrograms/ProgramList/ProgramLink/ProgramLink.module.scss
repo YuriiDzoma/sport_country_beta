@@ -1,0 +1,19 @@
+
+
+.link_active {
+
+  div {
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-delay: 0s;
+    transition-timing-function: ease;
+    box-shadow: white;
+    background-color: #89c1ce;
+    outline: 2px solid white;
+    span{
+      color: #f0fcee;
+      font-weight: 700;
+      font-size: 16px;
+    }
+  }
+}

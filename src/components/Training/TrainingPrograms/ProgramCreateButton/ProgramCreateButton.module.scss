@@ -1,0 +1,17 @@
+
+
+.createProgram {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    font-size: 13px;
+  }
+  &__link {
+    background-color: rgba(192, 213, 192, 0.82);
+    padding: 6px 10px 7px;
+    border-radius: 5px;
+    outline: 1px solid white;
+  }
+}

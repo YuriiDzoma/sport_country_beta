@@ -1,0 +1,21 @@
+
+
+.program {
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-delay: 0s;
+  transition-timing-function: ease;
+  margin: 16px 0;
+  width: 150px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #5da3b4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    display: block;
+    color: white;
+  }
+}

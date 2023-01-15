@@ -1,0 +1,49 @@
+.navigationWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 0 10px 10px 10px;
+
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+
+    border-bottom: rgba(0, 0, 0, 0.15) 1px solid;
+
+  }
+  div {
+    margin: 0 10%;
+  }
+}
+
+.links {
+  a {
+    color: blueviolet;
+  }
+  font-size: 20px;
+
+  &__active {
+    a {
+      color: yellow;
+    }
+  }
+}
+
+.customLink {
+  color: rgb(3, 3, 54);
+  font-size: 16px;
+  font-weight: 500;
+
+  &_active {
+    font-size: 16px;
+    font-weight: 500;
+    color: darkgoldenrod;
+
+  }
+}
+

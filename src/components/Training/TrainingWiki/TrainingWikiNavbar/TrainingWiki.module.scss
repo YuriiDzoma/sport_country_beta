@@ -1,0 +1,21 @@
+
+
+.TrainingWikiNavbar {
+  display: flex;
+  flex-direction: column;
+  padding: 70px 14px 0px 14px;
+
+  a {
+    margin-top: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #e0fac8;
+    //text-shadow: 2px 2px 2px #2f8a8a;
+    text-shadow: 1px 1px 2px #26be26, 0 0 0.5em blue, 0 0 0.2em blue;
+    letter-spacing: 1px;
+  }
+}
+
+.wikiContainer {
+  background-color: white;
+}
