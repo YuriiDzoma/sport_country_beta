@@ -1,8 +1,8 @@
 import  { Link } from "react-router-dom";
-import styles from '../Training.module.scss';
+import styles from './TrainingNavbarLink.module.scss';
 import {useLocation} from "react-router";
 
-const CustomLink = ({children, to, ...props}) => {
+const TrainingNavbarLink = ({children, to, ...props}) => {
     let location = useLocation();
     let activeLocation = location.pathname.substring(0,23) === to.substring(0,23);
 
@@ -17,4 +17,4 @@ const CustomLink = ({children, to, ...props}) => {
     )
 }
 
-export {CustomLink};
+export default TrainingNavbarLink;

@@ -1,6 +1,6 @@
 
 
-const Users = (props) => {
+const Users = () => {
 
     return (
         <div>

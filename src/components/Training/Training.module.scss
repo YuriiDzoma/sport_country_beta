@@ -3,29 +3,8 @@
 }
 
 .linksContainer {
-
   display: flex;
   justify-content: center;
-
-}
-
-.customLink {
-  color: rgb(3, 3, 54);
-  font-size: 14px;
-  font-weight: 500;
-  margin: 0 24px;
-  padding: 4px 8px 8px 8px;
-
-  &_active {
-    font-size: 14px;
-    font-weight: 500;
-    color: #7a461d;
-    background-color: rgb(231, 248, 234);
-    //background-color: rgba(140, 185, 46, 0.36);
-    border-radius: 10px 10px 0 0;
-    margin: 0 24px;
-    padding: 4px 8px 8px 8px;
-  }
 }
 
 .trainingContent {
