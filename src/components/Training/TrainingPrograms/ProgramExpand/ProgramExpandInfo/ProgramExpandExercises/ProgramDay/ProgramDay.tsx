@@ -6,8 +6,8 @@ import React from "react";
 
 const ProgramDay: React.FC<ProgramDayProps> = ({day}) => {
     return (
-        <div>
-            <span>Day {day.day}</span>
+        <div >
+            <h3>Day {day.day}</h3>
 
             {day.exercises.map((exercise) => <DayExercise key={exercise.id} exercise={exercise} />
 

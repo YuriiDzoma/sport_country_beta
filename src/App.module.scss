@@ -3,11 +3,11 @@
 .wrapper {
   display: flex;
   justify-content: center;
-  padding: 10px;
+  height: 100vh;
 }
 
 .container {
-  max-width: 768px;
+  max-width: 1024px;
   background-color: rgba(140, 185, 46, 0.36);
   width: 100%;
   min-height: 800px;
