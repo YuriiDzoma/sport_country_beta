@@ -1,7 +1,7 @@
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from 'api/api';
-import { trainingSlice } from 'redux/training-slice';
-import { AppDispatch } from 'redux/store';
+import { trainingSlice } from 'store/training-slice';
+import { AppDispatch } from 'store/store';
 
 export const fetchPrograms = () => async (dispatch: AppDispatch) => {
     dispatch(trainingSlice.actions.programsFetching());

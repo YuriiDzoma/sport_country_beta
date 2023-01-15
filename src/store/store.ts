@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { firebaseReducer } from 'react-redux-firebase';
-import trainingSlice from 'redux/training-slice';
+import trainingSlice from 'store/training-slice';
 
 export const setupStore = () => {
     return configureStore({

@@ -1,4 +1,4 @@
-import {AddComment, Program} from "../../../../../redux/training-reducer.types";
+import {AddComment, Program} from "../../../../../store/training-reducer.types";
 
 
 export type ProgramExpandCommentsProps = {
