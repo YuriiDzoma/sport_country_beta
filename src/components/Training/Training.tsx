@@ -1,10 +1,10 @@
 import styles from './Training.module.scss'
 import {Route, Routes} from "react-router-dom";
 import TrainingProcess from "./TrainingProcess/Training";
-import TrainingProgramsContainer from "./TrainingPrograms/TrainingProgramsContainer";
+import TrainingPrograms from "./TrainingPrograms/TrainingPrograms";
 import TrainingWikiNavbarContainer from "./TrainingWiki/TrainingWikiNavbarContainer";
-import ListOfExercisesContainer from "./TrainingWiki/ListOfExercises/ListOfExercisesContainer";
 import TrainingNavbar from "./TrainingNavbar/TrainingNavbar";
+import ListOfExercises from './TrainingWiki/ListOfExercises/ListOfExercises'
 
 const Training = () => {
     const trainingNavigation =  [
@@ -22,23 +22,23 @@ const Training = () => {
 
                 <Routes>
                     <Route path={'training_process/'} element={<TrainingProcess/>} />
-                    <Route path={'training_programs/*'} element={<TrainingProgramsContainer />} />
+                    <Route path={'training_programs/*'} element={<TrainingPrograms />} />
                     <Route path={'training_wiki_navbar/*'} element={<TrainingWikiNavbarContainer />} />
 
-                    <Route path={`training_wiki_shoulder_muscles/*`} element={<ListOfExercisesContainer
-                        type={'Shoulder Muscles'} />} />
-                    <Route path={`training_wiki_triceps_muscles/*`} element={<ListOfExercisesContainer
-                        type={'Triceps Muscles'} />} />
-                    <Route path={`training_wiki_dorsal_muscles/*`} element={<ListOfExercisesContainer
-                        type={'Dorsal Muscles'} />} />
-                    <Route path={`training_wiki_pectoral_muscles/*`} element={<ListOfExercisesContainer
-                        type={'Pectoral Muscles'} />} />
-                    <Route path={`training_wiki_biceps_muscles/*`} element={<ListOfExercisesContainer
-                        type={'Biceps Muscles'} />} />
-                    <Route path={`training_wiki_abdominal_muscles/*`} element={<ListOfExercisesContainer
-                        type={'Abdominal Muscles'} />} />
-                    <Route path={`training_wiki_leg_muscles/*`} element={<ListOfExercisesContainer
-                        type={'Leg Muscles'} />} />
+                    {/*<Route path={`training_wiki_shoulder_muscles/*`} element={<ListOfExercises*/}
+                    {/*    type={'Shoulder Muscles'} />} />*/}
+                    {/*<Route path={`training_wiki_triceps_muscles/*`} element={<ListOfExercises*/}
+                    {/*    type={'Triceps Muscles'} />} />*/}
+                    {/*<Route path={`training_wiki_dorsal_muscles/*`} element={<ListOfExercises*/}
+                    {/*    type={'Dorsal Muscles'} />} />*/}
+                    {/*<Route path={`training_wiki_pectoral_muscles/*`} element={<ListOfExercises*/}
+                    {/*    type={'Pectoral Muscles'} />} />*/}
+                    {/*<Route path={`training_wiki_biceps_muscles/*`} element={<ListOfExercises*/}
+                    {/*    type={'Biceps Muscles'} />} />*/}
+                    {/*<Route path={`training_wiki_abdominal_muscles/*`} element={<ListOfExercises*/}
+                    {/*    type={'Abdominal Muscles'} />} />*/}
+                    {/*<Route path={`training_wiki_leg_muscles/*`} element={<ListOfExercises*/}
+                    {/*    type={'Leg Muscles'} />} />*/}
                 </Routes>
 
             </div>

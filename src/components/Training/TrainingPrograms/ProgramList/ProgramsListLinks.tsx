@@ -1,21 +1,17 @@
 import styles from './ProgramsListLinks.module.scss'
 import {ProgramLink} from "./ProgramLink/ProgramLink";
-import React, {useEffect, useState} from "react";
-import {ProgramsListLinksProps} from "./ProgramsListLinks.types";
+import React from "react";
+import {useAppSelector} from "hooks/redux";
 
-
-
-const ProgramsListLinks = ({ programs, getProgram }) => {
-
+const ProgramsListLinks = () => {
+    const programs = useAppSelector(state => state.training.programs)
     return (
     <div>
 
         {programs.map((item, index) => (
 
             <ProgramLink key={index} to={'/training/training_programs/' + item.id}>
-                <div className={styles.program} onClick={() => {
-                    getProgram(item)
-                }}>
+                <div className={styles.program}>
                     <span>{item.title}</span>
                 </div>
             </ProgramLink>
