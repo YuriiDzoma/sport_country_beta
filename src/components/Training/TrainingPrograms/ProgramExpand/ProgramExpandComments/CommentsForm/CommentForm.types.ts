@@ -1,9 +1,5 @@
-import {AddComment} from "store/training-reducer.types";
-
-
 export type CommentsFormProps = {
-    programId: number
-    addComment: (comment: string, programId: number) => AddComment
+
 }
 
 export type SubmitProps = {

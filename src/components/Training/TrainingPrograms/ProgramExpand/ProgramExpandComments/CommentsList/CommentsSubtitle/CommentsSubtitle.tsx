@@ -1,4 +1,4 @@
-import styles from './CommentsSubtitle.module.scss';
+import styles from 'components/Training/TrainingPrograms/ProgramExpand/ProgramExpandComments/CommentsList/CommentsSubtitle/CommentsSubtitle.module.scss';
 
 
 const CommentsSubtitle = () => {

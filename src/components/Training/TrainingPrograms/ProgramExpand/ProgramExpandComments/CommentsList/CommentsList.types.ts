@@ -1,6 +1,6 @@
-import {Comment} from "../../../../../../store/training-reducer.types";
+import {Comment} from "store/training-slice.types";
 
 
 export type CommentsListProps = {
-    comments: Comment[]
+    comments: Comment[];
 }
