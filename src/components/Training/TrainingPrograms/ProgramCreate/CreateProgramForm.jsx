@@ -5,7 +5,7 @@ import CreateName from "./CreateName/CreateName";
 import CreateType from "./CreateType/CreateType";
 import CreateExercises from "./CreateExercises/CreateExercises";
 import CreateDay from "./CreateDay/CreateDay";
-import {editProgram, setNewProgram} from "api/api";
+import {editProgram, setNewProgram} from 'config/config';
 import { v4 } from 'uuid';
 
 const CreateProgramForm = (props) => {

@@ -1,5 +1,5 @@
 import { collection, getDocs } from 'firebase/firestore';
-import { db } from 'api/api';
+import { db } from 'config/config';
 import { trainingSlice } from 'store/training-slice';
 import { AppDispatch } from 'store/store';
 
