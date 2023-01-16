@@ -9,6 +9,7 @@ export const selectProgramById = createSelector(
 
 export const programsSelectors = (state: RootState) => state.training.programs;
 
+
 export const getPrograms = createSelector(
     programsSelectors,
     (programs) => programs

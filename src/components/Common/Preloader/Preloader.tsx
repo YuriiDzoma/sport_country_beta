@@ -1,5 +1,5 @@
 import classes from "./Preloader.module.scss";
-import preloader from "../../../assets/img/Spinner.svg";
+import preloader from "assets/img/Spinner.svg";
 import React from "react";
 
 
