@@ -5,9 +5,9 @@ import {useAppSelector} from "hooks/redux";
 
 const ProgramsListLinks = () => {
     const programs = useAppSelector(state => state.training.programs)
+
     return (
     <div>
-
         {programs.map((item, index) => (
 
             <ProgramLink key={index} to={'/training/training_programs/' + item.id}>
