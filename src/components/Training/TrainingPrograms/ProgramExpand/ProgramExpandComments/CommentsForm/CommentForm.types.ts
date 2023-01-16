@@ -1,4 +1,4 @@
-import {AddComment} from "../../../../../../redux/training-reducer.types";
+import {AddComment} from "store/training-reducer.types";
 
 
 export type CommentsFormProps = {

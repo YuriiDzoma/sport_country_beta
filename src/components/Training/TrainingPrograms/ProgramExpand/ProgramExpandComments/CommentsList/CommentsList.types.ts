@@ -1,4 +1,4 @@
-import {Comment} from "../../../../../../redux/training-reducer.types";
+import {Comment} from "../../../../../../store/training-reducer.types";
 
 
 export type CommentsListProps = {

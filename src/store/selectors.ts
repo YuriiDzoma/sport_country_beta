@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import {AppStore, RootState} from "redux/store";
+import {RootState} from "store/store";
 
 export const selectProgramById = createSelector(
   [(state: RootState) => state.training.programs, (state, id: string | undefined) => id],

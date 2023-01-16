@@ -1,4 +1,4 @@
-import {Program} from "../../../../../redux/training-reducer.types";
+import {Program} from "../../../../../store/training-reducer.types";
 
 
 export type ProgramExpandInfoProps = {

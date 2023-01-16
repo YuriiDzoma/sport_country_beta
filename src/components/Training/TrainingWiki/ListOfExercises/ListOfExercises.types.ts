@@ -1,4 +1,4 @@
-import {exerciseWiki} from "../../../../redux/training-reducer.types";
+import {exerciseWiki} from "../../../../store/training-reducer.types";
 
 export type MapStateToProps = {
     exercisesWiki: exerciseWiki[]
