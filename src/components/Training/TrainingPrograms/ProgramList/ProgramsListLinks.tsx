@@ -3,11 +3,11 @@ import {ProgramLink} from "./ProgramLink/ProgramLink";
 import React from "react";
 import {useAppSelector} from "hooks/redux";
 import Preloader from "components/Common/Preloader/Preloader";
-import {getPrograms} from "store/selectors";
+import {getIsFetching, getPrograms} from "store/selectors";
 
 const ProgramsListLinks = () => {
-    const programs = useAppSelector(state => getPrograms(state))
-    const isFetching = useAppSelector(state => state.training.isLoading)
+    const programs = useAppSelector(getPrograms);
+    const isFetching = useAppSelector(getIsFetching);
     return (
     <div>
         {isFetching ? <Preloader /> : programs.map((item, index) => (
