@@ -6,11 +6,5 @@ export const selectProgramById = createSelector(
   (programs, id) => programs.find((program) => id && program.id === id)
 );
 
-
-export const programsSelectors = (state: RootState) => state.training.programs;
-
-
-export const getPrograms = createSelector(
-    programsSelectors,
-    (programs) => programs
-);
+export const getIsFetching = (state: RootState) => state.training.isLoading;
+export const getPrograms = (state: RootState) => state.training.programs;

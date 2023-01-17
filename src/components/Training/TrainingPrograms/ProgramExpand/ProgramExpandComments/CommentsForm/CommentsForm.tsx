@@ -1,7 +1,7 @@
 import styles from './CommentsForm.module.scss'
 import {Field, Form, Formik} from "formik";
 import React from "react";
-import {CommentsFormProps, FormikProps, SubmitProps} from "./CommentForm.types";
+import { FormikProps, SubmitProps} from "./CommentForm.types";
 import {useParams} from "react-router-dom";
 
 
