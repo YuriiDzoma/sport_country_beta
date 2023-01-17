@@ -1,11 +1,48 @@
-
-
 .programExpandContainer {
-  padding: 20px 16px 30px 16px;
-  background-color: #89c1ce;
+  padding: 20px 0 15px 0;
   border-radius: 8px;
-  color: white;
+  color: #333238;
   position: relative;
+  flex-grow: 1;
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+}
+
+.programDaysContainer {
+  height: 10%;
+  flex-grow: 1;
+  border-top: 1px solid #dcdcde;
+  border-bottom: 1px solid #dcdcde;
+  padding: 15px 0;
+  margin-top: 15px;
+}
+
+.programDaysContainerInner {
+  overflow: auto;
+  height: 100%;
+}
+
+.programDayContainer {
+  margin-top: 25px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  h3 {
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.exercises {
+  padding-left: 20px;
+
+  p {
+    margin-top: 10px;
+  }
 }
 
 .programExpand {
@@ -15,7 +52,7 @@
     font-weight: 500;
     display: flex;
     justify-content: center;
-    color: #000000;
+    color: #333238;
   }
 
   span:first-child {
@@ -24,18 +61,21 @@
 
   &_type {
     display: flex;
-    justify-content: right;
-    margin-bottom: 40px;
+    justify-content: left;
   }
 }
 
 .redactor {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 0;
+  top: 16px;
   font-size: 22px;
 
   a {
-    color: #4d57bd;
+    color: #1f75cb;
+
+    &:hover {
+      color: #1068bf;
+    }
   }
 }

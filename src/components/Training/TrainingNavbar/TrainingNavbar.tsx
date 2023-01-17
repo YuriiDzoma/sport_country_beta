@@ -5,9 +5,7 @@ import {TrainingNavbarProps} from "./TrainingNavbar.types";
 const TrainingNavbar: React.FC<TrainingNavbarProps> = ({trainingNavigation}) => {
     return (
             <>{trainingNavigation.map((item) => (
-                <div key={item.id}>
-                    <TrainingNavbarLink to={item.url}><span>{item.tittle}</span></TrainingNavbarLink>
-                </div>
+                <TrainingNavbarLink key={item.id} to={item.url}><span>{item.tittle}</span></TrainingNavbarLink>
             ))}</>
     )
 }

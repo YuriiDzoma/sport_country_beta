@@ -14,7 +14,7 @@ const ProgramLink:React.FC<ProgramLinkProps> = ({children, to}) => {
     return (
         <Link
             to={to}
-            className={activeLocation ? styles.link_active : ''}
+            className={`${styles.programLink} ${activeLocation ? styles.link_active : ''}`}
         >
             {children}
         </Link>

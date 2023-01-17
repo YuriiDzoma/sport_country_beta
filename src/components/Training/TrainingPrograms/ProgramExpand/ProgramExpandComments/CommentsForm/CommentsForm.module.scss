@@ -1,6 +1,6 @@
 
 .writeComments {
-  margin: 0 0 20px 0;
+  margin: 0;
   width: 100%;
   display: flex;
   align-items: flex-end;
@@ -11,10 +11,14 @@
 
     textarea {
       width: 100%;
-      height: 50px;
+      height: 75px;
       border-radius: 6px;
-      padding: 4px;
-      border: 1px solid #97d7ec;
+      border: 1px solid #dcdcde;
+      padding: 10px 15px;
+
+      &:focus {
+        border-color: #1f75cb;
+      }
     }
   }
 
@@ -23,14 +27,15 @@
 
     button{
       padding: 7px 15px 7px 15px;
-      background-color: #d2e7ee;
-      border: 1px solid #97d7ec;
+      background-color: #1f75cb;
+      color: #ffffff;
       border-radius: 8px;
       font-weight: 500;
       transition: all 100ms;
+      min-width: 150px;
 
       &:hover {
-        opacity: 0.8;
+        background-color: #1068bf;
       }
     }
   }
