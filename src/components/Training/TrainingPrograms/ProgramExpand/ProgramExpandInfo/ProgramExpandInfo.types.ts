@@ -1,6 +1,6 @@
-import {Program} from "../../../../../store/training-reducer.types";
+import {Program} from "store/training-slice.types";
 
 
 export type ProgramExpandInfoProps = {
-    item: Program
+    program: Program;
 }

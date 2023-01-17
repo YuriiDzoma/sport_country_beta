@@ -2,6 +2,7 @@ import styles from './CommentsForm.module.scss'
 import {Field, Form, Formik} from "formik";
 import React from "react";
 import {CommentsFormProps, FormikProps, SubmitProps} from "./CommentForm.types";
+import {useParams} from "react-router-dom";
 
 
 const programsCreatorFormValidate = () => {
@@ -9,11 +10,11 @@ const programsCreatorFormValidate = () => {
     return errors;
 }
 
-const CommentsForm:React.FC<CommentsFormProps> = ({programId, addComment}) => {
-
+const CommentsForm = () => {
+    const { id } = useParams()
     const submit = (values: SubmitProps, { setSubmitting, resetForm }: FormikProps ) => {
         setTimeout(() => {
-            addComment(values.comment, programId);
+            // addComment(values.comment, id);
             setSubmitting(false);
             resetForm();
         }, 400);

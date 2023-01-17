@@ -1,8 +1,8 @@
-import {AddComment, Program} from "../../../../store/training-reducer.types";
+import {Program} from 'store/training-slice.types';
 
 
 export type ProgramExpandProps = {
     programs: Program[]
     programId: number | undefined
-    addComment: (comment: string, programId: number) => AddComment
+
 }

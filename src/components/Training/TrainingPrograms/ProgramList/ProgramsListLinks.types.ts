@@ -1,4 +1,4 @@
-import {Program} from "../../../../store/training-reducer.types";
+import {Program} from 'store/training-slice.types';
 
 
 export type ProgramsListLinksProps = {

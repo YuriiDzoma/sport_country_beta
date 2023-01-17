@@ -1,4 +1,4 @@
-import {Day} from "../../../../../../store/training-reducer.types";
+import {Day} from 'store/training-slice.types';
 
 
 export type ProgramDaysListProps = {

@@ -5,16 +5,21 @@ import CreateName from "./CreateName/CreateName";
 import CreateType from "./CreateType/CreateType";
 import CreateExercises from "./CreateExercises/CreateExercises";
 import CreateDay from "./CreateDay/CreateDay";
-import {editProgram, setNewProgram} from 'config/config';
+import {editProgram, setNewProgram} from 'store/ActionCreators';
 import { v4 } from 'uuid';
+import {useParams} from "react-router-dom";
+import {useAppSelector} from "hooks/redux";
+import {selectProgramById} from "store/selectors";
 
-const CreateProgramForm = (props) => {
+const CreateProgramForm = ({isEditor}) => {
 
     const navigate = useNavigate();
+    const { id } = useParams()
+    const program = useAppSelector((state) => selectProgramById(state, id));
 
-    const formValues = props.isEditor
+    const formValues = isEditor
         ? {
-            title: `${props.programValue.title}`, typeOf: `${props.programValue.typeOf}`, days: props.programValue.days
+            title: `${program.title}`, typeOf: `${program.typeOf}`, days: program.days
         }
         : {
             title: '', typeOf: 'aerobic', days: [
@@ -29,9 +34,9 @@ const CreateProgramForm = (props) => {
 
         onSubmit: values => {
             setTimeout(() => {
-                const programId = props.isEditor ? props.programValue.id : null;
+                const programId = isEditor ? program.id : null;
                 values = {...values, id: v4(), comments: []}
-                props.isEditor
+                isEditor
                     ? editProgram(programId, values)
                     : setNewProgram(values);
                 navigate('/training/training_programs/');
@@ -59,7 +64,7 @@ const CreateProgramForm = (props) => {
             <div className={styles.createProgramWrite_create}>
 
                 <button type="submit" disabled={formik.isSubmitting}>
-                    <span>{props.isEditor
+                    <span>{isEditor
                         ? <span>confirm changes</span>
                         : <span>Create</span>}</span>
                 </button>
