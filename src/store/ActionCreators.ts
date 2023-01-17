@@ -17,7 +17,7 @@ export const fetchPrograms = () => async (dispatch: AppDispatch) => {
 export const setNewProgram = async (values: any)  =>  await addDoc(collection(db, "programs"), {...values,id: v4(), comments: []},)
     .then(response => {return response;});
 
-export const deleteProgram = async (programId: any) => await deleteDoc(doc(db, "programs", programId));
+export const deleteProgram = async (programId: string) => await deleteDoc(doc(db, "programs", programId));
 
 export const editProgram = async (programId: string | undefined, values: any) => {
     try {
