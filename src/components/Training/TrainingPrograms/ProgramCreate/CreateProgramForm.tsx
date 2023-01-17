@@ -6,7 +6,6 @@ import CreateType from "./CreateType/CreateType";
 import CreateExercises from "./CreateExercises/CreateExercises";
 import CreateDay from "./CreateDay/CreateDay";
 import {editProgram, fetchPrograms, setNewProgram} from 'store/ActionCreators';
-import { v4 } from 'uuid';
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {selectProgramById} from "store/selectors";
@@ -27,15 +26,14 @@ const CreateProgramForm = ({isEditor = false}) => {
             ],
         }
 
-
     const formik = useFormik({
 
         initialValues: formValues,
 
         onSubmit: values => {
             setTimeout(() => {
-                const programId = isEditor && program ? program.id : null;
-                values = isEditor && program ? {...values} : {...values, id: v4(), comments: []}
+                const programId = isEditor && program ? program.id : undefined;
+                values = isEditor && program ? {...values} : {...values}
                 isEditor
                     ? editProgram(programId, values)
                     : setNewProgram(values);
