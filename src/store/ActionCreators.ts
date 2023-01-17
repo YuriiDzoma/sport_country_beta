@@ -1,7 +1,8 @@
-import {addDoc, collection, doc, getDocs, setDoc} from 'firebase/firestore';
+import {addDoc, deleteDoc, collection, doc, getDocs, setDoc} from 'firebase/firestore';
 import { db } from 'config/config';
 import { trainingSlice } from 'store/training-slice';
 import { AppDispatch } from 'store/store';
+import {v4} from "uuid";
 
 export const fetchPrograms = () => async (dispatch: AppDispatch) => {
     dispatch(trainingSlice.actions.programsFetching());
@@ -13,20 +14,17 @@ export const fetchPrograms = () => async (dispatch: AppDispatch) => {
         })
 }
 
-export const setNewProgram = async (values: any)  =>  await addDoc(collection(db, "programs"), {...values},)
+export const setNewProgram = async (values: any)  =>  await addDoc(collection(db, "programs"), {...values,id: v4(), comments: []},)
     .then(response => {return response;});
 
+export const deleteProgram = async (programId: any) => await deleteDoc(doc(db, "programs", programId));
 
-export const editProgram = async (programId: any, values: any) => {
+export const editProgram = async (programId: string | undefined, values: any) => {
     try {
         if(!programId) return false;
-
         const collectionRef = doc(db, 'programs', programId);
-
         let updateObject = {...values};
-
         await setDoc(collectionRef, updateObject, {...values});
-
         return true;
     } catch (error) {
         return false;
