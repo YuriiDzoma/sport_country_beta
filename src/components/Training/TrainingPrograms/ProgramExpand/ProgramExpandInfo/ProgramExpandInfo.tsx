@@ -1,16 +1,14 @@
 import styles from './ProgramExpandInfo.module.scss';
-import {Link, useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPenToSquare} from "@fortawesome/free-regular-svg-icons";
-import ProgramDaysList from "./ProgramExpandDaysList/ProgramDaysList";
+import ProgramDaysList from "./ProgramDaysList/ProgramDaysList";
 import {ProgramExpandInfoProps} from "./ProgramExpandInfo.types";
 import React from "react";
-import { IconButton } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
-import {deleteProgram} from "store/ActionCreators";
+import ProgramRemove
+    from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/ProgramRemove/ProgramRemove";
 
 const ProgramExpandInfo:React.FC<ProgramExpandInfoProps> = ({program}) => {
-    const { id } = useParams<string>();
 
     return (
 
@@ -34,11 +32,7 @@ const ProgramExpandInfo:React.FC<ProgramExpandInfoProps> = ({program}) => {
                 </Link>
             </div>
 
-            <div className={styles.deleteProgram}>
-                <IconButton aria-label="delete" size="large" color="warning" onClick={() => deleteProgram(id)}>
-                    <DeleteIcon />
-                </IconButton>
-            </div>
+            <ProgramRemove />
         </div>
     )
 };
