@@ -18,7 +18,8 @@ const Training = () => {
             <div className={styles.linksContainer}>
                 <TrainingNavbar trainingNavigation={trainingNavigation}/>
             </div>
-            <div className={styles.trainingContent}>
+            <div className={styles.trainingContentWrapper}>
+              <div className={styles.trainingContent}>
 
                 <Routes>
                     <Route path={'training_process/'} element={<TrainingProcess/>} />
@@ -41,6 +42,7 @@ const Training = () => {
                     {/*    type={'Leg Muscles'} />} />*/}
                 </Routes>
 
+            </div>
             </div>
         </div>
     )

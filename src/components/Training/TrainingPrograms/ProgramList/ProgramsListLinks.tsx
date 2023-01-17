@@ -9,12 +9,10 @@ const ProgramsListLinks = () => {
     const programs = useAppSelector(state => getPrograms(state))
     const isFetching = useAppSelector(state => state.training.isLoading)
     return (
-    <div>
+    <div className={styles.programsList}>
         {isFetching ? <Preloader /> : programs.map((item, index) => (
                 <ProgramLink key={index} to={'/training/training_programs/' + item.id}>
-                    <div className={styles.program}>
-                        <span>{item.title}</span>
-                    </div>
+                    {item.title}
                 </ProgramLink>
             ))}
 

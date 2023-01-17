@@ -14,7 +14,7 @@ function App() {
         <div className={styles.container}>
           <Header />
           <Navigation />
-          <div>
+          <div className={styles.mainContent}>
             <Routes>
               <Route path='/' element={<>Home</>} />
               <Route path='/profile/*' element={<Profile />} />

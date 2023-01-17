@@ -9,7 +9,7 @@ const TrainingNavbarLink = ({children, to, ...props}) => {
     return (
         <Link
             to={to}
-            className={activeLocation ? styles.customLink_active : styles.customLink}
+            className={`${styles.customLink} ${activeLocation ? styles.customLinkActive : ''}`}
             {...props}
         >
             {children}

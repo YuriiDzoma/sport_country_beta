@@ -31,7 +31,7 @@ const CommentsForm = () => {
                     <Form>
                         <div className={styles.writeComments}>
                             <div className={styles.writeComments_area}>
-                                <Field as='textarea' name='comment' />
+                                <Field as='textarea' name='comment' placeholder='Add your comment ...' />
                             </div>
                             <div className={styles.writeComments_send}>
                                 <button type="submit" disabled={isSubmitting}>
