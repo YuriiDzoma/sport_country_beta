@@ -5,19 +5,19 @@ import CreateName from "./CreateName/CreateName";
 import CreateType from "./CreateType/CreateType";
 import CreateExercises from "./CreateExercises/CreateExercises";
 import CreateDay from "./CreateDay/CreateDay";
-import {editProgram, setNewProgram} from 'store/ActionCreators';
+import {editProgram, fetchPrograms, setNewProgram} from 'store/ActionCreators';
 import { v4 } from 'uuid';
 import {useParams} from "react-router-dom";
-import {useAppSelector} from "hooks/redux";
+import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {selectProgramById} from "store/selectors";
 
-const CreateProgramForm = ({isEditor}) => {
+const CreateProgramForm = ({isEditor = false}) => {
 
     const navigate = useNavigate();
     const { id } = useParams()
     const program = useAppSelector((state) => selectProgramById(state, id));
-
-    const formValues = isEditor
+    const dispatch = useAppDispatch()
+    const formValues = isEditor && program
         ? {
             title: `${program.title}`, typeOf: `${program.typeOf}`, days: program.days
         }
@@ -34,13 +34,14 @@ const CreateProgramForm = ({isEditor}) => {
 
         onSubmit: values => {
             setTimeout(() => {
-                const programId = isEditor ? program.id : null;
-                values = {...values, id: v4(), comments: []}
+                const programId = isEditor && program ? program.id : null;
+                values = isEditor && program ? {...values} : {...values, id: v4(), comments: []}
                 isEditor
                     ? editProgram(programId, values)
                     : setNewProgram(values);
                 navigate('/training/training_programs/');
                 formik.setSubmitting(false);
+                dispatch(fetchPrograms())
             }, 400);
         },
 

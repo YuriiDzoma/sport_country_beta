@@ -28,13 +28,11 @@ const TrainingPrograms = () => {
             <div className={styles.programsContent}>
 
                 <Routes>
-                    <Route path={'create/'} element={<CreateProgramForm
-                        isEditor={false} />}/>
+                    <Route path={'create/'} element={<CreateProgramForm />}/>
 
                     <Route path={":id"} element={<ProgramExpand />}/>
 
-                    <Route path={`:id/redactor/`} element={<CreateProgramForm
-                        isEditor={true} />}/>
+                    <Route path={`:id/redactor/`} element={<CreateProgramForm isEditor />}/>
                 </Routes>
 
             </div>
