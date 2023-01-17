@@ -2,7 +2,7 @@ import styles from './ProgramExpandInfo.module.scss';
 import {Link, useParams} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPenToSquare} from "@fortawesome/free-regular-svg-icons";
-import ProgramDaysList from "./ProgramExpandDaysList/ProgramDaysList";
+import ProgramDaysList from "./ProgramDaysList/ProgramDaysList";
 import {ProgramExpandInfoProps} from "./ProgramExpandInfo.types";
 import React from "react";
 import { IconButton } from '@mui/material';
