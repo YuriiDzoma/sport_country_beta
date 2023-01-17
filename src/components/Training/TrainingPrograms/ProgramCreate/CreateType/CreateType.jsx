@@ -1,14 +1,14 @@
 import styles from "../../TrainingPrograms.module.scss";
 
 
-const CreateType = ({formik}) => {
+const CreateType = ({handleChange, values}) => {
 
     return (
         <div className={styles.createProgramInfo_type}>
             <span>Type:</span>
-            <select id='typeOf' name="typeOf" onChange={formik.handleChange} value={formik.values.typeOf}>
+            <select id='typeOf' name="typeOf" onChange={handleChange} value={values.typeOf}>
                 <option value={'aerobic'} >Aerobic</option>
-                <option value={'anaerobic'} selected={formik.values.type}>Anaerobic</option>
+                <option value={'anaerobic'} >Anaerobic</option>
                 <option value={'mixed'} >Mixed</option>
             </select>
         </div>

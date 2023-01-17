@@ -26,7 +26,7 @@ const CreateProgramForm = ({isEditor = false}) => {
             ],
         }
 
-    const formik = useFormik({
+    const {setSubmitting, handleSubmit, isSubmitting, handleChange, values, setFieldValue} = useFormik({
 
         initialValues: formValues,
 
@@ -38,7 +38,7 @@ const CreateProgramForm = ({isEditor = false}) => {
                     ? editProgram(programId, values)
                     : setNewProgram(values);
                 navigate('/training/training_programs/');
-                formik.setSubmitting(false);
+                setSubmitting(false);
                 dispatch(fetchPrograms())
             }, 400);
         },
@@ -46,23 +46,23 @@ const CreateProgramForm = ({isEditor = false}) => {
     });
 
     return (
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
             <div className={styles.createProgramInfo}>
 
-                <CreateName formik={formik} />
-                <CreateType formik={formik} />
+                <CreateName handleChange={handleChange} values={values} />
+                <CreateType handleChange={handleChange} values={values} />
             </div>
 
             <div className={styles.createProgramWrite}>
 
-                <CreateExercises formik={formik} />
-                <CreateDay formik={formik} />
+                <CreateExercises values={values} handleChange={handleChange} setFieldValue={setFieldValue} />
+                <CreateDay setFieldValue={setFieldValue} values={values}/>
 
             </div>
             <div className={styles.createProgramWrite_create}>
 
-                <button type="submit" disabled={formik.isSubmitting}>
+                <button type="submit" disabled={isSubmitting}>
                     <span>{isEditor
                         ? <span>confirm changes</span>
                         : <span>Create</span>}</span>

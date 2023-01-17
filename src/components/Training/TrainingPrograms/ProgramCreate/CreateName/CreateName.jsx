@@ -1,13 +1,13 @@
 import styles from "../../TrainingPrograms.module.scss";
 
 
-const CreateName = ({formik}) => {
+const CreateName = ({handleChange, values}) => {
 
     return (
         <div className={styles.createProgramInfo_name}>
             <span>Name:</span>
-            <input id='title' name='title' type='text' onChange={formik.handleChange}
-                   value={formik.values.title}/>
+            <input id='title' name='title' type='text' onChange={handleChange}
+                   value={values.title}/>
         </div>
     )
 }

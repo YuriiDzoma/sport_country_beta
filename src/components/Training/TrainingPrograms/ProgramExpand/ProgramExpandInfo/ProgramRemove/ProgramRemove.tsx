@@ -1,4 +1,4 @@
-import styles from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/ProgramExpandInfo.module.scss";
+import styles from "./ProgramRemove.module.scss";
 import {IconButton} from "@mui/material";
 import {deleteProgram, fetchPrograms} from "store/ActionCreators";
 import DeleteIcon from "@mui/icons-material/Delete";
