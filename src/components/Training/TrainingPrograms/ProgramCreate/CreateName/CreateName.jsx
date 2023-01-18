@@ -1,4 +1,4 @@
-import styles from "../../TrainingPrograms.module.scss";
+import styles from "./../CreateProgramForm.module.scss";
 
 
 const CreateName = ({handleChange, values}) => {

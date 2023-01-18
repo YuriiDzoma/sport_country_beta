@@ -1,6 +1,6 @@
 import {useFormik} from "formik";
 import {useNavigate} from "react-router";
-import styles from "../TrainingPrograms.module.scss";
+import styles from "./CreateProgramForm.module.scss";
 import CreateName from "./CreateName/CreateName";
 import CreateType from "./CreateType/CreateType";
 import CreateExercises from "./CreateExercises/CreateExercises";
@@ -9,6 +9,7 @@ import {editProgram, fetchPrograms, setNewProgram} from 'store/ActionCreators';
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {selectProgramById} from "store/selectors";
+import GoBack from "components/Common/GoBack/GoBack";
 
 const CreateProgramForm = ({isEditor = false}) => {
 
@@ -67,6 +68,7 @@ const CreateProgramForm = ({isEditor = false}) => {
                         ? <span>confirm changes</span>
                         : <span>Create</span>}</span>
                 </button>
+
 
             </div>
         </form>
