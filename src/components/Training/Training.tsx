@@ -1,10 +1,11 @@
 import styles from './Training.module.scss'
 import {Route, Routes} from "react-router-dom";
-import TrainingProcess from "./TrainingProcess/Training";
+import TrainingProcess from './TrainingProcess/TrainingProcess';
 import TrainingPrograms from "./TrainingPrograms/TrainingPrograms";
 import TrainingWikiNavbarContainer from "./TrainingWiki/TrainingWikiNavbarContainer";
 import TrainingNavbar from "./TrainingNavbar/TrainingNavbar";
 import ListOfExercises from './TrainingWiki/ListOfExercises/ListOfExercises'
+
 
 const Training = () => {
     const trainingNavigation =  [
@@ -12,6 +13,7 @@ const Training = () => {
         {id:2, tittle: 'Training Programs', url: '/training/training_programs/'},
         {id:3, tittle: 'Training Wiki', url: '/training/training_wiki_navbar/'},
     ];
+
 
     return (
         <div className={styles.trainingWrapper}>

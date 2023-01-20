@@ -25,6 +25,18 @@ export const trainingSlice = createSlice({
             state.isLoading = false;
             state.error = action.payload;
         },
+        exercisesFetching(state) {
+            state.isLoading = true;
+        },
+        exercisesFetchingSuccess(state, action) {
+            state.isLoading = false;
+            state.error = '';
+            state.exercisesWiki = action.payload
+        },
+        exercisesFetchingError(state, action: PayloadAction<string>) {
+            state.isLoading = false;
+            state.error = action.payload;
+        },
     }
 
 });

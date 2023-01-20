@@ -1,5 +1,9 @@
 import TrainingWikiNavbar from "./TrainingWikiNavbar/TrainingWikiNavbar";
 import styles from './TrainingWikiNavbar/TrainingWiki.module.scss'
+import {useAppDispatch, useAppSelector} from "hooks/redux";
+import {useEffect} from "react";
+import {fetchExercises, fetchPrograms} from "store/ActionCreators";
+import {getExercises} from "store/selectors";
 
 
 const TrainingWikiNavbarContainer = () => {
@@ -14,20 +18,19 @@ const TrainingWikiNavbarContainer = () => {
         backgroundPosition: '50% 50%'
     };
 
-    const trainingWikiNavbar = [
-        {id: 1, title: 'Shoulder Muscles', url: '/training/training_wiki_shoulder_muscles/'},
-        {id: 2, title: 'Triceps Muscles', url: '/training/training_wiki_triceps_muscles/'},
-        {id: 3, title: 'Dorsal Muscles', url: '/training/training_wiki_dorsal_muscles/'},
-        {id: 4, title: 'Pectoral Muscles', url: '/training/training_wiki_pectoral_muscles/'},
-        {id: 5, title: 'Biceps Muscles', url: '/training/training_wiki_biceps_muscles/'},
-        {id: 6, title: 'Abdominal Muscles', url: '/training/training_wiki_abdominal_muscles/'},
-        {id: 7, title: 'Leg Muscles', url: '/training/training_wiki_leg_muscles/'},
-    ]
+    const dispatch = useAppDispatch()
+
+    useEffect(()=>{
+        dispatch(fetchExercises())
+    }, [])
+
+    const exercises = useAppSelector(getExercises);
+    console.log(exercises);
 
     return (
         <div className={styles.wikiContainer}>
             <div style={myStyle}>
-                <TrainingWikiNavbar trainingWikiNavbar={trainingWikiNavbar} />
+                <TrainingWikiNavbar />
             </div>
         </div>
 
