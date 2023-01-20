@@ -8,3 +8,4 @@ export const selectProgramById = createSelector(
 
 export const getIsFetching = (state: RootState) => state.training.isLoading;
 export const getPrograms = (state: RootState) => state.training.programs;
+export const getExercises = (state: RootState) => state.training.exercisesWiki;

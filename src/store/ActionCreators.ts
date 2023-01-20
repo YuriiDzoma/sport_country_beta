@@ -14,6 +14,16 @@ export const fetchPrograms = () => async (dispatch: AppDispatch) => {
         })
 }
 
+export const fetchExercises = () => async (dispatch: AppDispatch) => {
+    dispatch(trainingSlice.actions.exercisesFetching());
+    await getDocs(collection(db, "muscleGroups"))
+        .then((querySnapshot) => {
+            const newData = querySnapshot.docs
+                .map((doc) => ({...doc.data(), id: doc.id}));
+            dispatch(trainingSlice.actions.exercisesFetchingSuccess(newData));
+        })
+}
+
 export const setNewProgram = async (values: any)  =>  await addDoc(collection(db, "programs"), {...values,id: v4(), comments: []},)
     .then(response => {return response;});
 

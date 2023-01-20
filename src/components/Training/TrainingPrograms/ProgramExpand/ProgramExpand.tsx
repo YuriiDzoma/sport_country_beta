@@ -15,7 +15,7 @@ const ProgramExpand = () => {
             {program && id && (
                 <>
                     <ProgramExpandInfo program={program}/>
-                    <ProgramExpandComments />
+                    {/*<ProgramExpandComments />*/}
                 </>
             )}
         </div>
