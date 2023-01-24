@@ -2,7 +2,7 @@ import {addDoc, deleteDoc, collection, doc, getDocs, setDoc} from 'firebase/fire
 import { db } from 'config/config';
 import { trainingSlice } from 'store/training-slice';
 import { AppDispatch } from 'store/store';
-import {v4} from "uuid";
+import { v4 } from "uuid";
 
 export const fetchPrograms = () => async (dispatch: AppDispatch) => {
     dispatch(trainingSlice.actions.programsFetching());
@@ -14,7 +14,7 @@ export const fetchPrograms = () => async (dispatch: AppDispatch) => {
         })
 }
 
-export const fetchExercises = () => async (dispatch: AppDispatch) => {
+export const fetchExercisesGroups = () => async (dispatch: AppDispatch) => {
     dispatch(trainingSlice.actions.exercisesFetching());
     await getDocs(collection(db, "muscleGroups"))
         .then((querySnapshot) => {

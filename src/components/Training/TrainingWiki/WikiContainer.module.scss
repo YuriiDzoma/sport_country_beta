@@ -1,0 +1,15 @@
+.wikiContainer {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  height: 100%;
+
+  &__filter {
+    padding: 10px;
+    background-color: #818486;
+  }
+
+  &__exercises {
+    padding: 10px;
+    background-color: #5da3b4;
+  }
+}
