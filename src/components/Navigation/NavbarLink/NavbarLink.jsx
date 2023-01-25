@@ -8,7 +8,7 @@ const NavbarLink = ({children, to}) => {
     return (
         <Link
             to={to}
-            className={activeLocation ? styles.customLink_active : styles.customLink}
+            className={activeLocation ? `${styles.customLink} ${styles.customLink_active}` : styles.customLink}
         >
             {children}
         </Link>
