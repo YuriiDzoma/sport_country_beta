@@ -5,20 +5,21 @@
   display: flex;
   justify-content: center;
   padding-top: 10px;
-  border-bottom: 2px solid #1f75cb;
+  border-bottom: 1px solid #1f75cb;
   position: relative;
 
   &:after {
     content: '';
-    height: 2px;
+    height: 1px;
     width: 100vw;
     display: block;
-    bottom: -2px;
+    bottom: -1px;
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
     background-color: #1f75cb;
     z-index: -1;
+    cursor: pointer;
   }
 
   a {

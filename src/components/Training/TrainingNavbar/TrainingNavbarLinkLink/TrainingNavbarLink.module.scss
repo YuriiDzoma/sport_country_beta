@@ -3,31 +3,32 @@
   font-size: 14px;
   font-weight: 500;
   padding: 7px 15px 5px;
-  border-bottom: 2px solid transparent;
-  border-left: 2px solid #dcdcde;
-  border-right: 2px solid #dcdcde;
-  border-top: 2px solid #dcdcde;
+  border-bottom: 1px solid transparent;
+  border-left: 1px solid #dcdcde;
+  border-right: 1px solid #dcdcde;
+  border-top: 1px solid #dcdcde;
   box-sizing: border-box;
-  margin: 0 10px;
-  border-radius: 10px 10px 0 0;
+  margin: 0 4px;
+  border-radius: 4px 4px 0 0;
   display: block;
+  transition: all 100ms;
 
   &:hover {
-    color: #1f75cb;
+    background-color: #ececef;
   }
 }
 
 .customLinkActive {
-  border-radius: 10px 10px 0 0;
+  border-radius: 4px 4px 0 0;
   font-size: 14px;
   font-weight: 500;
   color: #1f75cb;
   padding: 7px 15px 7px;
-  margin-bottom: -2px;
+  margin-bottom: -1px;
   background-color: #ffffff;
-  border-left: 2px solid #1f75cb;
-  border-right: 2px solid #1f75cb;
-  border-top: 2px solid #1f75cb;
-  border-bottom: 2px solid #ffffff;
+  border-left: 1px solid #1f75cb;
+  border-right: 1px solid #1f75cb;
+  border-top: 1px solid #1f75cb;
+  border-bottom: 1px solid #ffffff;
   pointer-events: none;
 }

@@ -4,15 +4,13 @@ import styles from "./../CreateProgramForm.module.scss";
 const CreateExercises = ({values, handleChange, setFieldValue}) => {
 
     return (
-        <div>
+        <div className={styles.createProgramInner}>
             {values.days.map((day, index) => {
                 const dayNumber = index;
 
                 return (
-                    <div key={index}>
-                        <div>
-                            <span>Day {day.day}</span>
-
+                    <div key={index} className={styles.createProgramDay}>
+                            <h3>Day {day.day}</h3>
                             {day.exercises.map((item, index) => (
                                     <div className={styles.field} key={index}>
                                         <input id={`days.${dayNumber}.exercises.${index}.name`}
@@ -43,7 +41,6 @@ const CreateExercises = ({values, handleChange, setFieldValue}) => {
                                 )
                             )}
                         </div>
-                    </div>
                 )
             })}
         </div>
