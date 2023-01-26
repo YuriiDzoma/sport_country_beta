@@ -15,11 +15,16 @@ export type Day = {
 
 }
 
+export type ExerWiki = {
+    nameEn: string
+    nameUa: string
+    secondaryGroups: [string]
+}
+
 export type exerciseWiki = {
-    id: number
-    name: string
-    muscleGroup: string
-    about: string
+    title: string
+    exercises: ExerWiki[]
+    id: string
 }
 
 export type Program = {
