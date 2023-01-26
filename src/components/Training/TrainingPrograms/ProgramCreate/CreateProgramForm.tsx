@@ -5,11 +5,12 @@ import CreateName from "./CreateName/CreateName";
 import CreateType from "./CreateType/CreateType";
 import CreateExercises from "./CreateExercises/CreateExercises";
 import CreateDay from "./CreateDay/CreateDay";
-import {editProgram, fetchPrograms, setNewProgram} from 'store/ActionCreators';
+import {editProgram, setNewProgram} from 'store/ActionCreators';
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {selectProgramById} from "store/selectors";
 import GoBack from "components/Common/GoBack/GoBack";
+import {fetchPrograms} from "api/api";
 
 const CreateProgramForm = ({isEditor = false}) => {
 

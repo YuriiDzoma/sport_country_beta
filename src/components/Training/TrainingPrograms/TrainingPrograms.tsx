@@ -5,8 +5,8 @@ import ProgramCreateButton from "./ProgramCreateButton/ProgramCreateButton";
 import React, {useEffect} from "react";
 import ProgramExpand from "./ProgramExpand/ProgramExpand";
 import CreateProgramForm from "./ProgramCreate/CreateProgramForm";
-import {fetchPrograms} from 'store/ActionCreators';
 import {useAppDispatch} from "hooks/redux";
+import {fetchPrograms} from "api/api";
 
 const TrainingPrograms = () => {
 
