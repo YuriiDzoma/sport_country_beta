@@ -1,7 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {addDoc, collection, deleteDoc, doc, getDocs, setDoc} from "firebase/firestore";
 import {db} from "config/config";
-import {v4} from "uuid";
 
 export const fetchPrograms = createAsyncThunk(
     'programs/fetchAll',
@@ -57,14 +56,14 @@ export const deleteProgramInFB = async (programId: string) => {
     }
 };
 
-export const editProgram = async (programId: string | undefined, values: any) => {
+export const editProgramInFB = async (programId: string | undefined, values: any) => {
     try {
         if(!programId) return false;
         const collectionRef = doc(db, 'programs', programId);
         let updateObject = {...values};
         await setDoc(collectionRef, updateObject, {...values});
-        return true;
-    } catch (error) {
-        return false;
+        return updateObject;
+    } catch (e) {
+        console.log(e);
     }
 };

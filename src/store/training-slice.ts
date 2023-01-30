@@ -18,12 +18,16 @@ export const trainingSlice = createSlice({
         resetFetching(state) {
             state.isLoading = false;
         },
-        addProgram(state, action) {
+        addProgramToState(state, action) {
             state.programs = [...state.programs, action.payload]
         },
-        removeProgram(state, action) {
+        removeProgramFromState(state, action) {
             state.programs = state.programs.filter((item) => item.id !== action.payload);
         },
+        editProgramInState(state, action) {
+            state.programs = state.programs.filter((item) => item.id !== action.payload.id);
+            state.programs = [...state.programs, action.payload];
+        }
     },
     extraReducers: {
         [fetchPrograms.pending.type]: (state) => {
@@ -42,4 +46,9 @@ export const trainingSlice = createSlice({
 });
 
 export default trainingSlice.reducer;
-export const { setFetching, resetFetching, addProgram, removeProgram } = trainingSlice.actions;
+export const {
+    setFetching,
+    resetFetching,
+    addProgramToState,
+    removeProgramFromState,
+    editProgramInState } = trainingSlice.actions;

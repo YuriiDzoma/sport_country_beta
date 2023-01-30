@@ -8,8 +8,7 @@ import CreateDay from "./CreateDay/CreateDay";
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {selectProgramById} from "store/selectors";
-import {editProgram} from "api/api";
-import {setNewProgram} from "store/actions";
+import {editProgram, setNewProgram} from "store/actions";
 
 const CreateProgramForm = ({isEditor = false}) => {
 
@@ -19,12 +18,16 @@ const CreateProgramForm = ({isEditor = false}) => {
     const dispatch = useAppDispatch()
     const formValues = isEditor && program
         ? {
-            title: `${program.title}`, typeOf: `${program.typeOf}`, days: program.days
+            title: `${program.title}`,
+            typeOf: `${program.typeOf}`,
+            days: program.days, comments:
+            program.comments,
+            id: program.id,
         }
         : {
             title: '', typeOf: 'aerobic', days: [
                 {day: 1, exercises: [{id: 1, name: ''}, {id: 2, name: ''}, {id: 3, name: ''}]}
-            ],
+            ], comments: [],
         }
 
     const {setSubmitting, handleSubmit, isSubmitting, handleChange, values, setFieldValue} = useFormik({
@@ -36,7 +39,7 @@ const CreateProgramForm = ({isEditor = false}) => {
                 const programId = isEditor && program ? program.id : undefined;
                 values = isEditor && program ? {...values} : {...values}
                 isEditor
-                    ? editProgram(programId, values)
+                    ? dispatch(editProgram(programId, values))
                     : dispatch(setNewProgram(values));
                 navigate('/training/training_programs/');
                 setSubmitting(false);
