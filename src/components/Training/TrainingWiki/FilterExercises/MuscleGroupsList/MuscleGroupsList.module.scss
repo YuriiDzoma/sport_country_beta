@@ -1,0 +1,14 @@
+.groupsLinks {
+  div {
+    padding: 4px 4px;
+
+    span {
+      padding: 4px 4px;
+      cursor: pointer;
+      border-radius: 8px;
+      &:hover {
+        background-color: rgba(121, 128, 211, 0.2);
+      }
+    }
+  }
+}

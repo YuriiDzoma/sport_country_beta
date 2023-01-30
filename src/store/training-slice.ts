@@ -1,10 +1,9 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { TrainingState } from 'store/training-slice.types';
-import {fetchExercisesGroups, fetchPrograms} from "api/api";
+import {fetchPrograms} from "api/api";
 
 const initialState: TrainingState = {
     programs: [],
-    exercisesWiki: [],
     isLoading: false,
     error: '',
 }
@@ -12,7 +11,20 @@ const initialState: TrainingState = {
 export const trainingSlice = createSlice({
     name: 'trainingPage',
     initialState,
-    reducers: {},
+    reducers: {
+        setFetching(state) {
+            state.isLoading = true;
+        },
+        resetFetching(state) {
+            state.isLoading = false;
+        },
+        addProgram(state, action) {
+            state.programs = [...state.programs, action.payload]
+        },
+        removeProgram(state, action) {
+            state.programs = state.programs.filter((item) => item.id !== action.payload);
+        },
+    },
     extraReducers: {
         [fetchPrograms.pending.type]: (state) => {
             state.isLoading = true;
@@ -26,19 +38,8 @@ export const trainingSlice = createSlice({
             state.isLoading = false;
             state.error = action.payload;
         },
-        [fetchExercisesGroups.pending.type]: (state) => {
-            state.isLoading = true;
-        },
-        [fetchExercisesGroups.fulfilled.type]: (state, action) => {
-            state.isLoading = false;
-            state.error = '';
-            state.exercisesWiki = action.payload;
-        },
-        [fetchExercisesGroups.rejected.type]: (state, action: PayloadAction<string>) => {
-            state.isLoading = false;
-            state.error = action.payload;
-        },
     }
 });
 
 export default trainingSlice.reducer;
+export const { setFetching, resetFetching, addProgram, removeProgram } = trainingSlice.actions;

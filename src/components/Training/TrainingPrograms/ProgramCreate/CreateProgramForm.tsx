@@ -5,12 +5,11 @@ import CreateName from "./CreateName/CreateName";
 import CreateType from "./CreateType/CreateType";
 import CreateExercises from "./CreateExercises/CreateExercises";
 import CreateDay from "./CreateDay/CreateDay";
-import {editProgram, setNewProgram} from 'store/ActionCreators';
 import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {selectProgramById} from "store/selectors";
-import GoBack from "components/Common/GoBack/GoBack";
-import {fetchPrograms} from "api/api";
+import {editProgram} from "api/api";
+import {setNewProgram} from "store/actions";
 
 const CreateProgramForm = ({isEditor = false}) => {
 
@@ -38,10 +37,9 @@ const CreateProgramForm = ({isEditor = false}) => {
                 values = isEditor && program ? {...values} : {...values}
                 isEditor
                     ? editProgram(programId, values)
-                    : setNewProgram(values);
+                    : dispatch(setNewProgram(values));
                 navigate('/training/training_programs/');
                 setSubmitting(false);
-                dispatch(fetchPrograms())
             }, 400);
         },
 

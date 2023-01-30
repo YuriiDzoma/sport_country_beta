@@ -11,10 +11,7 @@ import {fetchPrograms} from "api/api";
 const TrainingPrograms = () => {
 
     const dispatch = useAppDispatch()
-
-    useEffect(()=>{
-        dispatch(fetchPrograms())
-    }, [])
+    dispatch(fetchPrograms())
 
     return (
 

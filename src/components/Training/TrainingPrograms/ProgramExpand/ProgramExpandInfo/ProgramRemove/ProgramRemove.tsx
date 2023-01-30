@@ -1,12 +1,11 @@
 import styles from "./ProgramRemove.module.scss";
 import {IconButton} from "@mui/material";
-import {deleteProgram} from "store/ActionCreators";
 import DeleteIcon from "@mui/icons-material/Delete";
 import React from "react";
 import {useParams} from "react-router-dom";
 import {useNavigate} from "react-router";
 import {useAppDispatch} from "hooks/redux";
-import {fetchPrograms} from "api/api";
+import {deleteProgram} from "store/actions";
 
 const ProgramRemove = () => {
     const { id } = useParams<string>();
@@ -14,8 +13,7 @@ const ProgramRemove = () => {
     const dispatch = useAppDispatch()
     const onSubmit = (id: string) => {
         if (id) {
-            deleteProgram(id);
-            dispatch(fetchPrograms());
+            dispatch(deleteProgram(id)).then();
             navigate('/training/training_programs/');
         }
     }
