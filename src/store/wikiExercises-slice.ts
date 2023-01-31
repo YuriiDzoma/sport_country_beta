@@ -12,7 +12,7 @@ export const wikiExercisesSlice = createSlice({
     name: 'trainingPage',
     initialState,
     reducers: {
-        setExercises(state, action) {
+        pushExercises(state, action) {
             state.exercises = [];
             state.exercises = action.payload;
         },
@@ -34,4 +34,4 @@ export const wikiExercisesSlice = createSlice({
 });
 
 export default wikiExercisesSlice.reducer;
-export const {setExercises} = wikiExercisesSlice.actions
+export const {pushExercises} = wikiExercisesSlice.actions

@@ -2,16 +2,11 @@ import styles from './TrainingPrograms.module.scss'
 import ProgramsListLinks from "./ProgramList/ProgramsListLinks";
 import {Route, Routes} from "react-router-dom";
 import ProgramCreateButton from "./ProgramCreateButton/ProgramCreateButton";
-import React, {useEffect} from "react";
+import React from "react";
 import ProgramExpand from "./ProgramExpand/ProgramExpand";
 import CreateProgramForm from "./ProgramCreate/CreateProgramForm";
-import {useAppDispatch} from "hooks/redux";
-import {fetchPrograms} from "api/api";
 
 const TrainingPrograms = () => {
-
-    const dispatch = useAppDispatch()
-    dispatch(fetchPrograms())
 
     return (
 
