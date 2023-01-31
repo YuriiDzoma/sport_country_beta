@@ -1,7 +1,7 @@
 import styles from './CommentsForm.module.scss'
 import {Field, Form, Formik} from "formik";
 import React from "react";
-import {CommentsFormProps, FormikProps, SubmitProps} from "./CommentForm.types";
+import { FormikProps, SubmitProps} from "./CommentForm.types";
 import {useParams} from "react-router-dom";
 
 
@@ -31,7 +31,7 @@ const CommentsForm = () => {
                     <Form>
                         <div className={styles.writeComments}>
                             <div className={styles.writeComments_area}>
-                                <Field as='textarea' name='comment' />
+                                <Field as='textarea' name='comment' placeholder='Add your comment ...' />
                             </div>
                             <div className={styles.writeComments_send}>
                                 <button type="submit" disabled={isSubmitting}>

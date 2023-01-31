@@ -1,17 +1,41 @@
 .trainingWrapper {
-  margin-top: 10px;
 }
 
 .linksContainer {
   display: flex;
   justify-content: center;
+  padding-top: 10px;
+  border-bottom: 1px solid #1f75cb;
+  position: relative;
+
+  &:after {
+    content: '';
+    height: 1px;
+    width: 100vw;
+    display: block;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    background-color: #1f75cb;
+    z-index: -1;
+    cursor: pointer;
+  }
+
+  a {
+    display: flex;
+  }
+}
+
+.trainingContentWrapper {
+  padding: 0 10px 10px;
+  height: 10%;
+  flex-grow: 1;
 }
 
 .trainingContent {
-  margin: 10px 8px 0 8px;
   border-radius: 8px;
   padding: 12px;
-  background-color: rgb(231, 248, 234);
   height: 100%;
   min-height: 600px;
 }

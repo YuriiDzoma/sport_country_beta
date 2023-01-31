@@ -1,18 +1,34 @@
 .customLink {
-  color: rgb(3, 3, 54);
+  color: #1f75cb;
   font-size: 14px;
   font-weight: 500;
-  margin: 0 24px;
-  padding: 4px 8px 8px 8px;
+  padding: 7px 15px 5px;
+  border-bottom: 1px solid transparent;
+  border-left: 1px solid #dcdcde;
+  border-right: 1px solid #dcdcde;
+  border-top: 1px solid #dcdcde;
+  box-sizing: border-box;
+  margin: 0 4px;
+  border-radius: 4px 4px 0 0;
+  display: block;
+  transition: all 100ms;
 
-  &_active {
-    font-size: 14px;
-    font-weight: 500;
-    color: #7a461d;
-    background-color: rgb(231, 248, 234);
-    //background-color: rgba(140, 185, 46, 0.36);
-    border-radius: 10px 10px 0 0;
-    margin: 0 24px;
-    padding: 4px 8px 8px 8px;
+  &:hover {
+    background-color: #ececef;
   }
+}
+
+.customLinkActive {
+  border-radius: 4px 4px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f75cb;
+  padding: 7px 15px 7px;
+  margin-bottom: -1px;
+  background-color: #ffffff;
+  border-left: 1px solid #1f75cb;
+  border-right: 1px solid #1f75cb;
+  border-top: 1px solid #1f75cb;
+  border-bottom: 1px solid #ffffff;
+  pointer-events: none;
 }

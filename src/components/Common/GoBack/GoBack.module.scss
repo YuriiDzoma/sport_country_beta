@@ -1,0 +1,16 @@
+.goBackWrapper {
+  position: absolute;
+  top: 0;
+  left: 8px;
+
+  button {
+    background: none;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      color: #5da3b4;
+    }
+  }
+}
+

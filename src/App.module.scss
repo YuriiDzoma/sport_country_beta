@@ -1,5 +1,18 @@
 @import "0style.scss";
 
+// main: #333238;
+// secondary: #737278;
+// blue: #1f75cb;
+// dark-blue: #1068bf;
+// blue-block: #e9f3fc;
+// border: #dcdcde;
+// dark-border: #89888d;
+// hover: #ececef;
+// alarm: #dd2b0e;
+// dark-alarm: #c91c00;
+// alarm-block: #fcf1ef;
+
+
 .wrapper {
   display: flex;
   justify-content: center;
@@ -8,14 +21,27 @@
 
 .container {
   max-width: 1024px;
-  background-color: rgba(140, 185, 46, 0.36);
   width: 100%;
   min-height: 800px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .content {
   background-color: rgba(154, 192, 76, 0.36);
   height: 100%;
+}
+
+.mainContent {
+  height: 10%;
+  flex-grow: 1;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 }
 
 //.navbarWithContent {

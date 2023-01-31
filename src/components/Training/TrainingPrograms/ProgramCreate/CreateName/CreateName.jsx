@@ -1,13 +1,16 @@
-import styles from "../../TrainingPrograms.module.scss";
+import styles from "./../CreateProgramForm.module.scss";
+import GoBack from "components/Common/GoBack/GoBack";
 
-
-const CreateName = ({formik}) => {
+const CreateName = ({handleChange, values}) => {
 
     return (
         <div className={styles.createProgramInfo_name}>
-            <span>Name:</span>
-            <input id='title' name='title' type='text' onChange={formik.handleChange}
-                   value={formik.values.title}/>
+            <GoBack />
+            <div className={styles.programName}>
+              <span className={styles.programLabel}>Name:</span>
+              <input id='title' name='title' type='text' onChange={handleChange}
+                   value={values.title}/>
+            </div>
         </div>
     )
 }

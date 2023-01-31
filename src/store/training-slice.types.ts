@@ -12,14 +12,6 @@ export type Exercise = {
 export type Day = {
     day: number
     exercises: Exercise[]
-
-}
-
-export type exerciseWiki = {
-    id: number
-    name: string
-    muscleGroup: string
-    about: string
 }
 
 export type Program = {
@@ -32,7 +24,6 @@ export type Program = {
 
 export interface TrainingState {
     programs: Program[],
-    exercisesWiki: exerciseWiki[],
     isLoading: boolean,
     error: string,
 }

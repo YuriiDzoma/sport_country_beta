@@ -1,73 +1,76 @@
 import {useFormik} from "formik";
 import {useNavigate} from "react-router";
-import styles from "../TrainingPrograms.module.scss";
+import styles from "./CreateProgramForm.module.scss";
 import CreateName from "./CreateName/CreateName";
 import CreateType from "./CreateType/CreateType";
 import CreateExercises from "./CreateExercises/CreateExercises";
 import CreateDay from "./CreateDay/CreateDay";
-import {editProgram, setNewProgram} from 'store/ActionCreators';
-import { v4 } from 'uuid';
 import {useParams} from "react-router-dom";
-import {useAppSelector} from "hooks/redux";
+import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {selectProgramById} from "store/selectors";
+import {editProgram, setNewProgram} from "store/actions";
 
-const CreateProgramForm = ({isEditor}) => {
+const CreateProgramForm = ({isEditor = false}) => {
 
     const navigate = useNavigate();
     const { id } = useParams()
     const program = useAppSelector((state) => selectProgramById(state, id));
-
-    const formValues = isEditor
+    const dispatch = useAppDispatch()
+    const formValues = isEditor && program
         ? {
-            title: `${program.title}`, typeOf: `${program.typeOf}`, days: program.days
+            title: `${program.title}`,
+            typeOf: `${program.typeOf}`,
+            days: program.days, comments:
+            program.comments,
+            id: program.id,
         }
         : {
             title: '', typeOf: 'aerobic', days: [
                 {day: 1, exercises: [{id: 1, name: ''}, {id: 2, name: ''}, {id: 3, name: ''}]}
-            ],
+            ], comments: [],
         }
 
-
-    const formik = useFormik({
+    const {setSubmitting, handleSubmit, isSubmitting, handleChange, values, setFieldValue} = useFormik({
 
         initialValues: formValues,
 
         onSubmit: values => {
             setTimeout(() => {
-                const programId = isEditor ? program.id : null;
-                values = {...values, id: v4(), comments: []}
+                const programId = isEditor && program ? program.id : undefined;
+                values = isEditor && program ? {...values} : {...values}
                 isEditor
-                    ? editProgram(programId, values)
-                    : setNewProgram(values);
+                    ? dispatch(editProgram(programId, values))
+                    : dispatch(setNewProgram(values));
                 navigate('/training/training_programs/');
-                formik.setSubmitting(false);
+                setSubmitting(false);
             }, 400);
         },
 
     });
 
     return (
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
             <div className={styles.createProgramInfo}>
 
-                <CreateName formik={formik} />
-                <CreateType formik={formik} />
+                <CreateName handleChange={handleChange} values={values} />
+                <CreateType handleChange={handleChange} values={values} />
             </div>
 
             <div className={styles.createProgramWrite}>
 
-                <CreateExercises formik={formik} />
-                <CreateDay formik={formik} />
+                <CreateExercises values={values} handleChange={handleChange} setFieldValue={setFieldValue} />
+                <CreateDay setFieldValue={setFieldValue} values={values}/>
 
             </div>
             <div className={styles.createProgramWrite_create}>
 
-                <button type="submit" disabled={formik.isSubmitting}>
+                <button type="submit" disabled={isSubmitting}>
                     <span>{isEditor
                         ? <span>confirm changes</span>
                         : <span>Create</span>}</span>
                 </button>
+
 
             </div>
         </form>

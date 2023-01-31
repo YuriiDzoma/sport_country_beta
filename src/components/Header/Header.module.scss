@@ -35,3 +35,9 @@
   color: #7a461d;
   font-weight: 500;
 }
+
+.logotype {
+  &_goHome {
+    cursor: pointer;
+  }
+}
