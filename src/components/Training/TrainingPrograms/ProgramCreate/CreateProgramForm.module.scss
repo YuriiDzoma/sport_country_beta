@@ -1,9 +1,10 @@
 .createProgramInfo {
   display: flex;
   flex-direction: column;
+  position: relative;
 
   &_name {
-    margin-right: 20px;
+    margin: 24px 20px 0 0;
     font-size: 16px;
 
     h2 {

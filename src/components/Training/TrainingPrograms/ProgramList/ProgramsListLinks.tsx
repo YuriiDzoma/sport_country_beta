@@ -1,12 +1,15 @@
 import styles from './ProgramsListLinks.module.scss'
 import {ProgramLink} from "./ProgramLink/ProgramLink";
-import React from "react";
+import React, {useEffect} from "react";
 import {useAppSelector} from "hooks/redux";
 import Preloader from "components/Common/Preloader/Preloader";
 import {getIsFetching, getPrograms} from "store/selectors";
 
 const ProgramsListLinks = () => {
     const programs = useAppSelector(getPrograms);
+    useEffect(() => {
+
+    },[programs]);
     const isFetching = useAppSelector(getIsFetching);
     return (
     <div className={styles.programsList}>

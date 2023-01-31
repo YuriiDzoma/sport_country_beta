@@ -8,7 +8,7 @@ const FilterExercises = () => {
                 <span>Filter</span>
             </div>
             <div className={styles.muscleGroups}>
-                <span>Muscle Groups</span>
+                <h3>Muscle Groups</h3>
                 <MuscleGroupsList />
             </div>
         </div>

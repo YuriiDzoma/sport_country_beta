@@ -1,10 +1,9 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { TrainingState } from 'store/training-slice.types';
-
+import {fetchPrograms} from "api/api";
 
 const initialState: TrainingState = {
     programs: [],
-    exercisesWiki: [],
     isLoading: false,
     error: '',
 }
@@ -13,34 +12,43 @@ export const trainingSlice = createSlice({
     name: 'trainingPage',
     initialState,
     reducers: {
-        programsFetching(state) {
+        setFetching(state) {
             state.isLoading = true;
         },
-        programsFetchingSuccess(state, action) {
+        resetFetching(state) {
             state.isLoading = false;
-            state.error = '';
-            state.programs = action.payload
         },
-        programsFetchingError(state, action: PayloadAction<string>) {
-            state.isLoading = false;
-            state.error = action.payload;
+        addProgramToState(state, action) {
+            state.programs = [...state.programs, action.payload]
         },
-        exercisesFetching(state) {
+        removeProgramFromState(state, action) {
+            state.programs = state.programs.filter((item) => item.id !== action.payload);
+        },
+        editProgramInState(state, action) {
+            state.programs = state.programs.filter((item) => item.id !== action.payload.id);
+            state.programs = [...state.programs, action.payload];
+        }
+    },
+    extraReducers: {
+        [fetchPrograms.pending.type]: (state) => {
             state.isLoading = true;
         },
-        exercisesFetchingSuccess(state, action) {
+        [fetchPrograms.fulfilled.type]: (state, action) => {
             state.isLoading = false;
             state.error = '';
-            state.exercisesWiki = action.payload
+            state.programs = action.payload;
         },
-        exercisesFetchingError(state, action: PayloadAction<string>) {
+        [fetchPrograms.rejected.type]: (state, action: PayloadAction<string>) => {
             state.isLoading = false;
             state.error = action.payload;
         },
     }
-
 });
 
 export default trainingSlice.reducer;
-
-/// not finished !
+export const {
+    setFetching,
+    resetFetching,
+    addProgramToState,
+    removeProgramFromState,
+    editProgramInState } = trainingSlice.actions;

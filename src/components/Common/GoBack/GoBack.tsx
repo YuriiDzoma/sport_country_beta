@@ -9,7 +9,7 @@ const GoBack = () => {
 
   return (
     <div className={styles.goBackWrapper}>
-      <button onClick={() => navigate(-1)}>
+      <button type={"reset"} onClick={() => navigate(-1)}>
         <IoReturnUpBackSharp />
       </button>
     </div>
