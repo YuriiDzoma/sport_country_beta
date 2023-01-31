@@ -2,6 +2,20 @@ import styles from "./../CreateProgramForm.module.scss";
 
 
 const CreateExercises = ({values, handleChange, setFieldValue}) => {
+    const onAddButton = (dayNumber) => {
+        setFieldValue(`days[${dayNumber}].exercises`, values.days[dayNumber].exercises.slice(0, -1));
+        setFieldValue(`days[${dayNumber}].workProcess.weights`, values.days[dayNumber].workProcess.weights.slice(0, -1));
+    };
+    const onRemoveButton = (dayNumber, day) => {
+        setFieldValue(`days[${dayNumber}].exercises`, [...values.days[dayNumber].exercises, {
+            id: day.exercises.length + 1,
+            name: '',
+        }]);
+        setFieldValue(`days[${dayNumber}].workProcess.weights`, [...values.days[dayNumber].workProcess.weights, {
+            id: day.workProcess.weights.length + 1,
+            weight: '',
+        }]);
+    }
 
     return (
         <div className={styles.createProgramInner}>
@@ -22,7 +36,7 @@ const CreateExercises = ({values, handleChange, setFieldValue}) => {
                                             className={day.exercises.length !== item.id || day.exercises.length === 1 ? styles.disable : styles.remove}
                                             type="button"
                                             onClick={() => {
-                                                setFieldValue(`days[${dayNumber}].exercises`, values.days[dayNumber].exercises.slice(0, -1))
+                                                onAddButton(dayNumber);
                                             }}
                                         >
                                         </button>
@@ -30,10 +44,7 @@ const CreateExercises = ({values, handleChange, setFieldValue}) => {
                                             className={day.exercises.length !== item.id ? styles.disable : styles.add}
                                             type="button"
                                             onClick={() => {
-                                                setFieldValue(`days[${dayNumber}].exercises`, [...values.days[dayNumber].exercises, {
-                                                    id: day.exercises.length + 1,
-                                                    name: '',
-                                                }])
+                                                onRemoveButton(dayNumber, day)
                                             }}
                                         >
                                         </button>

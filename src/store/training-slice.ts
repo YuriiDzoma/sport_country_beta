@@ -19,7 +19,7 @@ export const trainingSlice = createSlice({
             state.isLoading = false;
         },
         addProgramToState(state, action) {
-            state.programs = [...state.programs, action.payload]
+            // state.programs = [...state.programs, action.payload]
         },
         removeProgramFromState(state, action) {
             state.programs = state.programs.filter((item) => item.id !== action.payload);
