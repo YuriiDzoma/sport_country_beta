@@ -1,0 +1,45 @@
+.weightProcess {
+  margin: 15px 0 30px 30px;
+
+  &_date {
+    font-size: 16px;
+    font-weight: 400;
+
+    input {
+      margin-left: 8px;
+      border: 1px solid #89888d;
+      transition: all 100ms;
+      width: 110px;
+    }
+  }
+
+  &_weights {
+
+
+    input {
+      margin-top: 8px;
+    }
+  }
+}
+
+.field {
+  border: 1px solid #89888d;
+  transition: all 100ms;
+}
+
+.completeTrain {
+  display: flex;
+  justify-content: end;
+
+  button {
+    margin: 8px 2px 0 0;
+    padding: 4px 8px;
+    background-color: #1f75cb;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+    transition: all 100ms;
+  }
+}

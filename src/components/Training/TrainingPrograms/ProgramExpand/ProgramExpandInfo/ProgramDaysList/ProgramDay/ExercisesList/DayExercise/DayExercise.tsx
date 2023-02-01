@@ -1,5 +1,5 @@
 import React from "react";
-import {DayExerciseProps} from "./DayExercise.types";
+import {DayExerciseProps} from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/ProgramDaysList/ProgramDay/ExercisesList/DayExercise/DayExercise.types";
 
 
 const DayExercise:React.FC<DayExerciseProps> = ({exercise}) => {

@@ -1,0 +1,17 @@
+.weightHistory {
+  margin: 15px 0 30px 10px;
+  display: flex;
+
+  &_date {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &_weights {
+    margin-top: 15px;
+
+    p {
+      margin-top: 10px;
+    }
+  }
+}
