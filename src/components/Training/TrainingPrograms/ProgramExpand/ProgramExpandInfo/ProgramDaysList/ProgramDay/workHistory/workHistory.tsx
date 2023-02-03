@@ -1,10 +1,8 @@
 import styles from './workHistory.module.scss';
 import React from "react";
-import {
-    ProgramDayProps
-} from './../ProgramDay.types';
+import { WorkHistoryProps } from './WorkHistory.types';
 
-const WorkHistory: React.FC<ProgramDayProps> = ({day}) => {
+const WorkHistory: React.FC<WorkHistoryProps> = ({day}) => {
     return (
         <div className={styles.weightHistory}>
             {day.workHistory.map((story, index) => (

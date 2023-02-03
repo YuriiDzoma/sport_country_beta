@@ -27,3 +27,7 @@ export const editProgram = (programId: string | undefined, values: any) => async
 export const setExercises = (values: any) => async (dispatch: AppDispatch) => {
     dispatch(pushExercises(values))
 }
+
+export const addWorkHistory = (programId: string | undefined, values: any) => async (dispatch: AppDispatch) => {
+    console.log(values);
+}

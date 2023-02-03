@@ -12,7 +12,7 @@ const CreateExercises = ({values, handleChange, setFieldValue}) => {
             name: '',
         }]);
         setFieldValue(`days[${dayNumber}].workProcess.weights`, [...values.days[dayNumber].workProcess.weights, {
-            id: day.workProcess.weights.length + 1,
+            exerciseNumber: day.workProcess.weights.length + 1,
             weight: '',
         }]);
     }

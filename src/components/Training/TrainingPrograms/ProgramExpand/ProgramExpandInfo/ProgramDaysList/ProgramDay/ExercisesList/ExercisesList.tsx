@@ -1,9 +1,9 @@
 import styles from './ExercisesList.module.scss';
 import DayExercise from './DayExercise/DayExercise';
 import React from "react";
-import { ProgramDayProps } from './../ProgramDay.types';
+import { ExercisesListProps } from './ExercisesList.types';
 
-const ExercisesList: React.FC<ProgramDayProps> = ({day}) => {
+const ExercisesList: React.FC<ExercisesListProps> = ({day}) => {
     return (
         <div className={styles.programExercisesContainer}>
             <h3>Day {day.day}</h3>

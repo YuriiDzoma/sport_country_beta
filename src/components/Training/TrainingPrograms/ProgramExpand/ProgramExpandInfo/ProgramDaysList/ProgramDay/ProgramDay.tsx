@@ -8,12 +8,12 @@ import ExercisesList
     from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/ProgramDaysList/ProgramDay/ExercisesList/ExercisesList";
 
 
-const ProgramDay: React.FC<ProgramDayProps> = ({day}) => {
+const ProgramDay: React.FC<ProgramDayProps> = ({day, dayIndex}) => {
     return (
         <div className={styles.trainingContainer}>
             <ExercisesList day={day} />
             <WorkHistory day={day} />
-            <WorkProcess day={day} />
+            <WorkProcess day={day} dayIndex={dayIndex} />
         </div>
     )
 }
