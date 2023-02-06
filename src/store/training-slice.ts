@@ -27,6 +27,9 @@ export const trainingSlice = createSlice({
         editProgramInState(state, action) {
             state.programs = state.programs.filter((item) => item.id !== action.payload.id);
             state.programs = [...state.programs, action.payload];
+        },
+        saveTrainingProcess(state, action) {
+            console.log(action)
         }
     },
     extraReducers: {
@@ -51,4 +54,5 @@ export const {
     resetFetching,
     addProgramToState,
     removeProgramFromState,
-    editProgramInState } = trainingSlice.actions;
+    editProgramInState,
+    saveTrainingProcess} = trainingSlice.actions;

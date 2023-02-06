@@ -11,3 +11,4 @@ export const getPrograms = (state: RootState) => state.training.programs;
 export const getMuscleGroups = (state: RootState) => state.wikiExercise.muscleGroups;
 export const getAllState = (state: RootState) => state.wikiExercise;
 export const getExercises =(state: RootState) => state.wikiExercise.exercises;
+export const getAllStatePrograms = (state: RootState) => state.training.programs;
