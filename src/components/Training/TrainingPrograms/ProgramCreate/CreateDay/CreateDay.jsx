@@ -16,7 +16,15 @@ const CreateDay = ({values, setFieldValue}) => {
                 <button type="button" onClick={()=> {
                     setFieldValue(`days`, [...values.days, {
                         day: values.days.length + 1,
-                        exercises: [{id: 1, name: ''}, {id: 2, name: ''}, {id: 3, name: ''},]
+                        exercises: [{id: 1, name: ''}, {id: 2, name: ''}, {id: 3, name: ''},],
+                        workHistory: [],
+                        workProcess: {
+                            date: '', weights: [
+                                {exerciseNumber: 1, weight: ''},
+                                {exerciseNumber: 2, weight: ''},
+                                {exerciseNumber: 3, weight: ''}
+                            ]
+                        },
                     }])
                 }} >Add day</button>
             </div>

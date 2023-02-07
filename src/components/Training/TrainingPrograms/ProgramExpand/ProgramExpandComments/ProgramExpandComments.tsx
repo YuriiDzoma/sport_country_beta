@@ -10,6 +10,7 @@ const ProgramExpandComments = () => {
     const { id } = useParams()
     const program = useAppSelector((state) => selectProgramById(state, id));
     const comments = program && id ? program.comments : undefined;
+
     return (
         <div className={styles.commentsContainer}>
             <CommentsForm />

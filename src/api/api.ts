@@ -39,7 +39,7 @@ export const fetchExercisesGroups = createAsyncThunk(
 export const addProgramToFB = async (values: any)  =>  {
     try {
          await addDoc(collection(db, "programs"), {...values},)
-            .then(response => {return response});
+            .then(data => {console.log(data)});
         return values;
     } catch (e) {
         console.log(e);
@@ -67,3 +67,16 @@ export const editProgramInFB = async (programId: string | undefined, values: any
         console.log(e);
     }
 };
+
+// export const saveProcessToFB = async (programId: any, values: any) => {
+//     try {
+//         console.log(values);
+//         if(!programId) return false;
+//         const collectionRef = doc(db, 'programs', programId);
+//         let updateObject = {...values};
+//         await setDoc(collectionRef, updateObject, {...values});
+//         return updateObject;
+//     } catch (e) {
+//         console.log(e);
+//     }
+// };
