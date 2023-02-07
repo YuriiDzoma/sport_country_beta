@@ -72,7 +72,7 @@
 
     button {
       padding: 8px 16px;
-      background-color: #1f75cb;
+      background-color: #2da44e;
       border-radius: 4px;
       color: white;
       font-weight: bold;
@@ -81,7 +81,7 @@
       transition: all 100ms;
 
       &:hover {
-        opacity: 0.8;
+        background-color: #2c974b;
       }
     }
   }
@@ -89,7 +89,7 @@
 
 .createProgramInner {
   overflow: auto;
-  height: 100%;
+  height: auto;
 }
 
 .createProgramDay {
@@ -129,8 +129,8 @@
 .remove {
   margin-left: 6px;
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   background-color: #dd2b0e;
   position: relative;
   border-radius: 4px;
@@ -155,8 +155,8 @@
   margin-left: 6px;
   display: inline-block;
   border-radius: 4px;
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   background-color: #1f75cb;
   position: relative;
 

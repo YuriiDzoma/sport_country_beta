@@ -3,5 +3,16 @@
   justify-content: start;
   border-top: 1px solid #dcdcde;
   margin-top: 15px;
+  padding-right: 10px;
+
+  form {
+    width: 25%;
+    max-width: 25%;
+    min-width: 25%;
+
+    input {
+      width: 100%;
+    }
+  }
 }
 
