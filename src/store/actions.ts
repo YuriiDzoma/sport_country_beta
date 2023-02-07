@@ -30,6 +30,8 @@ export const deleteProgram = (values: string) => async (dispatch: AppDispatch) =
 }
 
 export const editProgram = (programId: string | undefined, values: any) => async (dispatch: AppDispatch) => {
+    console.log(values)
+    console.log(programId)
     dispatch(setFetching());
     editProgramInFB(programId, values).then(response => dispatch(editProgramInState(response)));
     dispatch(resetFetching());
