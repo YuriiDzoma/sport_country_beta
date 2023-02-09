@@ -40,3 +40,13 @@
   min-height: 600px;
 }
 
+@media only screen and (max-width: 768px) {
+
+  .linksContainer {
+    padding-top: 0;
+  }
+
+  .trainingContentWrapper {
+    padding: 0 0 10px;
+  }
+}
