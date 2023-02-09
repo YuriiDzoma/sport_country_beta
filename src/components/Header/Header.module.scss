@@ -41,3 +41,16 @@
     cursor: pointer;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .header_wrapper {
+
+    &:before {
+      display: none;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+}
