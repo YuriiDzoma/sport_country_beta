@@ -5,7 +5,6 @@ import {ProgramLinkProps} from "./ProgramLink.types";
 import React from "react";
 
 
-
 const ProgramLink:React.FC<ProgramLinkProps> = ({children, to}) => {
     let location = useLocation();
     let activeLocation = location.pathname === to || location.pathname === to+'/redactor/'

@@ -25,3 +25,12 @@
   color: #ffffff;
   pointer-events: none;
 }
+
+@media only screen and (max-width: 768px) {
+  .programLink {
+
+    &:hover {
+      background-color: #1f75cb;
+    }
+  }
+}
