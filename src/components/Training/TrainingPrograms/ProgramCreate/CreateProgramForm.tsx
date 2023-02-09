@@ -9,6 +9,7 @@ import {useParams} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {selectProgramById} from "store/selectors";
 import {editProgram, setNewProgram} from "store/actions";
+import {fetchPrograms} from "api/api";
 
 const CreateProgramForm = ({isEditor = false}) => {
 
@@ -20,14 +21,24 @@ const CreateProgramForm = ({isEditor = false}) => {
         ? {
             title: `${program.title}`,
             typeOf: `${program.typeOf}`,
-            days: program.days, comments:
-            program.comments,
+            days: program.days,
+            comments: program.comments,
             id: program.id,
         }
         : {
-            title: '', typeOf: 'aerobic', days: [
-                {day: 1, exercises: [{id: 1, name: ''}, {id: 2, name: ''}, {id: 3, name: ''}]}
-            ], comments: [],
+            title: '', typeOf: 'aerobic', comments: [], days: [
+                {
+                    day: 1, exercises: [
+                        {id: 1, name: ''},
+                        {id: 2, name: ''},
+                        {id: 3, name: ''},
+                    ], workHistory: [], workProcess: {date:'', weights:[
+                            {exerciseNumber: 1, weight: ''},
+                            {exerciseNumber: 2, weight: ''},
+                            {exerciseNumber: 3, weight: ''},
+                        ]},
+                }
+            ]
         }
 
     const {setSubmitting, handleSubmit, isSubmitting, handleChange, values, setFieldValue} = useFormik({
@@ -41,6 +52,7 @@ const CreateProgramForm = ({isEditor = false}) => {
                 isEditor
                     ? dispatch(editProgram(programId, values))
                     : dispatch(setNewProgram(values));
+                dispatch(fetchPrograms());
                 navigate('/training/training_programs/');
                 setSubmitting(false);
             }, 400);
@@ -70,7 +82,6 @@ const CreateProgramForm = ({isEditor = false}) => {
                         ? <span>confirm changes</span>
                         : <span>Create</span>}</span>
                 </button>
-
 
             </div>
         </form>

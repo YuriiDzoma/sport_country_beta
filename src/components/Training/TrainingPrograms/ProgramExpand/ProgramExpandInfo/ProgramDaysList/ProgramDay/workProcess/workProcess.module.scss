@@ -1,0 +1,58 @@
+.weightProcess {
+  margin: 15px 0 30px 10px;
+
+  &_date {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    display: flex;
+
+    input {
+      margin-left: 8px;
+      border: 1px solid #89888d;
+      transition: all 100ms;
+      width: 60px !important;
+      flex-grow: 1;
+      border-radius: 4px;
+      height: 20px;
+      padding: 0 8px;
+    }
+  }
+
+  &_weights {
+    & > div {
+      height: 24px;
+      margin-top: 8px;
+    }
+
+    input {
+      border: 1px solid #89888d;
+      border-radius: 4px;
+      height: 100%;
+      padding: 0 8px;
+    }
+  }
+}
+
+.field {
+  border: 1px solid #89888d;
+  transition: all 100ms;
+}
+
+div.completeTrain {
+  display: flex;
+  justify-content: space-between;
+  height: auto;
+
+  button {
+    margin: 8px 2px 0 0;
+    padding: 4px 8px;
+    background-color: #1f75cb;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    transition: all 100ms;
+  }
+}

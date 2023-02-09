@@ -1,16 +1,20 @@
-import DayExercise from "./DayExercise/DayExercise";
 import {ProgramDayProps} from "./ProgramDay.types";
 import React from "react";
-import styles from '../../ProgramExpandInfo.module.scss';
+import styles from './ProgramDay.module.scss';
+import WorkHistory from './workHistory/workHistory';
+import WorkProcess
+    from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/ProgramDaysList/ProgramDay/workProcess/workProcess";
+import ExercisesList
+    from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/ProgramDaysList/ProgramDay/ExercisesList/ExercisesList";
 
 
 const ProgramDay: React.FC<ProgramDayProps> = ({day}) => {
+    const dayNumber = day.day
     return (
-        <div  className={styles.programDayContainer}>
-            <h3>Day {day.day}</h3>
-            <div className={styles.exercises}>
-              {day.exercises.map((exercise) => <DayExercise key={exercise.id} exercise={exercise} />)}
-            </div>
+        <div className={styles.trainingContainer}>
+            <ExercisesList day={day} />
+            <WorkHistory day={day} />
+            <WorkProcess dayNumber={dayNumber} />
         </div>
     )
 }
