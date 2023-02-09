@@ -24,6 +24,7 @@
     "@types/sass": "^1.43.1",
     "@types/uuid": "^9.0.0",
     "firebase": "^9.15.0",
+    "firebase-tools": "^11.22.0",
     "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

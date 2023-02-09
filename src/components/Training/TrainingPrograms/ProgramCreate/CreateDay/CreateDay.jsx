@@ -1,5 +1,4 @@
 import styles from "./../CreateProgramForm.module.scss";
-import GoBack from "components/Common/GoBack/GoBack";
 
 
 const CreateDay = ({values, setFieldValue}) => {

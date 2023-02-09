@@ -5,8 +5,7 @@ import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {useParams} from "react-router-dom";
 import {useFormik} from 'formik';
 import {addWorkHistory, editProgram} from "store/actions";
-import {getPrograms, selectProgramById} from "store/selectors";
-import {Day, Exercise, ExercisesProcess, Training} from "store/training-slice.types";
+import {getPrograms} from "store/selectors";
 import {useNavigate} from "react-router";
 import {fetchPrograms} from "api/api";
 
@@ -15,7 +14,6 @@ const WorkProcess: React.FC<WorkProcessProps> = ({dayNumber}) => {
     const dispatch = useAppDispatch();
     const {id} = useParams();
     const programs = useAppSelector(getPrograms);
-    // const program = programs.map((program) =>  program);
     const initialFormValues = programs ? {
         programs: programs.map((program) => program),
     } : {
@@ -95,68 +93,3 @@ const WorkProcess: React.FC<WorkProcessProps> = ({dayNumber}) => {
 }
 
 export default WorkProcess;
-
-// <div key={index}>
-//     <input className={styles.field} onChange={handleChange}
-//            id={`weights.${index}.weight`}
-//            name={`weights.${index}.weight`}
-//            value={values.weights[index].weight}
-//     />
-// </div>
-
-// return (
-//     <div key={dayNumber} className={styles.weightProcess}>
-//         <h2>{day.day}</h2>
-//         <div key={dayNumber} className={styles.weightProcess_date}>
-//             <label htmlFor="date">New </label>
-//             <input id='date' name='date'
-//                    placeholder='date'
-//                    onChange={handleChange}
-//                    value={values.days[dayNumber].workProcess.date}/>
-//         </div>
-//         <div className={styles.weightProcess_weights}>
-//             {day.workProcess.weights.map((item: any, index: any) => {
-//                 return (
-//                     <div key={index}>
-//                         <input className={styles.field} onChange={handleChange}
-//                                id={`weights.${index}.weight`}
-//                                name={`weights.${index}.weight`}
-//                                value={values.days[dayNumber].workProcess.weights[index].weight}
-//                         />
-//                     </div>
-//                 )
-//             })}
-//             <div className={styles.completeTrain}>
-//                 {/*<button type='button' onClick={()=> saveValues(id, values, dayIndex)}>save</button>*/}
-//                 <button type='submit' disabled={isSubmitting || !dirty}>Complete</button>
-//             </div>
-//         </div>
-//     </div>
-// )
-
-// title: '',
-//     typeOf: '',
-//     comments: [{
-//     id: '',
-//     comment: '',
-//     date: '',
-// }],
-//     days: [{
-//     day: '',
-//     exercises: [{
-//         id: '',
-//         name: '',
-//     }],
-//     workHistory: [{
-//         date: '',
-//         weights: [{
-//             exerciseNumber: '',
-//             weight: ''}],
-//     }],
-//     workProcess: {
-//         date: '',
-//         weights: [{
-//             exerciseNumber: '',
-//             weight: ''}]
-//     }
-// }]

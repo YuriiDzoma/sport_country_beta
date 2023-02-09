@@ -5,14 +5,10 @@ import {
     addProgramToState,
     removeProgramFromState,
     editProgramInState,
-    saveTrainingProcess
 } from "store/training-slice";
 import {addProgramToFB, deleteProgramInFB, editProgramInFB} from "api/api";
 import {pushExercises} from "store/wikiExercises-slice";
-import {useAppSelector} from "hooks/redux";
-import {getPrograms, selectProgramById} from "store/selectors";
-import workHistory
-    from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/ProgramDaysList/ProgramDay/workHistory/workHistory";
+
 
 export const setNewProgram = (values: any) => async (dispatch: AppDispatch) => {
     dispatch(setFetching());
@@ -63,10 +59,3 @@ export const addWorkHistory = (dayNumber: number, values: any) => async (dispatc
     }
     editProgramInFB(programId, editedProgram).then(response => dispatch(editProgramInState(response)));
 }
-
-// export const saveToState = (values: any) => async (dispatch: AppDispatch) => {
-//     console.log(values)
-//     const programId = values.id;
-//     console.log(programId)
-//     editProgramInFB(programId, values).then(response => dispatch(saveTrainingProcess(response)));
-// }
