@@ -22,17 +22,18 @@ const MuscleGroupListBeta = () => {
     const isFetching = useAppSelector(getIsFetching);
 
     return (
-        <Box sx={{flexGrow: 1, bgcolor: 'background.paper', height: 224}}>
+        <Box sx={{flexGrow: 1, bgcolor: 'background.paper'}}>
             <Tabs
                 orientation="vertical"
                 variant="scrollable"
                 value={value}
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
-                sx={{borderRight: 1, borderColor: 'divider', fontSize: '18px', fontWeight: '600'}}
+                sx={{borderRight: 1, borderColor: 'divider'}}
             >
                 {isFetching ? <Preloader /> : muscleGroups.map((item, index) =>
-                    <Tab key={index} onClick={() => onChangeGroup(item)} label={item.id}/>)}
+                    <Tab sx={{fontSize: '12px'}} key={index}
+                         onClick={() => onChangeGroup(item)} label={item.id}/>)}
 
             </Tabs>
         </Box>
