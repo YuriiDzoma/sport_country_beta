@@ -4,9 +4,9 @@ import MuscleGroupListBeta from "components/Training/TrainingWiki/FilterExercise
 const FilterExercises = () => {
     return (
         <div>
-            <div className={styles.title}>
-                <span>Filter</span>
-            </div>
+            {/*<div className={styles.title}>*/}
+            {/*    <span>Filter</span>*/}
+            {/*</div>*/}
             <div className={styles.muscleGroups}>
                 <h3>Muscle Groups</h3>
                 <MuscleGroupListBeta />
