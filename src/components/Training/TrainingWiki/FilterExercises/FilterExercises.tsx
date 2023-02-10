@@ -1,5 +1,5 @@
 import styles from './FilterExercises.module.scss';
-import MuscleGroupsList from './MuscleGroupsList/MuscleGroupsList';
+import MuscleGroupListBeta from "components/Training/TrainingWiki/FilterExercises/MuscleGroupsList/MuscleGroup";
 
 const FilterExercises = () => {
     return (
@@ -9,7 +9,7 @@ const FilterExercises = () => {
             </div>
             <div className={styles.muscleGroups}>
                 <h3>Muscle Groups</h3>
-                <MuscleGroupsList />
+                <MuscleGroupListBeta />
             </div>
         </div>
     )
