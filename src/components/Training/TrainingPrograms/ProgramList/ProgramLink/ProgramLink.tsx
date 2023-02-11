@@ -5,13 +5,14 @@ import {ProgramLinkProps} from "./ProgramLink.types";
 import React from "react";
 
 
-const ProgramLink:React.FC<ProgramLinkProps> = ({children, to}) => {
+const ProgramLink:React.FC<ProgramLinkProps> = ({onProgramsListHide, children, to}) => {
     let location = useLocation();
     let activeLocation = location.pathname === to || location.pathname === to+'/redactor/'
 
 
     return (
         <Link
+            onClick={() => onProgramsListHide(false)}
             to={to}
             className={`${styles.programLink} ${activeLocation ? styles.link_active : ''}`}
         >

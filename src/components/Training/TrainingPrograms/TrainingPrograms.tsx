@@ -12,8 +12,8 @@ const TrainingPrograms = () => {
       setShowPrograms(true);
     }
 
-    const onProgramsListHide = () => {
-      setShowPrograms(false);
+    const onProgramsListHide = (values: boolean) => {
+      setShowPrograms(values);
     }
 
     return (
@@ -25,7 +25,7 @@ const TrainingPrograms = () => {
             <div className={styles.programsList}>
 
                 <ProgramCreateButton />
-                <ProgramsListLinks />
+                <ProgramsListLinks onProgramsListHide={onProgramsListHide} />
 
             </div>
             <div className={styles.programsContent}>

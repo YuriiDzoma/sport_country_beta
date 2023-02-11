@@ -5,7 +5,11 @@ import {useAppSelector} from "hooks/redux";
 import Preloader from "components/Common/Preloader/Preloader";
 import {getIsFetching, getPrograms} from "store/selectors";
 
-const ProgramsListLinks = () => {
+type ProgramsListLinksProps = {
+    onProgramsListHide: (values: boolean) => void
+}
+
+const ProgramsListLinks: React.FC<ProgramsListLinksProps> = ({onProgramsListHide}) => {
     const programs = useAppSelector(getPrograms);
     useEffect(() => {
 
@@ -14,7 +18,8 @@ const ProgramsListLinks = () => {
     return (
     <div className={styles.programsList}>
         {isFetching ? <Preloader /> : programs.map((item, index) => (
-                <ProgramLink key={index} to={'/training/training_programs/' + item.id}>
+                <ProgramLink onProgramsListHide={onProgramsListHide}
+                             key={index} to={'/training/training_programs/' + item.id} >
                     {item.title}
                 </ProgramLink>
             ))}
