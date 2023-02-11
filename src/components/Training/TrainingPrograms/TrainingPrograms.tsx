@@ -5,6 +5,7 @@ import ProgramCreateButton from "./ProgramCreateButton/ProgramCreateButton";
 import React, {useState} from "react";
 import ProgramExpand from "./ProgramExpand/ProgramExpand";
 import CreateProgramForm from "./ProgramCreate/CreateProgramForm";
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
 const TrainingPrograms = () => {
     const [showPrograms, setShowPrograms] = useState(false);
@@ -20,15 +21,14 @@ const TrainingPrograms = () => {
 
         <div className={`${styles.trainProgramContainer} ${showPrograms ? styles.listShowed : ''}`}>
             <button className={styles.showProgramsList} onClick={() => onProgramsListShow()}>
-              <span></span>
+              <FormatListBulletedIcon />
             </button>
             <div className={styles.programsList}>
-
-                <ProgramCreateButton />
-                <ProgramsListLinks onProgramsListHide={onProgramsListHide} />
-
+              <ProgramCreateButton />
+              <ProgramsListLinks onProgramsListHide={onProgramsListHide} />
             </div>
-            <div className={styles.programsContent}>
+          <div onClick={() => onProgramsListHide(false)} className={styles.programsListCover}></div>
+          <div className={styles.programsContent}>
 
                 <Routes>
                     <Route path={'create/'} element={<CreateProgramForm />}/>
