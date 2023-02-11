@@ -2,15 +2,26 @@ import styles from './TrainingPrograms.module.scss'
 import ProgramsListLinks from "./ProgramList/ProgramsListLinks";
 import {Route, Routes} from "react-router-dom";
 import ProgramCreateButton from "./ProgramCreateButton/ProgramCreateButton";
-import React from "react";
+import React, {useState} from "react";
 import ProgramExpand from "./ProgramExpand/ProgramExpand";
 import CreateProgramForm from "./ProgramCreate/CreateProgramForm";
 
 const TrainingPrograms = () => {
+    const [showPrograms, setShowPrograms] = useState(false);
+    const onProgramsListShow = () => {
+      setShowPrograms(true);
+    }
+
+    const onProgramsListHide = () => {
+      setShowPrograms(false);
+    }
 
     return (
 
-        <div className={styles.trainProgramContainer}>
+        <div className={`${styles.trainProgramContainer} ${showPrograms ? styles.listShowed : ''}`}>
+            <button className={styles.showProgramsList} onClick={() => onProgramsListShow()}>
+              <span></span>
+            </button>
             <div className={styles.programsList}>
 
                 <ProgramCreateButton />

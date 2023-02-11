@@ -1,7 +1,17 @@
 .trainProgramContainer {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
+  display: flex;
   height: 100%;
+  width: 100%;
+}
+
+.listShowed {
+  .programsList {
+    left: 0;
+  }
+
+  .showProgramsList {
+    left: -105%;
+  }
 }
 
 .programsList {
@@ -9,13 +19,30 @@
   min-height: 600px;
   padding-right: 10px;
   min-width: 200px;
+
+  @media only screen and (max-width: 768px) {
+    position: fixed;
+    left: -105%;
+    transition: all 300ms;
+    background-color: #ffffff;
+    z-index: 1;
+    padding-left: 10px;
+    width: 100%;
+    max-width: 375px;
+    border: 0;
+  }
 }
 
 .programsContent {
   margin-left: 10px;
   height: 100%;
   min-height: 600px;
-  width: 100%;
+  width: calc(100% - 200px);
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    margin: 0;
+  }
 
   form {
     height: 100%;
@@ -27,6 +54,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 }
 
@@ -218,6 +246,31 @@
       font-weight: 500;
       border-radius: 20% 20% 50px 50px;
     }
+  }
+}
+
+.showProgramsList {
+  min-width: 45px;
+  height: 40px;
+  padding: 5px 5px 5px 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+  border: 0;
+  position: absolute;
+  left: -5px;
+  display: none;
+  z-index: 2;
+  transition: all 300ms;
+
+  @media only screen and (max-width: 768px) {
+    display: block;
+  }
+
+  span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: red;
   }
 }
 
