@@ -21,10 +21,6 @@
     width: 100px;
     border-bottom: rgba(0, 0, 0, 0.15) 1px solid;
   }
-
-  a{
-    color: black;
-  }
 }
 
 .loginActive {
@@ -36,15 +32,41 @@
   font-size: 18px;
   display: flex;
   align-items: center;
-  font-family: "Agency FB", serif;
+  font-family: "Arvo", serif;
+
+
   &_goHome {
     cursor: pointer;
   }
 }
 
+.loginLogout {
+  @media only screen and (max-width: 768px) {
+    width: 24px;
+    height: 24px;
+    color: #1068bf;
+    display: inline-block;
+  }
+
+  &__icon {
+    width: 100%;
+    height: 100%;
+    display: none;
+
+    @media only screen and (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  &__text {
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .header_wrapper {
-
     &:before {
       display: none;
     }

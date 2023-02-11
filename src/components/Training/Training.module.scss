@@ -39,16 +39,18 @@
   border-radius: 8px;
   padding: 10px;
   height: 100%;
-  min-height: 600px;
 }
 
 @media only screen and (max-width: 768px) {
-
   .linksContainer {
     padding-top: 0;
   }
 
   .trainingContentWrapper {
     padding: 0 0 10px;
+  }
+
+  .trainingContent {
+    padding: 10px 10px 35px;
   }
 }

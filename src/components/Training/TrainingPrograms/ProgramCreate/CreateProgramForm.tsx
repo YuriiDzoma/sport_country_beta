@@ -64,7 +64,7 @@ const CreateProgramForm = ({isEditor = false}) => {
         <form onSubmit={handleSubmit}>
 
             <div className={styles.createProgramInfo}>
-
+                <h2 className={styles.createProgramInfo__title}>New program</h2>
                 <CreateName handleChange={handleChange} values={values} />
                 <CreateType handleChange={handleChange} values={values} />
             </div>

@@ -1,33 +1,24 @@
 import styles from './Header.module.scss'
 import {Link, useNavigate} from 'react-router-dom';
 import { useLocation } from 'react-router';
-import {useEffect, useState} from "react";
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 const Header = () => {
     const navigate = useNavigate();
-    const location = useLocation()
-    const activeLocation = location.pathname === '/login/'
-    const [isMobile, setIsMobile] = useState(false)
+    const location = useLocation();
+    const activeLocation = location.pathname === '/login/';
 
-    const handleResize = () => {
-        window.innerWidth < 768 ? setIsMobile(true) : setIsMobile(false)
-    }
-
-    useEffect(() => {
-        window.addEventListener("resize", handleResize)
-    })
+    const loginClasses = `${styles.loginLogout} ${activeLocation ? styles.loginActive : ''}`;
 
     return (
         <div className={styles.header_wrapper}>
             <div className={styles.logotype}>
-                <span className={styles.logotype_goHome} onClick={() => navigate('/')}>SportCountry</span>
+                <h1 className={styles.logotype_goHome} onClick={() => navigate('/')}>SportCountry</h1>
             </div>
             <div>
-                <Link to={`/login/`}>
-                    {isMobile
-                        ? <ManageAccountsIcon fontSize={"large"}  color="primary" />
-                        : <span className={ activeLocation ? styles.loginActive : '' }>Login</span> }
+                <Link className={loginClasses} to={`/login/`}>
+                    <span className={styles.loginLogout__text}> Login </span>
+                    <ManageAccountsIcon className={styles.loginLogout__icon} />
                 </Link>
             </div>
         </div>

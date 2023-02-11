@@ -13,8 +13,10 @@
   display: block;
   transition: all 100ms;
 
-  &:hover {
-    background-color: #ececef;
+  @media only screen and (min-width: 769px) {
+    &:hover {
+      background-color: #ececef;
+    }
   }
 }
 
