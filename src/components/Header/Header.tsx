@@ -26,7 +26,7 @@ const Header = () => {
             <div>
                 <Link to={`/login/`}>
                     {isMobile
-                        ? <ManageAccountsIcon color="primary" />
+                        ? <ManageAccountsIcon fontSize={"large"}  color="primary" />
                         : <span className={ activeLocation ? styles.loginActive : '' }>Login</span> }
                 </Link>
             </div>
