@@ -1,16 +1,16 @@
 import styles from './ProgramCreateButton.module.scss';
 import {Link} from "react-router-dom";
+import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 
 
 const ProgramCreateButton = () => {
     return (
         <div className={styles.createProgram}>
-            <div><span>Create new program</span></div>
-            <div>
-                <Link to={'/training/training_programs/create/'}>
-                    <div className={styles.createProgram__link}>+</div>
-                </Link>
-            </div>
+
+          <Link className={styles.createProgram__link} to={'/training/training_programs/create/'}>
+            <LibraryAddIcon />
+            <span>add new program</span>
+          </Link>
         </div>
     )
 }

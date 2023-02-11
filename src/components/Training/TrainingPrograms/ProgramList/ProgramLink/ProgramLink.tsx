@@ -9,7 +9,6 @@ const ProgramLink:React.FC<ProgramLinkProps> = ({onProgramsListHide, children, t
     let location = useLocation();
     let activeLocation = location.pathname === to || location.pathname === to+'/redactor/'
 
-
     return (
         <Link
             onClick={() => onProgramsListHide(false)}

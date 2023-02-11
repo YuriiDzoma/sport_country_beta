@@ -2,7 +2,8 @@
   display: flex;
   justify-content: start;
   border-top: 1px solid #dcdcde;
-  margin-top: 15px;
+  margin-top: 0;
+  padding-bottom: 15px;
   padding-right: 10px;
 
   @media only screen and (max-width: 768px) {

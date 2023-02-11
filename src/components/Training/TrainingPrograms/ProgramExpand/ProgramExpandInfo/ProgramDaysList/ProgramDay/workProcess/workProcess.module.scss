@@ -1,9 +1,5 @@
 .weightProcess {
-  margin: 15px 0 30px 10px;
-
-  @media only screen and (max-width: 768px) {
-    margin-bottom: 10px;
-  }
+  margin: 15px 0 0 10px;
 
     &_date {
     font-size: 16px;
@@ -76,9 +72,10 @@ div.completeTrain {
 
     @media only screen and (max-width: 768px) {
       width: 100%;
+      margin: 7px 0 0 0;
 
-      &:not(:first-child) {
-        margin-top: 7px;
+      &:first-child {
+        margin-top: 0;
       }
     }
   }

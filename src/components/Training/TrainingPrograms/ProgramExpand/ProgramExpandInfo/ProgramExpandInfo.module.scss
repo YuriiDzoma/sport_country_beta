@@ -40,6 +40,23 @@
   &_type {
     display: flex;
     justify-content: left;
+    margin-bottom: 5px;
+
+    @media only screen and (max-width: 768px) {
+      position: relative;
+
+      &:after {
+        content: '';
+        width: 150%;
+        height: 1px;
+        background-color: #dcdcde;
+        display: block;
+        position: absolute;
+        top: calc(100% + 5px);
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
   }
 }
 
