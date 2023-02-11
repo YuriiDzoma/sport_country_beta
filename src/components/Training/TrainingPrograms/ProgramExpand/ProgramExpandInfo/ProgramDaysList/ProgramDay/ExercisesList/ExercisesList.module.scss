@@ -14,7 +14,12 @@
   padding: 0 0 0 20px;
   min-width: 210px;
 
-  p {
+  @media only screen and (max-width: 768px) {
+    min-width: auto;
+    padding: 0;
+  }
+
+    p {
     margin-top: 8px;
     line-height: 24px;
     white-space: nowrap;
