@@ -15,12 +15,12 @@ const Header = () => {
             <div className={styles.logotype}>
                 <h1 className={styles.logotype_goHome} onClick={() => navigate('/')}>SportCountry</h1>
             </div>
-            <div>
-                <Link className={loginClasses} to={`/login/`}>
-                    <span className={styles.loginLogout__text}> Login </span>
-                    <ManageAccountsIcon className={styles.loginLogout__icon} />
-                </Link>
-            </div>
+            <Link className={loginClasses} to={`/login/`}>
+                <span className={styles.loginLogout__text}> Login </span>
+                <span className={styles.loginLogout__icon}>
+                  <ManageAccountsIcon  />
+                </span>
+            </Link>
         </div>
     )
 }
