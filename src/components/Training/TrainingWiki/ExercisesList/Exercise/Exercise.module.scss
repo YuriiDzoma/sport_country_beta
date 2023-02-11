@@ -2,11 +2,32 @@
   margin: 4px 0;
 
   &_exercise {
-    display: inline-block;
     border: 1px solid #dcdcde;;
     box-sizing: border-box;
     border-radius: 4px;
     color: #1f75cb;
-    padding: 7px 15px 5px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    vertical-align: center;
+
+    img {
+      width: auto;
+      height: 100px;
+    }
+
+    span {
+      margin-left: 12px;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .exerciseWrapper {
+    &_exercise {
+      img {
+        height: 50px;
+      }
+    }
   }
 }

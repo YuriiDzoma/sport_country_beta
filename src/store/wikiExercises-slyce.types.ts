@@ -2,6 +2,8 @@ export type exercise = {
     nameEn: string
     nameUa: string
     secondaryGroups: [string]
+    imageStart: string | undefined
+    imageFinish: string | undefined
 }
 
 export type muscleGroup = {
