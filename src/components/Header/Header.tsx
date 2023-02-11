@@ -2,7 +2,7 @@ import styles from './Header.module.scss'
 import {Link, useNavigate} from 'react-router-dom';
 import { useLocation } from 'react-router';
 import {useEffect, useState} from "react";
-import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -11,11 +11,7 @@ const Header = () => {
     const [isMobile, setIsMobile] = useState(false)
 
     const handleResize = () => {
-        if (window.innerWidth < 720) {
-            setIsMobile(true)
-        } else {
-            setIsMobile(false)
-        }
+        window.innerWidth < 768 ? setIsMobile(true) : setIsMobile(false)
     }
 
     useEffect(() => {
@@ -30,7 +26,7 @@ const Header = () => {
             <div>
                 <Link to={`/login/`}>
                     {isMobile
-                        ? <SettingsTwoToneIcon color="primary" />
+                        ? <ManageAccountsIcon color="primary" />
                         : <span className={ activeLocation ? styles.loginActive : '' }>Login</span> }
                 </Link>
             </div>
