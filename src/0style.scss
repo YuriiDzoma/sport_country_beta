@@ -15,4 +15,135 @@ img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6 {font-size: inherit;font-weight: 400 ;}
 textarea{resize: none;}
 
+@font-face {
+  font-family: 'Arvo';
+  src: url('./assets/fonts/Arvo-Bold.eot');
+  src: url('./assets/fonts/Arvo-Bold.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/Arvo-Bold.woff2') format('woff2'),
+  url('./assets/fonts/Arvo-Bold.woff') format('woff'),
+  url('./assets/fonts/Arvo-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
+@font-face {
+  font-family: 'Marianne';
+  src: url('./assets/fonts/Marianne-Light.eot');
+  src: url('./assets/fonts/Marianne-Light.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/Marianne-Light.woff2') format('woff2'),
+  url('./assets/fonts/Marianne-Light.woff') format('woff'),
+  url('./assets/fonts/Marianne-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Marianne';
+  src: url('./assets/fonts/Marianne-Regular.eot');
+  src: url('./assets/fonts/Marianne-Regular.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/Marianne-Regular.woff2') format('woff2'),
+  url('./assets/fonts/Marianne-Regular.woff') format('woff'),
+  url('./assets/fonts/Marianne-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Marianne';
+  src: url('./assets/fonts/Marianne-Medium.eot');
+  src: url('./assets/fonts/Marianne-Medium.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/Marianne-Medium.woff2') format('woff2'),
+  url('./assets/fonts/Marianne-Medium.woff') format('woff'),
+  url('./assets/fonts/Marianne-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Marianne';
+  src: url('./assets/fonts/Marianne-Bold.eot');
+  src: url('./assets/fonts/Marianne-Bold.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/Marianne-Bold.woff2') format('woff2'),
+  url('./assets/fonts/Marianne-Bold.woff') format('woff'),
+  url('./assets/fonts/Marianne-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto-Light.eot');
+  src: url('./assets/fonts/Roboto-Light.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/Roboto-Light.woff2') format('woff2'),
+  url('./assets/fonts/Roboto-Light.woff') format('woff'),
+  url('./assets/fonts/Roboto-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto-Regular.eot');
+  src: url('./assets/fonts/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/Roboto-Regular.woff2') format('woff2'),
+  url('./assets/fonts/Roboto-Regular.woff') format('woff'),
+  url('./assets/fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto-Medium.eot');
+  src: url('./assets/fonts/Roboto-Medium.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/Roboto-Medium.woff2') format('woff2'),
+  url('./assets/fonts/Roboto-Medium.woff') format('woff'),
+  url('./assets/fonts/Roboto-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto-Bold.eot');
+  src: url('./assets/fonts/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+  url('./assets/fonts/Roboto-Bold.woff2') format('woff2'),
+  url('./assets/fonts/Roboto-Bold.woff') format('woff'),
+  url('./assets/fonts/Roboto-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Marianne', sans-serif;
+  font-weight: 400;
+}
+
+button {
+  font-family: 'Marianne', sans-serif !important;
+}
+
+h1 {
+  font-size: 22px;
+  font-family: 'Arvo', sans-serif;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Marianne', sans-serif;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+}

@@ -3,12 +3,9 @@ import MuscleGroupListBeta from "components/Training/TrainingWiki/FilterExercise
 
 const FilterExercises = () => {
     return (
-        <div>
-            <div className={styles.muscleGroups}>
-                <h3>Muscle Groups</h3>
-                <MuscleGroupListBeta />
-            </div>
-        </div>
+          <div className={styles.muscleGroups}>
+              <MuscleGroupListBeta />
+          </div>
     )
 }
 

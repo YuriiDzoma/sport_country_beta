@@ -10,7 +10,6 @@ const ExercisesList = () => {
     },[exercises])
     return (
         <div className={styles.exercisesListWrapper}>
-            <h3>Exercises list</h3>
             {exercises.map((exercise, index) => <Exercise key={index} exercise={exercise}/>)}
         </div>
     )
