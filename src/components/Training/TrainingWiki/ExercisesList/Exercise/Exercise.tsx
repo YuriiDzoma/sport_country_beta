@@ -12,7 +12,7 @@ const Exercise:React.FC<ExercisesProps> = ({exercise}) => {
               <div className={styles.exerciseWrapper__image}>
                 <img alt='finish' src={exercise.imageFinish} />
               </div>
-              <p>{exercise.nameEn}</p>
+              <h4>{exercise.nameEn}</h4>
             </div>
 
         </div>
