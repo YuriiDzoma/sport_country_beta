@@ -1,37 +1,68 @@
 
 .loginWrapper {
-  margin-top: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 390px;
+  flex: 1;
+  margin-inline: auto;
+  padding: 50px 10px;
+  box-sizing: border-box;
 
-  input {
-    margin-top: 16px;
-    padding: 4px;
-    width: 240px;
-    height: 30px;
+  &__or {
+    margin-top: 25px;
+  }
+
+  &__line {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  &__input {
+    border: 1px solid #89888d;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 6px 12px;
+    width: 100%;
   }
 }
 
 .signIn {
-  margin-top: 16px;
+  margin-top: 15px;
+  width: 100%;
+
   button {
-    background-color: #4d57bd;
+    font-size: 16px;
+    background-color: #1f75cb;
     color: white;
-    width: 50px;
-    height: 26px;
-    padding-bottom: 4px;
-    border-radius: 10px;
+    padding: 7px 15px;
+    border-radius: 4px;
+    min-width: 200px;
+    width: 100%;
+    transition: background-color 100ms;
+
+    &:hover {
+      background-color: #1068bf;
+    }
   }
 }
 
 .signInGoogle {
-  margin-top: 50px;
+  margin-top: 25px;
+  width: 100%;
 
   button {
+    font-size: 16px;
+    background-color: #1f75cb;
     color: white;
-    background-color: #6a71bd;
-    padding: 4px 6px 6px;
-    border-radius: 10px;
+    padding: 7px 15px;
+    border-radius: 4px;
+    min-width: 200px;
+    width: 100%;
+    transition: background-color 100ms;
+
+    &:hover {
+      background-color: #1068bf;
+    }
   }
 }
