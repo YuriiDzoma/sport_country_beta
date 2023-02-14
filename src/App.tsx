@@ -8,6 +8,7 @@ import Navigation from 'components/Navigation/Navigation';
 import { Route, Routes } from "react-router-dom";
 import {useAppDispatch} from "hooks/redux";
 import {fetchExercisesGroups, fetchPrograms} from "api/api";
+import NewsList from './components/News/NewsList/NewsList';
 
 
 function App() {
@@ -23,11 +24,14 @@ function App() {
             <Routes>
               <Route path='/' element={
                 <div className={styles.mainContent__home}>
-                  <h2>Index</h2>
-                  <img src="https://damion.club/uploads/posts/2022-01/1642459097_71-damion-club-p-foni-so-sportivnimi-devushkami-78.jpg" alt=""/>
+                  <h2 className={styles.mainContent__title}>Index</h2>
+                  <img className={styles.mainContent__background} src="https://damion.club/uploads/posts/2022-01/1642459097_71-damion-club-p-foni-so-sportivnimi-devushkami-78.jpg" alt=""/>
                   {/*<img src="https://damion.club/uploads/posts/2022-01/1642459018_2-damion-club-p-foni-so-sportivnimi-devushkami-2.jpg" alt=""/>*/}
                   {/*<img src="https://damion.club/uploads/posts/2022-01/1642459036_7-damion-club-p-foni-so-sportivnimi-devushkami-7.jpg" alt=""/>*/}
                   {/*<img src="https://damion.club/uploads/posts/2022-01/1642458969_13-damion-club-p-foni-so-sportivnimi-devushkami-13.jpg" alt=""/>*/}
+
+                  <NewsList />
+
                 </div>
               } />
               <Route path='/profile/*' element={<Profile />} />
