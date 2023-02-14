@@ -38,23 +38,29 @@
   height: 10%;
   flex-grow: 1;
 
+  &__title {
+    text-align: center;
+  }
+
+  &__background {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    position: absolute;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: -1;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+
   &__home {
     position: relative;
     padding: 20px 0 0 0;
 
-    h2 {
-      text-align: center;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      top: 0;
-      position: absolute;
-      opacity: 0.1;
-      pointer-events: none;
-      z-index: -1;
+    @media only screen and (max-width: 768px) {
+      padding-bottom: 45px;
     }
   }
 
@@ -62,6 +68,10 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+  }
+
+  &__newsList {
+    padding: 0 10px;
   }
 }
 
