@@ -7,6 +7,7 @@ const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const activeLocation = location.pathname === '/login/';
+    
 
     const loginClasses = `${styles.loginLogout} ${activeLocation ? styles.loginActive : ''}`;
 
