@@ -17,10 +17,10 @@ const Header = () => {
                 <h1 className={styles.logotype_goHome} onClick={() => navigate('/')}>SportCountry</h1>
             </div>
             <Link className={loginClasses} to={`/login/`}>
-                <span className={styles.loginLogout__text}> Login </span>
                 <span className={styles.loginLogout__icon}>
                   <ManageAccountsIcon  />
                 </span>
+                <span className={styles.loginLogout__text}> Login </span>
             </Link>
         </div>
     )

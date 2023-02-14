@@ -3,15 +3,16 @@ import styles from './Login.module.scss'
 const Login = () => {
     return (
         <div className={styles.loginWrapper}>
-            <div>
-                <input placeholder={'login'} />
+            <div className={styles.loginWrapper__line}>
+                <input className={styles.loginWrapper__input} placeholder={'login'} />
             </div>
-            <div>
-                <input placeholder={'password'} />
+            <div className={styles.loginWrapper__line}>
+                <input className={styles.loginWrapper__input} placeholder={'password'} />
             </div>
             <div className={styles.signIn}>
                 <button>Sign in</button>
             </div>
+            <p className={styles.loginWrapper__or}>OR</p>
             <div className={styles.signInGoogle}>
                 <button>Sign In With Google</button>
             </div>

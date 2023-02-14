@@ -1,5 +1,15 @@
 .users {
   text-align: center;
+  padding: 0 10px;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
 
   span {
     margin-top: 20px;

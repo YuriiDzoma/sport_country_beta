@@ -1,0 +1,45 @@
+.userBlock {
+  display: flex;
+  align-items: center;
+  margin: 10px 5px 0 5px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #e9f3fc;
+  width: 45%;
+  flex-grow: 1;
+  transition: all 100ms;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+
+  &:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  }
+
+  &__image {
+    min-width: 70px;
+    height: 70px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 50%;
+    width: 70px;
+
+    @media only screen and (max-width: 768px) {
+      width: 50px;
+      height: 50px;
+      min-width: 50px;
+    }
+  }
+
+  &__name {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333238;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}
