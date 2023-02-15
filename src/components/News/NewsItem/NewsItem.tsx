@@ -3,6 +3,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import React from "react";
 import {NewsItemProps} from "components/News/NewsItem/NewsItem.types";
+import Likes from '../../Common/Likes/Likes';
 
 const NewsItem: React.FC<NewsItemProps> = ({item: {
     image, title, url, sub, date, likes, author
@@ -30,13 +31,7 @@ const NewsItem: React.FC<NewsItemProps> = ({item: {
                         </a>
                     </div>
                     <div className={styles.newsItem__col}>
-               <span className={styles.newsItem__likesCount}>
-                {likes}
-              </span>
-                        <button className={styles.newsItem__like}>
-                            <FavoriteBorderIcon className={styles.newsItem__likesIcon}/>
-                            <FavoriteIcon className={styles.newsItem__likesIcon}/>
-                        </button>
+                      <Likes count={likes} />
                     </div>
                 </div>
             </div>

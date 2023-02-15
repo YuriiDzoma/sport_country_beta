@@ -84,7 +84,7 @@
   &__col {
     display: flex;
     flex: 1;
-    align-items: center;
+    justify-content: flex-end;
   }
 
   &__author {
@@ -111,34 +111,6 @@
 
   &__date {
     font-size: 14px;
-
-    @media only screen and (max-width: 768px) {
-      font-size: 12px;
-    }
-  }
-
-  &__like {
-    background-color: transparent;
-    padding: 0;
-    border: 0;
-    display: flex;
-    font-size: 14px;
-    color: #737278;
-  }
-
-  &__likesIcon {
-    transition: color 100ms;
-
-    &:hover {
-      color: #333238;
-    }
-  }
-
-  &__likesCount {
-    font-size: 14px;
-    color: #737278;
-    margin-right: 8px;
-    margin-left: auto;
 
     @media only screen and (max-width: 768px) {
       font-size: 12px;
