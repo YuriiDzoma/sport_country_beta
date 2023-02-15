@@ -1,18 +1,43 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {addDoc, collection, deleteDoc, doc, getDocs, setDoc} from "firebase/firestore";
-import {db} from "config/config";
+import {auth, db, provider} from "config/config";
+import {Program} from "store/training-slice.types";
+import {signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
+
+export const signWithGoogle = () => {
+    signInWithPopup(auth, provider).then((result) => {
+        const user = result.user
+    }).catch((error) => {
+        console.log(error);
+    })
+}
+
+export const logOut = () => {
+    signOut(auth).then(() => {
+    }).catch((error) => {
+        console.log(error)
+    });
+}
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        const uid = user.uid;
+        console.log(uid)
+        console.log('true')
+    } else {
+        console.log('false')
+    }
+});
 
 export const fetchPrograms = createAsyncThunk(
     'programs/fetchAll',
     async (_,thunkAPI) => {
         try {
-            const response = await getDocs(collection(db, "programs"))
+            return await getDocs(collection(db, "programs"))
                 .then((querySnapshot) => {
-                    const newData = querySnapshot.docs
+                    return querySnapshot.docs
                         .map((doc) => ({...doc.data(), id: doc.id}));
-                    return newData;
                 });
-            return response;
         } catch (e) {
             return thunkAPI.rejectWithValue('loading error')
         }
@@ -23,20 +48,18 @@ export const fetchExercisesGroups = createAsyncThunk(
     'exercisesGroups/fetchAll',
     async (_,thunkAPI) => {
         try {
-            const response = await getDocs(collection(db, "muscleGroups"))
+            return await getDocs(collection(db, "muscleGroups"))
                 .then((querySnapshot) => {
-                    const newData = querySnapshot.docs
+                    return querySnapshot.docs
                         .map((doc) => ({...doc.data(), id: doc.id}));
-                    return newData;
                 });
-            return response;
         } catch (e) {
             return thunkAPI.rejectWithValue('loading error')
         }
     }
 );
 
-export const addProgramToFB = async (values: any)  =>  {
+export const addProgramToFB = async (values: Program)  =>  {
     try {
          await addDoc(collection(db, "programs"), {...values},)
             .then(data => {console.log(data)});
@@ -68,15 +91,12 @@ export const editProgramInFB = async (programId: string | undefined, values: any
     }
 };
 
-// export const saveProcessToFB = async (programId: any, values: any) => {
+// export const login = async () => {
 //     try {
-//         console.log(values);
-//         if(!programId) return false;
-//         const collectionRef = doc(db, 'programs', programId);
-//         let updateObject = {...values};
-//         await setDoc(collectionRef, updateObject, {...values});
-//         return updateObject;
+//         const provider = new GoogleAuthProvider();
+//         const {user} = await auth.signInWithPopup(provider)
+//         console.log(user)
 //     } catch (e) {
-//         console.log(e);
-//     }
-// };
+//             console.log(e);
+//         }
+// }
