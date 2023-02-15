@@ -1,7 +1,9 @@
 import styles from './Login.module.scss'
 import {logOut, signWithGoogle} from "api/api";
+import {useAppDispatch} from "hooks/redux";
 
 const Login = () => {
+    const dispatch = useAppDispatch()
     return (
         <div className={styles.loginWrapper}>
             <div className={styles.loginWrapper__line}>
@@ -15,9 +17,9 @@ const Login = () => {
             </div>
             <p className={styles.loginWrapper__or}>OR</p>
             <div className={styles.signInGoogle}>
-                <button onClick={signWithGoogle}>Sign In With Google</button>
+                <button onClick={ () => dispatch(signWithGoogle)}>Sign In With Google</button>
             </div>
-            <button onClick={logOut}>log out</button>
+            <button onClick={() => dispatch(logOut)}>log out</button>
         </div>
     )
 }

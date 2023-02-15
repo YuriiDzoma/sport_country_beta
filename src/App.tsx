@@ -7,14 +7,23 @@ import Login from 'components/Login/Login';
 import Navigation from 'components/Navigation/Navigation';
 import { Route, Routes } from "react-router-dom";
 import {useAppDispatch} from "hooks/redux";
-import {fetchExercisesGroups, fetchPrograms} from "api/api";
+import {fetchExercisesGroups, fetchPrograms, getUsers} from "api/api";
 import NewsList from './components/News/NewsList/NewsList';
+
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from "config/config";
+import {fetchUsers} from "store/actions";
 
 
 function App() {
   const dispatch = useAppDispatch();
+  dispatch(fetchUsers());
   dispatch(fetchPrograms());
   dispatch(fetchExercisesGroups());
+  const [user] = useAuthState(auth)
+  const isAuth = !!user;
+  console.log(isAuth)
+
   return (
       <div className={styles.wrapper}>
         <div className={styles.container}>
@@ -29,7 +38,6 @@ function App() {
                   {/*<img src="https://damion.club/uploads/posts/2022-01/1642459018_2-damion-club-p-foni-so-sportivnimi-devushkami-2.jpg" alt=""/>*/}
                   {/*<img src="https://damion.club/uploads/posts/2022-01/1642459036_7-damion-club-p-foni-so-sportivnimi-devushkami-7.jpg" alt=""/>*/}
                   {/*<img src="https://damion.club/uploads/posts/2022-01/1642458969_13-damion-club-p-foni-so-sportivnimi-devushkami-13.jpg" alt=""/>*/}
-
                   <NewsList />
 
                 </div>
