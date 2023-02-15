@@ -1,4 +1,5 @@
 import styles from './Login.module.scss'
+import {logOut, signWithGoogle} from "api/api";
 
 const Login = () => {
     return (
@@ -14,8 +15,9 @@ const Login = () => {
             </div>
             <p className={styles.loginWrapper__or}>OR</p>
             <div className={styles.signInGoogle}>
-                <button>Sign In With Google</button>
+                <button onClick={signWithGoogle}>Sign In With Google</button>
             </div>
+            <button onClick={logOut}>log out</button>
         </div>
     )
 }
