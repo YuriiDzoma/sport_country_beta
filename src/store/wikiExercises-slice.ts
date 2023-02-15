@@ -9,7 +9,7 @@ const initialState: WikiExercisesState = {
     error: '',
 }
 export const wikiExercisesSlice = createSlice({
-    name: 'trainingPage',
+    name: 'wikiExercisesPage',
     initialState,
     reducers: {
         pushExercises(state, action) {

@@ -6,11 +6,20 @@ import {
     removeProgramFromState,
     editProgramInState,
 } from "store/training-slice";
-import {addProgramToFB, deleteProgramInFB, editProgramInFB} from "api/api";
+import {addProgramToFB, deleteProgramInFB, editProgramInFB, getUsers} from "api/api";
 import {pushExercises} from "store/wikiExercises-slice";
 import {Program} from "store/training-slice.types";
 import {exercise} from "store/wikiExercises-slyce.types";
+import {setUsers} from "store/users-slice";
 
+
+export const fetchUsers = () => async (dispatch: AppDispatch) => {
+    getUsers().then(response => dispatch(setUsers(response)) )
+}
+
+// export const addUserToFB = (values: any) => async (dispatch: AppDispatch) => {
+//     const users = useAppSelector(getUsers);
+// }
 
 export const setNewProgram = (values: Program) => async (dispatch: AppDispatch) => {
     dispatch(setFetching());
