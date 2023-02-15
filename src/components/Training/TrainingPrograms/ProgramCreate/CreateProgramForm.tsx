@@ -26,7 +26,7 @@ const CreateProgramForm = ({isEditor = false}) => {
             id: program.id,
         }
         : {
-            title: '', typeOf: 'aerobic', comments: [], days: [
+            title: '', typeOf: 'aerobic', comments: [], id: '', days: [
                 {
                     day: 1, exercises: [
                         {id: 1, name: ''},

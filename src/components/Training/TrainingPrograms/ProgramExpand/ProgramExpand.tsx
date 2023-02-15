@@ -1,5 +1,4 @@
 import ProgramExpandInfo from "./ProgramExpandInfo/ProgramExpandInfo";
-import ProgramExpandComments from "./ProgramExpandComments/ProgramExpandComments";
 import React from "react";
 import {useParams} from "react-router-dom";
 import {useAppSelector} from "hooks/redux";
@@ -9,7 +8,6 @@ const ProgramExpand = () => {
 
     const { id } = useParams()
     const program = useAppSelector((state) => selectProgramById(state, id));
-
     return (
         <div>
             {program && id && (

@@ -8,9 +8,11 @@ import {
 } from "store/training-slice";
 import {addProgramToFB, deleteProgramInFB, editProgramInFB} from "api/api";
 import {pushExercises} from "store/wikiExercises-slice";
+import {Program} from "store/training-slice.types";
+import {exercise} from "store/wikiExercises-slyce.types";
 
 
-export const setNewProgram = (values: any) => async (dispatch: AppDispatch) => {
+export const setNewProgram = (values: Program) => async (dispatch: AppDispatch) => {
     dispatch(setFetching());
     const newProgram = {
         ...values,
@@ -25,19 +27,17 @@ export const deleteProgram = (values: string) => async (dispatch: AppDispatch) =
     dispatch(resetFetching());
 }
 
-export const editProgram = (programId: string | undefined, values: any) => async (dispatch: AppDispatch) => {
-    console.log(values)
-    console.log(programId)
+export const editProgram = (programId: string | undefined, values: Program) => async (dispatch: AppDispatch) => {
     dispatch(setFetching());
     editProgramInFB(programId, values).then(response => dispatch(editProgramInState(response)));
     dispatch(resetFetching());
 }
 
-export const setExercises = (values: any) => async (dispatch: AppDispatch) => {
+export const setExercises = (values: exercise[]) => async (dispatch: AppDispatch) => {
     dispatch(pushExercises(values))
 }
 
-export const addWorkHistory = (dayNumber: number, values: any) => async (dispatch: AppDispatch) => {
+export const addWorkHistory = (dayNumber: number, values: Program) => async (dispatch: AppDispatch) => {
     const programId = values.id
     const editedProgram = {
         ...values,

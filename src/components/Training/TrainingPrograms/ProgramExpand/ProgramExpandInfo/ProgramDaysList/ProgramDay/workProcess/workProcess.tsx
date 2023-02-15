@@ -8,6 +8,7 @@ import {addWorkHistory, editProgram} from "store/actions";
 import {getPrograms} from "store/selectors";
 import {useNavigate} from "react-router";
 import {fetchPrograms} from "api/api";
+import {Program} from "store/training-slice.types";
 
 const WorkProcess: React.FC<WorkProcessProps> = ({dayNumber}) => {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ const WorkProcess: React.FC<WorkProcessProps> = ({dayNumber}) => {
     } : {
         error: '',
     };
-    const saveValues = (values: any) => {
+    const saveValues = (values: Program) => {
         dispatch(editProgram(values.id, values));
         setSubmitting(false);
         dispatch(fetchPrograms());
@@ -30,8 +31,9 @@ const WorkProcess: React.FC<WorkProcessProps> = ({dayNumber}) => {
         onSubmit: (values) => {
             setTimeout(() => {
                 const editedProgram = values.programs ? values.programs.find((item) => item.id === id) : null;
-                dispatch(addWorkHistory(dayNumber, editedProgram));
-                console.log(editedProgram)
+                if (editedProgram) {
+                    dispatch(addWorkHistory(dayNumber, editedProgram));
+                }
                 setSubmitting(false);
                 dispatch(fetchPrograms());
                 resetForm();
