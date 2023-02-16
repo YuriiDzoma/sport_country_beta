@@ -1,9 +1,8 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {addDoc, collection, deleteDoc, doc, getDocs, setDoc} from "firebase/firestore";
-import {auth, db, provider} from "config/config";
+import {auth, db } from "config/config";
 import {Program} from "store/training-slice.types";
 import {signInWithPopup, signOut, onAuthStateChanged } from "firebase/auth";
-import {setIsAuth} from "store/auth-slice";
 import {AppDispatch} from "store/store";
 import {setProfile} from "store/profile-slice";
 import {addUser} from "store/users-slice";
@@ -22,52 +21,54 @@ export const getUsers = async () => {
     }
 }
 
-export const signWithGoogle = async (dispatch: AppDispatch) => {
-    getUsers().then(response => {
-        signInWithPopup(auth, provider).then((result) => {
+// export const signWithGoogle = async (dispatch: AppDispatch) => {
+//
+//
+//     getUsers().then(response => {
+//         signInWithPopup(auth, provider).then((result) => {
+//
+//             // @ts-ignore
+//             const isUser = response.find((user) => user.userId === result.user.uid);
+//
+//             const user = {
+//                 id: '',
+//                 userId: result.user.uid,
+//                 name: result.user.displayName,
+//                 surname: '',
+//                 location: '',
+//                 dateOfBirth: '',
+//                 email: result.user.email,
+//                 userPhoto: result.user.photoURL,
+//             }
+//             if (isUser === undefined) {
+//                 addDoc(collection(db, "users"), {...user},)
+//                     .then(data => {console.log(data)});
+//                 dispatch(addUser(user))
+//             }
+//             dispatch(setProfile(result.user.uid))
+//         }).catch((error) => {
+//             console.log(error);
+//         })
+//     })
+// }
 
-            // @ts-ignore
-            const isUser = response.find((user) => user.userId === result.user.uid);
-
-            const user = {
-                id: '',
-                userId: result.user.uid,
-                name: result.user.displayName,
-                surname: '',
-                location: '',
-                dateOfBirth: '',
-                email: result.user.email,
-                userPhoto: result.user.photoURL,
-            }
-            if (isUser === undefined) {
-                addDoc(collection(db, "users"), {...user},)
-                    .then(data => {console.log(data)});
-                dispatch(addUser(user))
-            }
-            dispatch(setProfile(result.user.uid))
-        }).catch((error) => {
-            console.log(error);
-        })
-    })
-}
-
-export const logOut = async (dispatch: AppDispatch) => {
-    signOut(auth).then(() => {
-        dispatch(setProfile(null))
-    }).catch((error) => {
-        console.log(error)
-    });
-}
-
-onAuthStateChanged(auth, (user) => {
-
-    if (user) {
-        const uid = user.uid;
-        // dispatch(setIsAuth(true))
-    } else {
-        // dispatch(setIsAuth(false))
-    }
-});
+// export const logOut = async (dispatch: AppDispatch) => {
+//     signOut(auth).then(() => {
+//         dispatch(setProfile(null))
+//     }).catch((error) => {
+//         console.log(error)
+//     });
+// }
+//
+// onAuthStateChanged(auth, (user) => {
+//
+//     if (user) {
+//         const uid = user.uid;
+//         // dispatch(setIsAuth(true))
+//     } else {
+//         // dispatch(setIsAuth(false))
+//     }
+// });
 
 export const fetchPrograms = createAsyncThunk(
     'programs/fetchAll',

@@ -1,9 +1,11 @@
 import styles from './Login.module.scss'
-import {logOut, signWithGoogle} from "api/api";
-import {useAppDispatch} from "hooks/redux";
+import {signInWithGooglePopup} from '../../config/config';
 
 const Login = () => {
-    const dispatch = useAppDispatch()
+    const signInWithGoogle = async () => {
+      await signInWithGooglePopup();
+    }
+
     return (
         <div className={styles.loginWrapper}>
             <div className={styles.loginWrapper__line}>
@@ -17,9 +19,8 @@ const Login = () => {
             </div>
             <p className={styles.loginWrapper__or}>OR</p>
             <div className={styles.signInGoogle}>
-                <button onClick={ () => dispatch(signWithGoogle)}>Sign In With Google</button>
+                <button onClick={signInWithGoogle}>Sign In With Google</button>
             </div>
-            <button onClick={() => dispatch(logOut)}>log out</button>
         </div>
     )
 }
