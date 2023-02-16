@@ -7,14 +7,14 @@ import Login from 'components/Login/Login';
 import Navigation from 'components/Navigation/Navigation';
 import { Route, Routes } from "react-router-dom";
 import {useAppDispatch} from "hooks/redux";
-import {fetchExercisesGroups, fetchPrograms, getUsers} from "api/api";
+import {fetchExercisesGroups, fetchPrograms} from "api/api";
 import NewsList from './components/News/NewsList/NewsList';
 import {onAuthStateChangeListener} from 'config/config';
-import {setCurrentUser} from './store/auth-slice';
 
 import { createUserDocumentFromAuth} from "config/config";
 import {fetchUsers} from "store/actions";
 import {useEffect} from 'react';
+import {setCurrentUser} from "store/profile-slice";
 
 
 function App() {

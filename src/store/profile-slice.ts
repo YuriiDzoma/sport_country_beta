@@ -1,17 +1,16 @@
 import {profileState} from "store/profile-slice.types";
 import {createSlice} from "@reduxjs/toolkit";
 
-
 const initialState: profileState = {
-    profile: null
+    currentUser: null
 }
 
 export const profileSlice = createSlice({
     name: 'profilePage',
     initialState,
     reducers: {
-        setProfile(state, action) {
-            state.profile = action.payload;
+        setCurrentUser(state, action) {
+            state.currentUser = action.payload
         }
     },
     extraReducers: {
@@ -20,4 +19,4 @@ export const profileSlice = createSlice({
 });
 
 export default profileSlice.reducer;
-export const {setProfile} = profileSlice.actions
+export const {setCurrentUser} = profileSlice.actions

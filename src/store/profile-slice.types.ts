@@ -1,11 +1,15 @@
 
 export type Profile = {
-    userId: string
-    name: string
-    surname: string
-    userPhoto: string
+    createdAt: string,
+    id: string,
+    name: string,
+    surname: string,
+    location: string,
+    userPhoto: string,
+    dateOfBirth: string,
+    email: string,
 }
 
 export type profileState = {
-    profile: null | Profile
+    currentUser: null | Profile
 }
