@@ -6,15 +6,16 @@ import Users from 'components/Users/Users';
 import Login from 'components/Login/Login';
 import Navigation from 'components/Navigation/Navigation';
 import { Route, Routes } from "react-router-dom";
-import {useAppDispatch} from "hooks/redux";
+import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {fetchExercisesGroups, fetchPrograms} from "api/api";
-import NewsList from './components/News/NewsList/NewsList';
 import {onAuthStateChangeListener} from 'config/config';
 
 import { createUserDocumentFromAuth} from "config/config";
 import {fetchUsers} from "store/actions";
 import {useEffect} from 'react';
 import {setCurrentUser} from "store/profile-slice";
+import News from "components/News/News";
+import {currentUser} from "store/selectors";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
   dispatch(fetchUsers());
   dispatch(fetchPrograms());
   dispatch(fetchExercisesGroups());
+  const isUser = useAppSelector(currentUser);
 
   useEffect(() => {
     return onAuthStateChangeListener((user: any) => {
@@ -29,7 +31,7 @@ function App() {
         createUserDocumentFromAuth(user);
       }
 
-      dispatch(setCurrentUser(user));
+      dispatch(setCurrentUser(user.uid));
     });
   }, []);
 
@@ -37,21 +39,13 @@ function App() {
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <Header />
-          <Navigation />
+          {isUser && (
+              <Navigation />
+          )}
           <div className={styles.mainContent}>
             <Routes>
-              <Route path='/' element={
-                <div className={styles.mainContent__home}>
-                  <h2 className={styles.mainContent__title}>Index</h2>
-                  <img className={styles.mainContent__background} src="https://damion.club/uploads/posts/2022-01/1642459097_71-damion-club-p-foni-so-sportivnimi-devushkami-78.jpg" alt=""/>
-                  {/*<img src="https://damion.club/uploads/posts/2022-01/1642459018_2-damion-club-p-foni-so-sportivnimi-devushkami-2.jpg" alt=""/>*/}
-                  {/*<img src="https://damion.club/uploads/posts/2022-01/1642459036_7-damion-club-p-foni-so-sportivnimi-devushkami-7.jpg" alt=""/>*/}
-                  {/*<img src="https://damion.club/uploads/posts/2022-01/1642458969_13-damion-club-p-foni-so-sportivnimi-devushkami-13.jpg" alt=""/>*/}
-                  <NewsList />
-
-                </div>
-              } />
-              <Route path='/profile/*' element={<Profile />} />
+              <Route path='/' element={<News />} />
+              <Route path='/profile/:id' element={<Profile />} />
               <Route path='/training/*' element={<Training />} />
               <Route path='/users/*' element={<Users />} />
               <Route path='/login/*' element={<Login />} />

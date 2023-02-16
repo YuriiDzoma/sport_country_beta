@@ -48,8 +48,8 @@ export const addWorkHistory = (dayNumber: number, values: Program) => async (dis
         ...values,
         days: [...values.days.map((day: any) => {
             if (day.day === dayNumber) {
-                const date = values.days[dayNumber-1].workProcess.date;
-                values.days[dayNumber-1].workProcess.date = date[8]+date[9]+'.'+ date[5]+date[6]+'.'+date[2]+date[3];
+                const date = values.days[dayNumber-1].workProcess.date.split('-').reverse();
+                values.days[dayNumber-1].workProcess.date = `${date[0]}.${date[1]}.${date[2].slice(-2)}`
                 day.workHistory = [...day.workHistory, {...values.days[dayNumber-1].workProcess}];
                 day.workProcess = {
                     date: '',
