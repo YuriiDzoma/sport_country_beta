@@ -9,6 +9,10 @@ import profileSlice from "store/profile-slice";
 export const setupStore = () => {
     return configureStore({
         reducer: rootReducers,
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware({
+                serializableCheck: false
+            }),
     })
 }
 const rootReducers = combineReducers({

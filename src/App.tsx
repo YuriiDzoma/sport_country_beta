@@ -9,10 +9,12 @@ import { Route, Routes } from "react-router-dom";
 import {useAppDispatch} from "hooks/redux";
 import {fetchExercisesGroups, fetchPrograms, getUsers} from "api/api";
 import NewsList from './components/News/NewsList/NewsList';
+import {onAuthStateChangeListener} from 'config/config';
+import {setCurrentUser} from './store/auth-slice';
 
-import {useAuthState} from "react-firebase-hooks/auth";
-import {auth} from "config/config";
+import { createUserDocumentFromAuth} from "config/config";
 import {fetchUsers} from "store/actions";
+import {useEffect} from 'react';
 
 
 function App() {
@@ -20,9 +22,16 @@ function App() {
   dispatch(fetchUsers());
   dispatch(fetchPrograms());
   dispatch(fetchExercisesGroups());
-  const [user] = useAuthState(auth)
-  const isAuth = !!user;
-  console.log(isAuth)
+
+  useEffect(() => {
+    return onAuthStateChangeListener((user: any) => {
+      if (user) {
+        createUserDocumentFromAuth(user);
+      }
+
+      dispatch(setCurrentUser(user));
+    });
+  }, []);
 
   return (
       <div className={styles.wrapper}>

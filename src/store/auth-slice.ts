@@ -3,15 +3,15 @@ import {createSlice} from "@reduxjs/toolkit";
 
 
 const initialState: authState = {
-    isAuth: false,
+    currentUser: null,
 }
 
 export const authSlice = createSlice({
     name: 'authPage',
     initialState,
     reducers: {
-        setIsAuth(state, action) {
-            state.isAuth = action.payload
+        setCurrentUser(state, action) {
+            state.currentUser = action.payload
         }
     },
     extraReducers: {
@@ -19,4 +19,4 @@ export const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
-export const {setIsAuth} = authSlice.actions
+export const {setCurrentUser} = authSlice.actions

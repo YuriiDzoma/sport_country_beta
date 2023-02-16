@@ -1,3 +1,3 @@
 export type authState = {
-    isAuth: boolean
+    currentUser: any
 }
