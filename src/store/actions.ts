@@ -17,10 +17,6 @@ export const fetchUsers = () => async (dispatch: AppDispatch) => {
     getUsers().then(response => dispatch(setUsers(response)) )
 }
 
-// export const addUserToFB = (values: any) => async (dispatch: AppDispatch) => {
-//     const users = useAppSelector(getUsers);
-// }
-
 export const setNewProgram = (values: Program) => async (dispatch: AppDispatch) => {
     dispatch(setFetching());
     const newProgram = {
@@ -52,12 +48,14 @@ export const addWorkHistory = (dayNumber: number, values: Program) => async (dis
         ...values,
         days: [...values.days.map((day: any) => {
             if (day.day === dayNumber) {
+                const date = values.days[dayNumber-1].workProcess.date;
+                values.days[dayNumber-1].workProcess.date = date[8]+date[9]+'.'+ date[5]+date[6]+'.'+date[2]+date[3];
                 day.workHistory = [...day.workHistory, {...values.days[dayNumber-1].workProcess}];
                 day.workProcess = {
                     date: '',
-                    weights: [...day.workProcess.weights.map((exercise: any, index: number) => {
+                    weights: [...day.workProcess.weights.map((exercise: any) => {
                         return {
-                            exerciseNumber: index+1,
+                            exerciseNumber: exercise.exerciseNumber,
                             weights: '',
                         }
                     })]
