@@ -58,6 +58,8 @@ const WorkProcess: React.FC<WorkProcessProps> = ({dayNumber}) => {
                                                         <input id={`programs.${programIndex}.days.${dayIndex}.workProcess.date`}
                                                                name={`programs.${programIndex}.days.${dayIndex}.workProcess.date`}
                                                                placeholder='date'
+                                                               min="2010-01-01"
+                                                               type={"date"}
                                                                onChange={handleChange}
                                                                value={values.programs[programIndex].days[dayIndex].workProcess.date}
                                                         />

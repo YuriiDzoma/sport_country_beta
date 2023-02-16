@@ -1,10 +1,10 @@
 import styles from './FilterExercises.module.scss';
-import MuscleGroupListBeta from "components/Training/TrainingWiki/FilterExercises/MuscleGroupsList/MuscleGroup";
+import MuscleGroupsList from "./MuscleGroupsList/MuscleGroupsList";
 
 const FilterExercises = () => {
     return (
           <div className={styles.muscleGroups}>
-              <MuscleGroupListBeta />
+              <MuscleGroupsList />
           </div>
     )
 }

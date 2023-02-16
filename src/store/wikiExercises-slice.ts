@@ -25,6 +25,7 @@ export const wikiExercisesSlice = createSlice({
             state.isLoading = false;
             state.error = '';
             state.muscleGroups = action.payload;
+            state.exercises = [...state.muscleGroups[0].exercises]
         },
         [fetchExercisesGroups.rejected.type]: (state, action: PayloadAction<string>) => {
             state.isLoading = false;

@@ -7,7 +7,6 @@ const Users = () => {
     const users = useAppSelector(getUsers);
     return (
         <div className={styles.users}>
-            <span>Sorry, page not ready</span>
             <div className={styles.users__list}>
                 {users && (
                     <>
