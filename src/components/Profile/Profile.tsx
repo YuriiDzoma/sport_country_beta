@@ -10,7 +10,7 @@ const Profile = () => {
     return (
         <div className={styles.profile}>
             {profile && id && (
-                <></>
+                <><span>{profile.displayName}</span></>
             )}
         </div>
     )

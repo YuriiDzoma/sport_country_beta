@@ -1,7 +1,7 @@
 export type User = {
     createdAt: string,
     id: string,
-    name: string,
+    displayName: string,
     surname: string,
     location: string,
     userPhoto: string,

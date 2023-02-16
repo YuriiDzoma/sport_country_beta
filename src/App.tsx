@@ -15,7 +15,7 @@ import {fetchUsers} from "store/actions";
 import {useEffect} from 'react';
 import {setCurrentUser} from "store/profile-slice";
 import News from "components/News/News";
-import {currentUser} from "store/selectors";
+import Preloader from "components/Common/Preloader/Preloader";
 
 
 function App() {
@@ -23,15 +23,13 @@ function App() {
   dispatch(fetchUsers());
   dispatch(fetchPrograms());
   dispatch(fetchExercisesGroups());
-  const isUser = useAppSelector(currentUser);
 
   useEffect(() => {
     return onAuthStateChangeListener((user: any) => {
       if (user) {
         createUserDocumentFromAuth(user);
+        dispatch(setCurrentUser(user.uid));
       }
-
-      dispatch(setCurrentUser(user.uid));
     });
   }, []);
 
@@ -39,9 +37,7 @@ function App() {
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <Header />
-          {isUser && (
-              <Navigation />
-          )}
+          <Navigation />
           <div className={styles.mainContent}>
             <Routes>
               <Route path='/' element={<News />} />

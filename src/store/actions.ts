@@ -10,11 +10,15 @@ import {addProgramToFB, deleteProgramInFB, editProgramInFB, getUsers} from "api/
 import {pushExercises} from "store/wikiExercises-slice";
 import {Program} from "store/training-slice.types";
 import {exercise} from "store/wikiExercises-slyce.types";
-import {setUsers} from "store/users-slice";
+import {resetLoading, setLoading, setUsers} from "store/users-slice";
 
 
 export const fetchUsers = () => async (dispatch: AppDispatch) => {
-    getUsers().then(response => dispatch(setUsers(response)) )
+    dispatch(setLoading())
+    getUsers().then(response => {
+        dispatch(setUsers(response))
+        dispatch(resetLoading())
+    } )
 }
 
 export const setNewProgram = (values: Program) => async (dispatch: AppDispatch) => {

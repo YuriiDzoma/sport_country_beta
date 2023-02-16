@@ -10,6 +10,9 @@ export const usersSlice = createSlice({
     name: 'usersPage',
     initialState,
     reducers: {
+        setLoading(state) {
+            state.isLoading = true
+        },
         setUsers(state, action) {
             state.users = action.payload;
         },
@@ -19,11 +22,14 @@ export const usersSlice = createSlice({
                 state.users = [...state.users, action.payload]
             }
         },
+        resetLoading(state) {
+            state.isLoading = false
+        }
     },
 });
 
 export default usersSlice.reducer;
-export const {addUser, setUsers} = usersSlice.actions
+export const {addUser, setUsers, setLoading, resetLoading} = usersSlice.actions
 
 
 
