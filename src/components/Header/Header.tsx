@@ -2,9 +2,11 @@ import styles from './Header.module.scss'
 import {Link, useNavigate} from 'react-router-dom';
 import { useLocation } from 'react-router';
 import {useAppSelector} from "hooks/redux";
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import {currentUser} from 'store/selectors';
 import {signOutUser} from 'config/config';
+
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import LoginIcon from '@mui/icons-material/Login';
 
 const Header = () => {
     const navigate = useNavigate();
@@ -17,11 +19,16 @@ const Header = () => {
     const isUserLogged = () => {
       return(
           isUser
-              ? <span  onClick={signOutUser} className={loginClasses}>LOGOUT</span>
+              ? <button onClick={signOutUser} className={loginClasses}>
+                    <span className={styles.loginLogout__icon}>
+                      <ManageAccountsIcon />
+                    </span>
+                  <span className={styles.loginLogout__text}> Menu </span>
+                </button>
               : (
                   <Link className={loginClasses} to={`/login/`}>
                     <span className={styles.loginLogout__icon}>
-                      <ManageAccountsIcon  />
+                      <LoginIcon  />
                     </span>
                     <span className={styles.loginLogout__text}> Login </span>
                   </Link>

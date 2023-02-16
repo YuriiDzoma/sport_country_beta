@@ -3,24 +3,6 @@
   padding: 10px 20px 10px;
   display: flex;
   justify-content: space-between;
-
-  &:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100px;
-    border-bottom: rgba(0, 0, 0, 0.15) 1px solid;
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 100px;
-    border-bottom: rgba(0, 0, 0, 0.15) 1px solid;
-  }
 }
 
 .loginActive {
@@ -45,6 +27,10 @@
   align-items: center;
   justify-content: center;
   color: #1068bf;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  font-weight: 700;
 
   @media only screen and (max-width: 768px) {
     display: inline-block;
