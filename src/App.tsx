@@ -32,6 +32,8 @@ function App() {
       if (user) {
         createUserDocumentFromAuth(user);
         dispatch(setCurrentUser(user.uid));
+      } else {
+        dispatch(setCurrentUser(null));
       }
     });
   }, []);
