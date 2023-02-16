@@ -5,13 +5,11 @@ import {Program} from "store/training-slice.types";
 
 export const getUsers = async () => {
     try {
-        const response = await getDocs(collection(db, "users"))
+        return await getDocs(collection(db, "users"))
             .then((querySnapshot) => {
-                const newData = querySnapshot.docs
+                return  querySnapshot.docs
                     .map((doc) => ({...doc.data(), id: doc.id}));
-                return newData;
             });
-        return response;
     } catch (e) {
         console.log(e)
     }

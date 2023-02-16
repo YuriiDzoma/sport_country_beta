@@ -3,8 +3,8 @@ import {Link, useNavigate} from 'react-router-dom';
 import { useLocation } from 'react-router';
 import {useAppSelector} from "hooks/redux";
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import {currentUser} from '../../store/selectors';
-import {signOutUser} from '../../config/config';
+import {currentUser} from 'store/selectors';
+import {signOutUser} from 'config/config';
 
 const Header = () => {
     const navigate = useNavigate();
