@@ -1,9 +1,12 @@
 import styles from './Login.module.scss'
-import {signInWithGooglePopup} from '../../config/config';
+import {signInWithGooglePopup} from 'config/config';
+import {useNavigate} from "react-router";
 
 const Login = () => {
+    const navigate = useNavigate();
     const signInWithGoogle = async () => {
       await signInWithGooglePopup();
+        navigate('/');
     }
 
     return (

@@ -6,10 +6,9 @@ import Users from 'components/Users/Users';
 import Login from 'components/Login/Login';
 import Navigation from 'components/Navigation/Navigation';
 import { Route, Routes } from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "hooks/redux";
+import {useAppDispatch} from "hooks/redux";
 import {fetchExercisesGroups, fetchPrograms} from "api/api";
 import {onAuthStateChangeListener} from 'config/config';
-
 import { createUserDocumentFromAuth} from "config/config";
 import {fetchUsers} from "store/actions";
 import {useEffect} from 'react';
