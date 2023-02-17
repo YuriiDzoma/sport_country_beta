@@ -38,7 +38,6 @@ const Header = () => {
   return (
     <div className={styles.header_wrapper}>
       <div className={styles.logotype}>
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
         <h1 className={styles.logotype_goHome} onClick={() => navigate('/')}>
           SportCountry
         </h1>

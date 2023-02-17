@@ -36,7 +36,6 @@ export const fetchExercisesGroups = createAsyncThunk('exercisesGroups/fetchAll',
 
 export const addProgramToFB = async (values: Program) => {
   try {
-    // eslint-disable-next-line promise/always-return
     await addDoc(collection(db, 'programs'), { ...values }).then((data) => {
       console.log(data);
     });

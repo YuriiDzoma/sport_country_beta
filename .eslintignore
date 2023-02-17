@@ -1,6 +1,0 @@
-node_modules/
-.vscode/
-build/
-cdk/
-**/*.d.ts
-**/*.min.js

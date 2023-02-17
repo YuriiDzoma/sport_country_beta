@@ -24,7 +24,6 @@ const TrainingPrograms = () => {
         <ProgramCreateButton onProgramsListHide={onProgramsListHide} />
         <ProgramsListLinks onProgramsListHide={onProgramsListHide} />
       </div>
-      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
       <div onClick={() => onProgramsListHide(false)} className={styles.programsListCover}></div>
       <div className={styles.programsContent}>
         <Routes>

@@ -10,7 +10,6 @@ const ProgramLink: React.FC<ProgramLinkProps> = ({ onProgramsListHide, children,
   const activeLocation = location.pathname === to || location.pathname === to + '/redactor/';
 
   return (
-    // eslint-disable-next-line jsx-a11y/anchor-is-valid
     <Link
       onClick={() => onProgramsListHide(false)}
       to={to}
