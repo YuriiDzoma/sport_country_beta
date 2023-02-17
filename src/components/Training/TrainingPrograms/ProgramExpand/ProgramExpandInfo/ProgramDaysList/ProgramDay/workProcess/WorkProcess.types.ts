@@ -1,3 +1,3 @@
 export type WorkProcessProps = {
-    dayNumber: number;
-}
+  dayNumber: number;
+};

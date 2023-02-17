@@ -1,11 +1,5 @@
-
 const TrainingProcess = () => {
-
-    return (
-        <>
-            training calendar
-        </>
-    )
-}
+  return <>training calendar</>;
+};
 
 export default TrainingProcess;

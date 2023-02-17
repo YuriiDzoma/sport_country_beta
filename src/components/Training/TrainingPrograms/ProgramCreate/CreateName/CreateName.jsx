@@ -1,18 +1,17 @@
-import styles from "./../CreateProgramForm.module.scss";
-import GoBack from "components/Common/GoBack/GoBack";
+import GoBack from 'components/Common/GoBack/GoBack';
 
-const CreateName = ({handleChange, values}) => {
+import styles from './../CreateProgramForm.module.scss';
 
-    return (
-        <div className={styles.createProgramInfo_name}>
-            <GoBack />
-            <div className={styles.programName}>
-              <span className={styles.programLabel}>Name:</span>
-              <input id='title' name='title' type='text' onChange={handleChange}
-                   value={values.title}/>
-            </div>
-        </div>
-    )
-}
+const CreateName = ({ handleChange, values }) => {
+  return (
+    <div className={styles.createProgramInfo_name}>
+      <GoBack />
+      <div className={styles.programName}>
+        <span className={styles.programLabel}>Name:</span>
+        <input id="title" name="title" type="text" onChange={handleChange} value={values.title} />
+      </div>
+    </div>
+  );
+};
 
 export default CreateName;

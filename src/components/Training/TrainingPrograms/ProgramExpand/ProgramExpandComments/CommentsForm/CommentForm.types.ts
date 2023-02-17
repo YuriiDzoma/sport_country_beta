@@ -1,12 +1,8 @@
-export type CommentsFormProps = {
-
-}
-
 export type SubmitProps = {
-    comment: string
-}
+  comment: string;
+};
 
 export type FormikProps = {
-    setSubmitting: (isSubmitting: boolean) => void
-    resetForm: () => void
-}
+  setSubmitting: (isSubmitting: boolean) => void;
+  resetForm: () => void;
+};

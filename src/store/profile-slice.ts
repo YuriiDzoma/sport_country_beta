@@ -1,29 +1,28 @@
-import {profileState} from "store/profile-slice.types";
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+
+import { profileState } from 'store/profile-slice.types';
 
 const initialState: profileState = {
-    currentUser: null,
-    isLoading: false,
-}
+  currentUser: null,
+  isLoading: false,
+};
 
 export const profileSlice = createSlice({
-    name: 'profilePage',
-    initialState,
-    reducers: {
-        setFetchingProfile(state) {
-            state.isLoading = true
-        },
-        resetFetchingProfile(state) {
-            state.isLoading = false
-        },
-        setCurrentUser(state, action) {
-            state.currentUser = action.payload
-        }
+  name: 'profilePage',
+  initialState,
+  reducers: {
+    setFetchingProfile(state) {
+      state.isLoading = true;
     },
-    extraReducers: {
-
-    }
+    resetFetchingProfile(state) {
+      state.isLoading = false;
+    },
+    setCurrentUser(state, action) {
+      state.currentUser = action.payload;
+    },
+  },
+  extraReducers: {},
 });
 
 export default profileSlice.reducer;
-export const {setCurrentUser, setFetchingProfile, resetFetchingProfile} = profileSlice.actions
+export const { setCurrentUser, setFetchingProfile, resetFetchingProfile } = profileSlice.actions;

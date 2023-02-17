@@ -1,14 +1,15 @@
-import classes from "./Preloader.module.scss";
-import preloader from "assets/img/Spinner.svg";
-import React from "react";
+import React from 'react';
 
+import preloader from 'assets/img/Spinner.svg';
 
-let Preloader = () => {
-    return (
-        <div className={classes.preloader}>
-            <img src={preloader} alt="" />
-        </div>
-    )
-}
+import classes from './Preloader.module.scss';
+
+const Preloader = () => {
+  return (
+    <div className={classes.preloader}>
+      <img src={preloader} alt="" />
+    </div>
+  );
+};
 
 export default Preloader;

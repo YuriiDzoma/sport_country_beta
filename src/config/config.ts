@@ -1,33 +1,22 @@
 import { initializeApp } from 'firebase/app';
-import {
-    getFirestore,
-    doc,
-    setDoc,
-    getDoc,
-} from 'firebase/firestore';
-import {
-    getAuth,
-    GoogleAuthProvider,
-    signInWithPopup,
-    signOut,
-    onAuthStateChanged,
-} from "firebase/auth";
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDBN4oH_lwQJAz1KxEeF_bCcrzJ6hjG4HI",
-    authDomain: "sport-country-app.firebaseapp.com",
-    databaseURL: "https://sport-country-app-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "sport-country-app",
-    storageBucket: "sport-country-app.appspot.com",
-    messagingSenderId: "712794285781",
-    appId: "1:712794285781:web:90371943d42634ec78e45c"
+  apiKey: 'AIzaSyDBN4oH_lwQJAz1KxEeF_bCcrzJ6hjG4HI',
+  authDomain: 'sport-country-app.firebaseapp.com',
+  databaseURL: 'https://sport-country-app-default-rtdb.europe-west1.firebasedatabase.app',
+  projectId: 'sport-country-app',
+  storageBucket: 'sport-country-app.appspot.com',
+  messagingSenderId: '712794285781',
+  appId: '1:712794285781:web:90371943d42634ec78e45c',
 };
 
 initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
-    prompt: 'select_account'
+  prompt: 'select_account',
 });
 
 export const auth = getAuth();
@@ -36,39 +25,39 @@ export const db = getFirestore();
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
 
 export const createUserDocumentFromAuth = async (userAuth: any, additionalInformation = {}) => {
-    if (!userAuth) return;
+  if (!userAuth) return;
 
-    const userDocRef = doc(db, 'users', userAuth.uid);
-    const userSnapshot = await getDoc(userDocRef);
+  const userDocRef = doc(db, 'users', userAuth.uid);
+  const userSnapshot = await getDoc(userDocRef);
 
-    if (!userSnapshot.exists()) {
-        const { displayName, email, photoURL, uid } = userAuth;
-        const createdAt = new Date();
+  if (!userSnapshot.exists()) {
+    const { displayName, email, photoURL, uid } = userAuth;
+    const createdAt = new Date();
 
-        try {
-            await setDoc(userDocRef, {
-                id: uid,
-                displayName,
-                surname: '',
-                dateOfBirth: '',
-                email,
-                createdAt,
-                userPhoto: photoURL,
-                location: '',
-                ...additionalInformation,
-            })
-        } catch (error) {
-            console.log(error);
-        }
+    try {
+      await setDoc(userDocRef, {
+        id: uid,
+        displayName,
+        surname: '',
+        dateOfBirth: '',
+        email,
+        createdAt,
+        userPhoto: photoURL,
+        location: '',
+        ...additionalInformation,
+      });
+    } catch (error) {
+      console.log(error);
     }
+  }
 
-    return userDocRef;
-}
+  return userDocRef;
+};
 
 export const signOutUser = async () => {
-    await signOut(auth);
-}
+  await signOut(auth);
+};
 
 export const onAuthStateChangeListener = (callback: any) => {
-    onAuthStateChanged(auth, callback);
-}
+  onAuthStateChanged(auth, callback);
+};
