@@ -1,19 +1,24 @@
-import styles from './ProgramCreateButton.module.scss';
-import {Link} from "react-router-dom";
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import React from 'react';
-import {ProgramsListLinksProps} from "./../ProgramList/ProgramsListLinks.types";
+import { Link } from 'react-router-dom';
 
-const ProgramCreateButton: React.FC<ProgramsListLinksProps> = ({onProgramsListHide}) => {
-    return (
-        <div className={styles.createProgram}>
+import { ProgramsListLinksProps } from './../ProgramList/ProgramsListLinks.types';
+import styles from './ProgramCreateButton.module.scss';
 
-          <Link onClick={() => onProgramsListHide(false)} className={styles.createProgram__link} to={'/training/training_programs/create/'}>
-            <LibraryAddIcon />
-            <span>add new program</span>
-          </Link>
-        </div>
-    )
-}
+const ProgramCreateButton: React.FC<ProgramsListLinksProps> = ({ onProgramsListHide }) => {
+  return (
+    <div className={styles.createProgram}>
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+      <Link
+        onClick={() => onProgramsListHide(false)}
+        className={styles.createProgram__link}
+        to={'/training/training_programs/create/'}
+      >
+        <LibraryAddIcon />
+        <span>add new program</span>
+      </Link>
+    </div>
+  );
+};
 
 export default ProgramCreateButton;

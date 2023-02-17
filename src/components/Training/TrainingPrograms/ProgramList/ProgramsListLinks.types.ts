@@ -1,5 +1,3 @@
-
-
 export type ProgramsListLinksProps = {
-    onProgramsListHide: (values: boolean) => void
-}
+  onProgramsListHide: (values: boolean) => void;
+};

@@ -1,6 +1,5 @@
-import {Comment} from 'store/training-slice.types';
-
+import { Comment } from 'store/training-slice.types';
 
 export type CommentProps = {
- item: Comment
-}
+  item: Comment;
+};
