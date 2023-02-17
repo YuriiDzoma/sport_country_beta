@@ -2,7 +2,7 @@ import styles from './ProgramCreateButton.module.scss';
 import {Link} from "react-router-dom";
 import LibraryAddIcon from '@mui/icons-material/LibraryAdd';
 import React from 'react';
-import {ProgramsListLinksProps} from '../ProgramList/ProgramsListLinks';
+import {ProgramsListLinksProps} from "./../ProgramList/ProgramsListLinks.types";
 
 const ProgramCreateButton: React.FC<ProgramsListLinksProps> = ({onProgramsListHide}) => {
     return (

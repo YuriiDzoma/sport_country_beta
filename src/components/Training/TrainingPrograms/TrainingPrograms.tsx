@@ -9,9 +9,6 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
 const TrainingPrograms = () => {
     const [showPrograms, setShowPrograms] = useState(false);
-    const onProgramsListShow = () => {
-      setShowPrograms(true);
-    }
 
     const onProgramsListHide = (values: boolean) => {
       setShowPrograms(values);
@@ -19,7 +16,7 @@ const TrainingPrograms = () => {
 
     return (
         <div className={`${styles.trainProgramContainer} ${showPrograms ? styles.listShowed : ''}`}>
-            <button className={styles.showProgramsList} onClick={() => onProgramsListShow()}>
+            <button className={styles.showProgramsList} onClick={() => onProgramsListHide(true)}>
               <FormatListBulletedIcon />
             </button>
             <div className={styles.programsList}>

@@ -14,10 +14,8 @@ export const getUserById = createSelector(
 export const getIsFetching = (state: RootState) => state.training.isLoading;
 export const getPrograms = (state: RootState) => state.training.programs;
 export const getMuscleGroups = (state: RootState) => state.wikiExercise.muscleGroups;
-export const getAllState = (state: RootState) => state.wikiExercise;
 export const getExercises =(state: RootState) => state.wikiExercise.exercises;
 export const currentUser = (state: RootState) => state.profilePage.currentUser;
 export const getUsers = (state: RootState) => state.users.users;
 export const getIsFetchingUsers = (state: RootState) => state.users.isLoading;
-export const getIsFetchingProfile = (state: RootState) => state.profilePage.isLoading;
 

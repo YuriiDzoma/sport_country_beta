@@ -5,9 +5,7 @@ import {faPenToSquare} from "@fortawesome/free-regular-svg-icons";
 import ProgramDaysList from "./ProgramDaysList/ProgramDaysList";
 import {ProgramExpandInfoProps} from "./ProgramExpandInfo.types";
 import React from "react";
-import ProgramRemove
-    from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/ProgramRemove/ProgramRemove";
-
+import ProgramRemove from "./ProgramRemove/ProgramRemove";
 const ProgramExpandInfo:React.FC<ProgramExpandInfoProps> = ({program}) => {
 
     return (

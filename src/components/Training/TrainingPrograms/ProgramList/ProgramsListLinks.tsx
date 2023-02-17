@@ -5,17 +5,14 @@ import {useAppSelector} from "hooks/redux";
 import Preloader from "components/Common/Preloader/Preloader";
 import {getIsFetching, getPrograms} from "store/selectors";
 import CloseIcon from '@mui/icons-material/Close';
+import {ProgramsListLinksProps} from "./ProgramsListLinks.types";
 
-export type ProgramsListLinksProps = {
-    onProgramsListHide: (values: boolean) => void
-}
 
 const ProgramsListLinks: React.FC<ProgramsListLinksProps> = ({onProgramsListHide}) => {
     const programs = useAppSelector(getPrograms);
-    useEffect(() => {
-
-    },[programs]);
+    useEffect(() => {},[programs]);
     const isFetching = useAppSelector(getIsFetching);
+
     return (
     <div className={styles.programsList}>
         <button onClick={() => onProgramsListHide(false)} className={styles.programsListClose}>
