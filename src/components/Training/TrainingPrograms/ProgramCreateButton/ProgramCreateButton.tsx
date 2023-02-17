@@ -8,7 +8,6 @@ import styles from './ProgramCreateButton.module.scss';
 const ProgramCreateButton: React.FC<ProgramsListLinksProps> = ({ onProgramsListHide }) => {
   return (
     <div className={styles.createProgram}>
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
       <Link
         onClick={() => onProgramsListHide(false)}
         className={styles.createProgram__link}
