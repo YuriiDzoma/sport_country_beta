@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import emptyProfileImage from 'assets/img/emptyprofile.jpg';
 import { UserProps } from 'components/Users/User/User.types';
@@ -11,7 +12,15 @@ const User: React.FC<UserProps> = ({ user }) => {
 
   return (
     <Link className={styles.userBlock} to={'/profile/' + id}>
-      <img className={styles.userBlock__image} src={photoURL === '' ? emptyProfileImage : photoURL} alt="" />
+      <div className={styles.userBlock__pic}>
+        {
+          photoURL ? (
+              <img className={styles.userBlock__image} src={photoURL} alt="" />
+          ) : (
+              <AccountCircleIcon className={styles.userBlock__image} />
+          )
+        }
+      </div>
       <p className={styles.userBlock__name}>{displayName}</p>
     </Link>
   );
