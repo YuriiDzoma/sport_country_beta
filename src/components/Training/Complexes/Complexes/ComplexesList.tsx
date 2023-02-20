@@ -1,6 +1,7 @@
 import styles from './CompleesList.module.scss'
 import React from "react";
-import {ComplexesListProps} from "components/Training/Complexes/Complexes/ComplexesList.types";
+import {ComplexesListProps} from "./ComplexesList.types";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const ComplexesList: React.FC<ComplexesListProps> = ({programs}) => {
 
@@ -13,7 +14,7 @@ const ComplexesList: React.FC<ComplexesListProps> = ({programs}) => {
                             <span className={styles.program_title}>{program.title}</span>
                         </div>
                         <div>
-                            <button className={styles.program_add}>add</button>
+                            <button className={styles.program_add} ><AddCircleIcon color={'primary'} /></button>
                         </div>
                     </div>
                 )

@@ -13,9 +13,10 @@
   }
 
   &_add {
-    margin-left: 10px;
-    padding: 2px;
-    border-radius: 4px;
-    border: #92a2b4 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 0 10px;
+    background: none;
   }
 }
