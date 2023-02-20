@@ -1,68 +1,30 @@
+.loginPage {
+  &__inner {
+    margin: auto 0;
+    display: flex;
+    align-items: stretch;
 
-.loginWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 390px;
-  flex: 1;
-  margin-inline: auto;
-  padding: 50px 10px;
-  box-sizing: border-box;
-
-  &__or {
-    margin-top: 25px;
-  }
-
-  &__line {
-    margin-top: 15px;
-    width: 100%;
-  }
-
-  &__input {
-    border: 1px solid #89888d;
-    border-radius: 4px;
-    font-size: 16px;
-    padding: 6px 12px;
-    width: 100%;
-  }
-}
-
-.signIn {
-  margin-top: 15px;
-  width: 100%;
-
-  button {
-    font-size: 16px;
-    background-color: #1f75cb;
-    color: white;
-    padding: 7px 15px;
-    border-radius: 4px;
-    min-width: 200px;
-    width: 100%;
-    transition: background-color 100ms;
-
-    &:hover {
-      background-color: #1068bf;
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
     }
   }
-}
 
-.signInGoogle {
-  margin-top: 25px;
-  width: 100%;
+  &__col {
+    width: 50%;
+    padding: 0 25px;
 
-  button {
-    font-size: 16px;
-    background-color: #1f75cb;
-    color: white;
-    padding: 7px 15px;
-    border-radius: 4px;
-    min-width: 200px;
-    width: 100%;
-    transition: background-color 100ms;
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      margin: 30px auto;
+    }
 
-    &:hover {
-      background-color: #1068bf;
+    &:first-child {
+      border-right: 1px solid #dcdcde;
+
+      @media only screen and (max-width: 768px) {
+        border: 0;
+      }
     }
   }
+
 }

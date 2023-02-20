@@ -1,30 +1,24 @@
-import { useNavigate } from 'react-router';
-
-import { signInWithGooglePopup } from 'config/config';
-
+import SignIn from '../SignIn/SignIn';
 import styles from './Login.module.scss';
 
+import SignUp from '../SignUp/SignUp';
+
+const defaultFormFields = {
+  email: '',
+  password: '',
+}
+
 const Login = () => {
-  const navigate = useNavigate();
-  const signInWithGoogle = async () => {
-    await signInWithGooglePopup();
-    navigate('/');
-  };
 
   return (
-    <div className={styles.loginWrapper}>
-      <div className={styles.loginWrapper__line}>
-        <input className={styles.loginWrapper__input} placeholder={'login'} />
-      </div>
-      <div className={styles.loginWrapper__line}>
-        <input className={styles.loginWrapper__input} placeholder={'password'} />
-      </div>
-      <div className={styles.signIn}>
-        <button>Sign in</button>
-      </div>
-      <p className={styles.loginWrapper__or}>OR</p>
-      <div className={styles.signInGoogle}>
-        <button onClick={signInWithGoogle}>Sign In With Google</button>
+    <div className={styles.loginPage}>
+      <div className={styles.loginPage__inner}>
+        <div className={styles.loginPage__col}>
+          <SignIn />
+        </div>
+        <div className={styles.loginPage__col}>
+          <SignUp />
+        </div>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import { exercise } from 'store/wikiExercises-slyce.types';
 
 export const fetchUsers = () => async (dispatch: AppDispatch) => {
   dispatch(setLoading());
+
   getUsers()
     .then((response) => dispatch(setUsers(response)))
     .catch(Error);

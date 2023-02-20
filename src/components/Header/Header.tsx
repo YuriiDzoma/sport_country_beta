@@ -1,39 +1,20 @@
-import LoginIcon from '@mui/icons-material/Login';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useLocation } from 'react-router';
-import { Link, useNavigate } from 'react-router-dom';
-
-import { signOutUser } from 'config/config';
-import { useAppSelector } from 'hooks/redux';
-import { currentUser } from 'store/selectors';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './Header.module.scss';
+import UserMenu from '../UserMenu/UserMenu';
+import React, {useState, MouseEvent, useEffect, useRef} from 'react';
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isUser = useAppSelector(currentUser);
+  const [isProfileMenuActive, setIsProfileMenuActive] = useState(false);
   const activeLocation = location.pathname === '/login/';
 
-  const loginClasses = `${styles.loginLogout} ${activeLocation ? styles.loginActive : ''}`;
-
-  const isUserLogged = () => {
-    return isUser ? (
-      <button onClick={signOutUser} className={loginClasses}>
-        <span className={styles.loginLogout__icon}>
-          <ManageAccountsIcon />
-        </span>
-        <span className={styles.loginLogout__text}> Menu </span>
-      </button>
-    ) : (
-      <Link className={loginClasses} to={`/login/`}>
-        <span className={styles.loginLogout__icon}>
-          <LoginIcon />
-        </span>
-        <span className={styles.loginLogout__text}> Login </span>
-      </Link>
-    );
-  };
+  const showProfileMenu = (event: MouseEvent<HTMLElement>) => {
+    setIsProfileMenuActive(!isProfileMenuActive);
+  }
 
   return (
     <div className={styles.header_wrapper}>
@@ -42,7 +23,17 @@ const Header = () => {
           SportCountry
         </h1>
       </div>
-      {isUserLogged()}
+
+      <div className={`${styles.profile} ${isProfileMenuActive ? styles.profile__active : ''}`}>
+        <button className={styles.profile__button} onClick={showProfileMenu}>
+          <span className={styles.profile__text}>Profile</span>
+          <AccountCircleIcon className={styles.profile__icon} />
+        </button>
+        <div className={styles.profile__menu}>
+          <UserMenu />
+        </div>
+        <button className={styles.profile__close} onClick={showProfileMenu}></button>
+      </div>
     </div>
   );
 };

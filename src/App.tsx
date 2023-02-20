@@ -28,10 +28,12 @@ function App() {
   const [loading, user] = useAuthState(auth);
 
   useEffect(() => {
-    return onAuthStateChangeListener((user: any) => {
+    return onAuthStateChangeListener((user) => {
+      console.log(user);
+
       if (user) {
         createUserDocumentFromAuth(user);
-        dispatch(setCurrentUser(user.uid));
+        dispatch(setCurrentUser(user));
       } else {
         dispatch(setCurrentUser(null));
       }

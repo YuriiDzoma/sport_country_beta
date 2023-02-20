@@ -9,23 +9,30 @@ import { currentUser } from 'store/selectors';
 import styles from './Navigation.module.scss';
 
 const Navigation = () => {
-  const profileId = useAppSelector(currentUser);
+  const user = useAppSelector(currentUser);
 
   return (
-    <div className={styles.navigationWrapper}>
-      <Link className={styles.customLink} to={'profile/' + profileId}>
-        <AccountCircleIcon />
-        Profile
-      </Link>
-      <Link className={styles.customLink} to="training/">
-        <FitnessCenterIcon />
-        Training
-      </Link>
-      <Link className={styles.customLink} to="users/">
-        <SupervisorAccountIcon />
-        Users
-      </Link>
-    </div>
+      <>
+        {
+          user && (
+                <div className={styles.navigationWrapper}>
+                  <Link className={styles.customLink} to={`profile/${user.uid}`}>
+                    <AccountCircleIcon />
+                    Profile
+                  </Link>
+                  <Link className={styles.customLink} to="training/">
+                    <FitnessCenterIcon />
+                    Training
+                  </Link>
+                  <Link className={styles.customLink} to="users/">
+                    <SupervisorAccountIcon />
+                    Users
+                  </Link>
+                </div>
+            )
+        }
+
+      </>
   );
 };
 
