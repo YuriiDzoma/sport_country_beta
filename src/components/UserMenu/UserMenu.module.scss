@@ -1,0 +1,30 @@
+.userMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  border-radius: 4px;
+  right: 0;
+  box-shadow: 0 0 3px rgba(31, 117, 203, 0.6);
+
+  &__button {
+    background-color: transparent;
+    color: #1f75cb;
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    transition: all 100ms;
+
+    &:hover {
+      color: #1068bf;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__buttonIcon {
+    margin-right: 10px;
+  }
+}

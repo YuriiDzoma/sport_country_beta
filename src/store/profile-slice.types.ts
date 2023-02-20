@@ -1,4 +1,6 @@
+import { User } from './users-slice.types';
+
 export type profileState = {
-  currentUser: null | string;
+  currentUser: null | User;
   isLoading: boolean;
 };

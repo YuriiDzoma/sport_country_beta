@@ -1,0 +1,80 @@
+.loginWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  box-sizing: border-box;
+  max-width: 380px;
+  margin: 0 auto;
+
+  &__title {
+    line-height: 1.5;
+    margin-bottom: 25px;
+    width: 100%;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 18px;
+    }
+  }
+
+  &__form {
+    width: 100%;
+  }
+
+  &__or {
+    margin-top: 25px;
+    text-align: center;
+  }
+
+  &__line {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  &__input {
+    width: 100%;
+    border-bottom: 1px solid #89888d;
+    font-size: 16px;
+    padding: 7px 15px;
+  }
+}
+
+.signIn {
+  margin-top: 15px;
+  width: 100%;
+
+  button {
+    font-size: 16px;
+    background-color: #1f75cb;
+    color: white;
+    padding: 7px 15px;
+    border-radius: 4px;
+    min-width: 200px;
+    width: 100%;
+    transition: background-color 100ms;
+
+    &:hover {
+      background-color: #1068bf;
+    }
+  }
+}
+
+.signInGoogle {
+  margin-top: 25px;
+  width: 100%;
+
+  button {
+    font-size: 16px;
+    background-color: #2da44e;
+    color: white;
+    padding: 7px 15px;
+    border-radius: 4px;
+    min-width: 200px;
+    width: 100%;
+    transition: background-color 100ms;
+
+    &:hover {
+      background-color: #2c974b;
+    }
+  }
+}

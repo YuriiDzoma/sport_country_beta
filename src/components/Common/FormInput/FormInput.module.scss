@@ -1,0 +1,39 @@
+.formInput {
+  position: relative;
+}
+
+.input {
+  background-color: white;
+  color: #333238;
+  font-size: 16px;
+  padding: 5px 5px 5px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #89888d;
+  margin: 25px 0 0 0;
+
+  &:focus ~ label {
+    top: -10px;
+    font-size: 12px;
+    color: #89888d;
+  }
+}
+
+.label {
+  color: #737278;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 9px;
+  transition: 200ms ease all;
+
+  &__shrink {
+    top: -10px;
+    font-size: 12px;
+    color: #89888d;
+  }
+}

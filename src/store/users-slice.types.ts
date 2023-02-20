@@ -2,11 +2,9 @@ export type User = {
   createdAt: string;
   id: string;
   displayName: string;
-  surname: string;
-  location: string;
-  userPhoto: string;
-  dateOfBirth: string;
+  photoURL: string;
   email: string;
+  uid: string;
 };
 
 export type UsersState = {
