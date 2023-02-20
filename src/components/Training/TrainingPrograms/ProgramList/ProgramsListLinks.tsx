@@ -12,7 +12,6 @@ import { ProgramsListLinksProps } from './ProgramsListLinks.types';
 const ProgramsListLinks: React.FC<ProgramsListLinksProps> = ({ onProgramsListHide }) => {
   const programs = useAppSelector(getPrograms);
   useEffect(() => {
-    console.log('effect');
   }, [programs]);
   const isFetching = useAppSelector(getIsFetching);
 
@@ -25,7 +24,7 @@ const ProgramsListLinks: React.FC<ProgramsListLinksProps> = ({ onProgramsListHid
       {isFetching ? (
         <Preloader />
       ) : (
-        programs.map((item, index) => (
+          programs.map((item, index) => (
           <ProgramLink
             onProgramsListHide={onProgramsListHide}
             key={index}

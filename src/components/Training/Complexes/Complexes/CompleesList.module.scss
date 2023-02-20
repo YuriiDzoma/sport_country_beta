@@ -1,0 +1,21 @@
+.program {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 8px 0;
+  padding: 6px;
+  border: 1px solid #5da3b4;
+  border-radius: 4px;
+  min-width: 200px;
+
+  &_title {
+    font-size: 13px;
+  }
+
+  &_add {
+    margin-left: 10px;
+    padding: 2px;
+    border-radius: 4px;
+    border: #92a2b4 1px solid;
+  }
+}

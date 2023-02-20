@@ -9,7 +9,6 @@ import styles from './ExercisesList.module.scss';
 const ExercisesList = () => {
   const exercises = useAppSelector(getExercises);
   useEffect(() => {
-    console.log('effect');
   }, [exercises]);
 
   return (

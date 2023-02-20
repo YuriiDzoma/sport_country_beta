@@ -1,0 +1,34 @@
+.findSort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+
+  &_field {
+    margin-right: 15px;
+    border-radius: 4px;
+    padding: 2px;
+    border: 1px solid #1068bf;
+  }
+}
+
+.find {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+
+  &_field {
+    margin-right: 15px;
+    border-radius: 4px;
+    padding: 2px;
+    border: 1px solid #1068bf;
+  }
+}
+
+.sorting {
+
+  &_change {
+    margin-left: 8px;
+    border: 1px solid #babcbe;
+  }
+}
