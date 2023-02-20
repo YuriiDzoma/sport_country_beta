@@ -4,6 +4,7 @@ import { profileState } from 'store/profile-slice.types';
 
 const initialState: profileState = {
   currentUser: null,
+  myPrograms: [],
   isLoading: false,
 };
 

@@ -9,12 +9,13 @@ import FindSort from "./FindSort/FindSort";
 
 const Complexes = () => {
     const allPrograms = useAppSelector(getPrograms);
-    const [programs, setPrograms] = useState<Program[] | undefined>();
+
+    const [programs, setPrograms] = useState<Program[] | undefined>(allPrograms ? [...allPrograms] : undefined);
 
     const filteringPrograms = (name: string, checked: boolean) => {
         let filteredPrograms;
         !checked
-            ? filteredPrograms = programs ? programs.filter((program: any) => program.typeOf !== name) : undefined
+            ? filteredPrograms = programs ? programs.filter((program) => program.typeOf !== name) : undefined
             : filteredPrograms = programs
                 ? [...programs, ...allPrograms.filter((program) => program.typeOf === name)]
                 : allPrograms.filter((program) => program.typeOf === name)
