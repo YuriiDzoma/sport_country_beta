@@ -4,7 +4,7 @@ import ComplexesList from "./Complexes/ComplexesList";
 import React, {useState} from "react";
 import {Program} from "store/training-slice.types";
 import FindSort from "./FindSort/FindSort";
-import {ComplexesProps} from "components/Training/Complexes/Complexes.types";
+import {ComplexesProps} from "./Complexes.types";
 
 const Complexes: React.FC<ComplexesProps> = ({allPrograms}) => {
 
