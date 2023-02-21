@@ -29,7 +29,6 @@ function App() {
 
   useEffect(() => {
     return onAuthStateChangeListener((user) => {
-      console.log(user);
 
       if (user) {
         createUserDocumentFromAuth(user);

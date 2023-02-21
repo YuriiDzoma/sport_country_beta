@@ -1,7 +1,7 @@
 import styles from './SignIn.module.scss';
 import {ChangeEvent, FormEvent, useState} from 'react';
 import {useNavigate} from 'react-router';
-import {signInAuthUserWithEmailAndPassword, signInWithGooglePopup} from '../../config/config';
+import {signInAuthUserWithEmailAndPassword, signInWithGooglePopup} from 'config/config';
 
 const defaultFormFields = {
   email: '',

@@ -1,17 +1,14 @@
 import styles from './Complexes.module.scss'
 import Filters from "./Filters/Filters";
 import ComplexesList from "./Complexes/ComplexesList";
-import {useState} from "react";
-import {getPrograms} from "store/selectors";
-import {useAppSelector} from "hooks/redux";
+import React, {useState} from "react";
 import {Program} from "store/training-slice.types";
 import FindSort from "./FindSort/FindSort";
+import {ComplexesProps} from "components/Training/Complexes/Complexes.types";
 
-const Complexes = () => {
-    const allPrograms = useAppSelector(getPrograms);
+const Complexes: React.FC<ComplexesProps> = ({allPrograms}) => {
 
-    const [programs, setPrograms] = useState<Program[] | undefined>(allPrograms ? [...allPrograms] : undefined);
-
+    const [programs, setPrograms] = useState<Program[] | undefined>([...allPrograms]);
     const filteringPrograms = (name: string, checked: boolean) => {
         let filteredPrograms;
         !checked
