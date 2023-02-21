@@ -28,7 +28,6 @@ const SignUp = () => {
 
     try {
       const credentials = await createAuthUserWithEmailAndPassword(email, password);
-
       if (!credentials) return;
 
       const { user } = credentials;

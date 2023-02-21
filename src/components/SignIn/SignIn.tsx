@@ -28,6 +28,7 @@ const SignIn = () => {
     try {
       await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
+      navigate('/');
     } catch (error) {
       console.log(error);
     }
