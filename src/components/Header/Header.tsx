@@ -1,16 +1,15 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 import UserMenu from '../UserMenu/UserMenu';
-import React, {useState, MouseEvent, useEffect, useRef} from 'react';
+import React, {useState, MouseEvent} from 'react';
 
 const Header = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+
   const [isProfileMenuActive, setIsProfileMenuActive] = useState(false);
-  const activeLocation = location.pathname === '/login/';
+
 
   const showProfileMenu = (event: MouseEvent<HTMLElement>) => {
     setIsProfileMenuActive(!isProfileMenuActive);

@@ -24,7 +24,6 @@ const ProgramRemove = () => {
                     <DeleteIcon />
                 </IconButton>
             )}
-
         </div>
     )
 }

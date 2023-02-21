@@ -1,7 +1,7 @@
 import styles from './SignUp.module.scss';
 import { useState, ChangeEvent, FormEvent } from 'react';
 
-import {createUserDocumentFromAuth, createAuthUserWithEmailAndPassword} from '../../config/config';
+import {createUserDocumentFromAuth, createAuthUserWithEmailAndPassword} from 'config/config';
 
 const defaultFormFields = {
   displayName: '',
