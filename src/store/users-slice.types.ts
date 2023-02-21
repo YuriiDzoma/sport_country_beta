@@ -4,7 +4,6 @@ export type User = {
   displayName: string;
   photoURL: string;
   email: string;
-  uid: string;
 };
 
 export type UsersState = {

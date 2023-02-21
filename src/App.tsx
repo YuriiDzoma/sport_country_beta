@@ -33,11 +33,13 @@ function App() {
       if (user) {
         createUserDocumentFromAuth(user);
         dispatch(setCurrentUser(user));
+        console.log(user)
       } else {
         dispatch(setCurrentUser(null));
       }
     });
   }, []);
+
 
 
   return (

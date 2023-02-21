@@ -8,6 +8,7 @@ import styles from './Users.module.scss';
 const Users = () => {
   const users = useAppSelector(getUsers);
   const isLoading = useAppSelector(getIsFetchingUsers);
+
   return (
     <div className={styles.users}>
       {isLoading ? (
