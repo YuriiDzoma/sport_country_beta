@@ -1,5 +1,3 @@
-import { User } from './users-slice.types';
-
 export type Comment = {
   id: number;
   comment: string;
@@ -37,7 +35,7 @@ export type Program = {
 };
 
 export type profileState = {
-  currentUser: null | User;
+  currentUser: null | string;
   isLoading: boolean;
   myPrograms: Program[];
 };

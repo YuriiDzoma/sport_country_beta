@@ -19,13 +19,7 @@ export const profileSlice = createSlice({
       state.isLoading = false;
     },
     setCurrentUser(state, action) {
-      state.currentUser = {
-        createdAt: action.payload.createdAt,
-        id: action.payload.uid,
-        displayName: action.payload.displayName,
-        photoURL: action.payload.photoURL,
-        email: action.payload.email
-      }
+      state.currentUser = action.payload;
     },
   },
   extraReducers: {},

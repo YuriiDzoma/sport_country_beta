@@ -10,14 +10,13 @@ import styles from './Navigation.module.scss';
 
 const Navigation = () => {
   const user = useAppSelector(currentUser);
-  console.log(user)
 
   return (
       <>
         {
           user && (
                 <div className={styles.navigationWrapper}>
-                  <Link className={styles.customLink} to={`profile/${user.id}`}>
+                  <Link className={styles.customLink} to={`profile/${user}`}>
                     <AccountCircleIcon />
                     Profile
                   </Link>
