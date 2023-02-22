@@ -32,15 +32,12 @@ function App() {
 
       if (user) {
         createUserDocumentFromAuth(user);
-        dispatch(setCurrentUser(user));
-        console.log(user)
+        dispatch(setCurrentUser(user.uid));
       } else {
         dispatch(setCurrentUser(null));
       }
     });
   }, []);
-
-
 
   return (
     <div className={styles.wrapper}>
