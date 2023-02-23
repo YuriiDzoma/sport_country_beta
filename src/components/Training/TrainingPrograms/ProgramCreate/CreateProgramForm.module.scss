@@ -1,16 +1,24 @@
 .createProgramInfo {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   position: relative;
 
   &__title {
     text-align: center;
     margin-top: 25px;
+    width: 100%;
   }
 
   &_name {
     margin: 0;
     font-size: 16px;
+    width: 50%;
+    padding-right: 10px;
+
+    @media only screen and (max-width: 768px) {
+      padding-right: 0;
+      width: 100%;
+    }
 
     h2 {
       width: 100%;
@@ -39,6 +47,13 @@
     margin-top: 15px;
     display: flex;
     align-items: center;
+    width: 50%;
+    padding-left: 10px;
+
+    @media only screen and (max-width: 768px) {
+      padding-left: 0;
+      width: 100%;
+    }
 
     span {
       margin-right: 14px;
@@ -73,18 +88,18 @@
   }
 
   &_create {
-    margin-top: 18px;
+    margin-top: 10px;
     display: flex;
     justify-content: flex-end;
     margin-bottom: 10px;
 
     button {
-      padding: 8px 16px;
+      padding: 5px 12px;
       background-color: #2da44e;
       border-radius: 4px;
       color: white;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 14px;
       text-transform: uppercase;
       transition: all 100ms;
 

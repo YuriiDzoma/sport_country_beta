@@ -1,12 +1,7 @@
-import SignIn from '../SignIn/SignIn';
+import SignIn from './SignIn/SignIn';
 import styles from './Login.module.scss';
 
-import SignUp from '../SignUp/SignUp';
-
-const defaultFormFields = {
-  email: '',
-  password: '',
-}
+import SignUp from './SignUp/SignUp';
 
 const Login = () => {
 
