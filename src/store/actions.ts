@@ -1,19 +1,26 @@
-import { addProgramToFB, deleteProgramInFB, editProgramInFB, getUsers } from 'api/api';
+import {addProgramToFB, deleteProgramInFB, editProgramInFB, fetchMyPrograms, getUsers} from 'api/api';
 import { AppDispatch } from 'store/store';
-import { editProgramInState, removeProgramFromState, resetFetching, setFetching } from 'store/training-slice';
+import { resetFetching, setFetching } from 'store/training-slice';
 import { Program } from 'store/training-slice.types';
 import { resetLoading, setLoading, setUsers } from 'store/users-slice';
 import { pushExercises } from 'store/wikiExercises-slice';
 import { exercise } from 'store/wikiExercises-slyce.types';
+import {editProgramInState, removeProgramFromState, setMyProgram} from "store/profile-slice";
+
 
 export const fetchUsers = () => async (dispatch: AppDispatch) => {
   dispatch(setLoading());
-
   getUsers()
     .then((response) => dispatch(setUsers(response)))
     .catch(Error);
   dispatch(resetLoading());
 };
+
+export const setMyPrograms = (user: string) => async (dispatch: AppDispatch) => {
+  if (user) {
+    fetchMyPrograms(user).then((response) => dispatch(setMyProgram(response)))
+  }
+}
 
 export const setNewProgram = (values: Program) => async (dispatch: AppDispatch) => {
   dispatch(setFetching());
@@ -24,19 +31,21 @@ export const setNewProgram = (values: Program) => async (dispatch: AppDispatch) 
   dispatch(resetFetching());
 };
 
-export const deleteProgram = (values: string) => async (dispatch: AppDispatch) => {
+export const deleteProgram = (user: string, values: string) => async (dispatch: AppDispatch) => {
   dispatch(setFetching());
-  deleteProgramInFB(values)
+  deleteProgramInFB(user, values)
     .then((response) => dispatch(removeProgramFromState(response)))
     .catch(Error);
   dispatch(resetFetching());
 };
 
-export const editProgram = (programId: string | undefined, values: Program) => async (dispatch: AppDispatch) => {
+export const editProgram = (user: string, programId: string | undefined, values: Program) => async (dispatch: AppDispatch) => {
   dispatch(setFetching());
-  editProgramInFB(programId, values)
-    .then((response) => dispatch(editProgramInState(response)))
-    .catch(Error);
+  if (user) {
+    editProgramInFB(user, programId, values)
+        .then((response) => dispatch(editProgramInState(response)))
+        .catch(Error);
+  }
   dispatch(resetFetching());
 };
 
@@ -44,7 +53,8 @@ export const setExercises = (values: exercise[]) => async (dispatch: AppDispatch
   dispatch(pushExercises(values));
 };
 
-export const addWorkHistory = (dayNumber: number, values: Program) => async (dispatch: AppDispatch) => {
+export const addWorkHistory = (user: string, dayNumber: number, values: Program) => async (dispatch: AppDispatch) => {
+
   const programId = values.id;
   const editedProgram = {
     ...values,
@@ -70,7 +80,10 @@ export const addWorkHistory = (dayNumber: number, values: Program) => async (dis
       }),
     ],
   };
-  editProgramInFB(programId, editedProgram)
-    .then((response) => dispatch(editProgramInState(response)))
-    .catch(Error);
+  if (user) {
+    editProgramInFB(user, programId, editedProgram)
+        .then((response) => dispatch(editProgramInState(response)))
+        .catch(Error);
+  }
+
 };

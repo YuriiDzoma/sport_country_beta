@@ -16,7 +16,7 @@ import { onAuthStateChangeListener } from 'config/config';
 import { createUserDocumentFromAuth } from 'config/config';
 import { auth } from 'config/config';
 import { useAppDispatch } from 'hooks/redux';
-import { fetchUsers } from 'store/actions';
+import {fetchUsers} from 'store/actions';
 import { setCurrentUser } from 'store/profile-slice';
 
 function App() {

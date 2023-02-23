@@ -3,14 +3,15 @@ import React, { useEffect } from 'react';
 
 import Preloader from 'components/Common/Preloader/Preloader';
 import { useAppSelector } from 'hooks/redux';
-import { getIsFetching, getPrograms } from 'store/selectors';
+import {getIsFetching, getMyAllPrograms} from 'store/selectors';
 
 import { ProgramLink } from './ProgramLink/ProgramLink';
 import styles from './ProgramsListLinks.module.scss';
 import { ProgramsListLinksProps } from './ProgramsListLinks.types';
 
 const ProgramsListLinks: React.FC<ProgramsListLinksProps> = ({ onProgramsListHide }) => {
-  const programs = useAppSelector(getPrograms);
+  const programs = useAppSelector(getMyAllPrograms);
+  // console.log(programs)
   useEffect(() => {
   }, [programs]);
   const isFetching = useAppSelector(getIsFetching);

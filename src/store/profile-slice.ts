@@ -21,9 +21,31 @@ export const profileSlice = createSlice({
     setCurrentUser(state, action) {
       state.currentUser = action.payload;
     },
+
+    setMyProgram(state, action) {
+      state.myPrograms = action.payload;
+    },
+    removeProgramFromState(state, action) {
+      state.myPrograms = state.myPrograms.filter((item) => item.id !== action.payload);
+    },
+    editProgramInState(state, action) {
+      state.myPrograms = state.myPrograms.map((program) => {
+        if (program === action.payload.id) {
+          program = action.payload;
+        }
+        return program;
+      });
+    },
   },
   extraReducers: {},
 });
 
 export default profileSlice.reducer;
-export const { setCurrentUser, setFetchingProfile, resetFetchingProfile } = profileSlice.actions;
+export const {
+  setCurrentUser,
+  setMyProgram,
+  removeProgramFromState,
+  editProgramInState,
+  setFetchingProfile,
+  resetFetchingProfile
+} = profileSlice.actions;
