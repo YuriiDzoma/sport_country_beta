@@ -4,6 +4,7 @@ export type User = {
   displayName: string;
   photoURL: string;
   email: string;
+  isTrainer: boolean;
 };
 
 export type UsersState = {

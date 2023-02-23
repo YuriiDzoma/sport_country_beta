@@ -8,9 +8,12 @@ import WikiContainer from './TrainingWiki/WikiContainer';
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser, getPrograms} from "store/selectors";
 import {setMyPrograms} from "store/actions";
+import {createSelector} from "@reduxjs/toolkit";
+import {RootState} from "store/store";
 
 const Training = () => {
   const user = useAppSelector(currentUser);
+
   const dispatch = useAppDispatch();
   if (user) {
     dispatch(setMyPrograms(user));

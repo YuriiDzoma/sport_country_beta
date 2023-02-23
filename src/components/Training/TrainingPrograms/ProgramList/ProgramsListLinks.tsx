@@ -11,7 +11,6 @@ import { ProgramsListLinksProps } from './ProgramsListLinks.types';
 
 const ProgramsListLinks: React.FC<ProgramsListLinksProps> = ({ onProgramsListHide }) => {
   const programs = useAppSelector(getMyAllPrograms);
-
   useEffect(() => {
   }, [programs]);
   const isFetching = useAppSelector(getIsFetching);

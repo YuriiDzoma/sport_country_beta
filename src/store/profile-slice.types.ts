@@ -38,5 +38,6 @@ export type profileState = {
   currentUser: null | string;
   isLoading: boolean;
   myPrograms: Program[];
+  // isTrainer: boolean;
 };
 

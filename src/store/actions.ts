@@ -5,7 +5,7 @@ import { Program } from 'store/training-slice.types';
 import { resetLoading, setLoading, setUsers } from 'store/users-slice';
 import { pushExercises } from 'store/wikiExercises-slice';
 import { exercise } from 'store/wikiExercises-slyce.types';
-import {editProgramInState, removeProgramFromState, setMyProgram} from "store/profile-slice";
+import {editProgramInState, removeProgramFromState, setCurrentUser, setMyProgram} from "store/profile-slice";
 
 
 export const fetchUsers = () => async (dispatch: AppDispatch) => {
@@ -15,6 +15,14 @@ export const fetchUsers = () => async (dispatch: AppDispatch) => {
     .catch(Error);
   dispatch(resetLoading());
 };
+
+// export const fetchCurrentUser = (id: string) => async (dispatch: AppDispatch) => {
+//   dispatch(setLoading());
+//   getCurrentUser(id)
+//       .then((response) => dispatch(setCurrentUser(response)))
+//       .catch(Error);
+//   dispatch(resetLoading());
+// };
 
 export const setMyPrograms = (user: string) => async (dispatch: AppDispatch) => {
   if (user) {
