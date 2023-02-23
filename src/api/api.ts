@@ -4,9 +4,20 @@ import { addDoc, collection, deleteDoc, doc, getDocs, setDoc } from 'firebase/fi
 import { db } from 'config/config';
 import { Program } from 'store/training-slice.types';
 
+
 export const getUsers = async () => {
   try {
     return await getDocs(collection(db, 'users')).then((querySnapshot) => {
+      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const fetchMyPrograms = async (user: string) => {
+  try {
+    return await getDocs(collection(db, `users/${user}/myPrograms`)).then((querySnapshot) => {
       return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     });
   } catch (e) {
@@ -45,9 +56,20 @@ export const addProgramToFB = async (values: Program) => {
   }
 };
 
-export const deleteProgramInFB = async (programId: string) => {
+export const addProgramToProfile = async (user: string | null, values: Program) => {
   try {
-    await deleteDoc(doc(db, 'programs', programId)).then((response) => {
+    await addDoc(collection(db, `users/${user}/myPrograms`), { ...values }).then((data) => {
+      console.log(data);
+    });
+    return values;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const deleteProgramInFB = async (user: string, programId: string) => {
+  try {
+    await deleteDoc(doc(db, `users/${user}/myPrograms`, programId)).then((response) => {
       return response;
     });
     return programId;
@@ -56,10 +78,10 @@ export const deleteProgramInFB = async (programId: string) => {
   }
 };
 
-export const editProgramInFB = async (programId: string | undefined, values: any) => {
+export const editProgramInFB = async (user: string, programId: string | undefined, values: any) => {
   try {
     if (!programId) return false;
-    const collectionRef = doc(db, 'programs', programId);
+    const collectionRef = doc(db, `users/${user}/myPrograms`, programId);
     const updateObject = { ...values };
     await setDoc(collectionRef, updateObject, { ...values });
     return updateObject;

@@ -7,7 +7,6 @@ import FindSort from "./FindSort/FindSort";
 import {ComplexesProps} from "./Complexes.types";
 
 const Complexes: React.FC<ComplexesProps> = ({allPrograms}) => {
-
     const [programs, setPrograms] = useState<Program[] | undefined>([...allPrograms]);
     const filteringPrograms = (name: string, checked: boolean) => {
         let filteredPrograms;

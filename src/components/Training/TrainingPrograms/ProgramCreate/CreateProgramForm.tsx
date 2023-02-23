@@ -2,10 +2,10 @@ import { useFormik } from 'formik';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
 
-import { fetchPrograms } from 'api/api';
+import {addProgramToProfile} from 'api/api';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { editProgram, setNewProgram } from 'store/actions';
-import { selectProgramById } from 'store/selectors';
+import {editProgram, setMyPrograms} from 'store/actions';
+import {currentUser, selectProgramById} from 'store/selectors';
 
 import CreateDay from './CreateDay/CreateDay';
 import CreateExercises from './CreateExercises/CreateExercises';
@@ -16,6 +16,7 @@ import CreateType from './CreateType/CreateType';
 const CreateProgramForm = ({ isEditor = false }) => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const user = useAppSelector(currentUser);
   const program = useAppSelector((state) => selectProgramById(state, id));
   const dispatch = useAppDispatch();
   const formValues =
@@ -60,8 +61,10 @@ const CreateProgramForm = ({ isEditor = false }) => {
       setTimeout(() => {
         const programId = isEditor && program ? program.id : undefined;
         // values = isEditor && program ? { ...values } : { ...values };
-        isEditor ? dispatch(editProgram(programId, values)) : dispatch(setNewProgram(values));
-        dispatch(fetchPrograms());
+        isEditor && user ? dispatch(editProgram(user, programId, values)) : addProgramToProfile(user, values);
+        if (user) {
+            dispatch(setMyPrograms(user));
+        }
         navigate('/training/training_programs/');
         setSubmitting(false);
       }, 400);

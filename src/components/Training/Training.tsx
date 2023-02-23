@@ -5,10 +5,17 @@ import TrainingNavbar from './TrainingNavbar/TrainingNavbar';
 import Complexes from './Complexes/Complexes';
 import TrainingPrograms from './TrainingPrograms/TrainingPrograms';
 import WikiContainer from './TrainingWiki/WikiContainer';
-import {useAppSelector} from "hooks/redux";
-import {getPrograms} from "store/selectors";
+import {useAppDispatch, useAppSelector} from "hooks/redux";
+import {currentUser, getPrograms} from "store/selectors";
+import {setMyPrograms} from "store/actions";
 
 const Training = () => {
+  const user = useAppSelector(currentUser);
+  const dispatch = useAppDispatch();
+  if (user) {
+    dispatch(setMyPrograms(user));
+  }
+
   const allPrograms = useAppSelector(getPrograms)
   const trainingNavigation = [
     { id: 1, tittle: 'Complexes', url: '/training/complexes/' },

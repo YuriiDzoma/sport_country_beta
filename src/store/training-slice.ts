@@ -22,17 +22,7 @@ export const trainingSlice = createSlice({
     // addProgramToState(state, action) {
     //   // state.programs = [...state.programs, action.payload]
     // },
-    removeProgramFromState(state, action) {
-      state.programs = state.programs.filter((item) => item.id !== action.payload);
-    },
-    editProgramInState(state, action) {
-      state.programs = state.programs.map((program) => {
-        if (program === action.payload.id) {
-          program = action.payload;
-        }
-        return program;
-      });
-    },
+
     saveTrainingProcess(state, action) {
       console.log(action);
     },
@@ -54,5 +44,5 @@ export const trainingSlice = createSlice({
 });
 
 export default trainingSlice.reducer;
-export const { setFetching, resetFetching, removeProgramFromState, editProgramInState, saveTrainingProcess } =
+export const { setFetching, resetFetching, saveTrainingProcess } =
   trainingSlice.actions;

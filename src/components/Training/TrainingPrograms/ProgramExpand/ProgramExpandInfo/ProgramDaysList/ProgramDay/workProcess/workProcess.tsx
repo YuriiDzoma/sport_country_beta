@@ -3,10 +3,9 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
 
-import { fetchPrograms } from 'api/api';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import { addWorkHistory, editProgram } from 'store/actions';
-import { getPrograms } from 'store/selectors';
+import {addWorkHistory, editProgram, setMyPrograms} from 'store/actions';
+import {currentUser, getMyAllPrograms} from 'store/selectors';
 import { Program } from 'store/training-slice.types';
 
 import styles from './workProcess.module.scss';
@@ -16,7 +15,8 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { id } = useParams();
-  const programs = useAppSelector(getPrograms);
+  const user = useAppSelector(currentUser);
+  const programs = useAppSelector(getMyAllPrograms);
   const initialFormValues = programs
     ? {
         programs: programs.map((program) => program),
@@ -25,9 +25,13 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
         error: '',
       };
   const saveValues = (values: Program) => {
-    dispatch(editProgram(values.id, values));
+    if (user) {
+      dispatch(editProgram(user, values.id, values));
+    }
     setSubmitting(false);
-    dispatch(fetchPrograms());
+    if (user) {
+      dispatch(setMyPrograms(user));
+    }
     navigate('/training/training_programs/');
   };
   const { handleChange, handleSubmit, setSubmitting, isSubmitting, dirty, resetForm, values } = useFormik({
@@ -35,11 +39,13 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
     onSubmit: (values) => {
       setTimeout(() => {
         const editedProgram = values.programs ? values.programs.find((item) => item.id === id) : null;
-        if (editedProgram) {
-          dispatch(addWorkHistory(dayNumber, editedProgram));
+        if (editedProgram && user) {
+          dispatch(addWorkHistory(user, dayNumber, editedProgram));
         }
         setSubmitting(false);
-        dispatch(fetchPrograms());
+        if (user) {
+          dispatch(setMyPrograms(user));
+        }
         resetForm();
         navigate('/training/training_programs/');
       }, 400);

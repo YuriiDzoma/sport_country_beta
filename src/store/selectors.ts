@@ -3,7 +3,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from 'store/store';
 
 export const selectProgramById = createSelector(
-  [(state: RootState) => state.training.programs, (state, id: string | undefined) => id],
+  [(state: RootState) => state.profilePage.myPrograms, (state, id: string | undefined) => id],
   (programs, id) => programs.find((program) => id && program.id === id)
 );
 
@@ -19,3 +19,4 @@ export const getExercises = (state: RootState) => state.wikiExercise.exercises;
 export const currentUser = (state: RootState) => state.profilePage.currentUser;
 export const getUsers = (state: RootState) => state.users.users;
 export const getIsFetchingUsers = (state: RootState) => state.users.isLoading;
+export const getMyAllPrograms = (state: RootState) => state.profilePage.myPrograms;
