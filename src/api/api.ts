@@ -17,7 +17,7 @@ export const getUsers = async () => {
 
 export const fetchMyPrograms = async (user: string) => {
   try {
-    return await getDocs(collection(db, `users/${user}/myPrograms`)).then((querySnapshot) => {
+    return await getDocs(collection(db, `usersPrograms/${user}/programs`)).then((querySnapshot) => {
       return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     });
   } catch (e) {
@@ -58,7 +58,7 @@ export const addProgramToFB = async (values: Program) => {
 
 export const addProgramToProfile = async (user: string | null, values: Program) => {
   try {
-    await addDoc(collection(db, `usersPrograms/${user}/programs`), { ...values }).then((data) => {
+    await addDoc(collection(db, `usersPrograms/${user}/programs`), { ...values }).then(() => {
       console.log('program added');
     });
     return values;
@@ -69,7 +69,7 @@ export const addProgramToProfile = async (user: string | null, values: Program) 
 
 export const deleteProgramInFB = async (user: string, programId: string) => {
   try {
-    await deleteDoc(doc(db, `users/${user}/myPrograms`, programId)).then((response) => {
+    await deleteDoc(doc(db, `usersPrograms/${user}/programs`, programId)).then((response) => {
       return response;
     });
     return programId;
@@ -81,7 +81,7 @@ export const deleteProgramInFB = async (user: string, programId: string) => {
 export const editProgramInFB = async (user: string, programId: string | undefined, values: any) => {
   try {
     if (!programId) return false;
-    const collectionRef = doc(db, `users/${user}/myPrograms`, programId);
+    const collectionRef = doc(db, `usersPrograms/${user}/programs`, programId);
     const updateObject = { ...values };
     await setDoc(collectionRef, updateObject, { ...values });
     return updateObject;
