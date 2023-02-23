@@ -1,45 +1,70 @@
 .userBlock {
+  width: 50%;
+  padding: 5px 20px;
   display: flex;
   align-items: center;
-  margin: 10px 5px 0 5px;
-  padding: 10px;
-  border-radius: 4px;
-  background-color: #e9f3fc;
-  width: 45%;
-  flex-grow: 1;
-  transition: all 100ms;
+  justify-content: space-between;
+
+  @media only screen and (max-width: 768px) {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  &:hover {
+    .userBlock {
+      &__name {
+        color: #1068bf;
+      }
+    }
+  }
+
+  &:nth-child(2n - 1) {
+    border-right: 1px solid #dcdcde;
+
+    @media only screen and (max-width: 768px) {
+      border: none;
+    }
+  }
+
+  &__addToFriends {
+    background-color: #1f75cb;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 5px 12px;
+    color: #ffffff;
+    font-weight: 500;
+    transition: all 100ms;
+
+    &:hover {
+      background-color: #1068bf;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+  }
 
   &__pic {
-    min-width: 70px;
-    height: 70px;
+    min-width: 50px;
+    height: 50px;
     object-fit: cover;
     overflow: hidden;
     border-radius: 50%;
     margin-right: 20px;
-    width: 70px;
-  }
-
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-    margin: 10px 0 0 0;
-  }
-
-  &:hover {
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  }
-
-  &__image {
-    min-width: 70px;
-    height: 70px;
-    object-fit: cover;
-    border-radius: 50%;
-    width: 70px;
+    width: 50px;
 
     @media only screen and (max-width: 768px) {
       width: 50px;
       height: 50px;
       min-width: 50px;
     }
+  }
+
+  &__image {
+    width: 100% !important;
+    height: 100% !important;
   }
 
   &__name {

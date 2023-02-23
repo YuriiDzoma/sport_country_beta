@@ -85,7 +85,7 @@ const CreateProgramForm = ({ isEditor = false }) => {
       </div>
       <div className={styles.createProgramWrite_create}>
         <button type="submit" disabled={isSubmitting}>
-          <span>{isEditor ? <span>confirm changes</span> : <span>Create</span>}</span>
+          <span>{isEditor ? <span>confirm changes</span> : <span>save</span>}</span>
         </button>
       </div>
     </form>
