@@ -58,8 +58,8 @@ export const addProgramToFB = async (values: Program) => {
 
 export const addProgramToProfile = async (user: string | null, values: Program) => {
   try {
-    await addDoc(collection(db, `users/${user}/myPrograms`), { ...values }).then((data) => {
-      console.log(data);
+    await addDoc(collection(db, `usersPrograms/${user}/programs`), { ...values }).then((data) => {
+      console.log('program added');
     });
     return values;
   } catch (e) {
