@@ -21,9 +21,11 @@ export const profileSlice = createSlice({
     setCurrentUser(state, action) {
       state.currentUser = action.payload;
     },
-
     setMyProgram(state, action) {
       state.myPrograms = action.payload;
+    },
+    addProgramToState(state, action) {
+      state.myPrograms = [...state.myPrograms, action.payload]
     },
     removeProgramFromState(state, action) {
       state.myPrograms = state.myPrograms.filter((item) => item.id !== action.payload);
@@ -44,6 +46,7 @@ export default profileSlice.reducer;
 export const {
   setCurrentUser,
   setMyProgram,
+  addProgramToState,
   removeProgramFromState,
   editProgramInState,
   setFetchingProfile,
