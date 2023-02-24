@@ -1,9 +1,23 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { addDoc, collection, deleteDoc, doc, getDocs, setDoc } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs, setDoc, getDoc } from 'firebase/firestore';
 
 import { db } from 'config/config';
 import { Program } from 'store/training-slice.types';
 
+export const getCurrentUser = async (id: string) => {
+  try {
+    const docRef = doc(db, "users", `${id}`);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return {...docSnap.data(), id: id};
+    } else {
+      console.log("No such document!");
+    }
+
+  } catch (e) {
+    console.log(e)
+  }
+}
 
 export const getUsers = async () => {
   try {
@@ -48,7 +62,7 @@ export const fetchExercisesGroups = createAsyncThunk('exercisesGroups/fetchAll',
 export const addProgramToFB = async (values: Program) => {
   try {
     await addDoc(collection(db, 'programs'), { ...values }).then((data) => {
-      console.log(data);
+      console.log('program added to global programs list');
     });
     return values;
   } catch (e) {
@@ -82,6 +96,18 @@ export const editProgramInFB = async (user: string, programId: string | undefine
   try {
     if (!programId) return false;
     const collectionRef = doc(db, `usersPrograms/${user}/programs`, programId);
+    const updateObject = { ...values };
+    await setDoc(collectionRef, updateObject, { ...values });
+    return updateObject;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const editGlobalProgramInFB = async (programId: string | undefined, values: any) => {
+  try {
+    if (!programId) return false;
+    const collectionRef = doc(db, `programs`, programId);
     const updateObject = { ...values };
     await setDoc(collectionRef, updateObject, { ...values });
     return updateObject;

@@ -26,11 +26,11 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
       };
   const saveValues = (values: Program) => {
     if (user) {
-      dispatch(editProgram(user, values.id, values));
+      dispatch(editProgram(user.id, values.id, values));
     }
     setSubmitting(false);
     if (user) {
-      dispatch(setMyPrograms(user));
+      dispatch(setMyPrograms(user.id));
     }
     navigate('/training/training_programs/');
   };
@@ -40,11 +40,11 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
       setTimeout(() => {
         const editedProgram = values.programs ? values.programs.find((item) => item.id === id) : null;
         if (editedProgram && user) {
-          dispatch(addWorkHistory(user, dayNumber, editedProgram));
+          dispatch(addWorkHistory(user.id, dayNumber, editedProgram));
         }
         setSubmitting(false);
         if (user) {
-          dispatch(setMyPrograms(user));
+          dispatch(setMyPrograms(user.id));
         }
         resetForm();
         navigate('/training/training_programs/');

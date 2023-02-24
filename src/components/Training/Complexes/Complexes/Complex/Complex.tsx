@@ -4,18 +4,17 @@ import React from "react";
 import {ComplexProps} from "./Complex.types";
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {addProgramToProfile} from "api/api";
-import {currentUser, getUserIsTrainer} from "store/selectors";
+import {currentUser} from "store/selectors";
 import {addProgramToState} from "store/profile-slice";
 
 
 const Complex: React.FC<ComplexProps> = ({program}) => {
     const user = useAppSelector(currentUser);
-    // const {isTrainer}: any = useAppSelector((state) => getUserIsTrainer(state, user));
     const dispatch = useAppDispatch();
 
     const onSubmit = () => {
-        if (program) {
-            addProgramToProfile(user, program);
+        if (program && user) {
+            addProgramToProfile(user.id, program);
             dispatch(addProgramToState(program))
         }
     }
