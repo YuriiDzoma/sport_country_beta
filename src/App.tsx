@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Route, Routes } from 'react-router-dom';
 
-import { fetchExercisesGroups, fetchPrograms } from 'api/api';
+import {fetchExercisesGroups, fetchPrograms, getCurrentUser} from 'api/api';
 import Preloader from 'components/Common/Preloader/Preloader';
 import Header from 'components/Header/Header';
 import Login from 'components/Login/Login';
@@ -32,7 +32,7 @@ function App() {
 
       if (user) {
         createUserDocumentFromAuth(user);
-        dispatch(setCurrentUser(user.uid));
+        getCurrentUser(user.uid).then((response => dispatch(setCurrentUser(response))))
       } else {
         dispatch(setCurrentUser(null));
       }

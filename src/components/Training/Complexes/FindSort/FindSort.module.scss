@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px auto;
+  margin: 15px auto;
 
   &_field {
     margin-right: 15px;
@@ -18,7 +18,7 @@
   margin-right: 30px;
 
   &_field {
-    margin-right: 15px;
+    margin-right: 5px;
     border-radius: 4px;
     padding: 2px;
     border: 1px solid #1068bf;
@@ -30,5 +30,36 @@
   &_change {
     margin-left: 8px;
     border: 1px solid #babcbe;
+  }
+}
+
+.createProgram {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 25px;
+  margin-top: auto;
+
+  &__link {
+    background: none;
+    outline: 1px solid white;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    color: #2da44e;
+    padding: 0 0 2px 0;
+    border-radius: 0;
+    text-decoration: underline;
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    span {
+      margin-left: 18px;
+      line-height: 22px;
+    }
   }
 }

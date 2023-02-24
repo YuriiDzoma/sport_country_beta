@@ -8,15 +8,13 @@ import WikiContainer from './TrainingWiki/WikiContainer';
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser, getPrograms} from "store/selectors";
 import {setMyPrograms} from "store/actions";
-import {createSelector} from "@reduxjs/toolkit";
-import {RootState} from "store/store";
 
 const Training = () => {
   const user = useAppSelector(currentUser);
 
   const dispatch = useAppDispatch();
   if (user) {
-    dispatch(setMyPrograms(user));
+    dispatch(setMyPrograms(user.id));
   }
 
   const allPrograms = useAppSelector(getPrograms)
@@ -34,7 +32,7 @@ const Training = () => {
       <div className={styles.trainingContentWrapper}>
         <div className={styles.trainingContent}>
           <Routes>
-            <Route path={'Complexes/'} element={ allPrograms && allPrograms.length>=1
+            <Route path={'Complexes/*'} element={ allPrograms && allPrograms.length>=1
                 ? <Complexes allPrograms={allPrograms} />
                 : <>Sorry, programs are not available at the moment</>} />
             <Route path={'training_programs/*'} element={<TrainingPrograms />} />

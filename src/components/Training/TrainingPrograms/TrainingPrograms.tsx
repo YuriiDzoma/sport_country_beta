@@ -30,6 +30,7 @@ const TrainingPrograms = () => {
           <Route path={'create/'} element={<CreateProgramForm />} />
           <Route path={':id'} element={<ProgramExpand />} />
           <Route path={`:id/redactor/`} element={<CreateProgramForm isEditor />} />
+          <Route path={'global_create/'} element={<CreateProgramForm isTrainer />} />
         </Routes>
       </div>
     </div>

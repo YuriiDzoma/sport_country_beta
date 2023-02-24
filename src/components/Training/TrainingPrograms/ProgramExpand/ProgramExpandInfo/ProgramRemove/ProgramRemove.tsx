@@ -15,7 +15,7 @@ const ProgramRemove = () => {
     const dispatch = useAppDispatch()
     const onSubmit = (id: string) => {
         if (id && user) {
-            dispatch(deleteProgram(user, id)).then();
+            dispatch(deleteProgram(user.id, id)).then();
             navigate('/training/training_programs/');
         }
     }

@@ -14,9 +14,9 @@ const Navigation = () => {
   return (
       <>
         {
-          user && (
+            user && (
                 <div className={styles.navigationWrapper}>
-                  <Link className={styles.customLink} to={`profile/${user}`}>
+                  <Link className={styles.customLink} to={`profile/${user.id}`}>
                     <AccountCircleIcon />
                     Profile
                   </Link>
@@ -31,7 +31,6 @@ const Navigation = () => {
                 </div>
             )
         }
-
       </>
   );
 };

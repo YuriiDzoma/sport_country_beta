@@ -1,11 +1,17 @@
-import {addProgramToFB, deleteProgramInFB, editProgramInFB, fetchMyPrograms, getUsers} from 'api/api';
+import {
+  addProgramToFB,
+  deleteProgramInFB,
+  editProgramInFB,
+  fetchMyPrograms,
+  getUsers
+} from 'api/api';
 import { AppDispatch } from 'store/store';
-import { resetFetching, setFetching } from 'store/training-slice';
+import {addProgramToGlobalState, resetFetching, setFetching} from 'store/training-slice';
 import { Program } from 'store/training-slice.types';
 import { resetLoading, setLoading, setUsers } from 'store/users-slice';
 import { pushExercises } from 'store/wikiExercises-slice';
 import { exercise } from 'store/wikiExercises-slyce.types';
-import {editProgramInState, removeProgramFromState, setCurrentUser, setMyProgram} from "store/profile-slice";
+import {editProgramInState, removeProgramFromState, setMyProgram} from "store/profile-slice";
 
 
 export const fetchUsers = () => async (dispatch: AppDispatch) => {
@@ -16,26 +22,18 @@ export const fetchUsers = () => async (dispatch: AppDispatch) => {
   dispatch(resetLoading());
 };
 
-// export const fetchCurrentUser = (id: string) => async (dispatch: AppDispatch) => {
-//   dispatch(setLoading());
-//   getCurrentUser(id)
-//       .then((response) => dispatch(setCurrentUser(response)))
-//       .catch(Error);
-//   dispatch(resetLoading());
-// };
-
 export const setMyPrograms = (user: string) => async (dispatch: AppDispatch) => {
   if (user) {
     fetchMyPrograms(user).then((response) => dispatch(setMyProgram(response)))
   }
 }
 
-export const setNewProgram = (values: Program) => async (dispatch: AppDispatch) => {
+export const setNewGlobalProgram = (values: Program) => async (dispatch: AppDispatch) => {
   dispatch(setFetching());
   const newProgram = {
     ...values,
   };
-  addProgramToFB(newProgram);
+  addProgramToFB(newProgram).then((response) => dispatch(addProgramToGlobalState(response)));
   dispatch(resetFetching());
 };
 
@@ -56,6 +54,14 @@ export const editProgram = (user: string, programId: string | undefined, values:
   }
   dispatch(resetFetching());
 };
+
+// export const editGlobalProgram = (programId: string | undefined, values: Program) => async (dispatch: AppDispatch) => {
+//   dispatch(setFetching());
+//   editGlobalProgramInFB(programId, values)
+//       .then((response) => dispatch(editProgramInState(response)))
+//       .catch(Error);
+//   dispatch(resetFetching());
+// };
 
 export const setExercises = (values: exercise[]) => async (dispatch: AppDispatch) => {
   dispatch(pushExercises(values));

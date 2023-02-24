@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import {addProgramToProfile} from 'api/api';
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import {editProgram, setMyPrograms} from 'store/actions';
+import {editProgram, setMyPrograms, setNewGlobalProgram} from 'store/actions';
 import {currentUser, selectProgramById} from 'store/selectors';
 
 import CreateDay from './CreateDay/CreateDay';
@@ -13,7 +13,7 @@ import CreateName from './CreateName/CreateName';
 import styles from './CreateProgramForm.module.scss';
 import CreateType from './CreateType/CreateType';
 
-const CreateProgramForm = ({ isEditor = false }) => {
+const CreateProgramForm = ({ isTrainer= false, isEditor = false }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const user = useAppSelector(currentUser);
@@ -60,10 +60,13 @@ const CreateProgramForm = ({ isEditor = false }) => {
     onSubmit: (values) => {
       setTimeout(() => {
         const programId = isEditor && program ? program.id : undefined;
-        // values = isEditor && program ? { ...values } : { ...values };
-        isEditor && user ? dispatch(editProgram(user, programId, values)) : addProgramToProfile(user, values);
         if (user) {
-            dispatch(setMyPrograms(user));
+            if (!isTrainer) {
+                isEditor ? dispatch(editProgram(user.id, programId, values)) : addProgramToProfile(user.id, values);
+                dispatch(setMyPrograms(user.id));
+            } else {
+                dispatch(setNewGlobalProgram(values));
+            }
         }
         navigate('/training/training_programs/');
         setSubmitting(false);

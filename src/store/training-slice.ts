@@ -19,10 +19,17 @@ export const trainingSlice = createSlice({
     resetFetching(state) {
       state.isLoading = false;
     },
-    // addProgramToState(state, action) {
-    //   // state.programs = [...state.programs, action.payload]
-    // },
-
+    addProgramToGlobalState(state, action) {
+      state.programs = [...state.programs, action.payload]
+    },
+    editGlobalProgram(state, action) {
+      state.programs = state.programs.map((program) => {
+        if (program === action.payload.id) {
+          program = action.payload;
+        }
+        return program;
+      });
+    },
     saveTrainingProcess(state, action) {
       console.log(action);
     },
@@ -44,5 +51,5 @@ export const trainingSlice = createSlice({
 });
 
 export default trainingSlice.reducer;
-export const { setFetching, resetFetching, saveTrainingProcess } =
+export const { setFetching, addProgramToGlobalState, resetFetching, saveTrainingProcess } =
   trainingSlice.actions;
