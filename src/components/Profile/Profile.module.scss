@@ -2,6 +2,10 @@
   text-align: center;
   padding: 30px 10px 0;
 
+  &__noProfile {
+    text-align: center;
+  }
+
   &__additional {
     display: flex;
 
@@ -56,7 +60,7 @@
   }
 
   &__infoMain {
-    margin-left: 20px;
+    margin-left: 50px;
     flex: 1;
 
     @media only screen and (max-width: 768px) {
@@ -78,35 +82,38 @@
   &__imageBox {
     display: flex;
     flex-direction: column;
-    max-width: 270px;
+    max-width: 120px;
     flex-grow: 1;
     flex-shrink: 0;
+    position: relative;
   }
 
   &__imageUpload {
-    margin-top: 8px;
-    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #1f75cb;
     color: #ffffff;
-    padding: 8px;
     transition: background-color 100ms;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    position: absolute;
+    border: 2px solid #ffffff;
+    padding: 0 2px 3px 0;
+    top: 77px;
+    right: -15px;
 
     &:hover {
       background-color: #1068bf;
     }
   }
 
-  &__imageUploadText {
-    margin-left: 8px;
-  }
-
   &__imageInner {
     border: 1px solid #dcdcde;
-    border-radius: 4px;
-    height: 300px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
     overflow: hidden;
   }
 }

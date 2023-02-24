@@ -2,7 +2,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './Header.module.scss';
-import UserMenu from '../UserMenu/UserMenu';
+import UserMenu from './UserMenu/UserMenu';
 import React, {useState, MouseEvent} from 'react';
 
 const Header = () => {

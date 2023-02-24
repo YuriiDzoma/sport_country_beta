@@ -3,9 +3,9 @@ import styles from './UserMenu.module.scss';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
-import {useAppSelector} from '../../hooks/redux';
-import {currentUser} from '../../store/selectors';
-import {signOutUser} from '../../config/config';
+import {useAppSelector} from '../../../hooks/redux';
+import {currentUser} from '../../../store/selectors';
+import {signOutUser} from '../../../config/config';
 import {Link} from 'react-router-dom';
 
 const UserMenu = () => {

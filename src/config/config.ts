@@ -63,6 +63,8 @@ export const createUserDocumentFromAuth = async (userAuth: User, additionalInfor
     }
   }
 
+  console.log(userDocRef);
+
   return userDocRef;
 };
 
