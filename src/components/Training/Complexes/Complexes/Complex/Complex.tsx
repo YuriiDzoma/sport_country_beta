@@ -6,6 +6,7 @@ import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {addProgramToProfile} from "api/api";
 import {currentUser} from "store/selectors";
 import {addProgramToState} from "store/profile-slice";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 const Complex: React.FC<ComplexProps> = ({program}) => {
@@ -20,15 +21,22 @@ const Complex: React.FC<ComplexProps> = ({program}) => {
     }
     return (
         <div className={styles.program}>
-            <div className={styles.program_type}>
-                <span className={styles.program_title}>{program.title}</span>
+            <div className={styles.programInfo}>
+                <div className={styles.programInfo_name}>
+                    <span className={styles.programInfo_title}>{program.title}</span>
+                </div>
+                <div>
+                    <span>{program.typeOf}</span>
+                </div>
+                <div>
+                    <button onClick={() => onSubmit()} className={styles.programInfo_add} ><AddCircleIcon color={'primary'} /></button>
+                </div>
             </div>
-            <div>
-                <span>{program.typeOf}</span>
-            </div>
-            <div>
-                <button onClick={() => onSubmit()} className={styles.program_add} ><AddCircleIcon color={'primary'} /></button>
-            </div>
+            <button className={styles.program__expand}>
+                <ExpandMoreIcon color={'primary'} fontSize={'small'} />
+                <span>show exercises</span>
+                <ExpandMoreIcon color={'primary'} fontSize={'small'} />
+            </button>
         </div>
     )
 }
