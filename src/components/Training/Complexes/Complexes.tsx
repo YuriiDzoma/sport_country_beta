@@ -5,6 +5,7 @@ import React, {useState} from "react";
 import {Program} from "store/training-slice.types";
 import FindSort from "./FindSort/FindSort";
 import {ComplexesProps} from "./Complexes.types";
+import CreateGlobalProgram from "components/Training/Complexes/CreateGlobalProgram/CreateGlobalProgram";
 
 const Complexes: React.FC<ComplexesProps> = ({allPrograms}) => {
     const [programs, setPrograms] = useState<Program[] | undefined>([...allPrograms]);
@@ -19,13 +20,14 @@ const Complexes: React.FC<ComplexesProps> = ({allPrograms}) => {
     }
 
   return(
-      <div className={styles.complexesWrapper}>
+      <div>
           <FindSort />
           <div className={styles.programsContainer}>
-              <div className={styles.filters}>
+              <div>
                   <Filters filteringPrograms={filteringPrograms} />
               </div>
-              <div className={styles.complexes}>
+              <div>
+                  <CreateGlobalProgram />
                   <ComplexesList programs={programs} />
               </div>
           </div>

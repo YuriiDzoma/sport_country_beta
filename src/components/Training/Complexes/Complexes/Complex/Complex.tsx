@@ -19,7 +19,7 @@ const Complex: React.FC<ComplexProps> = ({program}) => {
         }
     }
     return (
-        <div className={styles.program} key={program.id}>
+        <div className={styles.program}>
             <div className={styles.program_type}>
                 <span className={styles.program_title}>{program.title}</span>
             </div>
