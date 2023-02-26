@@ -1,20 +1,10 @@
-.createProgramBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 0 8px 0;
-  padding: 6px;
-  border: 1px solid #5da3b4;
-  border-radius: 4px;
-  min-width: 300px;
-}
-
 .createProgram {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 25px;
   margin-top: auto;
+  margin-bottom: 10px;
+  width: 100%;
 
   &__link {
     background: none;
@@ -24,9 +14,11 @@
     display: flex;
     align-items: center;
     color: #2da44e;
-    padding: 0 0 2px 0;
-    border-radius: 0;
-    text-decoration: underline;
+    padding: 8px 10px 6px;
+    border: 1px solid #2da44e;
+    border-radius: 4px;
+    width: 100%;
+    justify-content: center;
 
     svg {
       width: 22px;

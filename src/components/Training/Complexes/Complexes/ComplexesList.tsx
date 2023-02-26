@@ -7,8 +7,7 @@ const ComplexesList: React.FC<ComplexesListProps> = ({programs}) => {
     return (
         <>
             {programs && (
-                programs.map((program, index) => <Complex key={index} program={program} />
-                )
+                programs.map((program, index) => <Complex key={index} program={program} />)
             )}
         </>
     )

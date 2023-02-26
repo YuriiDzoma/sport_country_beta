@@ -16,8 +16,8 @@ const Complex: React.FC<ComplexProps> = ({program}) => {
     const dispatch = useAppDispatch();
     const [showMore, setShowMore] = useState(false)
 
-    const showExercises = (values: boolean) => {
-        setShowMore(values)
+    const showExercises = () => {
+        setShowMore(!showMore);
     }
 
     const onSubmit = () => {
@@ -27,36 +27,27 @@ const Complex: React.FC<ComplexProps> = ({program}) => {
         }
     }
     return (
-        <div className={styles.program}>
+        <div className={`${styles.program} ${showMore ? styles.program__expanded : ''}`}>
             <div className={styles.programInfo}>
-                <div className={styles.programInfo_name}>
-                    <span className={styles.programInfo_title}>{program.title}</span>
-                </div>
-                <div>
-                    <span>{program.typeOf}</span>
-                </div>
-                <div>
-                    <button onClick={() => onSubmit()} className={styles.programInfo_add}>
-                        <AddCircleIcon color={'primary'} />
-                    </button>
-                </div>
+                <p className={styles.programInfo_name}>
+                    {program.title}
+                </p>
+                <p className={styles.programInfo__type}>
+                    {program.typeOf}
+                </p>
+                <button onClick={() => onSubmit()} className={styles.programInfo_add}>
+                    <AddCircleIcon className={styles.programInfo_addIcon} color={'primary'} />
+                </button>
             </div>
-            <div>{showMore && (
+            <div className={styles.program__inner}>
                 <DayList days={program.days} />
-            )}
             </div>
-            {!showMore
-                ? <button onClick={()=> showExercises(true)} className={styles.program__expand}>
-                    <ExpandMoreIcon color={'primary'} fontSize={'small'} />
-                    <span>show exercises</span>
-                    <ExpandMoreIcon color={'primary'} fontSize={'small'} />
-                </button>
-                : <button onClick={()=> showExercises(false)} className={styles.program__expand}>
-                    <ExpandLessIcon color={'primary'} fontSize={'small'} />
-                    <span>hide exercises</span>
-                    <ExpandLessIcon color={'primary'} fontSize={'small'} />
-                </button>
-            }
+            <button onClick={()=> showExercises()} className={styles.program__expand}>
+                <ExpandMoreIcon className={styles.program__expandArrow} fontSize={'small'} />
+                <span className={styles.program__showText}>show exercises</span>
+                <span className={styles.program__hideText}>hide exercises</span>
+                <ExpandMoreIcon className={styles.program__expandArrow} fontSize={'small'} />
+            </button>
         </div>
     )
 }
