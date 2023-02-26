@@ -9,7 +9,10 @@ import CreateGlobalProgram from "components/Training/Complexes/CreateGlobalProgr
 import {useAppSelector} from "hooks/redux";
 import {currentUser} from "store/selectors";
 
+import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+
 const Complexes: React.FC<ComplexesProps> = ({allPrograms}) => {
+    const [showFilters, setShowFilters] = useState(false);
     const user = useAppSelector(currentUser);
     const [programs, setPrograms] = useState<Program[] | undefined>([...allPrograms]);
     const filteringPrograms = (name: string, checked: boolean) => {
@@ -22,14 +25,22 @@ const Complexes: React.FC<ComplexesProps> = ({allPrograms}) => {
         setPrograms(filteredPrograms)
     }
 
+    const onFiltersShow = () => {
+      setShowFilters(!showFilters);
+    }
+
   return(
-      <div>
+      <div className={styles.programsContainer__wrapper}>
           <FindSort />
           <div className={styles.programsContainer}>
-              <div>
-                  <Filters filteringPrograms={filteringPrograms} />
+              <div className={`${styles.programsContainer__filters} ${showFilters ? styles.programsContainer__filtersShowed : ''}`}>
+                <button onClick={onFiltersShow} className={styles.programsContainer__buttonShow}>
+                  <DoubleArrowIcon className={styles.programsContainer__buttonShowIcon} />
+                </button>
+
+                <Filters filteringPrograms={filteringPrograms} />
               </div>
-              <div>
+              <div className={styles.programsContainer__list}>
                   {user && user.isTrainer && (
                       <CreateGlobalProgram />
                   )}
