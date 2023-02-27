@@ -37,13 +37,10 @@ const Complexes: React.FC<ComplexesProps> = ({allPrograms}) => {
                 <button onClick={onFiltersShow} className={styles.programsContainer__buttonShow}>
                   <DoubleArrowIcon className={styles.programsContainer__buttonShowIcon} />
                 </button>
-
                 <Filters filteringPrograms={filteringPrograms} />
               </div>
               <div className={styles.programsContainer__list}>
-                  {user && user.isTrainer && (
-                      <CreateGlobalProgram />
-                  )}
+                  {user && user.isTrainer && (<CreateGlobalProgram />)}
                   <ComplexesList programs={programs} />
               </div>
           </div>

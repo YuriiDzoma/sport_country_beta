@@ -19,6 +19,9 @@
 }
 
 .programExpand {
+  display: flex;
+  align-items: center;
+
   h2 {
     font-weight: 700;
     display: flex;
@@ -35,10 +38,11 @@
     margin-right: 12px;
   }
 
-  &_type {
+  &__type {
     display: flex;
     justify-content: left;
-    margin-bottom: 5px;
+    margin: 5px 0;
+    align-items: center;
 
     @media only screen and (max-width: 768px) {
       position: relative;
@@ -55,6 +59,20 @@
         transform: translateX(-50%);
       }
     }
+  }
+
+  &__author {
+    margin-left: 20px;
+  }
+}
+
+.label {
+  font-size: 12px;
+
+  &__item {
+    margin-left: 8px;
+    font-size: 15px;
+    font-weight: 500;
   }
 }
 
