@@ -15,9 +15,15 @@ const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
       </div>
 
       <div className={styles.programExpand}>
-        <div className={styles.programExpand_type}>
-          <span>Type:</span>
-          <span>{program.typeOf}</span>
+        <div className={styles.programExpand__type}>
+          <p className={styles.label}>type:
+            <span className={styles.label__item}>{program.typeOf}</span>
+          </p>
+        </div>
+        <div className={styles.programExpand__author}>
+          <p className={styles.label}>author:
+            <span className={styles.label__item}>{program.author}</span>
+          </p>
         </div>
       </div>
 

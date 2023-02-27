@@ -53,6 +53,21 @@
     padding: 4px;
     border-top: 1px solid #dcdcde;
   }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    color: #6b6280;
+
+    .footerText {
+      font-size: 12px;
+
+      &__author {
+        margin-left: 4px;
+        font-weight: 600;
+      }
+    }
+  }
 }
 
 .programInfo {
@@ -86,3 +101,4 @@
     height: 100%;
   }
 }
+
