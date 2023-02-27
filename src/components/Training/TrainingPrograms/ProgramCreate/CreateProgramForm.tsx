@@ -16,11 +16,10 @@ import DifficultyLevel from "./DifficultyLevel/DifficultyLevel";
 import {useState} from "react";
 
 const CreateProgramForm = ({ isTrainer= false, isEditor = false }) => {
-  const [level, setLevel] = useState('Beginner')
+  const [levelDifficulty, setLevelDifficulty] = useState('Beginner')
   const setLevelValue = (values: string) => {
-      setLevel(values)
+      setLevelDifficulty(values)
   }
-  console.log(level)
   const navigate = useNavigate();
   const { id } = useParams();
   const user = useAppSelector(currentUser);
@@ -32,6 +31,7 @@ const CreateProgramForm = ({ isTrainer= false, isEditor = false }) => {
           title: `${program.title}`,
           author: `${program.author}`,
           typeOf: `${program.typeOf}`,
+          level: `${program.level}`,
           days: program.days,
           comments: program.comments,
           id: program.id,
@@ -40,6 +40,7 @@ const CreateProgramForm = ({ isTrainer= false, isEditor = false }) => {
           title: '',
           typeOf: 'aerobic',
           author: user ? user.displayName : 'unknown',
+          level: levelDifficulty,
           comments: [],
           id: '',
           days: [
@@ -91,7 +92,10 @@ const CreateProgramForm = ({ isTrainer= false, isEditor = false }) => {
         <CreateType handleChange={handleChange} values={values} />
       </div>
         <div className={styles.level}>
-            <DifficultyLevel setLevelValue={setLevelValue} />
+            {program
+                ? <DifficultyLevel levelDefault={program.level} isEditor={isEditor} setLevelValue={setLevelValue} />
+                : <DifficultyLevel isEditor={isEditor} setLevelValue={setLevelValue} />
+            }
         </div>
       <div className={styles.createProgramWrite}>
         <CreateExercises values={values} handleChange={handleChange} setFieldValue={setFieldValue} />

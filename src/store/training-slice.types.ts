@@ -30,6 +30,7 @@ export type Program = {
   id: string;
   title: string;
   typeOf: string;
+  level: string;
   author: string;
   days: Day[];
   comments: Comment[];

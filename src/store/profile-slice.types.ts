@@ -29,6 +29,7 @@ export type Day = {
 };
 
 export type Program = {
+  level: any;
   author: any;
   id: string;
   title: string;
