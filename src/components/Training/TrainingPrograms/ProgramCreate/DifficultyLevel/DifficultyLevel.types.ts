@@ -1,5 +1,5 @@
 export type DifficultyLevelProps = {
-    setLevelValue: (value: string) => void;
     isEditor?: boolean;
-    levelDefault?: string;
+    levelDefault?: number;
+    onChange: any;
 }

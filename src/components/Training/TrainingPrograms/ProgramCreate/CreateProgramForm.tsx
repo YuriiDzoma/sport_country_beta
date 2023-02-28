@@ -13,13 +13,8 @@ import CreateName from './CreateName/CreateName';
 import styles from './CreateProgramForm.module.scss';
 import CreateType from './CreateType/CreateType';
 import DifficultyLevel from "./DifficultyLevel/DifficultyLevel";
-import {useState} from "react";
 
 const CreateProgramForm = ({ isTrainer= false, isEditor = false }) => {
-  const [levelDifficulty, setLevelDifficulty] = useState('Beginner')
-  const setLevelValue = (values: string) => {
-      setLevelDifficulty(values)
-  }
   const navigate = useNavigate();
   const { id } = useParams();
   const user = useAppSelector(currentUser);
@@ -40,7 +35,7 @@ const CreateProgramForm = ({ isTrainer= false, isEditor = false }) => {
           title: '',
           typeOf: 'aerobic',
           author: user ? user.displayName : 'unknown',
-          level: levelDifficulty,
+          level: '1',
           comments: [],
           id: '',
           days: [
@@ -93,8 +88,8 @@ const CreateProgramForm = ({ isTrainer= false, isEditor = false }) => {
       </div>
         <div className={styles.level}>
             {program && isEditor
-                ? <DifficultyLevel levelDefault={program.level} isEditor={isEditor} setLevelValue={setLevelValue} />
-                : <DifficultyLevel setLevelValue={setLevelValue} />
+                ? <DifficultyLevel onChange={handleChange} levelDefault={program.level} />
+                : <DifficultyLevel onChange={handleChange} />
             }
         </div>
       <div className={styles.createProgramWrite}>
