@@ -92,9 +92,9 @@ const CreateProgramForm = ({ isTrainer= false, isEditor = false }) => {
         <CreateType handleChange={handleChange} values={values} />
       </div>
         <div className={styles.level}>
-            {program
+            {program && isEditor
                 ? <DifficultyLevel levelDefault={program.level} isEditor={isEditor} setLevelValue={setLevelValue} />
-                : <DifficultyLevel isEditor={isEditor} setLevelValue={setLevelValue} />
+                : <DifficultyLevel setLevelValue={setLevelValue} />
             }
         </div>
       <div className={styles.createProgramWrite}>
