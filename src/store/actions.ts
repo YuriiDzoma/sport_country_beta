@@ -8,7 +8,7 @@ import {
 import { AppDispatch } from 'store/store';
 import {addProgramToGlobalState, resetFetching, setFetching} from 'store/training-slice';
 import { Program } from 'store/training-slice.types';
-import { resetLoading, setLoading, setUsers } from 'store/users-slice';
+import {editUserProgramInState, resetLoading, setLoading, setUserPrograms, setUsers} from 'store/users-slice';
 import { pushExercises } from 'store/wikiExercises-slice';
 import { exercise } from 'store/wikiExercises-slyce.types';
 import {editProgramInState, removeProgramFromState, setMyProgram} from "store/profile-slice";
@@ -25,6 +25,18 @@ export const fetchUsers = () => async (dispatch: AppDispatch) => {
 export const setMyPrograms = (user: string) => async (dispatch: AppDispatch) => {
   if (user) {
     fetchMyPrograms(user).then((response) => dispatch(setMyProgram(response)))
+  }
+}
+
+export const setClientProgram = (user: string) => async (dispatch: AppDispatch) => {
+  if (user) {
+    fetchMyPrograms(user).then((response) => dispatch(setMyProgram(response)))
+  }
+}
+
+export const fetchUserPrograms = (user: string) => async (dispatch: AppDispatch) => {
+  if (user) {
+    fetchMyPrograms(user).then((response) => dispatch(setUserPrograms(response)))
   }
 }
 
@@ -50,6 +62,16 @@ export const editProgram = (user: string, programId: string | undefined, values:
   if (user) {
     editProgramInFB(user, programId, values)
         .then((response) => dispatch(editProgramInState(response)))
+        .catch(Error);
+  }
+  dispatch(resetFetching());
+};
+
+export const editUserProgram = (user: string, programId: string | undefined, values: Program) => async (dispatch: AppDispatch) => {
+  dispatch(setFetching());
+  if (user) {
+    editProgramInFB(user, programId, values)
+        .then((response) => dispatch(editUserProgramInState(response)))
         .catch(Error);
   }
   dispatch(resetFetching());

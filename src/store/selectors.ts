@@ -7,6 +7,11 @@ export const selectProgramById = createSelector(
   (programs, id) => programs.find((program) => id && program.id === id)
 );
 
+export const selectUserProgramById = createSelector(
+    [(state: RootState) => state.users.userPrograms, (state, id: string | undefined) => id],
+    (programs, id) => programs.find((program) => id && program.id === id)
+);
+
 export const getUserById = createSelector(
   [(state: RootState) => state.users.users, (state, id: string | undefined) => id],
   (users, id) => users.find((user) => id && user.id === id)
@@ -25,4 +30,5 @@ export const currentUser = (state: RootState) => state.profilePage.currentUser;
 export const getUsers = (state: RootState) => state.users.users;
 export const getIsFetchingUsers = (state: RootState) => state.users.isLoading;
 export const getMyAllPrograms = (state: RootState) => state.profilePage.myPrograms;
+export const getUserPrograms = (state: RootState) => state.users.userPrograms;
 

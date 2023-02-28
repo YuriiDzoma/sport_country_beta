@@ -3,14 +3,22 @@ import React, { useEffect } from 'react';
 
 import Preloader from 'components/Common/Preloader/Preloader';
 import { useAppSelector } from 'hooks/redux';
-import {getIsFetching, getMyAllPrograms} from 'store/selectors';
+import {getIsFetching, getMyAllPrograms, getUserPrograms} from 'store/selectors';
 
 import { ProgramLink } from './ProgramLink/ProgramLink';
 import styles from './ProgramsListLinks.module.scss';
 import { ProgramsListLinksProps } from './ProgramsListLinks.types';
+import {useParams} from "react-router";
 
-const ProgramsListLinks: React.FC<ProgramsListLinksProps> = ({ onProgramsListHide }) => {
-  const programs = useAppSelector(getMyAllPrograms);
+const ProgramsListLinks: React.FC<ProgramsListLinksProps> = ({ isMyProfile, onProgramsListHide }) => {
+  let programs
+  if (isMyProfile) {
+    programs = useAppSelector(getMyAllPrograms);
+  } else {
+    programs = useAppSelector(getUserPrograms);
+  }
+
+  const {id} = useParams()
   useEffect(() => {
   }, [programs]);
   const isFetching = useAppSelector(getIsFetching);
@@ -28,7 +36,7 @@ const ProgramsListLinks: React.FC<ProgramsListLinksProps> = ({ onProgramsListHid
           <ProgramLink
             onProgramsListHide={onProgramsListHide}
             key={index}
-            to={'/training/training_programs/' + item.id}
+            to={`/training/training_programs/${id}/${item.id}`}
           >
             {item.title}
           </ProgramLink>

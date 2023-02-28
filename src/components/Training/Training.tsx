@@ -18,29 +18,29 @@ const Training = () => {
   }
 
   const allPrograms = useAppSelector(getPrograms)
-  const trainingNavigation = [
-    { id: 1, tittle: 'Complexes', url: '/training/complexes/' },
-    { id: 2, tittle: 'Training Programs', url: '/training/training_programs/' },
-    { id: 3, tittle: 'Training Wiki', url: '/training/training_wiki/' },
-  ];
 
   return (
-    <div className={styles.trainingWrapper}>
-      <div className={styles.linksContainer}>
-        <TrainingNavbar trainingNavigation={trainingNavigation} />
-      </div>
-      <div className={styles.trainingContentWrapper}>
-        <div className={styles.trainingContent}>
-          <Routes>
-            <Route path={'Complexes/*'} element={ allPrograms && allPrograms.length>=1
-                ? <Complexes allPrograms={allPrograms} />
-                : <>Sorry, programs are not available at the moment</>} />
-            <Route path={'training_programs/*'} element={<TrainingPrograms />} />
-            <Route path={'training_wiki/*'} element={<WikiContainer />} />
-          </Routes>
-        </div>
-      </div>
-    </div>
+      <>
+        {user && (
+            <div className={styles.trainingWrapper}>
+              <div className={styles.linksContainer}>
+                <TrainingNavbar user={user} />
+              </div>
+              <div className={styles.trainingContentWrapper}>
+                <div className={styles.trainingContent}>
+                  <Routes>
+                    <Route path={'Complexes/*'} element={ allPrograms && allPrograms.length>=1
+                        ? <Complexes allPrograms={allPrograms} />
+                        : <>Sorry, programs are not available at the moment</>} />
+                    <Route path={'training_programs/:id/*'} element={<TrainingPrograms />} />
+                    <Route path={'training_wiki/*'} element={<WikiContainer />} />
+                  </Routes>
+                </div>
+              </div>
+            </div>
+        )}
+      </>
+
   );
 };
 

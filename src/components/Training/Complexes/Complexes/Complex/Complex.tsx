@@ -3,7 +3,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import React, {useState} from "react";
 import {ComplexProps} from "./Complex.types";
 import {useAppDispatch, useAppSelector} from "hooks/redux";
-import {addProgramToProfile} from "api/api";
+import {createNewProgram} from "api/api";
 import {currentUser} from "store/selectors";
 import {addProgramToState} from "store/profile-slice";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -17,19 +17,19 @@ const Complex: React.FC<ComplexProps> = ({program}) => {
     const [showMore, setShowMore] = useState(false)
     let level;
     switch (program.level) {
-        case '1' :
+        case 1 :
             level = 'Beginner'
             break;
-        case '2':
+        case 2:
             level = 'Intermediate'
             break;
-        case '3':
+        case 3:
             level = 'Advanced'
             break;
-        case '4':
+        case 4:
             level = 'Expert'
             break;
-        case '5':
+        case 5:
             level = 'Professional'
             break;
         default:
@@ -42,7 +42,7 @@ const Complex: React.FC<ComplexProps> = ({program}) => {
 
     const onSubmit = () => {
         if (program && user) {
-            addProgramToProfile(user.id, program);
+            createNewProgram(user.id, program);
             dispatch(addProgramToState(program))
         }
     }

@@ -7,12 +7,27 @@ import ProgramCreateButton from './ProgramCreateButton/ProgramCreateButton';
 import ProgramExpand from './ProgramExpand/ProgramExpand';
 import ProgramsListLinks from './ProgramList/ProgramsListLinks';
 import styles from './TrainingPrograms.module.scss';
+import {useParams} from "react-router";
+import {useAppDispatch, useAppSelector} from "hooks/redux";
+import {currentUser} from "store/selectors";
+import {fetchUserPrograms} from "store/actions";
 
 const TrainingPrograms = () => {
   const [showPrograms, setShowPrograms] = useState(false);
-
+  const {id} = useParams()
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(currentUser);
+  let isMyProfile = false;
+  if (user && user.id === id) {
+      isMyProfile = true
+  }
+  if (user && id) {
+      if (id !== user.id) {
+          dispatch(fetchUserPrograms(id))
+      }
+  }
   const onProgramsListHide = (values: boolean) => {
-    setShowPrograms(values);
+  setShowPrograms(values);
   };
 
   return (
@@ -21,16 +36,16 @@ const TrainingPrograms = () => {
         <FormatListBulletedIcon />
       </button>
       <div className={styles.programsList}>
-        <ProgramCreateButton onProgramsListHide={onProgramsListHide} />
-        <ProgramsListLinks onProgramsListHide={onProgramsListHide} />
+        <ProgramCreateButton profileId={id} onProgramsListHide={onProgramsListHide} />
+        <ProgramsListLinks isMyProfile={isMyProfile} onProgramsListHide={onProgramsListHide} />
       </div>
       <div onClick={() => onProgramsListHide(false)} className={styles.programsListCover}></div>
       <div className={styles.programsContent}>
         <Routes>
-          <Route path={'create/'} element={<CreateProgramForm />} />
-          <Route path={':id'} element={<ProgramExpand />} />
-          <Route path={`:id/redactor/`} element={<CreateProgramForm isEditor />} />
-          <Route path={'global_create/'} element={<CreateProgramForm isTrainer />} />
+          <Route path={'create/'} element={<CreateProgramForm isMyProfile={isMyProfile} profileId={id}  />} />
+          <Route path={':id'} element={<ProgramExpand clientId={id} isMyProfile={isMyProfile} />} />
+          <Route path={`:id/redactor/`}  element={<CreateProgramForm isMyProfile={isMyProfile} profileId={id} isEditor />} />
+          <Route path={'global_create/'} element={<CreateProgramForm toGlobal />} />
         </Routes>
       </div>
     </div>

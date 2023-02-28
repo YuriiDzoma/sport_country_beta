@@ -7,27 +7,30 @@ import ProgramDaysList from './ProgramDaysList/ProgramDaysList';
 import styles from './ProgramExpandInfo.module.scss';
 import { ProgramExpandInfoProps } from './ProgramExpandInfo.types';
 import ProgramRemove from './ProgramRemove/ProgramRemove';
-const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
+
+
+const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ clientId, isMyProfile, program }) => {
     let level;
     switch (program.level) {
-        case '1' :
+        case 1 :
             level = 'Beginner'
             break;
-        case '2':
+        case 2:
             level = 'Intermediate'
             break;
-        case '3':
+        case 3:
             level = 'Advanced'
             break;
-        case '4':
+        case 4:
             level = 'Expert'
             break;
-        case '5':
+        case 5:
             level = 'Professional'
             break;
         default:
             level = 'Beginner'
     }
+
   return (
     <div className={styles.programExpandContainer}>
       <div className={styles.programExpand}>
@@ -52,15 +55,16 @@ const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
         </div>
       </div>
 
-      <ProgramDaysList itemDays={program.days} />
+      <ProgramDaysList clientId={clientId} isMyProfile={isMyProfile} itemDays={program.days} />
 
       <div className={styles.redactor}>
-        <Link to={`/training/training_programs/${program.id}/redactor/`}>
+        <Link to={`/training/training_programs/${clientId}/${program.id}/redactor/`}>
           <FontAwesomeIcon icon={faPenToSquare} />
         </Link>
       </div>
-
-      <ProgramRemove />
+        {isMyProfile && (
+            <ProgramRemove />
+        )}
     </div>
   );
 };

@@ -4,19 +4,24 @@ import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import {addWorkHistory, editProgram, setMyPrograms} from 'store/actions';
-import {currentUser, getMyAllPrograms} from 'store/selectors';
+import {addWorkHistory, editProgram, editUserProgram, fetchUserPrograms, setMyPrograms} from 'store/actions';
+import {currentUser, getMyAllPrograms, getUserPrograms} from 'store/selectors';
 import { Program } from 'store/training-slice.types';
 
 import styles from './workProcess.module.scss';
 import { WorkProcessProps } from './WorkProcess.types';
 
-const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
+const WorkProcess: React.FC<WorkProcessProps> = ({ isMyProfile, clientId, dayNumber }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const user = useAppSelector(currentUser);
-  const programs = useAppSelector(getMyAllPrograms);
+  let programs
+  if (isMyProfile) {
+    programs = useAppSelector(getMyAllPrograms);
+  } else  {
+    programs = useAppSelector(getUserPrograms);
+  }
   const initialFormValues = programs
     ? {
         programs: programs.map((program) => program),
@@ -25,12 +30,17 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
         error: '',
       };
   const saveValues = (values: Program) => {
-    if (user) {
-      dispatch(editProgram(user.id, values.id, values));
-    }
-    setSubmitting(false);
-    if (user) {
-      dispatch(setMyPrograms(user.id));
+    if (isMyProfile) {
+      if (user) {
+        dispatch(editProgram(user.id, values.id, values));
+        dispatch(setMyPrograms(user.id));
+      }
+      setSubmitting(false);
+    } else {
+      if (clientId) {
+        dispatch(editUserProgram(clientId, values.id, values));
+        dispatch(fetchUserPrograms(clientId));
+      }
     }
     navigate('/training/training_programs/');
   };
@@ -95,7 +105,7 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
                               <button type="button" onClick={() => saveValues(values.programs[programIndex])}>
                                 save
                               </button>
-                              <button type="submit" disabled={isSubmitting || !dirty}>
+                              <button className={isMyProfile ? '' : styles.hide} type="submit" disabled={isSubmitting || !dirty}>
                                 Complete
                               </button>
                             </div>
