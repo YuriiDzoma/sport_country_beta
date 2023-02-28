@@ -36,6 +36,8 @@ const Complexes: React.FC<ComplexesProps> = ({allPrograms}) => {
               <div className={`${styles.programsContainer__filters} ${showFilters ? styles.programsContainer__filtersShowed : ''}`}>
                 <button onClick={onFiltersShow} className={styles.programsContainer__buttonShow}>
                   <DoubleArrowIcon className={styles.programsContainer__buttonShowIcon} />
+                  <span>filter</span>
+                  <DoubleArrowIcon className={styles.programsContainer__buttonShowIcon} />
                 </button>
                 <Filters filteringPrograms={filteringPrograms} />
               </div>
