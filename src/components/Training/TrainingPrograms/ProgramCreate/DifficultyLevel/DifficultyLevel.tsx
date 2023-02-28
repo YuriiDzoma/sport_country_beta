@@ -29,43 +29,20 @@ const marks = [
     },
 ];
 
-const DifficultyLevel: React.FC<DifficultyLevelProps> = ({setLevelValue, isEditor, levelDefault}) => {
-    const defaultValue =
-        levelDefault === 'Beginner' ? 1
-            : levelDefault === 'Intermediate' ? 2
-                : levelDefault === 'Advanced' ? 3
-                    : levelDefault === 'Expert' ? 4
-                        : levelDefault === 'Professional' ? 5 : 1;
-
-    const handleChange = (event: Event, newValue: number | number[]) => {
-        if (newValue === 1) {
-            setLevelValue('Beginner');
-        }
-        if (newValue === 2) {
-            setLevelValue('Intermediate');
-        }
-        if (newValue === 3) {
-            setLevelValue('Advanced');
-        }
-        if (newValue === 4) {
-            setLevelValue('Expert');
-        }
-        if (newValue === 5) {
-            setLevelValue('Professional');
-        }
-    };
+const DifficultyLevel: React.FC<DifficultyLevelProps> = ({onChange, levelDefault}) => {
 
     return (
         <Box sx={{ width: 300 }}>
             <Slider
-                // orientation="vertical"
+                id='level'
+                name='level'
                 aria-label="Difficult Level"
-                defaultValue={defaultValue}
+                defaultValue={levelDefault}
                 step={1}
                 marks={marks}
                 min={1}
                 max={5}
-                onChange={handleChange}
+                onChange={onChange}
             />
         </Box>
     );

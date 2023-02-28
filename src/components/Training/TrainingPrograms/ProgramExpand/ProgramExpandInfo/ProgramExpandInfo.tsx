@@ -8,6 +8,26 @@ import styles from './ProgramExpandInfo.module.scss';
 import { ProgramExpandInfoProps } from './ProgramExpandInfo.types';
 import ProgramRemove from './ProgramRemove/ProgramRemove';
 const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
+    let level;
+    switch (program.level) {
+        case '1' :
+            level = 'Beginner'
+            break;
+        case '2':
+            level = 'Intermediate'
+            break;
+        case '3':
+            level = 'Advanced'
+            break;
+        case '4':
+            level = 'Expert'
+            break;
+        case '5':
+            level = 'Professional'
+            break;
+        default:
+            level = 'Beginner'
+    }
   return (
     <div className={styles.programExpandContainer}>
       <div className={styles.programExpand}>
@@ -27,7 +47,7 @@ const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
         </div>
         <div className={styles.programExpand__author}>
             <p className={styles.label}>level:
-                <span className={styles.label__item}>{program.level}</span>
+                <span className={styles.label__item}>{level}</span>
             </p>
         </div>
       </div>

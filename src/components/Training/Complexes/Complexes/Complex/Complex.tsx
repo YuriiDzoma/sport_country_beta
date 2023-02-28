@@ -15,6 +15,26 @@ const Complex: React.FC<ComplexProps> = ({program}) => {
     const user = useAppSelector(currentUser);
     const dispatch = useAppDispatch();
     const [showMore, setShowMore] = useState(false)
+    let level;
+    switch (program.level) {
+        case '1' :
+            level = 'Beginner'
+            break;
+        case '2':
+            level = 'Intermediate'
+            break;
+        case '3':
+            level = 'Advanced'
+            break;
+        case '4':
+            level = 'Expert'
+            break;
+        case '5':
+            level = 'Professional'
+            break;
+        default:
+            level = 'Beginner'
+    }
 
     const showExercises = () => {
         setShowMore(!showMore);
@@ -47,7 +67,7 @@ const Complex: React.FC<ComplexProps> = ({program}) => {
                     <span className={styles.footerText__author}>{program.author}</span>
                 </p>
                 <p className={styles.footerText}>level:
-                    <span className={styles.footerText__author}>{program.level}</span>
+                    <span className={styles.footerText__author}>{level}</span>
                 </p>
             </div>
             <button onClick={()=> showExercises()} className={styles.program__expand}>
