@@ -46,7 +46,9 @@ const Complex: React.FC<ComplexProps> = ({program}) => {
                 <p className={styles.footerText}>trainer:
                     <span className={styles.footerText__author}>{program.author}</span>
                 </p>
-                <p className={styles.footerText}>level</p>
+                <p className={styles.footerText}>level:
+                    <span className={styles.footerText__author}>{program.level}</span>
+                </p>
             </div>
             <button onClick={()=> showExercises()} className={styles.program__expand}>
                 <ExpandMoreIcon className={styles.program__expandArrow} fontSize={'small'} />

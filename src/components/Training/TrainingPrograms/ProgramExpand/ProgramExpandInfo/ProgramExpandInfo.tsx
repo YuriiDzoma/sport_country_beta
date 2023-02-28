@@ -25,6 +25,11 @@ const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
             <span className={styles.label__item}>{program.author}</span>
           </p>
         </div>
+          <div className={styles.programExpand__author}>
+              <p className={styles.label}>level:
+                  <span className={styles.label__item}>{program.level}</span>
+              </p>
+          </div>
       </div>
 
       <ProgramDaysList itemDays={program.days} />

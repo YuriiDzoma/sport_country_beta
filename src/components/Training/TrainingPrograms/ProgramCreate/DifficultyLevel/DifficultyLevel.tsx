@@ -59,7 +59,13 @@ function valuetext(value: number) {
     return result;
 }
 
-const DifficultyLevel: React.FC<DifficultyLevelProps> = ({setLevelValue}) => {
+const DifficultyLevel: React.FC<DifficultyLevelProps> = ({setLevelValue, isEditor, levelDefault}) => {
+    const defaultValue =
+        levelDefault === 'Beginner' ? 1
+            : levelDefault === 'Intermediate' ? 2
+                : levelDefault === 'Advanced' ? 3
+                    : levelDefault === 'Expert' ? 4
+                        : levelDefault === 'Professional' ? 5 : 1
     const handleChange = (event: Event, newValue: number | number[]) => {
         if (newValue === 1) {
             setLevelValue('Beginner');
@@ -78,13 +84,14 @@ const DifficultyLevel: React.FC<DifficultyLevelProps> = ({setLevelValue}) => {
         }
     };
 
+
     return (
         <Box sx={{ width: 300 }}>
             <Slider
                 getAriaValueText={valuetext}
                 // orientation="vertical"
                 aria-label="Difficult Level"
-                defaultValue={1}
+                defaultValue={defaultValue}
                 step={1}
                 marks={marks}
                 min={1}
