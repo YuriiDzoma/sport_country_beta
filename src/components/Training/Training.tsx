@@ -8,6 +8,8 @@ import WikiContainer from './TrainingWiki/WikiContainer';
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser, getPrograms} from "store/selectors";
 import {setMyPrograms} from "store/actions";
+import CreateProgramForm from "components/Training/TrainingPrograms/ProgramCreate/CreateProgramForm";
+import React from "react";
 
 const Training = () => {
   const user = useAppSelector(currentUser);
@@ -33,6 +35,7 @@ const Training = () => {
                         ? <Complexes allPrograms={allPrograms} />
                         : <>Sorry, programs are not available at the moment</>} />
                     <Route path={'training_programs/:id/*'} element={<TrainingPrograms />} />
+                    <Route path={'global_create/'} element={<CreateProgramForm toGlobal />} />
                     <Route path={'training_wiki/*'} element={<WikiContainer />} />
                   </Routes>
                 </div>

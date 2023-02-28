@@ -45,7 +45,6 @@ const TrainingPrograms = () => {
           <Route path={'create/'} element={<CreateProgramForm isMyProfile={isMyProfile} profileId={id}  />} />
           <Route path={':id'} element={<ProgramExpand clientId={id} isMyProfile={isMyProfile} />} />
           <Route path={`:id/redactor/`}  element={<CreateProgramForm isMyProfile={isMyProfile} profileId={id} isEditor />} />
-          <Route path={'global_create/'} element={<CreateProgramForm toGlobal />} />
         </Routes>
       </div>
     </div>

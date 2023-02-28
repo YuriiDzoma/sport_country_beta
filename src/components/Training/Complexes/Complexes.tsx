@@ -28,7 +28,7 @@ const Complexes: React.FC<ComplexesProps> = ({allPrograms}) => {
     const onFiltersShow = () => {
       setShowFilters(!showFilters);
     }
-
+    console.log(programs)
   return(
       <div className={styles.programsContainer__wrapper}>
           <FindSort />

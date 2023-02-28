@@ -9,7 +9,7 @@ const CreateGlobalProgram = () => {
 
     return (
           <div className={styles.createProgram}>
-              <button  onClick={()=> navigate('/training/training_programs/global_create/')}
+              <button  onClick={()=> navigate('/training/global_create/')}
                        className={styles.createProgram__link}>
                   <LibraryAddIcon />
                   <span>add new program</span>
