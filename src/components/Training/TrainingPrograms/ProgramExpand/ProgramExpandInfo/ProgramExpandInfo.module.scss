@@ -9,7 +9,7 @@
   flex-direction: column;
 
   @media only screen and (max-width: 768px) {
-    padding-top: 35px;
+    padding-top: 10px;
   }
 }
 
@@ -21,6 +21,7 @@
 .programExpand {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   h2 {
     font-weight: 700;
@@ -28,6 +29,8 @@
     justify-content: center;
     color: #333238;
     text-align: center;
+    width: 100%;
+    padding: 0 70px;
 
     @media only screen and (max-width: 768px) {
       margin-bottom: 15px;

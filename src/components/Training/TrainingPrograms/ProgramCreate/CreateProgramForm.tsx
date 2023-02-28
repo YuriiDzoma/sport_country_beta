@@ -100,11 +100,11 @@ const CreateProgramForm = ({ isTrainer= false, isEditor = false }) => {
       <div className={styles.createProgramWrite}>
         <CreateExercises values={values} handleChange={handleChange} setFieldValue={setFieldValue} />
         <CreateDay setFieldValue={setFieldValue} values={values} />
-      </div>
-      <div className={styles.createProgramWrite_create}>
-        <button type="submit" disabled={isSubmitting}>
-          <span>{isEditor ? <span>confirm changes</span> : <span>save</span>}</span>
-        </button>
+        <div className={styles.createProgramWrite_create}>
+          <button type="submit" disabled={isSubmitting}>
+            <span>{isEditor ? <span>confirm changes</span> : <span>save</span>}</span>
+          </button>
+        </div>
       </div>
     </form>
   );
