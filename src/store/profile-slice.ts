@@ -6,6 +6,7 @@ const initialState: profileState = {
   currentUser: null,
   myPrograms: [],
   isLoading: false,
+  myFavoriteProgram: null,
 };
 
 export const profileSlice = createSlice({
@@ -23,6 +24,9 @@ export const profileSlice = createSlice({
     },
     setMyProgram(state, action) {
       state.myPrograms = action.payload;
+    },
+    setMyFavoriteProgram(state, action) {
+      state.myFavoriteProgram = action.payload;
     },
     addProgramToState(state, action) {
       state.myPrograms = [...state.myPrograms, action.payload]
@@ -47,6 +51,7 @@ export const {
   setCurrentUser,
   setMyProgram,
   addProgramToState,
+  setMyFavoriteProgram,
   removeProgramFromState,
   editProgramInState,
   setFetchingProfile,

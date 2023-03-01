@@ -79,38 +79,12 @@
   }
 }
 
-.redactor {
+.programSettings {
   position: absolute;
-  right: 70px;
-  top: 16px;
-  font-size: 22px;
-  width: 22px;
-  height: 22px;
-
-  @media only screen and (max-width: 768px) {
-    width: 20px;
-    height: 20px;
-    top: 6px;
-    right: 40px;
-  }
-
-  a {
-    color: #1f75cb;
-    display: block;
-
-    @media only screen and (max-width: 768px) {
-      width: 100%;
-      height: 100%;
-    }
-
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    &:hover {
-      color: #1068bf;
-    }
-  }
+  justify-content: space-between;
+  width: 120px;
+  top: 2px;
+  right: 10px;
+  display: flex;
+  align-items: center;
 }
-

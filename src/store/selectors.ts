@@ -31,4 +31,5 @@ export const getUsers = (state: RootState) => state.users.users;
 export const getIsFetchingUsers = (state: RootState) => state.users.isLoading;
 export const getMyAllPrograms = (state: RootState) => state.profilePage.myPrograms;
 export const getUserPrograms = (state: RootState) => state.users.userPrograms;
+export const getFavoriteProgram = (state: RootState) => state.users.userFavoriteProgram;
 
