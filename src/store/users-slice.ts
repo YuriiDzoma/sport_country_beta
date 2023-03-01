@@ -6,20 +6,27 @@ const initialState: UsersState = {
   users: [],
   isLoading: false,
   error: '',
-  userPrograms: []
+  userPrograms: [],
+  userFavoriteProgram: {
+    programId: null,
+    id: null,
+  },
 };
 export const usersSlice = createSlice({
   name: 'usersPage',
   initialState,
   reducers: {
-    setLoading(state) {
-      state.isLoading = true;
+    setUsersLoading(state, action) {
+      state.isLoading = action.payload;
     },
     setUsers(state, action) {
       state.users = action.payload;
     },
     setUserPrograms(state, action) {
       state.userPrograms = action.payload;
+    },
+    setUserFavoriteProgram(state, action) {
+      state.userFavoriteProgram = action.payload;
     },
     addUser(state, action) {
       const isUser = state.users.find((user) => user.id === action.payload.id);
@@ -38,9 +45,6 @@ export const usersSlice = createSlice({
     addUserProgramToState(state, action) {
       state.userPrograms = [...state.userPrograms, action.payload]
     },
-    resetLoading(state) {
-      state.isLoading = false;
-    },
   },
 });
 
@@ -50,5 +54,5 @@ export const { addUser,
   editUserProgramInState,
   setUserPrograms,
   setUsers,
-  setLoading,
-  resetLoading } = usersSlice.actions;
+  setUsersLoading,
+  setUserFavoriteProgram} = usersSlice.actions;

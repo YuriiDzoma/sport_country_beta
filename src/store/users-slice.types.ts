@@ -9,9 +9,15 @@ export type User = {
   isTrainer: boolean;
 };
 
+export type Favorite = {
+  programId: string | null;
+  id: string | null
+}
+
 export type UsersState = {
   users: User[];
   isLoading: boolean;
   error: string;
   userPrograms: Program[];
+  userFavoriteProgram: Favorite;
 };

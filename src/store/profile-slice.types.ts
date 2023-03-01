@@ -42,5 +42,6 @@ export type profileState = {
   currentUser: User | null;
   isLoading: boolean;
   myPrograms: Program[];
+  myFavoriteProgram: string | null;
 };
 

@@ -1,13 +1,12 @@
-import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, {useContext} from 'react';
-import { Link } from 'react-router-dom';
 
 import ProgramDaysList from './ProgramDaysList/ProgramDaysList';
 import styles from './ProgramExpandInfo.module.scss';
 import { ProgramExpandInfoProps } from './ProgramExpandInfo.types';
 import ProgramRemove from './ProgramRemove/ProgramRemove';
 import {Context} from "components/Context/Context";
+import Favorite from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/Favorite/Favorite";
+import EditButton from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/EditButton/EditButton";
 
 
 const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
@@ -58,15 +57,15 @@ const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
       </div>
 
       <ProgramDaysList itemDays={program.days} />
-
-      <div className={styles.redactor}>
-        <Link to={`/training/training_programs/${userId}/${program.id}/redactor/`}>
-          <FontAwesomeIcon icon={faPenToSquare} />
-        </Link>
+      <div className={styles.programSettings}>
+          {isMyProfile && (
+            <Favorite />
+          )}
+          <EditButton userId={userId} programId={program.id}/>
+          {isMyProfile && (
+              <ProgramRemove/>
+          )}
       </div>
-        {isMyProfile && (
-            <ProgramRemove />
-        )}
     </div>
   );
 };

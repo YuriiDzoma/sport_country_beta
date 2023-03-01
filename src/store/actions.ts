@@ -2,29 +2,43 @@ import {
   addProgramToFB,
   deleteProgramInFB,
   editProgramInFB,
-  fetchMyPrograms,
+  fetchMyPrograms, getFavoriteProgram,
   getUsers
 } from 'api/api';
 import { AppDispatch } from 'store/store';
 import {addProgramToGlobalState, resetFetching, setFetching} from 'store/training-slice';
 import { Program } from 'store/training-slice.types';
-import {editUserProgramInState, resetLoading, setLoading, setUserPrograms, setUsers} from 'store/users-slice';
+import {
+  editUserProgramInState,
+  setUsersLoading,
+  setUserPrograms,
+  setUsers,
+  setUserFavoriteProgram
+} from 'store/users-slice';
 import { pushExercises } from 'store/wikiExercises-slice';
 import { exercise } from 'store/wikiExercises-slyce.types';
 import {editProgramInState, removeProgramFromState, setMyProgram} from "store/profile-slice";
 
 
 export const fetchUsers = () => async (dispatch: AppDispatch) => {
-  dispatch(setLoading());
+  dispatch(setUsersLoading(true));
   getUsers()
     .then((response) => dispatch(setUsers(response)))
     .catch(Error);
-  dispatch(resetLoading());
+  dispatch(setUsersLoading(false));
 };
 
 export const setMyPrograms = (user: string) => async (dispatch: AppDispatch) => {
   if (user) {
     fetchMyPrograms(user).then((response) => dispatch(setMyProgram(response)))
+  }
+}
+
+export const getUserFavoriteProgram = (id: string) => async (dispatch: AppDispatch) => {
+  if (id) {
+    setUsersLoading(true);
+    getFavoriteProgram(id).then(response => dispatch(setUserFavoriteProgram(response)));
+    setUsersLoading(false);
   }
 }
 
@@ -76,14 +90,6 @@ export const editUserProgram = (user: string, programId: string | undefined, val
   }
   dispatch(resetFetching());
 };
-
-// export const editGlobalProgram = (programId: string | undefined, values: Program) => async (dispatch: AppDispatch) => {
-//   dispatch(setFetching());
-//   editGlobalProgramInFB(programId, values)
-//       .then((response) => dispatch(editProgramInState(response)))
-//       .catch(Error);
-//   dispatch(resetFetching());
-// };
 
 export const setExercises = (values: exercise[]) => async (dispatch: AppDispatch) => {
   dispatch(pushExercises(values));

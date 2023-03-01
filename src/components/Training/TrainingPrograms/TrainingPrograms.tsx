@@ -12,21 +12,33 @@ import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser} from "store/selectors";
 import {fetchUserPrograms} from "store/actions";
 import {Context} from "components/Context/Context";
+import {getFavoriteProgram} from "api/api";
+import {setUserFavoriteProgram, setUsersLoading} from "store/users-slice";
 
 const TrainingPrograms = () => {
   const [showPrograms, setShowPrograms] = useState(false);
   const {id} = useParams()
   const dispatch = useAppDispatch();
   const user = useAppSelector(currentUser);
+
   const userId = id
 
+  if (userId) {
+      setUsersLoading(true);
+      getFavoriteProgram(id).then(response => {dispatch(setUserFavoriteProgram(response))});
+      setUsersLoading(false);
+  }
+  if (userId) {
+
+  }
+
   let isMyProfile = false;
-  if (user && user.id === id) {
+  if (user && user.id === userId) {
       isMyProfile = true
   }
-  if (user && id) {
-      if (id !== user.id) {
-          dispatch(fetchUserPrograms(id))
+  if (user && userId) {
+      if (userId !== user.id) {
+          dispatch(fetchUserPrograms(userId))
       }
   }
   const onProgramsListHide = (values: boolean) => {

@@ -10,7 +10,9 @@ import styles from './ProgramsListLinks.module.scss';
 import { ProgramsListLinksProps } from './ProgramsListLinks.types';
 import {useParams} from "react-router";
 
+
 const ProgramsListLinks: React.FC<ProgramsListLinksProps> = ({ isMyProfile, onProgramsListHide }) => {
+
   let programs
   if (isMyProfile) {
     programs = useAppSelector(getMyAllPrograms);
