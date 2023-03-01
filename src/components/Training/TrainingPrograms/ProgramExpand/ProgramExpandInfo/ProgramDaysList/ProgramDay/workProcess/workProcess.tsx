@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import React from 'react';
+import React, {useContext} from 'react';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
 
@@ -10,8 +10,10 @@ import { Program } from 'store/training-slice.types';
 
 import styles from './workProcess.module.scss';
 import { WorkProcessProps } from './WorkProcess.types';
+import {Context} from "components/Context/Context";
 
-const WorkProcess: React.FC<WorkProcessProps> = ({ isMyProfile, clientId, dayNumber }) => {
+const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
+  const {isMyProfile, userId}: any = useContext(Context)
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { id } = useParams();
@@ -37,9 +39,9 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ isMyProfile, clientId, dayNum
       }
       setSubmitting(false);
     } else {
-      if (clientId) {
-        dispatch(editUserProgram(clientId, values.id, values));
-        dispatch(fetchUserPrograms(clientId));
+      if (userId) {
+        dispatch(editUserProgram(userId, values.id, values));
+        dispatch(fetchUserPrograms(userId));
       }
     }
     navigate('/training/training_programs/');
@@ -57,7 +59,7 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ isMyProfile, clientId, dayNum
           dispatch(setMyPrograms(user.id));
         }
         resetForm();
-        navigate('/training/training_programs/');
+        navigate('/training/');
       }, 400);
     },
   });

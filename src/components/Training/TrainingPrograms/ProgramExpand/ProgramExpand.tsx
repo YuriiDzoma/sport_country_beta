@@ -1,18 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useAppSelector } from 'hooks/redux';
 import {selectProgramById, selectUserProgramById} from 'store/selectors';
 
 import ProgramExpandInfo from './ProgramExpandInfo/ProgramExpandInfo';
+import {Context} from "components/Context/Context";
 
-type ProgramExpandProps = {
-  isMyProfile: boolean
-  clientId: string | undefined
-}
 
-const ProgramExpand: React.FC<ProgramExpandProps> = ({clientId, isMyProfile}) => {
+const ProgramExpand= () => {
   const { id } = useParams();
+  const {isMyProfile}: any = useContext(Context)
   let program
   if (isMyProfile) {
     program = useAppSelector((state) => selectProgramById(state, id));
@@ -24,7 +22,7 @@ const ProgramExpand: React.FC<ProgramExpandProps> = ({clientId, isMyProfile}) =>
     <div>
       {program && id && (
         <>
-          <ProgramExpandInfo clientId={clientId} isMyProfile={isMyProfile} program={program} />
+          <ProgramExpandInfo program={program} />
           {/*<ProgramExpandComments />*/}
         </>
       )}

@@ -1,15 +1,16 @@
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 
 import ProgramDaysList from './ProgramDaysList/ProgramDaysList';
 import styles from './ProgramExpandInfo.module.scss';
 import { ProgramExpandInfoProps } from './ProgramExpandInfo.types';
 import ProgramRemove from './ProgramRemove/ProgramRemove';
+import {Context} from "components/Context/Context";
 
 
-const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ clientId, isMyProfile, program }) => {
+const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
     let level;
     switch (program.level) {
         case 1 :
@@ -30,6 +31,7 @@ const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ clientId, isMyPro
         default:
             level = 'Beginner'
     }
+    const {isMyProfile, userId}: any = useContext(Context)
 
   return (
     <div className={styles.programExpandContainer}>
@@ -55,10 +57,10 @@ const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ clientId, isMyPro
         </div>
       </div>
 
-      <ProgramDaysList clientId={clientId} isMyProfile={isMyProfile} itemDays={program.days} />
+      <ProgramDaysList itemDays={program.days} />
 
       <div className={styles.redactor}>
-        <Link to={`/training/training_programs/${clientId}/${program.id}/redactor/`}>
+        <Link to={`/training/training_programs/${userId}/${program.id}/redactor/`}>
           <FontAwesomeIcon icon={faPenToSquare} />
         </Link>
       </div>

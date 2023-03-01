@@ -13,17 +13,17 @@ import CreateName from './CreateName/CreateName';
 import styles from './CreateProgramForm.module.scss';
 import CreateType from './CreateType/CreateType';
 import DifficultyLevel from "./DifficultyLevel/DifficultyLevel";
-import React from "react";
+import React, {useContext} from "react";
 import {CreateProgramFormProps} from "components/Training/TrainingPrograms/ProgramCreate/CreateProgramForm.types";
 import {addProgramToState} from "store/profile-slice";
 import {addUserProgramToState} from "store/users-slice";
+import {Context} from "components/Context/Context";
 
 const CreateProgramForm: React.FC<CreateProgramFormProps> = ({
                                                                  toGlobal = false,
                                                                  isEditor = false,
-                                                                 isMyProfile,
-                                                                 profileId
                                                                 }) => {
+  const {isMyProfile, userId}: any = useContext(Context)
   const navigate = useNavigate();
   const user = useAppSelector(currentUser);
   const {id} = useParams()
@@ -92,17 +92,17 @@ const CreateProgramForm: React.FC<CreateProgramFormProps> = ({
                     createNewProgram(user.id, values);
                     dispatch(addProgramToState(values));
                     dispatch(setMyPrograms(user.id));
-                } if (!isEditor && !isMyProfile && profileId) {
-                    createNewProgram(profileId, values);
+                } if (!isEditor && !isMyProfile && id) {
+                    createNewProgram(id, values);
                     dispatch(addUserProgramToState(values));
-                } if (isEditor && !isMyProfile && clientProgram && profileId) {
-                    dispatch(editUserProgram(profileId, clientProgram.id, values));
+                } if (isEditor && !isMyProfile && clientProgram && userId) {
+                    dispatch(editUserProgram(userId, clientProgram.id, values));
                 }
             } else {
                 dispatch(setNewGlobalProgram(values));
             }
         }
-        navigate(-1);
+        toGlobal ? navigate('/training/') : navigate(-1)
         setSubmitting(false);
       }, 400);
     },

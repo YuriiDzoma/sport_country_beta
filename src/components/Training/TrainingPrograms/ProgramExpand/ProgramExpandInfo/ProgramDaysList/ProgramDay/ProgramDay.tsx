@@ -7,13 +7,13 @@ import styles from './ProgramDay.module.scss';
 import { ProgramDayProps } from './ProgramDay.types';
 import WorkHistory from './workHistory/workHistory';
 
-const ProgramDay: React.FC<ProgramDayProps> = ({ clientId, isMyProfile, day }) => {
+const ProgramDay: React.FC<ProgramDayProps> = ({ day }) => {
   const dayNumber = day.day;
   return (
     <div className={styles.trainingContainer}>
       <ExercisesList day={day} />
       <WorkHistory day={day} />
-      <WorkProcess clientId={clientId} isMyProfile={isMyProfile} dayNumber={dayNumber} />
+      <WorkProcess dayNumber={dayNumber} />
     </div>
   );
 };
