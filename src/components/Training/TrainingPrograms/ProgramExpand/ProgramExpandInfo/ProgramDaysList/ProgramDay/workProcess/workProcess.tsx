@@ -18,12 +18,14 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
   const dispatch = useAppDispatch();
   const { id } = useParams();
   const user = useAppSelector(currentUser);
+
   let programs
   if (isMyProfile) {
     programs = useAppSelector(getMyAllPrograms);
   } else  {
     programs = useAppSelector(getUserPrograms);
   }
+
   const initialFormValues = programs
     ? {
         programs: programs.map((program) => program),
@@ -31,6 +33,7 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
     : {
         error: '',
       };
+
   const saveValues = (values: Program) => {
     if (isMyProfile) {
       if (user) {
