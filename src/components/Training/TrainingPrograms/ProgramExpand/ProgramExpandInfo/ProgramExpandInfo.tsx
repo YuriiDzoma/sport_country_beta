@@ -69,9 +69,10 @@ const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
           {isMyProfile && (
             <Favorite />
           )}
-          {isTrainer || isMyProfile && (
-              <EditButton userId={userId} programId={program.id}/>
-          )}
+          {isTrainer || isMyProfile
+              ? <EditButton userId={userId} programId={program.id}/>
+              : null
+          }
           {isMyProfile && (
               <ProgramRemove/>
           )}

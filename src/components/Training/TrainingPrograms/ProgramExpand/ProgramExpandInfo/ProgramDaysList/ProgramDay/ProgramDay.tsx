@@ -18,13 +18,15 @@ const ProgramDay: React.FC<ProgramDayProps> = ({ day }) => {
     if (user) {
         isTrainer = user.isTrainer
     }
+
   return (
     <div className={styles.trainingContainer}>
       <ExercisesList day={day} />
       <WorkHistory day={day} />
-        {isTrainer || isMyProfile && (
-            <WorkProcess dayNumber={dayNumber} />
-        )}
+        {isTrainer || isMyProfile
+            ? <WorkProcess dayNumber={dayNumber} />
+            : null
+        }
     </div>
   );
 };
