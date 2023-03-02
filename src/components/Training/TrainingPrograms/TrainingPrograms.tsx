@@ -9,7 +9,7 @@ import ProgramsListLinks from './ProgramList/ProgramsListLinks';
 import styles from './TrainingPrograms.module.scss';
 import {useParams} from "react-router";
 import {useAppDispatch, useAppSelector} from "hooks/redux";
-import {currentUser} from "store/selectors";
+import {currentUser, getUserById} from "store/selectors";
 import {fetchUserPrograms} from "store/actions";
 import {Context} from "components/Context/Context";
 import {getFavoriteProgram} from "api/api";
@@ -28,9 +28,6 @@ const TrainingPrograms = () => {
       getFavoriteProgram(id).then(response => {dispatch(setUserFavoriteProgram(response))});
       setUsersLoading(false);
   }
-  if (userId) {
-
-  }
 
   let isMyProfile = false;
   if (user && user.id === userId) {
@@ -44,6 +41,7 @@ const TrainingPrograms = () => {
   const onProgramsListHide = (values: boolean) => {
   setShowPrograms(values);
   };
+  const profile = useAppSelector((state) => getUserById(state, id));
 
   return (
       <Context.Provider value={{
@@ -55,8 +53,14 @@ const TrainingPrograms = () => {
                   <FormatListBulletedIcon />
               </button>
               <div className={styles.programsList}>
-                  <ProgramCreateButton profileId={id} onProgramsListHide={onProgramsListHide} />
-                  <ProgramsListLinks isMyProfile={isMyProfile} onProgramsListHide={onProgramsListHide} />
+                  {profile && (
+                      <div className={styles.userInfo}>
+                          <p className={styles.userInfo__name}>{profile.displayName}</p>
+                          <img alt='user' className={styles.userInfo__photo} src={profile.photoURL}></img>
+                      </div>
+                  )}
+                  <ProgramCreateButton profileId={id} onProgramsListHide={onProgramsListHide}/>
+                  <ProgramsListLinks isMyProfile={isMyProfile} onProgramsListHide={onProgramsListHide}/>
               </div>
               <div onClick={() => onProgramsListHide(false)} className={styles.programsListCover}></div>
               <div className={styles.programsContent}>

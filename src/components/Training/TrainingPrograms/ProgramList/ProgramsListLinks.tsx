@@ -19,11 +19,11 @@ const ProgramsListLinks: React.FC<ProgramsListLinksProps> = ({ isMyProfile, onPr
   } else {
     programs = useAppSelector(getUserPrograms);
   }
-
   const {id} = useParams()
   useEffect(() => {
   }, [programs]);
   const isFetching = useAppSelector(getIsFetching);
+
 
   return (
     <div className={styles.programsList}>
