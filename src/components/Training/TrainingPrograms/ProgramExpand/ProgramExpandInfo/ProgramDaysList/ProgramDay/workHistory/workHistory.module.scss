@@ -1,5 +1,5 @@
 .weightHistory {
-  margin: 15px 10px 30px 10px;
+  margin: 15px 0 30px 10px;
   display: flex;
   align-items: flex-start;
   flex-grow: 1;
@@ -7,9 +7,9 @@
   overflow: auto;
 
   &_storyBox {
-    margin: 0 5px;
+    margin: 0 0 0 5px;
     border-left: 1px solid #dcdcde;
-    padding: 0 5px;
+    padding: 0 0 0 5px;
 
     &:first-child {
       border: 0;
@@ -21,6 +21,10 @@
     font-weight: 500;
     line-height: 20px;
     display: inline-block;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 12px;
+    }
   }
 
   &_weights {

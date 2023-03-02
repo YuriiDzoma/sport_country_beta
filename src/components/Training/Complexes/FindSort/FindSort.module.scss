@@ -1,0 +1,57 @@
+.findSort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 840px;
+  padding: 10px 0 10px 210px;
+  height: 50px;
+
+  @media only screen and (max-width: 768px) {
+    padding-left: 0;
+  }
+
+  &_field {
+    margin-right: 15px;
+    border-radius: 4px;
+    padding: 2px 8px;
+    border: 1px solid #89888d;
+  }
+}
+
+.find {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  flex-grow: 1;
+
+  &_field {
+    margin-right: 5px;
+    border-radius: 4px;
+    padding: 4px 8px;
+    border: 1px solid #89888d;
+    flex-grow: 1;
+  }
+}
+
+.sorting {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  span {
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &_change {
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid #89888d;
+    max-width: 265px;
+    height: 30px;
+    width: 100%;
+    margin-left: 10px;
+  }
+}
+

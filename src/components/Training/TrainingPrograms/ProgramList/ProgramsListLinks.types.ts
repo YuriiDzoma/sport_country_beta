@@ -1,8 +1,5 @@
-import {Program} from 'store/training-slice.types';
-
-
 export type ProgramsListLinksProps = {
-    programs: Program[]
-    getProgram: (item: Program) => void
-
-}
+  onProgramsListHide: (values: boolean) => void;
+  isMyProfile?: boolean
+  profileId?: string | undefined
+};

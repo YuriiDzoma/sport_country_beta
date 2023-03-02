@@ -1,10 +1,5 @@
-
-export type TrainingNavbarItems = {
-    id: number
-    tittle: string
-    url: string
-}
+import {User} from "store/users-slice.types";
 
 export type TrainingNavbarProps = {
-    trainingNavigation: Array<TrainingNavbarItems>
-}
+  user: User
+};

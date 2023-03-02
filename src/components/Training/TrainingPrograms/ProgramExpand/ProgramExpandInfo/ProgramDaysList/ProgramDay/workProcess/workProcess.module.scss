@@ -1,11 +1,17 @@
 .weightProcess {
-  margin: 15px 0 30px 10px;
+  margin: 15px 0 0 10px;
 
-  &_date {
+    &_date {
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
     display: flex;
+
+    label {
+      @media only screen and (max-width: 768px) {
+        display: none;
+      }
+    }
 
     input {
       margin-left: 8px;
@@ -16,6 +22,11 @@
       border-radius: 4px;
       height: 20px;
       padding: 0 8px;
+
+      @media only screen and (max-width: 768px) {
+        width: 100% !important;
+        margin: 0;
+      }
     }
   }
 
@@ -44,6 +55,10 @@ div.completeTrain {
   justify-content: space-between;
   height: auto;
 
+  @media only screen and (max-width: 768px) {
+    flex-wrap: wrap;
+  }
+
   button {
     margin: 8px 2px 0 0;
     padding: 4px 8px;
@@ -54,5 +69,18 @@ div.completeTrain {
     font-size: 12px;
     text-transform: uppercase;
     transition: all 100ms;
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      margin: 7px 0 0 0;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
   }
+}
+
+.hide {
+  display: none;
 }

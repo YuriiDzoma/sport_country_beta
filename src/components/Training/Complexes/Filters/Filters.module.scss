@@ -1,0 +1,14 @@
+.filtersWrapper {
+  position: relative;
+  z-index: 2;
+  background-color: #ffffff;
+  height: 100%;
+
+  @media only screen and (max-width: 768px) {
+    padding: 10px;
+  }
+}
+
+.types {
+  margin-bottom: 30px;
+}

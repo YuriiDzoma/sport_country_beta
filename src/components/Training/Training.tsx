@@ -1,36 +1,50 @@
-import styles from './Training.module.scss'
-import {Route, Routes} from "react-router-dom";
-import TrainingProcess from './TrainingProcess/TrainingProcess';
-import TrainingPrograms from "./TrainingPrograms/TrainingPrograms";
+import { Route, Routes } from 'react-router-dom';
+
+import styles from './Training.module.scss';
+import TrainingNavbar from './TrainingNavbar/TrainingNavbar';
+import Complexes from './Complexes/Complexes';
+import TrainingPrograms from './TrainingPrograms/TrainingPrograms';
 import WikiContainer from './TrainingWiki/WikiContainer';
-import TrainingNavbar from "./TrainingNavbar/TrainingNavbar";
+import {useAppDispatch, useAppSelector} from "hooks/redux";
+import {currentUser, getPrograms} from "store/selectors";
+import {setMyPrograms} from "store/actions";
+import CreateProgramForm from "components/Training/TrainingPrograms/ProgramCreate/CreateProgramForm";
+import React from "react";
 
 const Training = () => {
-    const trainingNavigation =  [
-        {id:1, tittle: 'Training Process', url: '/training/training_process/'},
-        {id:2, tittle: 'Training Programs', url: '/training/training_programs/'},
-        {id:3, tittle: 'Training Wiki', url: '/training/training_wiki/'},
-    ];
+  const user = useAppSelector(currentUser);
 
-    return (
-        <div className={styles.trainingWrapper}>
-            <div className={styles.linksContainer}>
-                <TrainingNavbar trainingNavigation={trainingNavigation}/>
-            </div>
-            <div className={styles.trainingContentWrapper}>
-              <div className={styles.trainingContent}>
+  const dispatch = useAppDispatch();
+  if (user) {
+    dispatch(setMyPrograms(user.id));
+  }
 
-                <Routes>
-                    <Route path={'training_process/'} element={<TrainingProcess/>} />
-                    <Route path={'training_programs/*'} element={<TrainingPrograms />} />
+  const allPrograms = useAppSelector(getPrograms)
+
+  return (
+      <>
+        {user && (
+            <div className={styles.trainingWrapper}>
+              <div className={styles.linksContainer}>
+                <TrainingNavbar user={user} />
+              </div>
+              <div className={styles.trainingContentWrapper}>
+                <div className={styles.trainingContent}>
+                  <Routes>
+                    <Route path={'Complexes/*'} element={ allPrograms && allPrograms.length>=1
+                        ? <Complexes allPrograms={allPrograms} />
+                        : <>Sorry, programs are not available at the moment</>} />
+                    <Route path={'training_programs/:id/*'} element={<TrainingPrograms />} />
+                    <Route path={'global_create/'} element={<CreateProgramForm toGlobal />} />
                     <Route path={'training_wiki/*'} element={<WikiContainer />} />
-                </Routes>
-
+                  </Routes>
+                </div>
+              </div>
             </div>
-            </div>
-        </div>
-    )
-}
+        )}
+      </>
 
+  );
+};
 
 export default Training;

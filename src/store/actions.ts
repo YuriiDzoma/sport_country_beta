@@ -1,61 +1,131 @@
-import {AppDispatch} from "store/store";
 import {
-    setFetching,
-    resetFetching,
-    addProgramToState,
-    removeProgramFromState,
-    editProgramInState,
-} from "store/training-slice";
-import {addProgramToFB, deleteProgramInFB, editProgramInFB} from "api/api";
-import {pushExercises} from "store/wikiExercises-slice";
+  addProgramToFB,
+  deleteProgramInFB,
+  editProgramInFB,
+  fetchMyPrograms, getFavoriteProgram,
+  getUsers
+} from 'api/api';
+import { AppDispatch } from 'store/store';
+import {addProgramToGlobalState, resetFetching, setFetching} from 'store/training-slice';
+import { Program } from 'store/training-slice.types';
+import {
+  editUserProgramInState,
+  setUsersLoading,
+  setUserPrograms,
+  setUsers,
+  setUserFavoriteProgram
+} from 'store/users-slice';
+import { pushExercises } from 'store/wikiExercises-slice';
+import { exercise } from 'store/wikiExercises-slyce.types';
+import {editProgramInState, removeProgramFromState, setMyProgram} from "store/profile-slice";
 
 
-export const setNewProgram = (values: any) => async (dispatch: AppDispatch) => {
-    dispatch(setFetching());
-    const newProgram = {
-        ...values,
-    }
-    addProgramToFB(newProgram).then(response => dispatch(addProgramToState(response)));
-    dispatch(resetFetching());
+export const fetchUsers = () => async (dispatch: AppDispatch) => {
+  dispatch(setUsersLoading(true));
+  getUsers()
+    .then((response) => dispatch(setUsers(response)))
+    .catch(Error);
+  dispatch(setUsersLoading(false));
+};
+
+export const setMyPrograms = (user: string) => async (dispatch: AppDispatch) => {
+  if (user) {
+    fetchMyPrograms(user).then((response) => dispatch(setMyProgram(response)))
+  }
 }
 
-export const deleteProgram = (values: string) => async (dispatch: AppDispatch) => {
-    dispatch(setFetching());
-    deleteProgramInFB(values).then(response => dispatch(removeProgramFromState(response)));
-    dispatch(resetFetching());
+export const getUserFavoriteProgram = (id: string) => async (dispatch: AppDispatch) => {
+  if (id) {
+    setUsersLoading(true);
+    getFavoriteProgram(id).then(response => dispatch(setUserFavoriteProgram(response)));
+    setUsersLoading(false);
+  }
 }
 
-export const editProgram = (programId: string | undefined, values: any) => async (dispatch: AppDispatch) => {
-    console.log(values)
-    console.log(programId)
-    dispatch(setFetching());
-    editProgramInFB(programId, values).then(response => dispatch(editProgramInState(response)));
-    dispatch(resetFetching());
+export const setClientProgram = (user: string) => async (dispatch: AppDispatch) => {
+  if (user) {
+    fetchMyPrograms(user).then((response) => dispatch(setMyProgram(response)))
+  }
 }
 
-export const setExercises = (values: any) => async (dispatch: AppDispatch) => {
-    dispatch(pushExercises(values))
+export const fetchUserPrograms = (user: string) => async (dispatch: AppDispatch) => {
+  if (user) {
+    fetchMyPrograms(user).then((response) => dispatch(setUserPrograms(response)))
+  }
 }
 
-export const addWorkHistory = (dayNumber: number, values: any) => async (dispatch: AppDispatch) => {
-    const programId = values.id
-    const editedProgram = {
-        ...values,
-        days: [...values.days.map((day: any) => {
-            if (day.day === dayNumber) {
-                day.workHistory = [...day.workHistory, {...values.days[dayNumber-1].workProcess}];
-                day.workProcess = {
-                    date: '',
-                    weights: [...day.workProcess.weights.map((exercise: any, index: number) => {
-                        return {
-                            exerciseNumber: index+1,
-                            weights: '',
-                        }
-                    })]
-                }
-            }
-            return day;
-        })]
-    }
-    editProgramInFB(programId, editedProgram).then(response => dispatch(editProgramInState(response)));
-}
+export const setNewGlobalProgram = (values: Program) => async (dispatch: AppDispatch) => {
+  dispatch(setFetching());
+  const newProgram = {
+    ...values,
+  };
+  addProgramToFB(newProgram).then((response) => dispatch(addProgramToGlobalState(response)));
+  dispatch(resetFetching());
+};
+
+export const deleteProgram = (user: string, values: string) => async (dispatch: AppDispatch) => {
+  dispatch(setFetching());
+  deleteProgramInFB(user, values)
+    .then((response) => dispatch(removeProgramFromState(response)))
+    .catch(Error);
+  dispatch(resetFetching());
+};
+
+export const editProgram = (user: string, programId: string | undefined, values: Program) => async (dispatch: AppDispatch) => {
+  dispatch(setFetching());
+  if (user) {
+    editProgramInFB(user, programId, values)
+        .then((response) => dispatch(editProgramInState(response)))
+        .catch(Error);
+  }
+  dispatch(resetFetching());
+};
+
+export const editUserProgram = (user: string, programId: string | undefined, values: Program) => async (dispatch: AppDispatch) => {
+  dispatch(setFetching());
+  if (user) {
+    editProgramInFB(user, programId, values)
+        .then((response) => dispatch(editUserProgramInState(response)))
+        .catch(Error);
+  }
+  dispatch(resetFetching());
+};
+
+export const setExercises = (values: exercise[]) => async (dispatch: AppDispatch) => {
+  dispatch(pushExercises(values));
+};
+
+export const addWorkHistory = (user: string, dayNumber: number, values: Program) => async (dispatch: AppDispatch) => {
+
+  const programId = values.id;
+  const editedProgram = {
+    ...values,
+    days: [
+      ...values.days.map((day: any) => {
+        if (day.day === dayNumber) {
+          const date = values.days[dayNumber - 1].workProcess.date.split('-').reverse();
+          values.days[dayNumber - 1].workProcess.date = `${date[0]}.${date[1]}.${date[2].slice(-2)}`;
+          day.workHistory = [...day.workHistory, { ...values.days[dayNumber - 1].workProcess }];
+          day.workProcess = {
+            date: '',
+            weights: [
+              ...day.workProcess.weights.map((exercise: any) => {
+                return {
+                  exerciseNumber: exercise.exerciseNumber,
+                  weights: '',
+                };
+              }),
+            ],
+          };
+        }
+        return day;
+      }),
+    ],
+  };
+  if (user) {
+    editProgramInFB(user, programId, editedProgram)
+        .then((response) => dispatch(editProgramInState(response)))
+        .catch(Error);
+  }
+
+};

@@ -1,37 +1,30 @@
+.loginPage {
+  &__inner {
+    margin: auto 0;
+    display: flex;
+    align-items: stretch;
 
-.loginWrapper {
-  margin-top: 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  input {
-    margin-top: 16px;
-    padding: 4px;
-    width: 240px;
-    height: 30px;
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+    }
   }
-}
 
-.signIn {
-  margin-top: 16px;
-  button {
-    background-color: #4d57bd;
-    color: white;
-    width: 50px;
-    height: 26px;
-    padding-bottom: 4px;
-    border-radius: 10px;
+  &__col {
+    width: 50%;
+    padding: 0 25px;
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      margin: 30px auto;
+    }
+
+    &:first-child {
+      border-right: 1px solid #dcdcde;
+
+      @media only screen and (max-width: 768px) {
+        border: 0;
+      }
+    }
   }
-}
 
-.signInGoogle {
-  margin-top: 50px;
-
-  button {
-    color: white;
-    background-color: #6a71bd;
-    padding: 4px 6px 6px;
-    border-radius: 10px;
-  }
 }

@@ -1,41 +1,43 @@
 export type Comment = {
-    id: number
-    comment: string
-    date: string
-}
+  id: number;
+  comment: string;
+  date: string;
+};
 
 export type Exercise = {
-    id: number
-    name: string
-}
+  id: number;
+  name: string;
+};
 
 export type ExercisesProcess = {
-    exerciseNumber: number
-    weight: string
-}
+  exerciseNumber: number;
+  weight: string;
+};
 
 export type Training = {
-    date: string
-    weights: ExercisesProcess[]
-}
+  date: string;
+  weights: ExercisesProcess[];
+};
 
 export type Day = {
-    day: number
-    exercises: Exercise[]
-    workHistory: Training[]
-    workProcess: Training
-}
+  day: number;
+  exercises: Exercise[];
+  workHistory: Training[];
+  workProcess: Training;
+};
 
 export type Program = {
-    id: string
-    title: string
-    typeOf: string
-    days: Day[]
-    comments: Comment[]
-}
+  id: string;
+  title: string;
+  typeOf: string;
+  level: number;
+  author: string;
+  days: Day[];
+  comments: Comment[];
+};
 
 export interface TrainingState {
-    programs: Program[],
-    isLoading: boolean,
-    error: string,
+  programs: Program[];
+  isLoading: boolean;
+  error: string;
 }

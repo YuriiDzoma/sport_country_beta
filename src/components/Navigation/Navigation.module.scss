@@ -3,6 +3,16 @@
   display: flex;
   justify-content: center;
   padding: 0 10px 10px 10px;
+
+  @media only screen and (max-width: 768px) {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #edf4fb;
+    z-index: 2;
+    padding: 5px;
+    border-top: 1px solid #dcdcde;
+  }
 }
 
 .links {
@@ -36,6 +46,10 @@
 
   &:hover {
     background-color: #ececef;
+
+    @media only screen and (max-width: 769px) {
+      background-color: #edf4fb;
+    }
   }
 
   svg {

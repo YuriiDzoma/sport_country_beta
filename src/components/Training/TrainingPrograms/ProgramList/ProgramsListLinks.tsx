@@ -1,26 +1,51 @@
-import styles from './ProgramsListLinks.module.scss'
-import {ProgramLink} from "./ProgramLink/ProgramLink";
-import React, {useEffect} from "react";
-import {useAppSelector} from "hooks/redux";
-import Preloader from "components/Common/Preloader/Preloader";
-import {getIsFetching, getPrograms} from "store/selectors";
+import CloseIcon from '@mui/icons-material/Close';
+import React, { useEffect } from 'react';
 
-const ProgramsListLinks = () => {
-    const programs = useAppSelector(getPrograms);
-    useEffect(() => {
+import Preloader from 'components/Common/Preloader/Preloader';
+import { useAppSelector } from 'hooks/redux';
+import {getIsFetching, getMyAllPrograms, getUserPrograms} from 'store/selectors';
 
-    },[programs]);
-    const isFetching = useAppSelector(getIsFetching);
-    return (
+import { ProgramLink } from './ProgramLink/ProgramLink';
+import styles from './ProgramsListLinks.module.scss';
+import { ProgramsListLinksProps } from './ProgramsListLinks.types';
+import {useParams} from "react-router";
+
+
+const ProgramsListLinks: React.FC<ProgramsListLinksProps> = ({ isMyProfile, onProgramsListHide }) => {
+
+  let programs
+  if (isMyProfile) {
+    programs = useAppSelector(getMyAllPrograms);
+  } else {
+    programs = useAppSelector(getUserPrograms);
+  }
+
+  const {id} = useParams()
+  useEffect(() => {
+  }, [programs]);
+  const isFetching = useAppSelector(getIsFetching);
+
+  return (
     <div className={styles.programsList}>
-        {isFetching ? <Preloader /> : programs.map((item, index) => (
-                <ProgramLink key={index} to={'/training/training_programs/' + item.id}>
-                    {item.title}
-                </ProgramLink>
-            ))}
+      <button onClick={() => onProgramsListHide(false)} className={styles.programsListClose}>
+        <CloseIcon />
+      </button>
 
+      {isFetching ? (
+        <Preloader />
+      ) : (
+          programs.map((item, index) => (
+          <ProgramLink
+            onProgramsListHide={onProgramsListHide}
+            key={index}
+            to={`/training/training_programs/${id}/${item.id}`}
+          >
+            {item.title}
+          </ProgramLink>
+        ))
+      )}
     </div>
-)}
-
+  );
+};
 
 export default ProgramsListLinks;

@@ -7,6 +7,10 @@
   height: 10%;
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 768px) {
+    padding-top: 10px;
+  }
 }
 
 .programDaysContainerInner {
@@ -15,37 +19,72 @@
 }
 
 .programExpand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   h2 {
-    text-shadow: 1px 1px 1px #5da3b4;
-    font-size: 24px;
-    font-weight: 500;
+    font-weight: 700;
     display: flex;
     justify-content: center;
     color: #333238;
+    text-align: center;
+    width: 100%;
+    padding: 0 70px;
+
+    @media only screen and (max-width: 768px) {
+      margin-bottom: 15px;
+    }
   }
 
   span:first-child {
     margin-right: 12px;
   }
 
-  &_type {
+  &__type {
     display: flex;
     justify-content: left;
-  }
-}
+    margin: 5px 0;
+    align-items: center;
 
-.redactor {
-  position: absolute;
-  right: 70px;
-  top: 16px;
-  font-size: 22px;
+    @media only screen and (max-width: 768px) {
+      position: relative;
 
-  a {
-    color: #1f75cb;
-
-    &:hover {
-      color: #1068bf;
+      &:after {
+        content: '';
+        width: 150%;
+        height: 1px;
+        background-color: #dcdcde;
+        display: block;
+        position: absolute;
+        top: calc(100% + 5px);
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
   }
+
+  &__author {
+    margin-left: 20px;
+  }
 }
 
+.label {
+  font-size: 12px;
+
+  &__item {
+    margin-left: 8px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+}
+
+.programSettings {
+  position: absolute;
+  justify-content: space-between;
+  width: 120px;
+  top: 2px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+}

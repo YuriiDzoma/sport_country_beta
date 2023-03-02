@@ -1,17 +1,33 @@
-
-
 .createProgram {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 15px;
+  margin-top: auto;
 
   span {
     font-size: 13px;
   }
+
   &__link {
-    background-color: rgba(192, 213, 192, 0.82);
-    padding: 6px 10px 7px;
-    border-radius: 5px;
     outline: 1px solid white;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    color: #2da44e;
+    padding: 0 0 2px 0;
+    border-radius: 0;
+    text-decoration: underline;
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    span {
+      margin-left: 18px;
+      line-height: 22px;
+    }
   }
 }

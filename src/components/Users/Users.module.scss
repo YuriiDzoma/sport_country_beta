@@ -1,10 +1,14 @@
 .users {
   text-align: center;
 
-  span {
-    margin-top: 20px;
-    color: rgba(16, 104, 191, 0.55);
-    font-size: 21px;
-    text-shadow: rgba(87, 87, 190, 0.45) 1px 0 1px;
+  @media only screen and (max-width: 768px) {
+    padding-bottom: 45px;
+  }
+
+  &__list {
+    display: flex;
+    overflow: auto;
+    flex-wrap: wrap;
+    padding: 0 20px;
   }
 }

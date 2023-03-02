@@ -1,0 +1,48 @@
+.signUpForm {
+  width: 100%;
+
+  &__wrap {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    margin-bottom: 25px;
+    line-height: 1.5;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 18px;
+      width: 100%;
+    }
+  }
+}
+
+.formRow {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: 15px;
+  max-width: 370px;
+  width: 100%;
+
+  &__input {
+    width: 100%;
+    border-bottom: 1px solid #89888d;
+    font-size: 16px;
+    padding: 7px 15px;
+  }
+
+  &__submit {
+    font-size: 16px;
+    background-color: #1f75cb;
+    color: white;
+    padding: 7px 15px;
+    border-radius: 4px;
+    min-width: 200px;
+    width: 100%;
+    transition: background-color 100ms;
+
+    &:hover {
+      background-color: #1068bf;
+    }
+  }
+}

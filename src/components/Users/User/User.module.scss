@@ -1,0 +1,79 @@
+.userBlock {
+  width: 50%;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media only screen and (max-width: 768px) {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  &:hover {
+    .userBlock {
+      &__name {
+        color: #1068bf;
+      }
+    }
+  }
+
+  &:nth-child(2n - 1) {
+    border-right: 1px solid #dcdcde;
+
+    @media only screen and (max-width: 768px) {
+      border: none;
+    }
+  }
+
+  &__addToFriends {
+    background-color: #1f75cb;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 5px 12px;
+    color: #ffffff;
+    font-weight: 500;
+    transition: all 100ms;
+
+    &:hover {
+      background-color: #1068bf;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+  }
+
+  &__pic {
+    min-width: 50px;
+    height: 50px;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 20px;
+    width: 50px;
+
+    @media only screen and (max-width: 768px) {
+      width: 50px;
+      height: 50px;
+      min-width: 50px;
+    }
+  }
+
+  &__image {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  &__name {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333238;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}
