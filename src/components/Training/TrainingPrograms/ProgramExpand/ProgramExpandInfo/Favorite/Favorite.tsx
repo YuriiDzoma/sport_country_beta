@@ -14,15 +14,15 @@ const Favorite = () => {
     const setFavorite = (userID: string, id: string) => {
         setFavoriteProgram(userID, id).then(response => dispatch(setUserFavoriteProgram(response)));
     }
-    const {programId} = useAppSelector(getFavoriteProgram);
+    const favorite = useAppSelector(getFavoriteProgram);
 
     return (
-        <div className={programId === id ? '' : styles.favorite}>
+        <div className={styles.favorite}>
             {id && user && (
                 <>
-                    {programId !== id
-                        ? <BookmarkBorderTwoToneIcon onClick={()=> setFavorite(user.id, id)} fontSize={'large'} />
-                        : <BookmarkTwoToneIcon color={'secondary'} fontSize={'large'} />}
+                    {!favorite || favorite.programId !== id
+                        ? <BookmarkBorderTwoToneIcon onClick={() => setFavorite(user.id, id)} fontSize={'large'}/>
+                        : <BookmarkTwoToneIcon color={'secondary'} fontSize={'large'}/>}
                 </>
             )}
         </div>

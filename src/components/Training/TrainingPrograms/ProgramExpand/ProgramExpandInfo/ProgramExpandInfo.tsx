@@ -7,6 +7,8 @@ import ProgramRemove from './ProgramRemove/ProgramRemove';
 import {Context} from "components/Context/Context";
 import Favorite from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/Favorite/Favorite";
 import EditButton from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/EditButton/EditButton";
+import {useAppSelector} from "hooks/redux";
+import {currentUser} from "store/selectors";
 
 
 const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
@@ -31,6 +33,12 @@ const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
             level = 'Beginner'
     }
     const {isMyProfile, userId}: any = useContext(Context)
+    const user = useAppSelector(currentUser);
+    let isTrainer = false;
+    if (user) {
+        isTrainer = user.isTrainer
+    }
+
 
   return (
     <div className={styles.programExpandContainer}>
@@ -61,7 +69,9 @@ const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
           {isMyProfile && (
             <Favorite />
           )}
-          <EditButton userId={userId} programId={program.id}/>
+          {isTrainer || isMyProfile && (
+              <EditButton userId={userId} programId={program.id}/>
+          )}
           {isMyProfile && (
               <ProgramRemove/>
           )}

@@ -50,7 +50,6 @@ export const createUserDocumentFromAuth = async (userAuth: User, additionalInfor
   if (!userSnapshot.exists()) {
     const { displayName, email, photoURL } = userAuth;
     const createdAt = new Date();
-    const programId = 'empty'
 
     try {
       await setDoc(userDocRef, {
@@ -60,10 +59,7 @@ export const createUserDocumentFromAuth = async (userAuth: User, additionalInfor
         photoURL,
         ...additionalInformation,
       });
-      const collectionRef = doc(db, `favoriteProgram`, userAuth.uid);
-      const updateObject = { programId };
-      // @ts-ignore
-      await setDoc(collectionRef, updateObject, {...programId});
+
     } catch (error) {
       console.log(error);
     }
