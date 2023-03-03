@@ -56,9 +56,16 @@ const Profile = () => {
                 }
               </div>
             </div>
-            <button onClick={()=> navigate(`/training/training_programs/${id}/`)}>my programs</button>
           </div>
       )}
+      <div className={styles.userItems}>
+        <button className={styles.userItems__link} onClick={() => navigate(`/training/training_programs/${id}/`)}>
+          my programs
+        </button>
+        <button className={styles.userItems__link} onClick={() => navigate(`/friends/${id}`)}>
+          my friends
+        </button>
+      </div>
     </div>
   );
 };

@@ -18,6 +18,7 @@ import { auth } from 'config/config';
 import { useAppDispatch } from 'hooks/redux';
 import {fetchUsers} from 'store/actions';
 import { setCurrentUser } from 'store/profile-slice';
+import Friends from "components/Friends/Friends";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -50,9 +51,10 @@ function App() {
           <div className={styles.mainContent}>
             <Routes>
               <Route path="/" element={<News />} />
-              <Route path="/profile/:id" element={<Profile />} />
+              <Route path="/profile/:id/*" element={<Profile />} />
               <Route path="/training/*" element={<Training />} />
               <Route path="/users/*" element={<Users />} />
+              <Route path={'/friends/:id'} element={<Friends />} />
               <Route path="/login/*" element={<Login />} />
             </Routes>
           </div>

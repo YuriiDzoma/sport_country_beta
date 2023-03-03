@@ -14,7 +14,7 @@ import {fetchUserPrograms} from "store/actions";
 import {Context} from "components/Context/Context";
 import {getFavoriteProgram} from "api/api";
 import {setUserFavoriteProgram, setUsersLoading} from "store/users-slice";
-import emptyProfileImage from 'assets/img/emptyprofile.jpg';
+import UserInfo from "components/Common/UserInfo/UserInfo";
 
 const TrainingPrograms = () => {
   const [showPrograms, setShowPrograms] = useState(false);
@@ -54,12 +54,7 @@ const TrainingPrograms = () => {
                   <FormatListBulletedIcon />
               </button>
               <div className={styles.programsList}>
-                  {profile && (
-                      <div className={styles.userInfo}>
-                          <p className={styles.userInfo__name}>{profile.displayName}</p>
-                          <img alt='user' className={styles.userInfo__photo} src={profile.photoURL ? profile.photoURL : emptyProfileImage}></img>
-                      </div>
-                  )}
+                  <UserInfo id={id} profile={profile} />
                   <ProgramCreateButton profileId={id} onProgramsListHide={onProgramsListHide}/>
                   <ProgramsListLinks isMyProfile={isMyProfile} onProgramsListHide={onProgramsListHide}/>
               </div>

@@ -225,3 +225,18 @@
   }
 }
 
+.userItems {
+  display: inline-flex;
+  justify-content: start;
+  flex-direction: column;
+  max-width: 150px;
+
+  &__link {
+    padding: 3px 6px;
+    border: 1px solid #1068bf;
+    border-radius: 4px;
+    margin: 15px 0 0 0;
+    color: #14144f;
+  }
+}
+
