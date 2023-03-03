@@ -4,7 +4,7 @@ import React from "react";
 import {UserInfoProps} from "components/Common/UserInfo/UserInfo.types";
 import { Link } from 'react-router-dom';
 
-const UserInfo: React.FC<UserInfoProps> = ({ id, profile }) => {
+const UserInfo = ({ id, profile }:UserInfoProps) => {
     return (
         <>
             {profile && id && (

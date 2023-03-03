@@ -5,9 +5,17 @@ import emptyProfileImage from 'assets/img/emptyprofile.jpg';
 import { UserProps } from 'components/Users/User/User.types';
 
 import styles from './User.module.scss';
+import {useAppSelector} from "hooks/redux";
+import {currentUser} from "store/selectors";
+import {addNewFriend} from "api/api";
 
 const User: React.FC<UserProps> = ({ user }) => {
   const { displayName, id, photoURL } = user;
+  const myProfile = useAppSelector(currentUser);
+
+  const addFriend = (FriendId: string, myProfileID: string) => {
+      addNewFriend(myProfileID, FriendId).then(response => console.log(response))
+  }
 
   return (
       <div className={styles.userBlock}>
@@ -23,7 +31,14 @@ const User: React.FC<UserProps> = ({ user }) => {
           </div>
           <p className={styles.userBlock__name}>{displayName}</p>
         </Link>
-        <button className={styles.userBlock__addToFriends} title={`Add ${displayName} to friend list`}>Add friend</button>
+          {myProfile && myProfile.id !== id && (
+              <button className={styles.userBlock__addToFriends}
+                      title={`Add ${displayName} to friend list`}
+                      onClick={() => addFriend(id, myProfile.id)}
+              >
+                  Follow
+              </button>
+          )}
       </div>
   );
 };

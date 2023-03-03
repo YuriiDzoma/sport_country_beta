@@ -39,6 +39,16 @@ export const fetchMyPrograms = async (user: string) => {
   }
 };
 
+export const getUserFriends = async (userId: string) => {
+  try {
+    return await getDocs(collection(db, `usersFollowers/${userId}/`)).then((querySnapshot) => {
+      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const fetchPrograms = createAsyncThunk('programs/fetchAll', async (_, thunkAPI) => {
   try {
     return await getDocs(collection(db, 'programs')).then((querySnapshot) => {
@@ -70,12 +80,24 @@ export const addProgramToFB = async (values: Program) => {
   }
 };
 
+
 export const createNewProgram = async (user: string | null, values: Program) => {
   try {
     await addDoc(collection(db, `usersPrograms/${user}/programs`), { ...values }).then(() => {
       console.log('program added');
     });
     return values;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const addNewFriend = async (myProfileID: string | null, friendId: any) => {
+  try {
+    await addDoc(collection(db, `usersFollowers/${myProfileID}/${friendId}`), {friendId}).then(() => {
+      console.log('followed');
+    });
+    return friendId;
   } catch (e) {
     console.log(e);
   }

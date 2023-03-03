@@ -34,14 +34,6 @@ export const setMyPrograms = (user: string) => async (dispatch: AppDispatch) => 
   }
 }
 
-export const getUserFavoriteProgram = (id: string) => async (dispatch: AppDispatch) => {
-  if (id) {
-    setUsersLoading(true);
-    getFavoriteProgram(id).then(response => dispatch(setUserFavoriteProgram(response)));
-    setUsersLoading(false);
-  }
-}
-
 export const setClientProgram = (user: string) => async (dispatch: AppDispatch) => {
   if (user) {
     fetchMyPrograms(user).then((response) => dispatch(setMyProgram(response)))
