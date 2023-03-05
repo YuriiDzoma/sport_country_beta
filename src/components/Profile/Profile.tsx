@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import { useAppSelector } from 'hooks/redux';
+import {useAppSelector} from 'hooks/redux';
 import {currentUser, getUserById} from 'store/selectors';
 
 import styles from './Profile.module.scss';
@@ -9,11 +9,13 @@ import BorderColorIcon from '@mui/icons-material/BorderColor';
 import emptyProfileImage from 'assets/img/emptyprofile.jpg';
 import {useNavigate} from "react-router";
 
+
 const Profile = () => {
   const { id } = useParams();
   const profile = useAppSelector((state) => getUserById(state, id));
   const user = useAppSelector(currentUser);
   const navigate = useNavigate();
+
   if (!profile || !user) {
     return (
         <h2 className={styles.profile__noProfile}>Loading ...</h2>

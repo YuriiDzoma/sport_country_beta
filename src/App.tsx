@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Route, Routes } from 'react-router-dom';
 
-import {fetchExercisesGroups, fetchPrograms, getCurrentUser} from 'api/api';
+import {fetchExercisesGroups, fetchPrograms, getCurrentUser, getUserFriends} from 'api/api';
 import Preloader from 'components/Common/Preloader/Preloader';
 import Header from 'components/Header/Header';
 import Login from 'components/Login/Login';
@@ -17,7 +17,7 @@ import { createUserDocumentFromAuth } from 'config/config';
 import { auth } from 'config/config';
 import { useAppDispatch } from 'hooks/redux';
 import {fetchUsers} from 'store/actions';
-import { setCurrentUser } from 'store/profile-slice';
+import {setCurrentUser, setMyFollowers} from 'store/profile-slice';
 import Friends from "components/Friends/Friends";
 
 function App() {
@@ -34,6 +34,7 @@ function App() {
       if (user) {
         createUserDocumentFromAuth(user);
         getCurrentUser(user.uid).then((response => dispatch(setCurrentUser(response))))
+        getUserFriends(user.uid).then(response => dispatch(setMyFollowers(response)))
       } else {
         dispatch(setCurrentUser(null));
       }

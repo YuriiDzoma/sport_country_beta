@@ -5,6 +5,7 @@ import { profileState } from 'store/profile-slice.types';
 const initialState: profileState = {
   currentUser: null,
   myPrograms: [],
+  myFollowers: [],
   isLoading: false,
   myFavoriteProgram: null,
 };
@@ -21,6 +22,9 @@ export const profileSlice = createSlice({
     },
     setCurrentUser(state, action) {
       state.currentUser = action.payload;
+    },
+    setMyFollowers(state, action) {
+      state.myFollowers = action.payload;
     },
     setMyProgram(state, action) {
       state.myPrograms = action.payload;
@@ -50,6 +54,7 @@ export default profileSlice.reducer;
 export const {
   setCurrentUser,
   setMyProgram,
+  setMyFollowers,
   addProgramToState,
   setMyFavoriteProgram,
   removeProgramFromState,

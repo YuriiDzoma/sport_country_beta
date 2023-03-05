@@ -1,4 +1,4 @@
-import {User} from "store/users-slice.types";
+import {Follower, User} from "store/users-slice.types";
 
 export type Comment = {
   id: number;
@@ -42,6 +42,7 @@ export type profileState = {
   currentUser: User | null;
   isLoading: boolean;
   myPrograms: Program[];
+  myFollowers: Follower[];
   myFavoriteProgram: string | null;
 };
 

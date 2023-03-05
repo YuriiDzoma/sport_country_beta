@@ -7,6 +7,7 @@ const initialState: UsersState = {
   isLoading: false,
   error: '',
   userPrograms: [],
+  userFollowers: [],
   userFavoriteProgram: {
     programId: null,
     id: null,
@@ -34,6 +35,9 @@ export const usersSlice = createSlice({
         state.users = [...state.users, action.payload];
       }
     },
+    setFollowers(state, action) {
+      state.userFollowers = action.payload;
+    },
     editUserProgramInState(state, action) {
       state.userPrograms = state.userPrograms.map((program) => {
         if (program === action.payload.id) {
@@ -53,6 +57,7 @@ export const { addUser,
   addUserProgramToState,
   editUserProgramInState,
   setUserPrograms,
+  setFollowers,
   setUsers,
   setUsersLoading,
   setUserFavoriteProgram} = usersSlice.actions;

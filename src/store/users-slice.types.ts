@@ -14,10 +14,18 @@ export type Favorite = {
   id: string | null
 }
 
+export type Follower = {
+  id: string
+  friendId: string;
+}
+
 export type UsersState = {
   users: User[];
   isLoading: boolean;
   error: string;
   userPrograms: Program[];
+  userFollowers: Follower[];
   userFavoriteProgram: Favorite;
 };
+
+

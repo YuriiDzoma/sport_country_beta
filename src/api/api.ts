@@ -41,7 +41,7 @@ export const fetchMyPrograms = async (user: string) => {
 
 export const getUserFriends = async (userId: string) => {
   try {
-    return await getDocs(collection(db, `usersFollowers/${userId}/`)).then((querySnapshot) => {
+    return await getDocs(collection(db, `usersFollowers/${userId}/followers`)).then((querySnapshot) => {
       return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     });
   } catch (e) {
@@ -94,7 +94,7 @@ export const createNewProgram = async (user: string | null, values: Program) => 
 
 export const addNewFriend = async (myProfileID: string | null, friendId: any) => {
   try {
-    await addDoc(collection(db, `usersFollowers/${myProfileID}/${friendId}`), {friendId}).then(() => {
+    await addDoc(collection(db, `usersFollowers/${myProfileID}/followers`), {friendId}).then(() => {
       console.log('followed');
     });
     return friendId;
