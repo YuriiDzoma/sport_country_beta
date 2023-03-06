@@ -103,6 +103,17 @@ export const addNewFriend = async (myProfileID: string | null, friendId: any) =>
   }
 };
 
+export const removeFriend = async (myProfileID: string | null, friendId: string) => {
+  try {
+    await deleteDoc(doc(db, `usersFollowers/${myProfileID}/followers`, friendId)).then((response) => {
+      return response;
+    });
+    return friendId;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const setFavoriteProgram = async (userId: string, programId: any) => {
   try {
     if (!userId) return false;

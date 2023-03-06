@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
-import { UsersState } from 'store/users-slice.types';
+import {Follower, UsersState} from 'store/users-slice.types';
 
 const initialState: UsersState = {
   users: [],
@@ -38,6 +38,18 @@ export const usersSlice = createSlice({
     setFollowers(state, action) {
       state.userFollowers = action.payload;
     },
+
+    setMyFollowers(state, action) {
+      state.users = state.users.map((user) => {
+        const follower = action.payload.find((item: any) => item.friendId === user.id ? item.id : null )
+          return  {
+            ...user,
+            isFriend: action.payload.some((friend: Follower) => friend.friendId === user.id),
+            followerId: follower ? follower.id : 'not friend'
+          }
+      });
+    },
+
     editUserProgramInState(state, action) {
       state.userPrograms = state.userPrograms.map((program) => {
         if (program === action.payload.id) {
@@ -58,6 +70,7 @@ export const { addUser,
   editUserProgramInState,
   setUserPrograms,
   setFollowers,
+  setMyFollowers,
   setUsers,
   setUsersLoading,
   setUserFavoriteProgram} = usersSlice.actions;

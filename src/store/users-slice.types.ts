@@ -1,12 +1,14 @@
 import {Program} from "store/profile-slice.types";
 
 export type User = {
+  isFriend: boolean;
   createdAt: string;
   id: string;
   displayName: string;
   photoURL: string;
   email: string;
   isTrainer: boolean;
+  followerId?: string;
 };
 
 export type Favorite = {

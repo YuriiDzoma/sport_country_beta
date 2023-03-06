@@ -17,8 +17,9 @@ import { createUserDocumentFromAuth } from 'config/config';
 import { auth } from 'config/config';
 import { useAppDispatch } from 'hooks/redux';
 import {fetchUsers} from 'store/actions';
-import {setCurrentUser, setMyFollowers} from 'store/profile-slice';
+import {setCurrentUser} from 'store/profile-slice';
 import Friends from "components/Friends/Friends";
+import {setMyFollowers} from "store/users-slice";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -30,7 +31,6 @@ function App() {
 
   useEffect(() => {
     return onAuthStateChangeListener((user) => {
-
       if (user) {
         createUserDocumentFromAuth(user);
         getCurrentUser(user.uid).then((response => dispatch(setCurrentUser(response))))
