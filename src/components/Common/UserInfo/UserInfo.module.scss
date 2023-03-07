@@ -5,17 +5,7 @@
   align-items: center;
   padding: 0 5px 10px;
   margin-bottom: 5px;
-
-  &:after {
-    content: '';
-    position: absolute;
-    width: 70%;
-    height: 1px;
-    border: 1px solid #dcdcde;
-    bottom: 1px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+  border-bottom: 1px solid #dcdcde;
 
   &__photo {
     width: 40px;

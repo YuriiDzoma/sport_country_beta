@@ -109,7 +109,7 @@ const CreateProgramForm: React.FC<CreateProgramFormProps> = ({
   });
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.createProgramInfo__form} onSubmit={handleSubmit}>
       <div className={styles.createProgramInfo}>
         <h2 className={styles.createProgramInfo__title}>New program</h2>
         <CreateName handleChange={handleChange} values={values} />

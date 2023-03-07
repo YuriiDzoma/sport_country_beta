@@ -58,7 +58,6 @@ const TrainingPrograms = () => {
                   <ProgramCreateButton profileId={id} onProgramsListHide={onProgramsListHide}/>
                   <ProgramsListLinks isMyProfile={isMyProfile} onProgramsListHide={onProgramsListHide}/>
               </div>
-              <div onClick={() => onProgramsListHide(false)} className={styles.programsListCover}></div>
               <div className={styles.programsContent}>
                   <Routes>
                       <Route path={'create/'} element={<CreateProgramForm />} />
