@@ -3,6 +3,12 @@
   flex-wrap: wrap;
   position: relative;
 
+  &__form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
   &__title {
     text-align: center;
     margin-top: 25px;
@@ -113,11 +119,6 @@
       }
     }
   }
-}
-
-.createProgramInner {
-  overflow: auto;
-  max-height: 400px;
 }
 
 .createProgramDay {
@@ -290,4 +291,8 @@
 .programLabel {
   display: inline-block;
   min-width: 80px;
+}
+
+.createProgramInner {
+  overflow: auto;
 }

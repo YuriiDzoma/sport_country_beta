@@ -1,5 +1,6 @@
 import BookmarkBorderTwoToneIcon from '@mui/icons-material/BookmarkBorderTwoTone';
 import BookmarkTwoToneIcon from '@mui/icons-material/BookmarkTwoTone';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 import styles from './Favorite.module.scss'
 import {useParams} from "react-router";
 import {useAppDispatch, useAppSelector} from "hooks/redux";
@@ -21,8 +22,9 @@ const Favorite = () => {
             {id && user && (
                 <>
                     {!favorite || favorite.programId !== id
-                        ? <BookmarkBorderTwoToneIcon onClick={() => setFavorite(user.id, id)} fontSize={'large'}/>
-                        : <BookmarkTwoToneIcon color={'secondary'} fontSize={'large'}/>}
+                        ? <BookmarkBorderTwoToneIcon onClick={() => setFavorite(user.id, id)}/>
+                        : <BookmarkIcon/>
+                    }
                 </>
             )}
         </div>
