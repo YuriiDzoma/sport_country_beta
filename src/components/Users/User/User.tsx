@@ -5,20 +5,28 @@ import emptyProfileImage from 'assets/img/emptyprofile.jpg';
 import {UserProps} from 'components/Users/User/User.types';
 
 import styles from './User.module.scss';
-import {useAppSelector} from "hooks/redux";
+import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser} from "store/selectors";
-import {addNewFriend, removeFriend} from "api/api";
+import {addNewFriend, getUserFriends, removeFriend} from "api/api";
+import {setMyFollowers} from "store/users-slice";
 
 const User: React.FC<UserProps> = ({user}) => {
     const {displayName, id, photoURL, followerId} = user;
     const myProfile = useAppSelector(currentUser);
+    const dispatch = useAppDispatch();
 
     const addFriend = (FriendId: string, myProfileID: string) => {
         addNewFriend(myProfileID, FriendId).then(response => console.log(response))
+        if (myProfile) {
+            getUserFriends(myProfile.id).then(response => dispatch(setMyFollowers(response)))
+        }
     }
 
     const deleteFriend = (myProfileID: string, FriendId: string) => {
-        removeFriend(myProfileID, FriendId).then(response => console.log(response))
+        removeFriend(myProfileID, FriendId).then(response => console.log(response));
+        if (myProfile) {
+            getUserFriends(myProfile.id).then(response => dispatch(setMyFollowers(response)))
+        }
     }
 
     return (

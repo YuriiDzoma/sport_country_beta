@@ -1,0 +1,57 @@
+.friendList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 15px auto;
+}
+
+.friend {
+  margin: 5px 10px;
+  padding: 5px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #5da3b4;
+  border-radius: 4px;
+
+  &__name {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333238;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+  &__avatar {
+      min-width: 80px;
+      height: 80px;
+      object-fit: cover;
+      overflow: hidden;
+      border-radius: 50%;
+      margin-right: 20px;
+      width: 50px;
+
+      @media only screen and (max-width: 768px) {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+      }
+  }
+
+  &__unFollowFriends {
+    background-color: #1f75cb;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 5px 12px;
+    color: #ffffff;
+    font-weight: 500;
+    transition: all 100ms;
+
+    &:hover {
+      background-color: #1068bf;
+    }
+  }
+}
+

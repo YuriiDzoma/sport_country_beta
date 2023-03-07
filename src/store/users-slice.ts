@@ -29,25 +29,21 @@ export const usersSlice = createSlice({
     setUserFavoriteProgram(state, action) {
       state.userFavoriteProgram = action.payload;
     },
-    addUser(state, action) {
-      const isUser = state.users.find((user) => user.id === action.payload.id);
-      if (isUser === undefined) {
-        state.users = [...state.users, action.payload];
-      }
-    },
     setFollowers(state, action) {
       state.userFollowers = action.payload;
     },
 
     setMyFollowers(state, action) {
+      state.isLoading = true;
       state.users = state.users.map((user) => {
-        const follower = action.payload.find((item: any) => item.friendId === user.id ? item.id : null )
+        const follower = action.payload.find((item: Follower) => item.friendId === user.id ? item.id : null )
           return  {
             ...user,
             isFriend: action.payload.some((friend: Follower) => friend.friendId === user.id),
             followerId: follower ? follower.id : 'not friend'
           }
       });
+      state.isLoading = false;
     },
 
     editUserProgramInState(state, action) {
@@ -65,7 +61,7 @@ export const usersSlice = createSlice({
 });
 
 export default usersSlice.reducer;
-export const { addUser,
+export const {
   addUserProgramToState,
   editUserProgramInState,
   setUserPrograms,
