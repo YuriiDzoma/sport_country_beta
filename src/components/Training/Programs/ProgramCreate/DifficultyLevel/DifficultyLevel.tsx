@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import {
     DifficultyLevelProps
-} from "components/Training/TrainingPrograms/ProgramCreate/DifficultyLevel/DifficultyLevel.types";
+} from "components/Training/Programs/ProgramCreate/DifficultyLevel/DifficultyLevel.types";
 
 
 const marks = [

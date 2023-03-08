@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 
-import ExercisesList from 'components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/ProgramDaysList/ProgramDay/ExercisesList/ExercisesList';
-import WorkProcess from 'components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/ProgramDaysList/ProgramDay/workProcess/workProcess';
+import ExercisesList from 'components/Training/Programs/ProgramExpand/ProgramExpandInfo/ProgramDaysList/ProgramDay/ExercisesList/ExercisesList';
+import WorkProcess from 'components/Training/Programs/ProgramExpand/ProgramExpandInfo/ProgramDaysList/ProgramDay/workProcess/workProcess';
 
 import styles from './ProgramDay.module.scss';
 import { ProgramDayProps } from './ProgramDay.types';

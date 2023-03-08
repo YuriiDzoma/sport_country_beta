@@ -33,8 +33,8 @@
     z-index: 11;
     width: 100%;
     border: 0;
-    top: 0;
-    height: 100vh;
+    bottom: 42px;
+    height: calc(100vh - 125px);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     padding: 15px 10px 55px 10px;
   }

@@ -6,7 +6,7 @@ import CreateProgramForm from './ProgramCreate/CreateProgramForm';
 import ProgramCreateButton from './ProgramCreateButton/ProgramCreateButton';
 import ProgramExpand from './ProgramExpand/ProgramExpand';
 import ProgramsListLinks from './ProgramList/ProgramsListLinks';
-import styles from './TrainingPrograms.module.scss';
+import styles from './Programs.module.scss';
 import {useParams} from "react-router";
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser, getUserById} from "store/selectors";
@@ -16,8 +16,8 @@ import {getFavoriteProgram} from "api/api";
 import {setUserFavoriteProgram, setUsersLoading} from "store/users-slice";
 import UserInfo from "components/Common/UserInfo/UserInfo";
 
-const TrainingPrograms = () => {
-  const [showPrograms, setShowPrograms] = useState(false);
+const Programs = () => {
+  const [showPrograms, setShowPrograms] = useState(true);
   const {id} = useParams()
   const dispatch = useAppDispatch();
   const user = useAppSelector(currentUser);
@@ -71,4 +71,4 @@ const TrainingPrograms = () => {
   );
 };
 
-export default TrainingPrograms;
+export default Programs;

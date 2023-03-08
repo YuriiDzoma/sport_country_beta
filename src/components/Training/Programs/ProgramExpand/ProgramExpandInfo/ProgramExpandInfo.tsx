@@ -5,8 +5,8 @@ import styles from './ProgramExpandInfo.module.scss';
 import { ProgramExpandInfoProps } from './ProgramExpandInfo.types';
 import ProgramRemove from './ProgramRemove/ProgramRemove';
 import {Context} from "components/Context/Context";
-import Favorite from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/Favorite/Favorite";
-import EditButton from "components/Training/TrainingPrograms/ProgramExpand/ProgramExpandInfo/EditButton/EditButton";
+import Favorite from "components/Training/Programs/ProgramExpand/ProgramExpandInfo/Favorite/Favorite";
+import EditButton from "components/Training/Programs/ProgramExpand/ProgramExpandInfo/EditButton/EditButton";
 import {useAppSelector} from "hooks/redux";
 import {currentUser} from "store/selectors";
 

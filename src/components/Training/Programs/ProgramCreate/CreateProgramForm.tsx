@@ -14,7 +14,7 @@ import styles from './CreateProgramForm.module.scss';
 import CreateType from './CreateType/CreateType';
 import DifficultyLevel from "./DifficultyLevel/DifficultyLevel";
 import React, {useContext} from "react";
-import {CreateProgramFormProps} from "components/Training/TrainingPrograms/ProgramCreate/CreateProgramForm.types";
+import {CreateProgramFormProps} from "components/Training/Programs/ProgramCreate/CreateProgramForm.types";
 import {addProgramToState} from "store/profile-slice";
 import {addUserProgramToState} from "store/users-slice";
 import {Context} from "components/Context/Context";
