@@ -42,7 +42,6 @@ export const usersSlice = createSlice({
       state.userFollowers = state.userFollowers.filter((follower) => follower.id !== action.payload)
     },
     setMyFollowers(state, action) {
-
       state.isLoading = true;
       state.users = state.users.map((user) => {
         const follower = action.payload.find((item: Follower) => item.friendId === user.id ? item.id : null )
@@ -53,9 +52,7 @@ export const usersSlice = createSlice({
           }
       });
       state.isLoading = false;
-
     },
-
     editUserProgramInState(state, action) {
       state.userPrograms = state.userPrograms.map((program) => {
         if (program === action.payload.id) {

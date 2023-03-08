@@ -61,7 +61,7 @@ const Profile = () => {
           </div>
       )}
       <div className={styles.userItems}>
-        <button className={styles.userItems__link} onClick={() => navigate(`/training/training_programs/${id}/`)}>
+        <button className={styles.userItems__link} onClick={() => navigate(`/training/programs/${id}/`)}>
           my programs
         </button>
         <button className={styles.userItems__link} onClick={() => navigate(`/friends/${id}`)}>
