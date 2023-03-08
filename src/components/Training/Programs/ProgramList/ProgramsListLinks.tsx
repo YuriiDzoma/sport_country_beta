@@ -38,7 +38,7 @@ const ProgramsListLinks: React.FC<ProgramsListLinksProps> = ({ isMyProfile, onPr
           <ProgramLink
             onProgramsListHide={onProgramsListHide}
             key={index}
-            to={`/training/training_programs/${id}/${item.id}`}
+            to={`/training/programs/${id}/${item.id}`}
           >
             {item.title}
           </ProgramLink>
