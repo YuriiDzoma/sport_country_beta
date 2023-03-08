@@ -4,7 +4,7 @@ import styles from './Friend.module.scss'
 import emptyProfileImage from "assets/img/emptyprofile.jpg";
 import React from "react";
 import {getUserFriends, removeFriend} from "api/api";
-import {setMyFollowers} from "store/users-slice";
+import {deleteFollower, setMyFollowers} from "store/users-slice";
 
 interface FriendProps {
     friendId: string
@@ -16,9 +16,8 @@ const Friend = ({friendId}: FriendProps) => {
     const dispatch = useAppDispatch();
 
     const deleteFriend = (myProfileID: string, FriendId: string) => {
-        removeFriend(myProfileID, FriendId).then(response => console.log(response));
+        removeFriend(myProfileID, FriendId).then(() => dispatch(deleteFollower(FriendId)));
         if (profile) {
-            getUserFriends(profile.id).then(response => dispatch(setMyFollowers(response)))
         }
     }
     return (
