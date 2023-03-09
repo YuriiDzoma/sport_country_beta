@@ -62,6 +62,8 @@
   &__infoMain {
     margin-left: 50px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
 
     @media only screen and (max-width: 768px) {
       margin-left: 0;
@@ -226,17 +228,27 @@
 }
 
 .userItems {
-  display: inline-flex;
-  justify-content: start;
-  flex-direction: column;
-  max-width: 150px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+
+  @media only screen and (max-width: 768px) {
+    margin-top: 15px;
+  }
 
   &__link {
-    padding: 3px 6px;
+    padding: 5px 12px;
     border: 1px solid #1068bf;
     border-radius: 4px;
-    margin: 15px 0 0 0;
-    color: #14144f;
+    margin-left: 10px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #1f75cb;
+    transition: all 120ms;
+
+    &:hover {
+      background-color: #1068bf;
+    }
   }
 }
 
