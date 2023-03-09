@@ -84,7 +84,7 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
                     if (day.day === dayNumber) {
                       return (
                         <div key={dayIndex} className={styles.weightProcess}>
-                          <div className={styles.weightProcess_date}>
+                          <div className={isMyProfile ? styles.weightProcess_date : styles.hide}>
                             <label htmlFor="date">New </label>
                             <input
                               id={`programs.${programIndex}.days.${dayIndex}.workProcess.date`}
@@ -96,7 +96,7 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
                               value={values.programs[programIndex].days[dayIndex].workProcess.date}
                             />
                           </div>
-                          <div className={styles.weightProcess_weights}>
+                          <div className={isMyProfile ? styles.weightProcess_weights : styles.weightProcess_weightsClients}>
                             {day.workProcess.weights.map((item: any, index: any) => {
                               return (
                                 <div key={index}>

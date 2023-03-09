@@ -43,7 +43,24 @@
       padding: 0 8px;
     }
   }
+
+  &_weightsClients {
+    margin-top: 42px;
+    & > div {
+      height: 25px;
+      margin-top: 8px;
+    }
+
+    input {
+      border: 1px solid #89888d;
+      border-radius: 4px;
+      height: 100%;
+      padding: 0 8px;
+    }
+  }
 }
+
+
 
 .field {
   border: 1px solid #89888d;
