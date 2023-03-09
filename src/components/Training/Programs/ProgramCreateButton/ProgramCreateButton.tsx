@@ -11,7 +11,7 @@ const ProgramCreateButton: React.FC<ProgramsListLinksProps> = ({ profileId, onPr
       <Link
         onClick={() => onProgramsListHide(false)}
         className={styles.createProgram__link}
-        to={`/training/training_programs/${profileId}/create/`}
+        to={`/training/programs/${profileId}/create/`}
       >
         <LibraryAddIcon />
         <span>add new program</span>
