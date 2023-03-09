@@ -55,7 +55,7 @@ function App() {
               <Route path="/profile/:id/*" element={<Profile />} />
               <Route path="/training/*" element={<Training />} />
               <Route path="/users/*" element={<Users />} />
-              <Route path={'/friends/:id'} element={<Friends />} />
+              <Route path='/friends/:id' element={<Friends />} />
               <Route path="/login/*" element={<Login />} />
             </Routes>
           </div>

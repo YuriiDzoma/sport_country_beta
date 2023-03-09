@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import Preloader from 'components/Common/Preloader/Preloader';
 import { useAppSelector } from 'hooks/redux';
 import {getIsFetching, getMyAllPrograms, getUserPrograms} from 'store/selectors';
-
 import { ProgramLink } from './ProgramLink/ProgramLink';
 import styles from './ProgramsListLinks.module.scss';
 import { ProgramsListLinksProps } from './ProgramsListLinks.types';

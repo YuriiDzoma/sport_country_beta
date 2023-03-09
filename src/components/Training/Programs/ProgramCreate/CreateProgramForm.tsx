@@ -14,15 +14,12 @@ import styles from './CreateProgramForm.module.scss';
 import CreateType from './CreateType/CreateType';
 import DifficultyLevel from "./DifficultyLevel/DifficultyLevel";
 import React, {useContext} from "react";
-import {CreateProgramFormProps} from "components/Training/Programs/ProgramCreate/CreateProgramForm.types";
+import {CreateProgramFormProps} from "./CreateProgramForm.types";
 import {addProgramToState} from "store/profile-slice";
 import {addUserProgramToState} from "store/users-slice";
 import {Context} from "components/Context/Context";
 
-const CreateProgramForm: React.FC<CreateProgramFormProps> = ({
-                                                                 toGlobal = false,
-                                                                 isEditor = false,
-                                                                }) => {
+const CreateProgramForm = ({toGlobal = false, isEditor = false,}: CreateProgramFormProps) => {
   const {isMyProfile, userId}: any = useContext(Context)
   const navigate = useNavigate();
   const user = useAppSelector(currentUser);

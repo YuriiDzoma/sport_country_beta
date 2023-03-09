@@ -33,6 +33,9 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
     : {
         error: '',
       };
+  const showError = () => {
+    alert('please set date')
+  }
 
   const saveValues = (values: Program) => {
     if (isMyProfile) {
@@ -53,6 +56,7 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
     initialValues: initialFormValues,
     onSubmit: (values) => {
       setTimeout(() => {
+        console.log('complete')
         const editedProgram = values.programs ? values.programs.find((item) => item.id === id) : null;
         if (editedProgram && user) {
           dispatch(addWorkHistory(user.id, dayNumber, editedProgram));
@@ -66,6 +70,8 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
       }, 400);
     },
   });
+
+
   return (
     <form onSubmit={handleSubmit}>
       <>
@@ -110,7 +116,14 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
                               <button type="button" onClick={() => saveValues(values.programs[programIndex])}>
                                 save
                               </button>
-                              <button className={isMyProfile ? '' : styles.hide} type="submit" disabled={isSubmitting || !dirty}>
+                              <button className={isMyProfile ? '' : styles.hide}
+                                      onClick={values.programs[programIndex].days[dayIndex].workProcess.date === ''
+                                          ? () => showError()
+                                          : () => console.log('ok')}
+                                      type={values.programs[programIndex].days[dayIndex].workProcess.date === ''
+                                          ? "button"
+                                          : "submit" }
+                                      disabled={isSubmitting || !dirty}>
                                 Complete
                               </button>
                             </div>
