@@ -15,7 +15,7 @@ const User: React.FC<UserProps> = ({user}) => {
     const myProfile = useAppSelector(currentUser);
     const dispatch = useAppDispatch();
 
-    const addFriend = (FriendId: string, myProfileID: string) => {
+    const addFriend = (myProfileID: string, FriendId: string) => {
         addNewFriend(myProfileID, FriendId).then(response => console.log(response))
         if (myProfile) {
             getUserFriends(myProfile.id).then(response => dispatch(setMyFollowers(response)))
@@ -45,7 +45,8 @@ const User: React.FC<UserProps> = ({user}) => {
             </Link>
             {myProfile && followerId && myProfile.id !== id && (
                 <>
-                    {user.isFriend ? <button className={styles.userBlock__addToFriends}
+                    {user.isFriend
+                        ? <button className={styles.userBlock__addToFriends}
                                              title={`Add ${displayName} to friend list`}
                                              onClick={() => deleteFriend(myProfile.id, followerId)}
                         >
@@ -53,7 +54,7 @@ const User: React.FC<UserProps> = ({user}) => {
                         </button>
                         : <button className={styles.userBlock__addToFriends}
                                   title={`Add ${displayName} to friend list`}
-                                  onClick={() => addFriend(id, myProfile.id)}
+                                  onClick={() => addFriend(myProfile.id, id)}
                         >
                             Follow
                         </button>
