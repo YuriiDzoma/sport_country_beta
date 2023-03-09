@@ -21,8 +21,8 @@ const Programs = () => {
   const {id} = useParams()
   const dispatch = useAppDispatch();
   const user = useAppSelector(currentUser);
-
   const userId = id
+  const profile = useAppSelector((state) => getUserById(state, id));
 
   if (userId) {
       setUsersLoading(true);
@@ -42,7 +42,7 @@ const Programs = () => {
   const onProgramsListHide = (values: boolean) => {
   setShowPrograms(values);
   };
-  const profile = useAppSelector((state) => getUserById(state, id));
+
 
   return (
       <Context.Provider value={{

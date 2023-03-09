@@ -112,8 +112,8 @@ const CreateProgramForm: React.FC<CreateProgramFormProps> = ({
     <form className={styles.createProgramInfo__form} onSubmit={handleSubmit}>
       <div className={styles.createProgramInfo}>
         <h2 className={styles.createProgramInfo__title}>New program</h2>
-        <CreateName handleChange={handleChange} values={values} />
-        <CreateType handleChange={handleChange} values={values} />
+        <CreateName handleChange={handleChange} title={values.title} />
+        <CreateType handleChange={handleChange} typeOf={values.typeOf} />
       </div>
         <div className={styles.level}>
             {myProgram && isEditor
@@ -124,8 +124,8 @@ const CreateProgramForm: React.FC<CreateProgramFormProps> = ({
             }
         </div>
       <div className={styles.createProgramWrite}>
-        <CreateExercises values={values} handleChange={handleChange} setFieldValue={setFieldValue} />
-        <CreateDay setFieldValue={setFieldValue} values={values} />
+        <CreateExercises days={values.days} handleChange={handleChange} setFieldValue={setFieldValue} />
+        <CreateDay setFieldValue={setFieldValue} days={values.days} />
         <div className={styles.createProgramWrite_create}>
           <button type="submit" disabled={isSubmitting}>
             <span>{isEditor ? <span>confirm changes</span> : <span>save</span>}</span>
