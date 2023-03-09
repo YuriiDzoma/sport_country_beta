@@ -1,7 +1,7 @@
 import {useAppSelector} from "hooks/redux";
 import {getUserFollowers} from "store/selectors";
 import Friend from "./Friend";
-import styles from './Friend.module.scss'
+import styles from './FriendList.module.scss';
 
 const FriendList = () => {
     const followers = useAppSelector(getUserFollowers);

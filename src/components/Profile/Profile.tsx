@@ -57,17 +57,18 @@ const Profile = () => {
                     isMyPage() && <button className={styles.profile__edit}> <BorderColorIcon /> </button>
                 }
               </div>
+              <div className={styles.userItems}>
+                <button className={styles.userItems__link} onClick={() => navigate(`/training/programs/${id}/`)}>
+                  Programs
+                </button>
+                <button className={styles.userItems__link} onClick={() => navigate(`/friends/${id}`)}>
+                  Friends
+                </button>
+              </div>
             </div>
           </div>
       )}
-      <div className={styles.userItems}>
-        <button className={styles.userItems__link} onClick={() => navigate(`/training/programs/${id}/`)}>
-          my programs
-        </button>
-        <button className={styles.userItems__link} onClick={() => navigate(`/friends/${id}`)}>
-          my friends
-        </button>
-      </div>
+
     </div>
   );
 };

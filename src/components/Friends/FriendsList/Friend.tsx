@@ -23,14 +23,16 @@ const Friend = ({friendId}: FriendProps) => {
     return (
         <div className={styles.friend}>
             {profile && myProfile && profile && (
-                <>
-                    {profile.photoURL ? (
-                            <img className={styles.friend__avatar} src={profile.photoURL} alt={profile.displayName}/>
-                        ) : (
-                            <img className={styles.friend__avatar} src={emptyProfileImage} alt="No image"/>
-                        )
-                    }
-                    <p className={styles.friend__name}>{profile.displayName}</p>
+                <div className={styles.friend__outer}>
+                    <div className={styles.friend__inner}>
+                        {profile.photoURL ? (
+                                <img className={styles.friend__avatar} src={profile.photoURL} alt={profile.displayName}/>
+                            ) : (
+                                <img className={styles.friend__avatar} src={emptyProfileImage} alt="No image"/>
+                            )
+                        }
+                        <p className={styles.friend__name}>{profile.displayName}</p>
+                    </div>
                     <button className={styles.friend__unFollowFriends}
                             title={`Add ${profile.displayName} to friend list`}
                             onClick={() => {
@@ -41,7 +43,7 @@ const Friend = ({friendId}: FriendProps) => {
                     >
                         unFollow
                     </button>
-                </>
+                </div>
             )}
         </div>
     )
