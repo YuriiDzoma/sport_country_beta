@@ -20,6 +20,7 @@ import {fetchUsers} from 'store/actions';
 import {setCurrentUser} from 'store/profile-slice';
 import Friends from "components/Friends/Friends";
 import {setMyFollowers} from "store/users-slice";
+import EditProfile from "components/Profile/EditProfile/EditProfile";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -57,6 +58,7 @@ function App() {
               <Route path="/users/*" element={<Users />} />
               <Route path='/friends/:id' element={<Friends />} />
               <Route path="/login/*" element={<Login />} />
+              <Route path="/profile/edite/" element={<EditProfile />} />
             </Routes>
           </div>
         </div>

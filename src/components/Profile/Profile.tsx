@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 
 import {useAppSelector} from 'hooks/redux';
 import {currentUser, getUserById} from 'store/selectors';
@@ -54,7 +54,7 @@ const Profile = () => {
               <div className={styles.profile__nameBlock}>
                 <h1 className={styles.profile__userName}>{ displayName }</h1>
                 {
-                    isMyPage() && <button className={styles.profile__edit}> <BorderColorIcon /> </button>
+                    isMyPage() && <Link to={`/profile/edite/`} className={styles.profile__edit}> <BorderColorIcon /> </Link>
                 }
               </div>
               <div className={styles.userItems}>
