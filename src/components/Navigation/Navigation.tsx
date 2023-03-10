@@ -26,7 +26,7 @@ const Navigation = () => {
                   </Link>
                   <Link className={activeLocation === 'training'
                       ? styles.customLink__active
-                      : styles.customLink} to="training/">
+                      : styles.customLink} to={`training/programs/${user.id}/`}>
                       <FitnessCenterIcon/>
                       Training
                   </Link>

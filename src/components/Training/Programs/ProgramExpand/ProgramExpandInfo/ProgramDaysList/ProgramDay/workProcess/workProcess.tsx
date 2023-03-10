@@ -80,7 +80,7 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
             if (program.id === id) {
               return (
                 <div key={programIndex}>
-                  {program.days.map((day: any, dayIndex) => {
+                  {program.days.map((day, dayIndex) => {
                     if (day.day === dayNumber) {
                       return (
                         <div key={dayIndex} className={styles.weightProcess}>
