@@ -1,4 +1,5 @@
 import styles from './EditProfile.module.scss'
+import SelectRegion from "./SelectRegion";
 
 const EditProfile = () => {
 
@@ -14,8 +15,7 @@ const EditProfile = () => {
                 <input className={styles.edit__nameSurname} id={'surname'} name={'surname'} />
             </div>
             <div className={styles.edit}>
-                <label htmlFor={'surname'}>Location</label>
-                <input className={styles.edit__nameSurname} id={'surname'} name={'surname'} />
+                <SelectRegion />
             </div>
         </div>
     )
