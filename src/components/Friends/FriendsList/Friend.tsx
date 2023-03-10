@@ -6,6 +6,7 @@ import React from "react";
 import {addNewFriend, getUserFriends, removeFriend} from "api/api";
 import {deleteFollower, setMyFollowers} from "store/users-slice";
 import {useParams} from "react-router";
+import {Link} from "react-router-dom";
 
 interface FriendProps {
     friendId: string
@@ -36,40 +37,40 @@ const Friend = ({friendId}: FriendProps) => {
     return (
         <div className={styles.friend}>
             {profile && myProfile && profile && (
-                <div className={styles.friend__outer}>
-                    <div className={styles.friend__inner}>
-                        {profile.photoURL ? (
-                                <img className={styles.friend__avatar} src={profile.photoURL} alt={profile.displayName}/>
-                            ) : (
-                                <img className={styles.friend__avatar} src={emptyProfileImage} alt="No image"/>
-                            )
-                        }
-                        <p className={styles.friend__name}>{profile.displayName}</p>
-                    </div>
-                    {isMyFriends
-                        ? <button className={styles.friend__changedFriends}
-                                  title={`Add ${profile.displayName} to friend list`}
-                                  onClick={() => {
-                                      if (profile.followerId) {
-                                          deleteFriend(myProfile.id, profile.followerId)
-                                      }
-                                  }}
-                        >
-                            unFollow
-                        </button>
-                        : <>
-                            {profile.isFriend || profile.id === myProfile.id
-                                ? null
-                                : <button className={styles.friend__changedFriends}
-                                          title={`Add ${profile.displayName} to friend list`}
-                                          onClick={() => addFriend(myProfile.id, profile.id )}
-                                >
-                                    Follow
-                                </button>
+                    <div className={styles.friend__outer}>
+                        <Link to={'/profile/' + profile.id} className={styles.friend__inner}>
+                            {profile.photoURL
+                                ? (
+                                <img className={styles.friend__avatar} src={profile.photoURL}
+                                     alt={profile.displayName}/>)
+                                : (
+                                <img className={styles.friend__avatar} src={emptyProfileImage} alt="No image"/>)
                             }
-                        </>  }
-
-                </div>
+                            <p className={styles.friend__name}>{profile.displayName}</p>
+                        </Link>
+                        {isMyFriends
+                            ? <button className={styles.friend__changedFriends}
+                                      title={`Add ${profile.displayName} to friend list`}
+                                      onClick={() => {
+                                          if (profile.followerId) {
+                                              deleteFriend(myProfile.id, profile.followerId)
+                                          }
+                                      }}
+                            >
+                                unFollow
+                            </button>
+                            : <>
+                                {profile.isFriend || profile.id === myProfile.id
+                                    ? null
+                                    : <button className={styles.friend__changedFriends}
+                                              title={`Add ${profile.displayName} to friend list`}
+                                              onClick={() => addFriend(myProfile.id, profile.id)}
+                                    >
+                                        Follow
+                                    </button>
+                                }
+                            </>}
+                    </div>
             )}
         </div>
     )

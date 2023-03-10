@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 
   @media only screen and (max-width: 768px) {
     padding-left: 0;
@@ -28,6 +29,8 @@
   }
 
   &__addToFriends {
+    position: absolute;
+    right: 20px;
     background-color: #1f75cb;
     border-radius: 4px;
     font-size: 14px;
@@ -44,6 +47,14 @@
   &__link {
     display: flex;
     align-items: center;
+    width: 80%;
+
+    @media only screen and (max-width: 580px) {
+      width: 70%;
+    }
+    @media only screen and (max-width: 380px) {
+      width: 60%;
+    }
   }
 
   &__pic {

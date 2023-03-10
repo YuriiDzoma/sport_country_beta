@@ -23,7 +23,7 @@ const User: React.FC<UserProps> = ({user}) => {
     }
 
     const deleteFriend = (myProfileID: string, FriendId: string) => {
-        removeFriend(myProfileID, FriendId).then(response => console.log(response));
+        removeFriend(myProfileID, FriendId);
         if (myProfile) {
             getUserFriends(myProfile.id).then(response => dispatch(setMyFollowers(response)))
         }
