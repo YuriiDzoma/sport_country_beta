@@ -4,6 +4,7 @@ import { addDoc, collection, deleteDoc, doc, getDocs, setDoc, getDoc } from 'fir
 import { db } from 'config/config';
 import { Program } from 'store/training-slice.types';
 
+
 export const getCurrentUser = async (id: string) => {
   try {
     const docRef = doc(db, "users", `${id}`);
@@ -28,6 +29,18 @@ export const getUsers = async () => {
     console.log(e);
   }
 };
+
+export const setUserNewData = async (user: string, values: any) => {
+  try {
+    if (!user) return false;
+    const collectionRef = doc(db, 'users', user);
+    const updateObject = { ...values };
+    await setDoc(collectionRef, updateObject, { ...values });
+    return updateObject;
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 export const fetchMyPrograms = async (user: string) => {
   try {

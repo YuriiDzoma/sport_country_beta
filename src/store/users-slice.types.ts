@@ -1,6 +1,9 @@
 import {Program} from "store/profile-slice.types";
 
 export type User = {
+  country: string,
+  region: string,
+  city: string,
   isFriend: boolean;
   createdAt: string;
   id: string;

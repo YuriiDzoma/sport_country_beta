@@ -23,6 +23,20 @@ export const usersSlice = createSlice({
     setUsers(state, action) {
       state.users = action.payload;
     },
+    updateUserData(state, action) {
+      state.users = state.users.map((user) => {
+        if (user.id === action.payload.id) {
+            user = {
+            ...user,
+            displayName: action.payload.displayName,
+            country: action.payload.country,
+            region: action.payload.region,
+            city: action.payload.city,
+          }
+          return user
+        } return user
+      })
+    },
     setUserPrograms(state, action) {
       state.userPrograms = action.payload;
     },
@@ -76,5 +90,6 @@ export const {
   deleteFollower,
   setMyFollowers,
   setUsers,
+  updateUserData,
   setUsersLoading,
   setUserFavoriteProgram} = usersSlice.actions;
