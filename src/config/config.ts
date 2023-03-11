@@ -59,6 +59,9 @@ export const createUserDocumentFromAuth = async (userAuth: User, additionalInfor
         photoURL,
         isTrainer: false,
         isFriend: false,
+        country: '',
+        region: '',
+        city: '',
         ...additionalInformation,
       });
 

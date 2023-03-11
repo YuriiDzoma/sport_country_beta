@@ -23,6 +23,9 @@ export const profileSlice = createSlice({
     setCurrentUser(state, action) {
       state.currentUser = action.payload;
     },
+    updateCurrentUser(state, action) {
+      state.currentUser = action.payload
+    },
     setMyProgram(state, action) {
       state.myPrograms = action.payload;
     },
@@ -50,6 +53,7 @@ export const profileSlice = createSlice({
 export default profileSlice.reducer;
 export const {
   setCurrentUser,
+  updateCurrentUser,
   setMyProgram,
   addProgramToState,
   setMyFavoriteProgram,
