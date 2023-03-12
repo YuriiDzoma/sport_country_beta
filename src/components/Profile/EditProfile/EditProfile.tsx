@@ -102,7 +102,7 @@ const EditProfile = () => {
                     <input className={styles.edit__nameSurname} value={values.city}
                            onChange={handleChange} id={'city'} name={'city'}/>
                 </div>
-                <button type="submit" disabled={isSubmitting || !dirty}>
+                <button className={styles.edit__button} type="submit" disabled={isSubmitting || !dirty}>
                     Save changes
                 </button>
             </div>
