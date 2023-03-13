@@ -19,7 +19,6 @@ export const usersSlice = createSlice({
   reducers: {
     setUsersLoading(state, action) {
       state.isLoading = action.payload;
-      console.log(state.isLoading)
     },
     setUsers(state, action) {
       state.users = action.payload;
