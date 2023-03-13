@@ -1,9 +1,33 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { addDoc, collection, deleteDoc, doc, getDocs, setDoc, getDoc } from 'firebase/firestore';
+import {createAsyncThunk} from '@reduxjs/toolkit';
+import {addDoc, collection, deleteDoc, doc, getDoc, getDocs, setDoc} from 'firebase/firestore';
+import {getDownloadURL, getStorage, ref, uploadBytesResumable} from "firebase/storage";
 
-import { db } from 'config/config';
-import { Program } from 'store/training-slice.types';
+import {db} from 'config/config';
+import {Program} from 'store/training-slice.types';
 
+const storage = getStorage();
+
+export const setUserAvatar = async (userId: string, value: any) => {
+  try {
+    const metadata = {
+      contentType: 'image/jpeg'
+    };
+    const storageRef = ref(storage, 'userPhoto/' + userId);
+    const uploadTask = uploadBytesResumable(storageRef, value, metadata);
+
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+export const getUserAvatar = async (userId: string) => {
+  try {
+    return getDownloadURL(ref(storage, 'userPhoto/' + userId))
+  } catch (e) {
+    console.log(e)
+  }
+
+}
 
 export const getCurrentUser = async (id: string) => {
   try {

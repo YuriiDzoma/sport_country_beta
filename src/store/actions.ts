@@ -2,7 +2,7 @@ import {
   addProgramToFB,
   deleteProgramInFB,
   editProgramInFB,
-  fetchMyPrograms, getFavoriteProgram,
+  fetchMyPrograms,
   getUsers
 } from 'api/api';
 import { AppDispatch } from 'store/store';
@@ -13,7 +13,6 @@ import {
   setUsersLoading,
   setUserPrograms,
   setUsers,
-  setUserFavoriteProgram
 } from 'store/users-slice';
 import { pushExercises } from 'store/wikiExercises-slice';
 import { exercise } from 'store/wikiExercises-slyce.types';
@@ -119,5 +118,4 @@ export const addWorkHistory = (user: string, dayNumber: number, values: Program)
         .then((response) => dispatch(editProgramInState(response)))
         .catch(Error);
   }
-
 };

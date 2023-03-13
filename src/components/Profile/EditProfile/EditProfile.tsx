@@ -4,15 +4,16 @@ import {CountryDropdown, RegionDropdown} from "react-country-region-selector";
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser} from "store/selectors";
 import {useFormik} from "formik";
-import {setUserNewData} from "api/api";
+import {getUserAvatar, setUserAvatar, setUserNewData} from "api/api";
 import {useNavigate} from "react-router";
-import {updateUserData} from "store/users-slice";
+import {setUsersLoading, updateUserData} from "store/users-slice";
 import {updateCurrentUser} from "store/profile-slice";
 
 const EditProfile = () => {
     const user = useAppSelector(currentUser);
     const [country, setCountry] = useState('');
     const [region, setRegion] = useState('');
+    const [avatar, setAvatar] = useState('');
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
@@ -45,6 +46,7 @@ const EditProfile = () => {
 
         onSubmit: (values) => {
             setTimeout(() => {
+                dispatch(setUsersLoading(true))
                 const userData = user ? {
                     country: country === '' ? user.country : country,
                     region: region === '' ? user.region : region,
@@ -53,7 +55,7 @@ const EditProfile = () => {
                     createdAt: values.createdAt,
                     id: values.id,
                     displayName: values.displayName,
-                    photoURL: values.photoURL,
+                    photoURL:  avatar === '' ? values.photoURL : avatar,
                     email: values.email,
                     isTrainer: values.isTrainer,
                 } : null;
@@ -64,15 +66,31 @@ const EditProfile = () => {
                     })
                     navigate(`/profile/${user.id}`)
                 }
+                dispatch(setUsersLoading(false))
                 setSubmitting(false);
             }, 400);
         },
     });
+    const loadPhoto = (e: any) => {
+        const file = e.target.files[0];
+        if (user) {
+            setUserAvatar(user.id, file).then(() => getUserAvatar(user.id).then(response => {
+                if (response) {
+                    setAvatar(response);
+                }
+            }))
+
+        }
+    }
 
     return (
         <form onSubmit={handleSubmit} >
             <div className={styles.editorWrapper}>
                 <h3>Edit profile</h3>
+                <div className={styles.edit}>
+                    <label htmlFor={'photo'}>photo</label>
+                    <input type={'file'} onChange={e => loadPhoto(e)}  className={styles.edit__nameSurname} id={'photo'} name={'photo'}/>
+                </div>
                 <div className={styles.edit}>
                     <label htmlFor={'displayName'}>Name</label>
                     <input value={values.displayName} onChange={handleChange}
