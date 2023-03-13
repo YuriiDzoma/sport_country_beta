@@ -60,7 +60,6 @@ const User: React.FC<UserProps> = ({user}) => {
                         </button>
                     }
                 </>
-
             )}
         </div>
     );
