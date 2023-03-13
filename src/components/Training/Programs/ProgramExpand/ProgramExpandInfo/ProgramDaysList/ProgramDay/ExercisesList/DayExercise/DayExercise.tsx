@@ -5,7 +5,9 @@ import { DayExerciseProps } from 'components/Training/Programs/ProgramExpand/Pro
 const DayExercise: React.FC<DayExerciseProps> = ({ exercise }) => {
   return (
     <p title={`${exercise.name}`}>
-      {exercise.id}: {exercise.name}
+      <span>
+        {exercise.id}: {exercise.name}
+      </span>
     </p>
   );
 };

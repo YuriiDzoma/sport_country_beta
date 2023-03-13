@@ -23,6 +23,11 @@
   align-items: center;
   justify-content: space-between;
 
+  @media only screen and (max-width: 768px) {
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+  }
+
   h2 {
     font-weight: 700;
     display: flex;
@@ -49,23 +54,33 @@
 
     @media only screen and (max-width: 768px) {
       position: relative;
-
-      &:after {
-        content: '';
-        width: 150%;
-        height: 1px;
-        background-color: #dcdcde;
-        display: block;
-        position: absolute;
-        top: calc(100% + 5px);
-        left: 50%;
-        transform: translateX(-50%);
-      }
+      margin: 0;
+      order: 2;
+      width: 50%;
+      justify-content: flex-end;
+      //
+      //&:after {
+      //  content: '';
+      //  width: 150%;
+      //  height: 1px;
+      //  background-color: #dcdcde;
+      //  display: block;
+      //  position: absolute;
+      //  top: calc(100% + 5px);
+      //  left: 50%;
+      //  transform: translateX(-50%);
+      //}
     }
   }
 
   &__author {
     margin-left: 20px;
+
+    @media only screen and (max-width: 768px) {
+      margin: 0;
+      order: 2;
+      width: 50%;
+    }
   }
 }
 
@@ -81,10 +96,16 @@
 
 .programSettings {
   position: absolute;
-  justify-content: space-between;
   width: 120px;
   top: 2px;
   right: 10px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+
+  & > * {
+    height: 24px !important;
+    width: 24px !important;
+    margin-left: 5px;
+  }
 }
