@@ -40,7 +40,7 @@ export const profileSlice = createSlice({
     },
     editProgramInState(state, action) {
       state.myPrograms = state.myPrograms.map((program) => {
-        if (program === action.payload.id) {
+        if (program.id === action.payload.id) {
           program = action.payload;
         }
         return program;
