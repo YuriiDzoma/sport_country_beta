@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from 'hooks/redux';
-import {addWorkHistory, editProgram, editUserProgram, fetchUserPrograms, setMyPrograms} from 'store/actions';
+import {addWorkHistory, editProgram, editUserProgram, fetchUserPrograms} from 'store/actions';
 import {currentUser, getMyAllPrograms, getUserPrograms} from 'store/selectors';
 import { Program } from 'store/training-slice.types';
 
@@ -41,7 +41,6 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
     if (isMyProfile) {
       if (user) {
         dispatch(editProgram(user.id, values.id, values));
-        dispatch(setMyPrograms(user.id));
       }
       setSubmitting(false);
     } else {
@@ -50,23 +49,18 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
         dispatch(fetchUserPrograms(userId));
       }
     }
-    navigate('/training/training_programs/');
   };
   const { handleChange, handleSubmit, setSubmitting, isSubmitting, dirty, resetForm, values } = useFormik({
     initialValues: initialFormValues,
     onSubmit: (values) => {
       setTimeout(() => {
-        console.log('complete')
         const editedProgram = values.programs ? values.programs.find((item) => item.id === id) : null;
         if (editedProgram && user) {
           dispatch(addWorkHistory(user.id, dayNumber, editedProgram));
         }
-        setSubmitting(false);
-        if (user) {
-          dispatch(setMyPrograms(user.id));
-        }
         resetForm();
-        navigate('/training/');
+        setSubmitting(false);
+        navigate(-1);
       }, 400);
     },
   });

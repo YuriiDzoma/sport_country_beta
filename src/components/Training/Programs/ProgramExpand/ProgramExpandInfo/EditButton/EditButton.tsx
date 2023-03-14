@@ -11,7 +11,7 @@ type EditButtonProps = {
 const EditButton: React.FC<EditButtonProps> = ({userId, programId}) => {
     return (
         <div className={styles.redactor}>
-            <Link to={`/training/training_programs/${userId}/${programId}/redactor/`}>
+            <Link to={`/training/programs/${userId}/${programId}/redactor/`}>
                 <BorderColorIcon fontSize={'small'} />
             </Link>
         </div>

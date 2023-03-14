@@ -33,12 +33,6 @@ export const setMyPrograms = (user: string) => async (dispatch: AppDispatch) => 
   }
 }
 
-export const setClientProgram = (user: string) => async (dispatch: AppDispatch) => {
-  if (user) {
-    fetchMyPrograms(user).then((response) => dispatch(setMyProgram(response)))
-  }
-}
-
 export const fetchUserPrograms = (user: string) => async (dispatch: AppDispatch) => {
   if (user) {
     fetchMyPrograms(user).then((response) => dispatch(setUserPrograms(response)))
