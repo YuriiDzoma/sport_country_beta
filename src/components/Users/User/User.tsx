@@ -6,12 +6,13 @@ import {UserProps} from 'components/Users/User/User.types';
 
 import styles from './User.module.scss';
 import {useAppDispatch, useAppSelector} from "hooks/redux";
-import {currentUser} from "store/selectors";
-import {addNewFriend, createNotification, getUserFriends, removeFriend} from "api/api";
+import {currentUser, getUserById} from "store/selectors";
+import {addNewFriend, createNotification, getUserFriends, removeFriend, removeNotification} from "api/api";
 import {setMyFollowers} from "store/users-slice";
 
 const User: React.FC<UserProps> = ({user}) => {
     const {displayName, id, photoURL, followerId} = user;
+    const profile = useAppSelector((state) => getUserById(state, id));
     const myProfile = useAppSelector(currentUser);
     const dispatch = useAppDispatch();
 
@@ -27,6 +28,9 @@ const User: React.FC<UserProps> = ({user}) => {
         removeFriend(myProfileID, FriendId);
         if (myProfile) {
             getUserFriends(myProfile.id).then(response => dispatch(setMyFollowers(response)))
+            if (profile) {
+                removeNotification(myProfileID, profile.id)
+            }
         }
     }
 

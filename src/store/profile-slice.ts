@@ -28,7 +28,7 @@ export const profileSlice = createSlice({
       state.currentUser = action.payload
     },
     setNotifications(state, action) {
-      state.notifications = action.payload.map((item: any) => item.followerId)
+      state.notifications = action.payload.map((item: any) => item.id)
       console.log(state.notifications)
     },
     setMyProgram(state, action) {

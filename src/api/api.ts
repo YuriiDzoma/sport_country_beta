@@ -1,5 +1,5 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {addDoc, collection, deleteDoc, doc, getDoc, getDocs, setDoc} from 'firebase/firestore';
+import {addDoc, collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc, deleteField} from 'firebase/firestore';
 import {getDownloadURL, getStorage, ref, uploadBytesResumable} from "firebase/storage";
 
 import {db} from 'config/config';
@@ -150,13 +150,25 @@ export const addNewFriend = async (myProfileID: string | null, friendId: any) =>
   }
 };
 
-export const createNotification = async (followerId: string | null, friendId: any) => {
+export const createNotification = async (followerId: any, friendId: any) => {
   try {
-    await addDoc(collection(db, `usersNotifications/${friendId}/followers`), {followerId}).then(()=> console.log(friendId));
+    const docRef = doc(db, `usersNotifications/${friendId}/followers`, followerId);
+    const docSnap = await getDoc(docRef);
+    if (!docSnap.data()) {
+      setDoc(docRef, { flag: true });
+    }
   } catch (e) {
     console.log(e)
   }
 }
+
+export const removeNotification = async (myProfileID: any, friendId: string) => {
+  try {
+    await deleteDoc(doc(db, `usersNotifications/${friendId}/followers`, myProfileID))
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 export const removeFriend = async (myProfileID: string | null, friendId: string) => {
   try {

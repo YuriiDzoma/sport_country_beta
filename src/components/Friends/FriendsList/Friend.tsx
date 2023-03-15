@@ -3,7 +3,7 @@ import {currentUser, getUserById} from "store/selectors";
 import styles from './Friend.module.scss'
 import emptyProfileImage from "assets/img/emptyprofile.jpg";
 import React from "react";
-import {addNewFriend, createNotification, getUserFriends, removeFriend} from "api/api";
+import {addNewFriend, createNotification, getUserFriends, removeFriend, removeNotification} from "api/api";
 import {deleteFollower, setMyFollowers} from "store/users-slice";
 import {useParams} from "react-router";
 import {Link} from "react-router-dom";
@@ -25,7 +25,9 @@ const Friend = ({friendId}: FriendProps) => {
     const deleteFriend = (myProfileID: string, FriendId: string) => {
         removeFriend(myProfileID, FriendId).then(() => dispatch(deleteFollower(FriendId)));
         if (profile) {
+            removeNotification(myProfileID, profile.id)
         }
+
     }
 
     const addFriend = (myProfileID: string, FriendId: string) => {
