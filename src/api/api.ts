@@ -150,9 +150,9 @@ export const addNewFriend = async (myProfileID: string | null, friendId: any) =>
   }
 };
 
-export const createNotification = async (myProfileID: string | null, friendId: any) => {
+export const createNotification = async (followerId: string | null, friendId: any) => {
   try {
-    await addDoc(collection(db, `usersNotifications/${friendId}/followers`), {myProfileID}).then(()=> console.log(friendId));
+    await addDoc(collection(db, `usersNotifications/${friendId}/followers`), {followerId}).then(()=> console.log(friendId));
   } catch (e) {
     console.log(e)
   }

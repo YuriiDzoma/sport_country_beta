@@ -5,11 +5,13 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import styles from './Header.module.scss';
 import UserMenu from './UserMenu/UserMenu';
 import React, {useState, MouseEvent} from 'react';
+import {useAppSelector} from "hooks/redux";
+import {getNotifications} from "store/selectors";
 
 const Header = () => {
   const navigate = useNavigate();
   const [isProfileMenuActive, setIsProfileMenuActive] = useState(false);
-
+  const notifications = useAppSelector(getNotifications);
 
   const showProfileMenu = (event: MouseEvent<HTMLElement>) => {
     setIsProfileMenuActive(!isProfileMenuActive);
@@ -21,10 +23,12 @@ const Header = () => {
         <h1 className={styles.logotype_goHome} onClick={() => navigate('/')}>
           SportCountry
         </h1>
-        <div className={styles.notifications}>
-          <NotificationsNoneIcon color={"primary"} />
-          <span className={styles.notifications__count}>2</span>
-        </div>
+        {notifications && notifications.length >= 1 && (
+            <div className={styles.notifications}>
+              <NotificationsNoneIcon color={"primary"} />
+              <span className={styles.notifications__count}>{notifications.length}</span>
+            </div>
+        )}
       </div>
       <div className={`${styles.profile} ${isProfileMenuActive ? styles.profile__active : ''}`}>
         <button className={styles.profile__button} onClick={showProfileMenu}>

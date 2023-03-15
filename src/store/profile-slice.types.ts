@@ -38,11 +38,16 @@ export type Program = {
   comments: Comment[];
 };
 
+export type Notification = {
+  followerId: string
+}
+
 export type profileState = {
   currentUser: User | null;
   isLoading: boolean;
   myPrograms: Program[];
   myFollowers: Follower[];
   myFavoriteProgram: string | null;
+  notifications: Notification[] | null
 };
 

@@ -8,6 +8,7 @@ const initialState: profileState = {
   myFollowers: [],
   isLoading: false,
   myFavoriteProgram: null,
+  notifications: [],
 };
 
 export const profileSlice = createSlice({
@@ -25,6 +26,10 @@ export const profileSlice = createSlice({
     },
     updateCurrentUser(state, action) {
       state.currentUser = action.payload
+    },
+    setNotifications(state, action) {
+      state.notifications = action.payload.map((item: any) => item.followerId)
+      console.log(state.notifications)
     },
     setMyProgram(state, action) {
       state.myPrograms = action.payload;
@@ -56,6 +61,7 @@ export const {
   updateCurrentUser,
   setMyProgram,
   addProgramToState,
+  setNotifications,
   setMyFavoriteProgram,
   removeProgramFromState,
   editProgramInState,
