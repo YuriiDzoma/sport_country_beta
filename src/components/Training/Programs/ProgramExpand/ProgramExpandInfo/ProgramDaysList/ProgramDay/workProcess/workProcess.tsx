@@ -41,12 +41,14 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
     if (isMyProfile) {
       if (user) {
         dispatch(editProgram(user.id, values.id, values));
+        navigate('/training/programs/' + user.id);
       }
       setSubmitting(false);
     } else {
       if (userId) {
         dispatch(editUserProgram(userId, values.id, values));
         dispatch(fetchUserPrograms(userId));
+        navigate('/training/programs/' + userId);
       }
     }
   };
@@ -58,9 +60,11 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
         if (editedProgram && user) {
           dispatch(addWorkHistory(user.id, dayNumber, editedProgram));
         }
-        resetForm();
         setSubmitting(false);
-        navigate(-1);
+        resetForm({})
+        if (user) {
+          navigate('/training/programs/' + user.id);
+        }
       }, 400);
     },
   });
@@ -117,7 +121,7 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
                                       type={values.programs[programIndex].days[dayIndex].workProcess.date === ''
                                           ? "button"
                                           : "submit" }
-                                      disabled={isSubmitting || !dirty}>
+                                      disabled={isSubmitting || !dirty} >
                                 Complete
                               </button>
                             </div>
