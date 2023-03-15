@@ -27,7 +27,6 @@ const Friend = ({friendId}: FriendProps) => {
         if (profile) {
             removeNotification(myProfileID, profile.id)
         }
-
     }
 
     const addFriend = (myProfileID: string, FriendId: string) => {

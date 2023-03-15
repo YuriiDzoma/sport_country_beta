@@ -1,5 +1,5 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
 import styles from './Header.module.scss';
@@ -24,10 +24,10 @@ const Header = () => {
           SportCountry
         </h1>
         {notifications && notifications.length >= 1 && (
-            <div className={styles.notifications}>
+            <Link to={'/notifications/'} className={styles.notifications}>
               <NotificationsNoneIcon color={"primary"} />
               <span className={styles.notifications__count}>{notifications.length}</span>
-            </div>
+            </Link>
         )}
       </div>
       <div className={`${styles.profile} ${isProfileMenuActive ? styles.profile__active : ''}`}>

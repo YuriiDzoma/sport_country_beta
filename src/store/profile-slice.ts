@@ -29,7 +29,6 @@ export const profileSlice = createSlice({
     },
     setNotifications(state, action) {
       state.notifications = action.payload.map((item: any) => item.id)
-      console.log(state.notifications)
     },
     setMyProgram(state, action) {
       state.myPrograms = action.payload;

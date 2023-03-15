@@ -1,0 +1,45 @@
+.notification {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+
+  &__userLink {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+
+  &__photo {
+    margin: 0 15px 0 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  &__name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #14144f;
+  }
+
+  &__follow {
+    margin: 0 15px;
+    background-color: #1f75cb;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 5px 12px;
+    color: #ffffff;
+    font-weight: 500;
+    transition: all 100ms;
+  }
+
+  &__hide {
+    background-color: #e36f7e;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 5px 12px;
+    color: #ffffff;
+    font-weight: 500;
+    transition: all 100ms;
+  }
+}

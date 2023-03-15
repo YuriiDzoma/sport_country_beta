@@ -12,7 +12,6 @@ const UserInfo = ({ id, profile }:UserInfoProps) => {
                     <Link className={styles.userBlock__link} to={'/profile/' + id}>
                         <img alt='user' className={styles.userInfo__photo}
                              src={profile.photoURL ? profile.photoURL : emptyProfileImage}>
-
                         </img>
                     </Link>
                     <p className={styles.userInfo__name}>{profile.displayName}</p>
