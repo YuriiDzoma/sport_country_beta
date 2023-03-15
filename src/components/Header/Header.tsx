@@ -1,5 +1,6 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
 import styles from './Header.module.scss';
 import UserMenu from './UserMenu/UserMenu';
@@ -7,7 +8,6 @@ import React, {useState, MouseEvent} from 'react';
 
 const Header = () => {
   const navigate = useNavigate();
-
   const [isProfileMenuActive, setIsProfileMenuActive] = useState(false);
 
 
@@ -21,8 +21,11 @@ const Header = () => {
         <h1 className={styles.logotype_goHome} onClick={() => navigate('/')}>
           SportCountry
         </h1>
+        <div className={styles.notifications}>
+          <NotificationsNoneIcon color={"primary"} />
+          <span className={styles.notifications__count}>2</span>
+        </div>
       </div>
-
       <div className={`${styles.profile} ${isProfileMenuActive ? styles.profile__active : ''}`}>
         <button className={styles.profile__button} onClick={showProfileMenu}>
           <span className={styles.profile__text}>Profile</span>

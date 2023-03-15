@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Route, Routes } from 'react-router-dom';
 
-import {fetchExercisesGroups, fetchPrograms, getCurrentUser, getUserFriends} from 'api/api';
+import {fetchExercisesGroups, fetchPrograms, getCurrentUser, getUserFriends, getUserNotifications} from 'api/api';
 import Preloader from 'components/Common/Preloader/Preloader';
 import Header from 'components/Header/Header';
 import Login from 'components/Login/Login';
@@ -36,6 +36,7 @@ function App() {
         createUserDocumentFromAuth(user);
         getCurrentUser(user.uid).then((response => dispatch(setCurrentUser(response))))
         getUserFriends(user.uid).then(response => dispatch(setMyFollowers(response)))
+        getUserNotifications(user.uid).then(response => console.log(response))
       } else {
         dispatch(setCurrentUser(null));
       }

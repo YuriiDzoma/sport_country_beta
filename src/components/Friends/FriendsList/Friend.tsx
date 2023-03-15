@@ -3,7 +3,7 @@ import {currentUser, getUserById} from "store/selectors";
 import styles from './Friend.module.scss'
 import emptyProfileImage from "assets/img/emptyprofile.jpg";
 import React from "react";
-import {addNewFriend, getUserFriends, removeFriend} from "api/api";
+import {addNewFriend, createNotification, getUserFriends, removeFriend} from "api/api";
 import {deleteFollower, setMyFollowers} from "store/users-slice";
 import {useParams} from "react-router";
 import {Link} from "react-router-dom";
@@ -29,7 +29,8 @@ const Friend = ({friendId}: FriendProps) => {
     }
 
     const addFriend = (myProfileID: string, FriendId: string) => {
-        addNewFriend(myProfileID, FriendId).then(response => console.log(response))
+        addNewFriend(myProfileID, FriendId).then()
+        createNotification(myProfileID, FriendId).then()
         if (myProfile) {
             getUserFriends(myProfile.id).then(response => dispatch(setMyFollowers(response)))
         }

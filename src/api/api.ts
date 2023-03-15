@@ -86,6 +86,16 @@ export const getUserFriends = async (userId: string) => {
   }
 };
 
+export const getUserNotifications = async (userId: string) => {
+  try {
+    return await getDocs(collection(db, `usersNotifications/${userId}/followers`)).then((querySnapshot) => {
+      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    });
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export const fetchPrograms = createAsyncThunk('programs/fetchAll', async (_, thunkAPI) => {
   try {
     return await getDocs(collection(db, 'programs')).then((querySnapshot) => {
@@ -139,6 +149,14 @@ export const addNewFriend = async (myProfileID: string | null, friendId: any) =>
     console.log(e);
   }
 };
+
+export const createNotification = async (myProfileID: string | null, friendId: any) => {
+  try {
+    await addDoc(collection(db, `usersNotifications/${friendId}/followers`), {myProfileID}).then(()=> console.log(friendId));
+  } catch (e) {
+    console.log(e)
+  }
+}
 
 export const removeFriend = async (myProfileID: string | null, friendId: string) => {
   try {
