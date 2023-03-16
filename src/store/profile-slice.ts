@@ -30,6 +30,9 @@ export const profileSlice = createSlice({
     setNotifications(state, action) {
       state.notifications = action.payload.map((item: any) => item.id)
     },
+    clearNotifications(state, action) {
+      state.notifications = state.notifications.filter(item => item !== action.payload);
+    },
     setMyProgram(state, action) {
       state.myPrograms = action.payload;
     },
@@ -61,6 +64,7 @@ export const {
   setMyProgram,
   addProgramToState,
   setNotifications,
+  clearNotifications,
   setMyFavoriteProgram,
   removeProgramFromState,
   editProgramInState,

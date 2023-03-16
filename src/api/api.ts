@@ -1,5 +1,5 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {addDoc, collection, deleteDoc, doc, getDoc, getDocs, setDoc, updateDoc, deleteField} from 'firebase/firestore';
+import {addDoc, collection, deleteDoc, doc, getDoc, getDocs, setDoc} from 'firebase/firestore';
 import {getDownloadURL, getStorage, ref, uploadBytesResumable} from "firebase/storage";
 
 import {db} from 'config/config';
@@ -13,7 +13,7 @@ export const setUserAvatar = async (userId: string, value: any) => {
       contentType: 'image/jpeg'
     };
     const storageRef = ref(storage, 'userPhoto/' + userId);
-    const uploadTask = uploadBytesResumable(storageRef, value, metadata);
+    uploadBytesResumable(storageRef, value, metadata);
 
   } catch (e) {
     console.log(e)
@@ -118,9 +118,7 @@ export const fetchExercisesGroups = createAsyncThunk('exercisesGroups/fetchAll',
 
 export const addProgramToFB = async (values: Program) => {
   try {
-    await addDoc(collection(db, 'programs'), { ...values }).then((data) => {
-      console.log('program added to global programs list');
-    });
+    await addDoc(collection(db, 'programs'), { ...values })
     return values;
   } catch (e) {
     console.log(e);
@@ -164,7 +162,8 @@ export const createNotification = async (followerId: any, friendId: any) => {
 
 export const removeNotification = async (myProfileID: any, friendId: string) => {
   try {
-    await deleteDoc(doc(db, `usersNotifications/${friendId}/followers`, myProfileID))
+    await deleteDoc(doc(db, `usersNotifications/${friendId}/followers`, myProfileID));
+    return myProfileID;
   } catch (e) {
     console.log(e);
   }

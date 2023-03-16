@@ -23,7 +23,7 @@
   }
 
   &__follow {
-    margin: 0 15px;
+    margin: 0 0 0 15px;
     background-color: #1f75cb;
     border-radius: 4px;
     font-size: 14px;
@@ -34,12 +34,7 @@
   }
 
   &__hide {
-    background-color: #e36f7e;
-    border-radius: 4px;
-    font-size: 14px;
-    padding: 5px 12px;
-    color: #ffffff;
-    font-weight: 500;
-    transition: all 100ms;
+    margin-left: 15px;
+    cursor: pointer;
   }
 }

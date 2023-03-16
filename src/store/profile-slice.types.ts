@@ -45,6 +45,6 @@ export type profileState = {
   myPrograms: Program[];
   myFollowers: Follower[];
   myFavoriteProgram: string | null;
-  notifications: [] | null
+  notifications: string[]
 };
 
