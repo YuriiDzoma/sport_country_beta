@@ -6,10 +6,11 @@ import styles from './Header.module.scss';
 import UserMenu from './UserMenu/UserMenu';
 import React, {useState, MouseEvent} from 'react';
 import {useAppSelector} from "hooks/redux";
-import {getNotifications} from "store/selectors";
+import {currentUser, getNotifications} from "store/selectors";
 
 const Header = () => {
   const navigate = useNavigate();
+  const isUser = useAppSelector(currentUser);
   const [isProfileMenuActive, setIsProfileMenuActive] = useState(false);
   const notifications = useAppSelector(getNotifications);
 
@@ -32,7 +33,15 @@ const Header = () => {
       </div>
       <div className={`${styles.profile} ${isProfileMenuActive ? styles.profile__active : ''}`}>
         <button className={styles.profile__button} onClick={showProfileMenu}>
-          <span className={styles.profile__text}>Profile</span>
+          <span className={styles.profile__text}>
+            {
+              isUser ? (
+                  'Menu'
+              ) : (
+                  'Login'
+              )
+            }
+          </span>
           <AccountCircleIcon className={styles.profile__icon} />
         </button>
         <div className={styles.profile__menu}>
