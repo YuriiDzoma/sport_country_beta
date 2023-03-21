@@ -30,10 +30,8 @@ const Programs = () => {
       setUsersLoading(false);
   }
 
-  let isMyProfile = false;
-  if (user && user.id === userId) {
-      isMyProfile = true
-  }
+  const isMyProfile = !!(user && user.id === userId)
+
   if (user && userId) {
       if (userId !== user.id) {
           dispatch(fetchUserPrograms(userId))
