@@ -40,7 +40,7 @@ export type Program = {
 
 
 export type profileState = {
-  currentUser: User | null;
+  currentUser: User | null | undefined;
   isLoading: boolean;
   myPrograms: Program[];
   myFollowers: Follower[];

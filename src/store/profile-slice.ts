@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { profileState } from 'store/profile-slice.types';
 
 const initialState: profileState = {
-  currentUser: null,
+  currentUser: undefined,
   myPrograms: [],
   myFollowers: [],
   isLoading: false,
@@ -15,11 +15,8 @@ export const profileSlice = createSlice({
   name: 'profilePage',
   initialState,
   reducers: {
-    setFetchingProfile(state) {
-      state.isLoading = true;
-    },
-    resetFetchingProfile(state) {
-      state.isLoading = false;
+    setFetchingProfile(state, action) {
+      state.isLoading = action.payload;
     },
     setCurrentUser(state, action) {
       state.currentUser = action.payload;
@@ -69,5 +66,4 @@ export const {
   removeProgramFromState,
   editProgramInState,
   setFetchingProfile,
-  resetFetchingProfile
 } = profileSlice.actions;

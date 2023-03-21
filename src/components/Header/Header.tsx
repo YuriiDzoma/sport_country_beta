@@ -4,7 +4,7 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
 import styles from './Header.module.scss';
 import UserMenu from './UserMenu/UserMenu';
-import React, {useState, MouseEvent} from 'react';
+import React, {useState} from 'react';
 import {useAppSelector} from "hooks/redux";
 import {currentUser, getNotifications} from "store/selectors";
 
@@ -14,7 +14,7 @@ const Header = () => {
   const [isProfileMenuActive, setIsProfileMenuActive] = useState(false);
   const notifications = useAppSelector(getNotifications);
 
-  const showProfileMenu = (event: MouseEvent<HTMLElement>) => {
+  const showProfileMenu = () => {
     setIsProfileMenuActive(!isProfileMenuActive);
   }
 
@@ -32,22 +32,20 @@ const Header = () => {
         )}
       </div>
       <div className={`${styles.profile} ${isProfileMenuActive ? styles.profile__active : ''}`}>
-        <button className={styles.profile__button} onClick={showProfileMenu}>
-          <span className={styles.profile__text}>
-            {
-              isUser ? (
-                  'Menu'
-              ) : (
-                  'Login'
-              )
-            }
-          </span>
-          <AccountCircleIcon className={styles.profile__icon} />
-        </button>
-        <div className={styles.profile__menu}>
-          <UserMenu />
-        </div>
-        <button className={styles.profile__close} onClick={showProfileMenu}></button>
+        {isUser !== undefined && (
+            <>
+              <button className={styles.profile__button} onClick={showProfileMenu}>
+                <span className={styles.profile__text}>
+                  {isUser ? 'Menu' : 'Login'}
+                </span>
+                <AccountCircleIcon className={styles.profile__icon}/>
+              </button>
+              <div className={styles.profile__menu}>
+                <UserMenu/>
+              </div>
+              <button className={styles.profile__close} onClick={showProfileMenu}></button>
+            </>
+        )}
       </div>
     </div>
   );

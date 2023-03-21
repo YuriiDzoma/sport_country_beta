@@ -1,5 +1,5 @@
 import styles from 'App.module.scss';
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Route, Routes } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ import { createUserDocumentFromAuth } from 'config/config';
 import { auth } from 'config/config';
 import { useAppDispatch } from 'hooks/redux';
 import {fetchUsers} from 'store/actions';
-import {setCurrentUser, setNotifications} from 'store/profile-slice';
+import { setCurrentUser, setNotifications } from 'store/profile-slice';
 import Friends from "components/Friends/Friends";
 import {setMyFollowers} from "store/users-slice";
 import EditProfile from "components/Profile/EditProfile/EditProfile";

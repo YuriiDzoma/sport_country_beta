@@ -29,6 +29,7 @@ export const getExercises = (state: RootState) => state.wikiExercise.exercises;
 export const currentUser = (state: RootState) => state.profilePage.currentUser;
 export const getUsers = (state: RootState) => state.users.users;
 export const getIsFetchingUsers = (state: RootState) => state.users.isLoading;
+export const getIsFetchingProfile = (state: RootState) => state.profilePage.isLoading;
 export const getMyAllPrograms = (state: RootState) => state.profilePage.myPrograms;
 export const getUserPrograms = (state: RootState) => state.users.userPrograms;
 export const getFavoriteProgram = (state: RootState) => state.users.userFavoriteProgram;

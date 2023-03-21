@@ -16,7 +16,7 @@ const Navigation = () => {
 
   return (
       <>
-          {user && (
+          {user &&  (
               <div className={styles.navigationWrapper}>
                   <Link className={activeLocation === 'profile/'
                       ? styles.customLink__active
