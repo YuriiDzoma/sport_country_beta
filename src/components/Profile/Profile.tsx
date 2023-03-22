@@ -28,7 +28,7 @@ const Profile = () => {
     return user.id === id;
   }
 
-  const { photoURL, displayName } = profile;
+  const { photoURL, displayName, city } = profile;
 
   const getUserPhoto = () => {
     return photoURL
@@ -57,11 +57,12 @@ const Profile = () => {
                     </div>
                     <div className={styles.profile__infoMain}>
                       <div className={styles.profile__nameBlock}>
-                        <h1 className={styles.profile__userName}>{ displayName }</h1>
+                        <h2 className={styles.profile__userName}>{ displayName }</h2>
                         {
                             isMyPage() && <Link to={`/profile/edite/`} className={styles.profile__edit}> <BorderColorIcon /> </Link>
                         }
                       </div>
+                      <p className={styles.profile__city}>{city}</p>
                       <div className={styles.userItems}>
                         <button className={styles.userItems__link} onClick={() => navigate(`/training/programs/${id}/`)}>
                           Programs
