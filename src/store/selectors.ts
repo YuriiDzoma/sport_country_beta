@@ -17,11 +17,6 @@ export const getUserById = createSelector(
   (users, id) => users.find((user) => id && user.id === id)
 );
 
-export const getUserIsTrainer = createSelector(
-    [(state: RootState) => state.users.users, (state, id: string | null) => id],
-    (users, id) => users.find((user) => user.id === id ? user.isTrainer : undefined)
-);
-
 export const getIsFetching = (state: RootState) => state.training.isLoading;
 export const getPrograms = (state: RootState) => state.training.programs;
 export const getMuscleGroups = (state: RootState) => state.wikiExercise.muscleGroups;

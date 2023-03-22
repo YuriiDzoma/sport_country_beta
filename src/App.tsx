@@ -22,6 +22,7 @@ import Friends from "components/Friends/Friends";
 import {setMyFollowers} from "store/users-slice";
 import EditProfile from "components/Profile/EditProfile/EditProfile";
 import NotificationsList from "components/Notifications/NotificationsList";
+import Settings from "components/Settings/Settings";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -62,6 +63,7 @@ function App() {
               <Route path="/login/*" element={<Login />} />
               <Route path="/profile/edite/" element={<EditProfile />} />
               <Route path="/notifications/" element={<NotificationsList />} />
+              <Route path="/settings/" element={<Settings />} />
             </Routes>
           </div>
         </div>

@@ -9,22 +9,27 @@ import {signOutUser} from 'config/config';
 import {Link} from 'react-router-dom';
 import {useNavigate} from "react-router";
 
-const UserMenu = () => {
+interface HeaderProps {
+    showProfileMenu: () => void
+}
+
+const UserMenu = ({showProfileMenu}: HeaderProps) => {
   const isUser = useAppSelector(currentUser);
   const navigate = useNavigate();
 
   const logout = () => {
-      signOutUser().then(() => navigate('/'))
+      signOutUser().then(() => navigate('/'));
+      showProfileMenu();
   }
 
   const isUserLogged = () => {
     if (isUser) {
       return (
         <div className={styles.userMenu__inner}>
-          <button className={styles.userMenu__button}>
+          <Link to={'/settings/'} className={styles.userMenu__button} onClick={showProfileMenu}>
             <ManageAccountsIcon className={styles.userMenu__buttonIcon} />
             <span className={styles.userMenu__buttonText}>Settings</span>
-          </button>
+          </Link>
           <button className={styles.userMenu__button} onClick={logout}>
             <ExitToAppIcon className={styles.userMenu__buttonIcon} />
             <span className={styles.userMenu__buttonText}>Logout</span>
@@ -35,7 +40,7 @@ const UserMenu = () => {
 
     return (
       <div className={styles.userMenu__inner}>
-        <Link to={`/login/`} className={styles.userMenu__button}>
+        <Link to={`/login/`} className={styles.userMenu__button} onClick={showProfileMenu}>
           <ExitToAppIcon className={styles.userMenu__buttonIcon} />
           <span className={styles.userMenu__buttonText}>Login</span>
         </Link>

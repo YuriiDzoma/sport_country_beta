@@ -7,6 +7,9 @@ import UserMenu from './UserMenu/UserMenu';
 import React, {useState} from 'react';
 import {useAppSelector} from "hooks/redux";
 import {currentUser, getNotifications} from "store/selectors";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+
+
 
 const Header = () => {
   const navigate = useNavigate();
@@ -34,16 +37,24 @@ const Header = () => {
       <div className={`${styles.profile} ${isProfileMenuActive ? styles.profile__active : ''}`}>
         {isUser !== undefined && (
             <>
-              <button className={styles.profile__button} onClick={showProfileMenu}>
-                <span className={styles.profile__text}>
-                  {isUser ? 'Menu' : 'Login'}
-                </span>
-                <AccountCircleIcon className={styles.profile__icon}/>
-              </button>
-              <div className={styles.profile__menu}>
-                <UserMenu/>
-              </div>
-              <button className={styles.profile__close} onClick={showProfileMenu}></button>
+                {isUser ?
+                    <>
+                        <button className={styles.profile__button} onClick={showProfileMenu}>
+                            <span className={styles.profile__text}>
+                                {isUser ? 'Menu' : 'Login'}
+                            </span>
+                            <AccountCircleIcon className={styles.profile__icon}/>
+                        </button>
+                        <div className={styles.profile__menu}>
+                            <UserMenu showProfileMenu={showProfileMenu} />
+                        </div>
+                        <button className={styles.profile__close} onClick={showProfileMenu}></button>
+                    </> :
+                    <Link to={`/login/`} className={styles.login} >
+                        <ExitToAppIcon className={styles.login__buttonIcon} />
+                        <span className={styles.login__buttonText}>Login</span>
+                    </Link>
+                }
             </>
         )}
       </div>
