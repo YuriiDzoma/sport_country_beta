@@ -8,6 +8,7 @@ import FriendList from "components/Friends/FriendsList/FriendList";
 import Preloader from "components/Common/Preloader/Preloader";
 import {getUserFriends} from "api/api";
 import {setFollowers} from "store/users-slice";
+import GoBack from "components/Common/GoBack/GoBack";
 
 const Friends = () => {
     const {id} = useParams();
@@ -20,6 +21,9 @@ const Friends = () => {
     const profile = useAppSelector((state) => getUserById(state, id));
     return (
         <div className={styles.friendWrapper}>
+            <div className={styles.friendWrapper__goBack}>
+                <GoBack />
+            </div>
             <UserInfo id={id} profile={profile} />
             {isLoading ? <Preloader /> : <FriendList />}
         </div>
