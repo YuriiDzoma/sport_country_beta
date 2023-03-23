@@ -1,0 +1,303 @@
+.createProgramInfo {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+
+  &__form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    text-align: center;
+    margin-top: 25px;
+    width: 100%;
+  }
+
+  &_name {
+    margin: 0;
+    font-size: 16px;
+    width: 50%;
+    padding-right: 10px;
+
+    @media only screen and (max-width: 768px) {
+      padding-right: 0;
+      width: 100%;
+    }
+
+    h2 {
+      width: 100%;
+      text-align: center;
+      text-shadow: 1px 1px 1px #5da3b4;
+      font-size: 24px;
+      font-weight: 500;
+      display: flex;
+      justify-content: center;
+      color: #333238;
+      margin-top: 20px;
+    }
+
+    span {
+      margin-right: 14px;
+    }
+
+    input {
+      padding: 3px;
+      border-radius: 4px;
+    }
+  }
+
+  &_type {
+    font-size: 16px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    padding-left: 10px;
+
+    @media only screen and (max-width: 768px) {
+      padding-left: 0;
+      width: 100%;
+    }
+
+    span {
+      margin-right: 14px;
+    }
+
+    select {
+      padding: 4px 12px;
+      border-radius: 4px;
+      border: 1px solid #89888d;
+      max-width: 265px;
+      height: 30px;
+      width: 100%;
+    }
+  }
+}
+
+.level {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.createProgramWrite {
+  width: 100%;
+  height: 10%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #dcdcde;
+  padding: 15px 0 0;
+
+  input {
+    width: 80%;
+    min-height: 30px;
+    border-radius: 4px;
+    padding: 3px;
+  }
+
+  &_create {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+
+    button {
+      padding: 5px 12px;
+      background-color: #2da44e;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
+      text-transform: uppercase;
+      transition: all 100ms;
+
+      &:hover {
+        background-color: #2c974b;
+      }
+    }
+  }
+}
+
+.createProgramDay {
+  h3 {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  &:not(:first-child) {
+    margin-top: 25px;
+  }
+}
+
+.day {
+  margin-bottom: 20px ;
+}
+
+.field {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+
+  input {
+    display: block;
+    border: 1px solid #89888d;
+    padding: 4px 12px;
+    transition: all 100ms;
+
+    &:focus {
+      box-shadow: 0 0 3px #1f75cb;
+    }
+  }
+
+  &__label {
+    margin-right: 5px;
+    width: 15px;
+  }
+}
+
+.remove {
+  margin-left: 6px;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-color: #dd2b0e;
+  position: relative;
+  border-radius: 4px;
+  transition: all 100ms;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 1px);
+    left: calc(50% - 5px);
+    height: 2px;
+    width: 10px;
+    background-color: #ffffff;
+  }
+}
+
+.add {
+  margin-left: 6px;
+  display: inline-block;
+  border-radius: 4px;
+  width: 22px;
+  height: 22px;
+  background-color: #1f75cb;
+  position: relative;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: calc(50% - 5px);
+    left: calc(50% - 1px);
+    height: 10px;
+    width: 2px;
+    background-color: #ffffff;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 1px);
+    left: calc(50% - 5px);
+    height: 2px;
+    width: 10px;
+    background-color: #ffffff;
+  }
+}
+
+.disable {
+  display: none;
+}
+
+.addExercise {
+  padding: 6px;
+  border-radius: 8px;
+  border: #5da3b4 2px solid;
+  margin: 16px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+
+.createDay {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #dcdcde;
+  margin-top: 15px;
+  padding-top: 10px;
+
+  div {
+    margin: 0 10px;
+  }
+
+  &_remove {
+    button {
+      position: relative;
+      padding: 7px 15px;
+      background-color: #dd2b0e;
+      z-index: 10;
+      color: #ffffff;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: all 100ms;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &_add {
+    button {
+      position: relative;
+      padding: 7px 15px;
+      background-color: #1f75cb;
+      z-index: 10;
+      color: #ffffff;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: all 100ms;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.programName {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+
+  input {
+    border: 1px solid #89888d;
+    padding: 4px 12px;
+    max-width: 265px;
+    width: 100%;
+    height: 30px;
+  }
+}
+
+.programLabel {
+  display: inline-block;
+  min-width: 80px;
+}
+
+.createProgramInner {
+  overflow: auto;
+}

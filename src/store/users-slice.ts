@@ -1,12 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
-import { UsersState } from 'store/users-slice.types';
+import {Follower, UsersState} from 'store/users-slice.types';
 
 const initialState: UsersState = {
   users: [],
   isLoading: false,
   error: '',
   userPrograms: [],
+  userFollowers: [],
   userFavoriteProgram: {
     programId: null,
     id: null,
@@ -22,17 +23,49 @@ export const usersSlice = createSlice({
     setUsers(state, action) {
       state.users = action.payload;
     },
+    updateUserData(state, action) {
+      state.users = state.users.map((user) => {
+        if (user.id === action.payload.id) {
+            user = {
+            ...user,
+            displayName: action.payload.displayName,
+            country: action.payload.country,
+            region: action.payload.region,
+            city: action.payload.city,
+          }
+          return user
+        } return user
+      })
+    },
     setUserPrograms(state, action) {
       state.userPrograms = action.payload;
     },
     setUserFavoriteProgram(state, action) {
       state.userFavoriteProgram = action.payload;
     },
-    addUser(state, action) {
-      const isUser = state.users.find((user) => user.id === action.payload.id);
-      if (isUser === undefined) {
-        state.users = [...state.users, action.payload];
-      }
+    setFollowers(state, action) {
+      state.userFollowers = action.payload;
+    },
+    deleteFollower(state, action) {
+      state.users = state.users.map((user)=> {
+        if (user.followerId === action.payload) {
+          user.isFriend = false;
+        }
+        return user;
+      })
+      state.userFollowers = state.userFollowers.filter((follower) => follower.id !== action.payload)
+    },
+    setMyFollowers(state, action) {
+      state.isLoading = true;
+      state.users = state.users.map((user) => {
+        const follower = action.payload.find((item: Follower) => item.friendId === user.id ? item.id : null )
+          return  {
+            ...user,
+            isFriend: action.payload.some((friend: Follower) => friend.friendId === user.id),
+            followerId: follower ? follower.id : 'not friend'
+          }
+      });
+      state.isLoading = false;
     },
     editUserProgramInState(state, action) {
       state.userPrograms = state.userPrograms.map((program) => {
@@ -49,10 +82,14 @@ export const usersSlice = createSlice({
 });
 
 export default usersSlice.reducer;
-export const { addUser,
+export const {
   addUserProgramToState,
   editUserProgramInState,
   setUserPrograms,
+  setFollowers,
+  deleteFollower,
+  setMyFollowers,
   setUsers,
+  updateUserData,
   setUsersLoading,
   setUserFavoriteProgram} = usersSlice.actions;

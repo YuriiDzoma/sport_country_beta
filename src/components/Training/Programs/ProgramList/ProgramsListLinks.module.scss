@@ -1,0 +1,22 @@
+.programsListClose {
+  width: 26px;
+  height: 26px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 1;
+  display: none;
+  border-radius: 50%;
+  background-color: #ffffff;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: 768px) {
+    display: flex;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -16,7 +16,6 @@
   align-items: center;
   font-family: "Arvo", serif;
 
-
   &_goHome {
     cursor: pointer;
   }
@@ -131,5 +130,41 @@
     &:after {
       display: none;
     }
+  }
+}
+
+.notifications {
+  margin-left: 25px;
+
+  &__count {
+    font-size: 14px;
+    color: #1068bf;
+  }
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  color: #1f75cb;
+
+  &__button {
+    background-color: transparent;
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+    transition: all 100ms;
+
+    &:hover {
+      color: #1068bf;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__buttonIcon {
+    margin-right: 10px;
   }
 }

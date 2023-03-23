@@ -7,23 +7,32 @@ import { useAppSelector } from 'hooks/redux';
 import { currentUser } from 'store/selectors';
 
 import styles from './Navigation.module.scss';
+import {useLocation} from "react-router";
 
 const Navigation = () => {
   const user = useAppSelector(currentUser);
+  const location = useLocation()
+  let activeLocation = location.pathname.substring(1, 9);
 
   return (
       <>
-          {user && (
+          {user &&  (
               <div className={styles.navigationWrapper}>
-                  <Link className={styles.customLink} to={`profile/${user.id}`}>
+                  <Link className={activeLocation === 'profile/'
+                      ? styles.customLink__active
+                      : styles.customLink} to={`profile/${user.id}`}>
                       <AccountCircleIcon/>
                       Profile
                   </Link>
-                  <Link className={styles.customLink} to="training/">
+                  <Link className={activeLocation === 'training'
+                      ? styles.customLink__active
+                      : styles.customLink} to={`training/programs/${user.id}/`}>
                       <FitnessCenterIcon/>
                       Training
                   </Link>
-                  <Link className={styles.customLink} to="users/">
+                  <Link className={activeLocation === 'users/'
+                      ? styles.customLink__active
+                      : styles.customLink} to="users/">
                       <SupervisorAccountIcon/>
                       Users
                   </Link>

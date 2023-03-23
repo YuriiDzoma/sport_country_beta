@@ -1,9 +1,9 @@
 import styles from 'App.module.scss';
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Route, Routes } from 'react-router-dom';
 
-import {fetchExercisesGroups, fetchPrograms, getCurrentUser} from 'api/api';
+import {fetchExercisesGroups, fetchPrograms, getCurrentUser, getUserFriends, getUserNotifications} from 'api/api';
 import Preloader from 'components/Common/Preloader/Preloader';
 import Header from 'components/Header/Header';
 import Login from 'components/Login/Login';
@@ -17,7 +17,12 @@ import { createUserDocumentFromAuth } from 'config/config';
 import { auth } from 'config/config';
 import { useAppDispatch } from 'hooks/redux';
 import {fetchUsers} from 'store/actions';
-import { setCurrentUser } from 'store/profile-slice';
+import { setCurrentUser, setNotifications } from 'store/profile-slice';
+import Friends from "components/Friends/Friends";
+import {setMyFollowers} from "store/users-slice";
+import EditProfile from "components/Profile/EditProfile/EditProfile";
+import NotificationsList from "components/Notifications/NotificationsList";
+import Settings from "components/Settings/Settings";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -29,10 +34,11 @@ function App() {
 
   useEffect(() => {
     return onAuthStateChangeListener((user) => {
-
       if (user) {
         createUserDocumentFromAuth(user);
         getCurrentUser(user.uid).then((response => dispatch(setCurrentUser(response))))
+        getUserFriends(user.uid).then(response => dispatch(setMyFollowers(response)))
+        getUserNotifications(user.uid).then(response => dispatch(setNotifications(response)))
       } else {
         dispatch(setCurrentUser(null));
       }
@@ -50,10 +56,14 @@ function App() {
           <div className={styles.mainContent}>
             <Routes>
               <Route path="/" element={<News />} />
-              <Route path="/profile/:id" element={<Profile />} />
+              <Route path="/profile/:id/*" element={<Profile />} />
               <Route path="/training/*" element={<Training />} />
               <Route path="/users/*" element={<Users />} />
+              <Route path='/friends/:id' element={<Friends />} />
               <Route path="/login/*" element={<Login />} />
+              <Route path="/profile/edite/" element={<EditProfile />} />
+              <Route path="/notifications/" element={<NotificationsList />} />
+              <Route path="/settings/" element={<Settings />} />
             </Routes>
           </div>
         </div>

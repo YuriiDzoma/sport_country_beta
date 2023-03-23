@@ -2,7 +2,7 @@ import {
   addProgramToFB,
   deleteProgramInFB,
   editProgramInFB,
-  fetchMyPrograms, getFavoriteProgram,
+  fetchMyPrograms,
   getUsers
 } from 'api/api';
 import { AppDispatch } from 'store/store';
@@ -13,7 +13,6 @@ import {
   setUsersLoading,
   setUserPrograms,
   setUsers,
-  setUserFavoriteProgram
 } from 'store/users-slice';
 import { pushExercises } from 'store/wikiExercises-slice';
 import { exercise } from 'store/wikiExercises-slyce.types';
@@ -29,20 +28,6 @@ export const fetchUsers = () => async (dispatch: AppDispatch) => {
 };
 
 export const setMyPrograms = (user: string) => async (dispatch: AppDispatch) => {
-  if (user) {
-    fetchMyPrograms(user).then((response) => dispatch(setMyProgram(response)))
-  }
-}
-
-export const getUserFavoriteProgram = (id: string) => async (dispatch: AppDispatch) => {
-  if (id) {
-    setUsersLoading(true);
-    getFavoriteProgram(id).then(response => dispatch(setUserFavoriteProgram(response)));
-    setUsersLoading(false);
-  }
-}
-
-export const setClientProgram = (user: string) => async (dispatch: AppDispatch) => {
   if (user) {
     fetchMyPrograms(user).then((response) => dispatch(setMyProgram(response)))
   }
@@ -127,5 +112,4 @@ export const addWorkHistory = (user: string, dayNumber: number, values: Program)
         .then((response) => dispatch(editProgramInState(response)))
         .catch(Error);
   }
-
 };

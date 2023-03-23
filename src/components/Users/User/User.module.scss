@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 
   @media only screen and (max-width: 768px) {
     padding-left: 0;
@@ -28,6 +29,8 @@
   }
 
   &__addToFriends {
+    position: absolute;
+    right: 20px;
     background-color: #1f75cb;
     border-radius: 4px;
     font-size: 14px;
@@ -35,6 +38,10 @@
     color: #ffffff;
     font-weight: 500;
     transition: all 100ms;
+
+    @media only screen and (max-width: 768px) {
+      right: 0;
+    }
 
     &:hover {
       background-color: #1068bf;
@@ -44,6 +51,8 @@
   &__link {
     display: flex;
     align-items: center;
+    position: relative;
+    width: 100%;
   }
 
   &__pic {
@@ -65,6 +74,7 @@
   &__image {
     width: 100% !important;
     height: 100% !important;
+    object-fit: cover;
   }
 
   &__name {
