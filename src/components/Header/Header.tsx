@@ -1,4 +1,4 @@
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import {Link, useNavigate} from 'react-router-dom';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 
@@ -43,7 +43,7 @@ const Header = () => {
                             <span className={styles.profile__text}>
                                 {isUser ? 'Menu' : 'Login'}
                             </span>
-                            <AccountCircleIcon className={styles.profile__icon}/>
+                            <PersonOutlineIcon className={styles.profile__icon}/>
                         </button>
                         <div className={styles.profile__menu}>
                             <UserMenu showProfileMenu={showProfileMenu} />

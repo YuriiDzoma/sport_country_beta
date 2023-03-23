@@ -15,11 +15,13 @@ const store = setupStore();
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>
+    <React.StrictMode>
+        <BrowserRouter>
+            <Provider store={store}>
+                <App/>
+            </Provider>
+        </BrowserRouter>
+    </React.StrictMode>
 );
 
 reportWebVitals();
