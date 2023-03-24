@@ -1,9 +1,9 @@
-
+import styles from './Settings.module.scss'
 
 const Settings = () => {
     return (
-        <div>
-            Settings
+        <div className={styles.settingsWrapper}>
+            Settings under development......
         </div>
     )
 }
