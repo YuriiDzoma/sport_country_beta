@@ -9,6 +9,7 @@ import BorderColorIcon from '@mui/icons-material/BorderColor';
 import emptyProfileImage from 'assets/img/emptyprofile.jpg';
 import {useNavigate} from "react-router";
 import Preloader from "components/Common/Preloader/Preloader";
+import GoBack from "components/Common/GoBack/GoBack";
 
 
 const Profile = () => {
@@ -47,6 +48,9 @@ const Profile = () => {
             : <div className={styles.profile}>
               {profile && id && (
                   <div className={styles.profile__info}>
+                    <div className={styles.profile__goBack}>
+                      <GoBack />
+                    </div>
                     <div className={styles.profile__imageBox}>
                       <div className={styles.profile__imageInner}>
                         {getUserPhoto()}

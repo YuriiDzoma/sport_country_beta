@@ -1,6 +1,13 @@
 .profile {
   text-align: center;
   padding: 30px 10px 0;
+  position: relative;
+
+  &__goBack {
+    position: absolute;
+    top: 0;
+    right: 20px;
+  }
 
   &__noProfile {
     text-align: center;
