@@ -9,12 +9,13 @@ const UserInfo = ({ id, profile }:UserInfoProps) => {
         <>
             {profile && id && (
                 <div className={styles.userInfo}>
-                    <Link className={styles.userBlock__link} to={'/profile/' + id}>
+                    <Link className={styles.userInfo__link} to={'/profile/' + id}>
                         <img alt='user' className={styles.userInfo__photo}
                              src={profile.photoURL ? profile.photoURL : emptyProfileImage}>
                         </img>
+
+                        <p className={styles.userInfo__name}>{profile.displayName}</p>
                     </Link>
-                    <p className={styles.userInfo__name}>{profile.displayName}</p>
                 </div>
             )}
         </>
