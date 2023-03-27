@@ -1,0 +1,41 @@
+.followersWrapper {
+  position: relative;
+  border: 1px solid #dcdcde;
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+
+  &__allFriend {
+    position: absolute;
+    top: 0;
+    right: 10px;
+  }
+}
+
+.friends {
+  margin-top: 10px;
+  padding: 5px 12px;
+  border: 1px solid #1068bf;
+  border-radius: 4px;
+  margin-left: 10px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #1f75cb;
+  transition: all 120ms;
+}
+
+.follower {
+  margin: 10px;
+
+  &__photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  &__name {
+    font-size: 14px;
+  }
+}

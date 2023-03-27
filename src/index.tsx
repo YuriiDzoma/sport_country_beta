@@ -9,16 +9,20 @@ import { setupStore } from 'store/store';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {IntlProvider} from "react-intl";
 
 const store = setupStore();
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 // const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
     <React.StrictMode>
         <BrowserRouter>
             <Provider store={store}>
-                <App/>
+                <IntlProvider locale='en' defaultLocale="en">
+                    <App/>
+                </IntlProvider>
             </Provider>
         </BrowserRouter>
     </React.StrictMode>

@@ -1,0 +1,134 @@
+.profile {
+  text-align: center;
+  padding: 30px 10px 0;
+  position: relative;
+
+  &__goBack {
+    position: absolute;
+    top: 0;
+    right: 20px;
+  }
+
+  &__additional {
+    display: flex;
+
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__publications {
+    margin-left: 20px;
+    flex: 1;
+    padding-bottom: 40px;
+
+    @media only screen and (max-width: 768px) {
+      margin-left: 0;
+      margin-top: 40px;
+      padding-bottom: 60px;
+    }
+  }
+
+  &__additionalInfo {
+    max-width: 270px;
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+
+  &__nameBlock {
+    display: flex;
+  }
+
+  &__edit {
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1f75cb;
+    transition: background-color 100ms;
+
+    &:hover {
+      color: #1068bf;
+    }
+  }
+
+  &__info {
+    display: flex;
+
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+      padding: 10px;
+    }
+  }
+
+  &__infoMain {
+    margin-left: 50px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media only screen and (max-width: 768px) {
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  }
+
+  &__userName {
+    text-align: left;
+    font-size: 20px;
+    font-family: "Arvo", sans-serif;
+    margin-right: 20px;
+  }
+
+  &__city {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 14px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__imageBox {
+    display: flex;
+    flex-direction: column;
+    max-width: 120px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  &__imageUpload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1f75cb;
+    color: #ffffff;
+    transition: background-color 100ms;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    position: absolute;
+    border: 2px solid #ffffff;
+    padding: 0 2px 3px 0;
+    top: 77px;
+    right: -15px;
+
+    &:hover {
+      background-color: #1068bf;
+    }
+  }
+
+  &__imageInner {
+    border: 1px solid #dcdcde;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}

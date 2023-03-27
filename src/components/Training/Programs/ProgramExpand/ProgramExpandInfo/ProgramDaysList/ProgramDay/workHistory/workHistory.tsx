@@ -12,7 +12,7 @@ const WorkHistory: React.FC<WorkHistoryProps> = ({ day }) => {
           <div className={styles.weightHistory_weights}>
             {story.weights.map((item, index) => (
               <div key={index}>
-                <p>{item.weight}</p>
+                <p className={styles.item__weight}>{item.weight}</p>
               </div>
             ))}
           </div>
