@@ -50,12 +50,14 @@
 
   &__delete {
     position: absolute;
+    display: flex;
     top: 4px;
-    right: 4px;
+    right: 40px;
     width: 21px;
     height: 21px;
 
     button {
+      margin-left: 15px;
       width: 21px;
       height: 21px;
       background: none;
