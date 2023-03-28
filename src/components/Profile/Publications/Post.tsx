@@ -13,17 +13,20 @@ const Post = ({item}: {item: Publication}) => {
     const dispatch = useAppDispatch();
     const { id } = useParams();
     const profile = useAppSelector((state) => getUserById(state, item.author));
+
     const deletePost = (postId: string) => {
-        if (id && myProfile && (id === item.author || id === myProfile.id)) {
+        if (id) {
             deletePublication(id, postId).then(response => dispatch(removePost(response)));
         }
     }
 
     return (
         <div className={styles.post}>
-            <div className={styles.post__delete}>
-                <button onClick={()=> deletePost(item.id)}><ClearIcon color={'warning'} /></button>
-            </div>
+            {id && myProfile && (myProfile.id === item.author || myProfile.id === id) &&(
+                <div className={styles.post__delete}>
+                    <button onClick={()=> deletePost(item.id)}><ClearIcon color={'warning'} /></button>
+                </div>
+            )}
             <p className={styles.post__content}>
                 {item.content}
             </p>
@@ -34,9 +37,7 @@ const Post = ({item}: {item: Publication}) => {
                         {profile.displayName}
                     </p>
                 </div>
-
             )}
-
         </div>
     )
 }
