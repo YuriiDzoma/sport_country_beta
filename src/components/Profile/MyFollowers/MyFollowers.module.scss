@@ -14,28 +14,49 @@
   }
 }
 
-.friends {
+.showAllFriends {
   margin-top: 10px;
-  padding: 5px 12px;
-  border: 1px solid #1068bf;
+  padding: 5px 6px;
   border-radius: 4px;
   margin-left: 10px;
   font-weight: 600;
-  color: #ffffff;
-  background-color: #1f75cb;
+  color: #1f75cb;
+  background: none;
   transition: all 120ms;
+
+  @media only screen and (max-width: 425px) {
+    font-size: 13px;
+  }
+
+  @media only screen and (max-width: 375px) {
+    max-width: 60px;
+  }
 }
 
 .follower {
   margin: 10px;
+  position: relative;
 
   &__photo {
     width: 60px;
     height: 60px;
     border-radius: 50%;
+
+    @media only screen and (max-width: 425px) {
+      width: 50px;
+      height: 50px;
+    }
   }
 
   &__name {
-    font-size: 14px;
+    color: #ffffff;
+    text-shadow: #131c2d 2px 2px 2px;
+    font-weight: 700;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    font-size: 13px;
+    text-align: center;
   }
 }

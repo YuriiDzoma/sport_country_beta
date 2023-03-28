@@ -19,7 +19,7 @@ const MyFollowers = () => {
                 </>
             )}
             <div className={styles.followersWrapper__allFriend}>
-                <button className={styles.friends} onClick={() => navigate(`/friends/${id}`)}>
+                <button className={styles.showAllFriends} onClick={() => navigate(`/friends/${id}`)}>
                     See all followers
                 </button>
             </div>

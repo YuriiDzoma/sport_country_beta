@@ -42,14 +42,6 @@ const Profile = () => {
                       <ProfileName profile={profile} user={user} />
                       <ProfileInfo profile={profile} />
                       <MyFollowers />
-                      {/*<div className={styles.userItems}>*/}
-                      {/*  <button className={styles.userItems__link} onClick={() => navigate(`/training/programs/${id}/`)}>*/}
-                      {/*    Programs*/}
-                      {/*  </button>*/}
-                      {/*  <button className={styles.userItems__link} onClick={() => navigate(`/friends/${id}`)}>*/}
-                      {/*    Friends*/}
-                      {/*  </button>*/}
-                      {/*</div>*/}
                       <button className={styles.userItems__link} onClick={() => navigate(`/training/programs/${id}/`)}>
                         Programs
                       </button>
