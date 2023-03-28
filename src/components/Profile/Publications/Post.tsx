@@ -25,9 +25,9 @@ const Post = ({item}: {item: Publication}) => {
         <div className={styles.post}>
             {id && myProfile && (myProfile.id === item.author || myProfile.id === id) &&(
                 <div className={styles.post__delete}>
-                    {myProfile.id === item.author && (
-                        <Link to={'/'}><DriveFileRenameOutlineIcon color={'primary'} /></Link>
-                    )}
+                    {/*{myProfile.id === item.author && (*/}
+                    {/*    <Link to={'/'}><DriveFileRenameOutlineIcon color={'primary'} /></Link>*/}
+                    {/*)}*/}
                     <button onClick={()=> deletePost(item.id)}><ClearIcon color={'warning'} /></button>
                 </div>
             )}
