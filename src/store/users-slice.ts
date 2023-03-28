@@ -45,6 +45,7 @@ export const usersSlice = createSlice({
     },
     setFollowers(state, action) {
       state.userFollowers = action.payload;
+      state.isLoading = false;
     },
     deleteFollower(state, action) {
       state.users = state.users.map((user)=> {

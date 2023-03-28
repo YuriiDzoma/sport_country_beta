@@ -12,18 +12,25 @@ const MyFollowers = () => {
     const navigate = useNavigate();
 
     return (
-        <div className={styles.followersWrapper}>
+        <div className={ styles.followersWrapper }>
             {followersList && (
                 <>
                     {followersList.map((user, index) => <Follower key={index} user={user.friendId} />)}
                 </>
             )}
-            <div className={styles.followersWrapper__allFriend}>
-                <button className={styles.showAllFriends} onClick={() => navigate(`/friends/${id}`)}>
-                    See all followers
-                </button>
-            </div>
+            {followersList.length !== 0 && (
+                <div className={styles.followersWrapper__allFriend}>
+                    <button className={styles.showAllFriends} onClick={() => navigate(`/friends/${id}`)}>
+                        See all followers
+                    </button>
+                </div>
+            )}
+            {followersList.length === 0 && (
+                <div className={styles.notFollowers}>
+                    <p>not have followers</p>
+                </div>
 
+            )}
         </div>
     )
 }
