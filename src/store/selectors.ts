@@ -29,4 +29,5 @@ export const getMyAllPrograms = (state: RootState) => state.profilePage.myProgra
 export const getUserPrograms = (state: RootState) => state.users.userPrograms;
 export const getFavoriteProgram = (state: RootState) => state.users.userFavoriteProgram;
 export const getUserFollowers = (state: RootState) => state.users.userFollowers;
+export const getUserPublications = (state: RootState) => state.users.userPublications;
 export const getNotifications = (state: RootState) => state.profilePage.notifications;

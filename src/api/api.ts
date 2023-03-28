@@ -96,6 +96,16 @@ export const getUserNotifications = async (userId: string) => {
   }
 }
 
+export const getUserPublications = async (userId: string) => {
+  try {
+    return await getDocs(collection(db, `usersPublications/${userId}/publications`)).then((querySnapshot) => {
+      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    });
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export const fetchPrograms = createAsyncThunk('programs/fetchAll', async (_, thunkAPI) => {
   try {
     return await getDocs(collection(db, 'programs')).then((querySnapshot) => {
@@ -124,6 +134,18 @@ export const addProgramToFB = async (values: Program) => {
     console.log(e);
   }
 };
+
+export const addPublicationToFB = async (user: string, values: any) => {
+  try {
+    await addDoc(collection(db, `usersPublications/${user}/publications`), { ...values }).then(() => {
+      console.log('publication added');
+    });
+    return values;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 
 
 export const createNewProgram = async (user: string | null, values: Program) => {
@@ -213,6 +235,17 @@ export const deleteProgramInFB = async (user: string, programId: string) => {
       return response;
     });
     return programId;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const deletePublication = async (user: string, postId: string) => {
+  try {
+    await deleteDoc(doc(db, `usersPublications/${user}/publications`, postId)).then((response) => {
+      return response;
+    });
+    return postId;
   } catch (e) {
     console.log(e);
   }

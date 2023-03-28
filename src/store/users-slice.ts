@@ -8,6 +8,7 @@ const initialState: UsersState = {
   error: '',
   userPrograms: [],
   userFollowers: [],
+  userPublications: [],
   userFavoriteProgram: {
     programId: null,
     id: null,
@@ -46,6 +47,17 @@ export const usersSlice = createSlice({
     setFollowers(state, action) {
       state.userFollowers = action.payload;
       state.isLoading = false;
+    },
+    setPublications(state, action) {
+      state.userPublications = [...action.payload].sort((a, b) =>
+          a.date > b.date ? -1 : 1,
+      );
+    },
+    addPublications(state, action) {
+      state.userPublications = [action.payload, ...state.userPublications, ]
+    },
+    removePost(state, action) {
+      state.userPublications = state.userPublications.filter((item) => item.id !== action.payload);
     },
     deleteFollower(state, action) {
       state.users = state.users.map((user)=> {
@@ -87,6 +99,9 @@ export const {
   addUserProgramToState,
   editUserProgramInState,
   setUserPrograms,
+  setPublications,
+  addPublications,
+  removePost,
   setFollowers,
   deleteFollower,
   setMyFollowers,

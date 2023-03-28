@@ -10,8 +10,8 @@ import ProfileName from "components/Profile/ProfileName/ProfileName";
 import ProfileInfo from "components/Profile/ProfileInfo/ProfileInfo";
 import Publications from "components/Profile/Publications/Publications";
 import MyFollowers from "components/Profile/MyFollowers/MyFollowers";
-import {getUserFriends} from "api/api";
-import {setFollowers} from "store/users-slice";
+import {getUserFriends, getUserPublications} from "api/api";
+import {setFollowers, setPublications} from "store/users-slice";
 
 
 const Profile = () => {
@@ -23,6 +23,7 @@ const Profile = () => {
   const navigate = useNavigate();
   if (id) {
     getUserFriends(id).then(response => dispatch(setFollowers(response)));
+    getUserPublications(id).then(response => dispatch(setPublications(response)));
   }
 
   if (!profile || !user) {

@@ -1,14 +1,15 @@
-import styles from "components/Profile/Profile.module.scss";
-import SendIcon from '@mui/icons-material/Send';
+import styles from "./Publications.module.scss";
+import CreateEditPublication from "components/Profile/Publications/CreateEditPublication";
+import PublicationsList from "components/Profile/Publications/PublicationsList";
+
 
 const Publications = () => {
+
     return (
         <div className={styles.publications}>
             <h3>Publications</h3>
-            <div className={styles.publications__field}><textarea /></div>
-            <div className={styles.publications__buttons}>
-                <button className={styles.send}><SendIcon color={'primary'} /></button>
-            </div>
+            <CreateEditPublication/>
+            <PublicationsList/>
         </div>
     )
 }

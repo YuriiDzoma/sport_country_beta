@@ -1,0 +1,89 @@
+.publications {
+  margin: 140px 10px 20px;
+
+  @media only screen and (max-width: 768px) {
+    margin: 10px 10px 20px;
+  }
+
+  h3 {
+    text-align: center;
+    color: #14144f;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  &__field {
+    display: flex;
+    justify-content: center;
+
+    textarea {
+      width: 80%;
+      border-radius: 4px;
+      display: block;
+      border: 1px solid #89888d;
+      padding: 4px 12px;
+      transition: all 100ms;
+    }
+  }
+
+  &__buttons {
+    margin-top: 5px;
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
+
+    .send {
+      background: none;
+    }
+  }
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  margin: 10px auto;
+  width: 80%;
+  min-height: 70px;
+  background: #c9e1e7;
+  position: relative;
+
+  &__delete {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 21px;
+    height: 21px;
+
+    button {
+      width: 21px;
+      height: 21px;
+      background: none;
+
+      svg {
+        color: #d00000;
+      }
+    }
+  }
+
+  &__content {
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  &__sender {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 4px;
+    flex: 1 1;
+
+    .time {
+      font-size: 12px;
+    }
+
+    .author {
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+}
