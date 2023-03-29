@@ -4,7 +4,7 @@ import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser, getUserById} from "store/selectors";
 import ClearIcon from '@mui/icons-material/Clear';
 import {deletePublication} from "api/api";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {removePost} from "store/users-slice";
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 
@@ -25,10 +25,15 @@ const Post = ({item}: {item: Publication}) => {
         <div className={styles.post}>
             {id && myProfile && (myProfile.id === item.author || myProfile.id === id) &&(
                 <div className={styles.post__delete}>
-                    {/*{myProfile.id === item.author && (*/}
-                    {/*    <Link to={'/'}><DriveFileRenameOutlineIcon color={'primary'} /></Link>*/}
-                    {/*)}*/}
-                    <button onClick={()=> deletePost(item.id)}><ClearIcon color={'warning'} /></button>
+                    {myProfile.id === item.author && (
+                        <button>
+                            <DriveFileRenameOutlineIcon color={'primary'} />
+                        </button>
+                    )}
+
+                    <button className={styles.remove} onClick={()=> deletePost(item.id)}>
+                        <ClearIcon color={'warning'} />
+                    </button>
                 </div>
             )}
             <p className={styles.post__content}>

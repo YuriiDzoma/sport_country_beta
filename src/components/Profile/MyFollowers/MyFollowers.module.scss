@@ -49,6 +49,7 @@
   }
 
   &__name {
+    pointer-events: none;
     color: #ffffff;
     text-shadow: #131c2d 2px 2px 2px;
     font-weight: 700;
