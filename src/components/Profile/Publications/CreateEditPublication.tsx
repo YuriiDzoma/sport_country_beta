@@ -6,7 +6,7 @@ import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser} from "store/selectors";
 import {addPublicationToFB} from "api/api";
 import {addPost} from "store/users-slice";
-
+import ImageIcon from '@mui/icons-material/Image';
 
 const CreateEditPublication = ({isEdit= false}) => {
     const dispatch = useAppDispatch();
@@ -43,10 +43,13 @@ const CreateEditPublication = ({isEdit= false}) => {
                 <textarea id="content" name="content" onChange={handleChange} value={values.content} />
             </div>
             <div className={styles.publications__buttons}>
+                <input id='upload' multiple type={'file'} hidden />
+                <label className={styles.imagesLoad} htmlFor={'upload'}><ImageIcon color={'primary'} /></label>
                 <button className={styles.send} type="submit" disabled={isSubmitting || !dirty} >
                     <SendIcon color={'primary'} />
                 </button>
             </div>
+
         </form>
     )
 }

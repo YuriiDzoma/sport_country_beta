@@ -89,7 +89,7 @@ const EditProfile = () => {
                 <h3>Edit profile</h3>
                 <div className={styles.edit}>
                     <label htmlFor={'photo'}>photo</label>
-                    <input type={'file'} onChange={e => loadPhoto(e)}  className={styles.edit__nameSurname} id={'photo'} name={'photo'}/>
+                    <input type={'file'} onChange={e => loadPhoto(e)}  className={styles.edit__photo} id={'photo'} name={'photo'}/>
                 </div>
                 <div className={styles.edit}>
                     <label htmlFor={'displayName'}>Name</label>
