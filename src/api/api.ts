@@ -137,10 +137,10 @@ export const addProgramToFB = async (values: Program) => {
 
 export const addPublicationToFB = async (user: string, values: any) => {
   try {
-    await addDoc(collection(db, `usersPublications/${user}/publications`), { ...values }).then(() => {
-      console.log('publication added');
+    return await addDoc(collection(db, `usersPublications/${user}/publications`), { ...values }).then((doc) => {
+      return { ...values, id: doc.id };
     });
-    return values;
+
   } catch (e) {
     console.log(e);
   }
@@ -255,6 +255,18 @@ export const editProgramInFB = async (user: string, programId: string | undefine
   try {
     if (!programId) return false;
     const collectionRef = doc(db, `usersPrograms/${user}/programs`, programId);
+    const updateObject = { ...values };
+    await setDoc(collectionRef, updateObject, { ...values });
+    return updateObject;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const editPublication = async (user: string, postId: string, values: any) => {
+  try {
+    if (!postId) return false;
+    const collectionRef = doc(db, `usersPublications/${user}/publications`, postId);
     const updateObject = { ...values };
     await setDoc(collectionRef, updateObject, { ...values });
     return updateObject;

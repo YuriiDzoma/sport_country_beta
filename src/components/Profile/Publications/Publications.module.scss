@@ -71,6 +71,7 @@
   }
 
   &__content {
+    max-width: 85%;
     padding: 10px;
     font-size: 15px;
   }
@@ -91,4 +92,29 @@
       font-weight: 600;
     }
   }
+}
+
+.editor {
+  padding-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  &__field {
+    border-radius: 4px;
+    padding: 5px;
+    width: 80%;
+    height: auto;
+  }
+
+  &__button {
+    padding: 2px 6px;
+    border: 1px solid #1068bf;
+    border-radius: 4px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #1f75cb;
+    transition: all 120ms;
+  }
+
 }

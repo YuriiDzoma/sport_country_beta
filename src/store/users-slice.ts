@@ -53,11 +53,19 @@ export const usersSlice = createSlice({
           a.date > b.date ? -1 : 1,
       );
     },
-    addPublications(state, action) {
+    addPost(state, action) {
       state.userPublications = [action.payload, ...state.userPublications, ]
     },
     removePost(state, action) {
       state.userPublications = state.userPublications.filter((item) => item.id !== action.payload);
+    },
+    editPost(state, action) {
+      state.userPublications = state.userPublications.map((post) => {
+        if (post.id === action.payload.id) {
+          post = action.payload;
+        }
+        return post;
+      });
     },
     deleteFollower(state, action) {
       state.users = state.users.map((user)=> {
@@ -100,7 +108,8 @@ export const {
   editUserProgramInState,
   setUserPrograms,
   setPublications,
-  addPublications,
+  addPost,
+  editPost,
   removePost,
   setFollowers,
   deleteFollower,

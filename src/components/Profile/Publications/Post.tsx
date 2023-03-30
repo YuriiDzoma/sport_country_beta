@@ -7,9 +7,15 @@ import {deletePublication} from "api/api";
 import {useParams} from "react-router-dom";
 import {removePost} from "store/users-slice";
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import {useState} from "react";
+import EditePost from "./EditePost";
 
 
 const Post = ({item}: {item: Publication}) => {
+    const [postEdit, serPostEdit] = useState('0');
+    const setPostId = (id: string) => {
+        serPostEdit(id)
+    }
     const myProfile = useAppSelector(currentUser);
     const dispatch = useAppDispatch();
     const { id } = useParams();
@@ -23,11 +29,11 @@ const Post = ({item}: {item: Publication}) => {
 
     return (
         <div className={styles.post}>
-            {id && myProfile && (myProfile.id === item.author || myProfile.id === id) &&(
+            {id && myProfile && postEdit !== item.id && (myProfile.id === item.author || myProfile.id === id)  &&(
                 <div className={styles.post__delete}>
                     {myProfile.id === item.author && (
                         <button>
-                            <DriveFileRenameOutlineIcon color={'primary'} />
+                            <DriveFileRenameOutlineIcon onClick={() => setPostId(item.id)} color={'primary'} />
                         </button>
                     )}
 
@@ -36,9 +42,13 @@ const Post = ({item}: {item: Publication}) => {
                     </button>
                 </div>
             )}
-            <p className={styles.post__content}>
-                {item.content}
-            </p>
+            {postEdit && postEdit === item.id
+                ? <EditePost setPostId={setPostId} item={item} />
+                : <p className={styles.post__content}>
+                    {item.content}
+                </p>
+            }
+
             {profile && (
                 <div className={styles.post__sender}>
                     <span className={styles.time}>{item.date}</span>

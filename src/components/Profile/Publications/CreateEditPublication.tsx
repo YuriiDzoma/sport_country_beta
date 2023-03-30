@@ -5,7 +5,7 @@ import {useFormik} from "formik";
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser} from "store/selectors";
 import {addPublicationToFB} from "api/api";
-import {addPublications} from "store/users-slice";
+import {addPost} from "store/users-slice";
 
 
 const CreateEditPublication = ({isEdit= false}) => {
@@ -29,7 +29,7 @@ const CreateEditPublication = ({isEdit= false}) => {
         onSubmit: (values) => {
             setTimeout(() => {
                 if (id) {
-                    addPublicationToFB(id, values).then(response => dispatch(addPublications(response)));
+                    addPublicationToFB(id, values).then(response => dispatch(addPost(response)));
                 }
                 setSubmitting(false);
                 resetForm();
