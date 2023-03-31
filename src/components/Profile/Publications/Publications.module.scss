@@ -76,6 +76,17 @@
     font-size: 15px;
   }
 
+  &__pictures {
+    margin: 5px 10px;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+
+    img {
+      max-height: 120px;
+    }
+  }
+
   &__sender {
     display: flex;
     justify-content: space-between;

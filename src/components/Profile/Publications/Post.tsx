@@ -3,7 +3,7 @@ import styles from './Publications.module.scss'
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser, getUserById} from "store/selectors";
 import ClearIcon from '@mui/icons-material/Clear';
-import {deletePublication} from "api/api";
+import {deletePostsImages, deletePublication} from "api/api";
 import {useParams} from "react-router-dom";
 import {removePost} from "store/users-slice";
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
@@ -23,7 +23,9 @@ const Post = ({item}: {item: Publication}) => {
 
     const deletePost = (postId: string) => {
         if (id) {
-            deletePublication(id, postId).then(response => dispatch(removePost(response)));
+            deletePublication(id, postId)
+                .then(response => dispatch(removePost(response)))
+                .then(() => deletePostsImages(item.postId))
         }
     }
 
@@ -48,7 +50,13 @@ const Post = ({item}: {item: Publication}) => {
                     {item.content}
                 </p>
             }
-
+            {item.pictures.length !== 0 && (
+                <div className={styles.post__pictures}>
+                    {item.pictures.map((picture, index) =>
+                        <img key={index} alt={'image'} src={picture} />
+                    )}
+                </div>
+            )}
             {profile && (
                 <div className={styles.post__sender}>
                     <span className={styles.time}>{item.date}</span>

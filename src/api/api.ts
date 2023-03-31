@@ -1,6 +1,6 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {addDoc, collection, deleteDoc, doc, getDoc, getDocs, setDoc} from 'firebase/firestore';
-import {getDownloadURL, getStorage, ref, uploadBytesResumable} from "firebase/storage";
+import {getDownloadURL, deleteObject, getStorage, ref, uploadBytesResumable} from "firebase/storage";
 
 import {db} from 'config/config';
 import {Program} from 'store/training-slice.types';
@@ -92,6 +92,14 @@ export const addPostsImages = async (images: any, postId: string) => {
 export const getPostsImages = async (postId: string) => {
   try {
     return getDownloadURL(ref(storage, 'publications/' + postId))
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+export const deletePostsImages = async (postId: string) => {
+  try {
+    deleteObject(ref(storage, 'publications/' + postId)).then(() => console.log('image deleted'))
   } catch (e) {
     console.log(e)
   }

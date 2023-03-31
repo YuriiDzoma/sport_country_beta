@@ -35,16 +35,14 @@ const CreateEditPublication = ({isEdit= false}) => {
 
         onSubmit: (values) => {
             setTimeout(() => {
-                if (values && images) {
+                if (id && values && images) {
                     addPostsImages(images, values.postId)
                         .then(() => getPostsImages(values.postId))
-                        .then(response => console.log(response))
-
-                    // addPublicationToFB(id, values)
-                    //     .then(response => addPostsImages(images, response.id))
-                    //     .then(response => console.log(response))
+                        .then(response => {
+                            addPublicationToFB(id, {...values, pictures: [response]})
+                                .then(response => dispatch(addPost(response)));
+                        })
                 } else {
-                    console.log('not image')
                     if (id) {
                         addPublicationToFB(id, values).then(response => dispatch(addPost(response)));
                     }

@@ -30,6 +30,7 @@ export type Publication = {
   id: string;
   date: string;
   postId: string;
+  pictures: string[];
 }
 
 export type UsersState = {
