@@ -29,6 +29,7 @@ export type Publication = {
   content: string;
   id: string;
   date: string;
+  postId: string;
 }
 
 export type UsersState = {

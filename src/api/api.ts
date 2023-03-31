@@ -7,6 +7,26 @@ import {Program} from 'store/training-slice.types';
 
 const storage = getStorage();
 
+      // CURRENT USER
+
+export const getCurrentUser = async (id: string) => {
+  try {
+    const docRef = doc(db, "users", `${id}`);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return {...docSnap.data(), id: id};
+    } else {
+      console.log("No such document!");
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+      // USER AVATAR
+
+
+
 export const setUserAvatar = async (userId: string, value: any) => {
   try {
     const metadata = {
@@ -26,23 +46,11 @@ export const getUserAvatar = async (userId: string) => {
   } catch (e) {
     console.log(e)
   }
-
 }
 
-export const getCurrentUser = async (id: string) => {
-  try {
-    const docRef = doc(db, "users", `${id}`);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      return {...docSnap.data(), id: id};
-    } else {
-      console.log("No such document!");
-    }
+      // USERS
 
-  } catch (e) {
-    console.log(e)
-  }
-}
+
 
 export const getUsers = async () => {
   try {
@@ -66,94 +74,38 @@ export const setUserNewData = async (user: string, values: any) => {
   }
 }
 
-export const fetchMyPrograms = async (user: string) => {
+      // PUBLICATION IMAGES
+
+
+export const addPostsImages = async (images: any, postId: string) => {
   try {
-    return await getDocs(collection(db, `usersPrograms/${user}/programs`)).then((querySnapshot) => {
-      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    });
+    const metadata = {
+      contentType: 'image/jpeg'
+    };
+    const storageRef = ref(storage, 'publications/' + postId);
+    return uploadBytesResumable(storageRef, images, metadata);
   } catch (e) {
     console.log(e);
   }
-};
+}
+
+export const getPostsImages = async (postId: string) => {
+  try {
+    return getDownloadURL(ref(storage, 'publications/' + postId))
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+      // FRIENDS
+
+
 
 export const getUserFriends = async (userId: string) => {
   try {
     return await getDocs(collection(db, `usersFollowers/${userId}/followers`)).then((querySnapshot) => {
       return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     });
-  } catch (e) {
-    console.log(e);
-  }
-};
-
-export const getUserNotifications = async (userId: string) => {
-  try {
-    return await getDocs(collection(db, `usersNotifications/${userId}/followers`)).then((querySnapshot) => {
-      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    });
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-export const getUserPublications = async (userId: string) => {
-  try {
-    return await getDocs(collection(db, `usersPublications/${userId}/publications`)).then((querySnapshot) => {
-      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    });
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-export const fetchPrograms = createAsyncThunk('programs/fetchAll', async (_, thunkAPI) => {
-  try {
-    return await getDocs(collection(db, 'programs')).then((querySnapshot) => {
-      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    });
-  } catch (e) {
-    return thunkAPI.rejectWithValue('loading error');
-  }
-});
-
-export const fetchExercisesGroups = createAsyncThunk('exercisesGroups/fetchAll', async (_, thunkAPI) => {
-  try {
-    return await getDocs(collection(db, 'muscleGroups')).then((querySnapshot) => {
-      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    });
-  } catch (e) {
-    return thunkAPI.rejectWithValue('loading error');
-  }
-});
-
-export const addProgramToFB = async (values: Program) => {
-  try {
-    await addDoc(collection(db, 'programs'), { ...values })
-    return values;
-  } catch (e) {
-    console.log(e);
-  }
-};
-
-export const addPublicationToFB = async (user: string, values: any) => {
-  try {
-    return await addDoc(collection(db, `usersPublications/${user}/publications`), { ...values }).then((doc) => {
-      return { ...values, id: doc.id };
-    });
-
-  } catch (e) {
-    console.log(e);
-  }
-};
-
-
-
-export const createNewProgram = async (user: string | null, values: Program) => {
-  try {
-    await addDoc(collection(db, `usersPrograms/${user}/programs`), { ...values }).then(() => {
-      console.log('program added');
-    });
-    return values;
   } catch (e) {
     console.log(e);
   }
@@ -169,6 +121,89 @@ export const addNewFriend = async (myProfileID: string | null, friendId: any) =>
     console.log(e);
   }
 };
+
+export const removeFriend = async (myProfileID: string | null, friendId: string) => {
+  try {
+    await deleteDoc(doc(db, `usersFollowers/${myProfileID}/followers`, friendId)).then((response) => {
+      return response;
+    });
+    return friendId;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+
+export const fetchMyPrograms = async (user: string) => {
+  try {
+    return await getDocs(collection(db, `usersPrograms/${user}/programs`)).then((querySnapshot) => {
+      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+      // PUBLICATIONS
+
+
+export const getUserPublications = async (userId: string) => {
+  try {
+    return await getDocs(collection(db, `usersPublications/${userId}/publications`)).then((querySnapshot) => {
+      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    });
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export const addPublicationToFB = async (user: string, values: any) => {
+  try {
+    return await addDoc(collection(db, `usersPublications/${user}/publications`), { ...values }).then((doc) => {
+      return { ...values, id: doc.id };
+    });
+
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const deletePublication = async (user: string, postId: string) => {
+  try {
+    await deleteDoc(doc(db, `usersPublications/${user}/publications`, postId)).then((response) => {
+      return response;
+    });
+    return postId;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const editPublication = async (user: string, postId: string, values: any) => {
+  try {
+    if (!postId) return false;
+    const collectionRef = doc(db, `usersPublications/${user}/publications`, postId);
+    const updateObject = { ...values };
+    await setDoc(collectionRef, updateObject, { ...values });
+    return updateObject;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+
+      // NOTIFICATIONS
+
+
+export const getUserNotifications = async (userId: string) => {
+  try {
+    return await getDocs(collection(db, `usersNotifications/${userId}/followers`)).then((querySnapshot) => {
+      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    });
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 export const createNotification = async (followerId: any, friendId: any) => {
   try {
@@ -191,12 +226,35 @@ export const removeNotification = async (myProfileID: any, friendId: string) => 
   }
 };
 
-export const removeFriend = async (myProfileID: string | null, friendId: string) => {
+
+      // PROGRAMS
+
+
+export const fetchPrograms = createAsyncThunk('programs/fetchAll', async (_, thunkAPI) => {
   try {
-    await deleteDoc(doc(db, `usersFollowers/${myProfileID}/followers`, friendId)).then((response) => {
-      return response;
+    return await getDocs(collection(db, 'programs')).then((querySnapshot) => {
+      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     });
-    return friendId;
+  } catch (e) {
+    return thunkAPI.rejectWithValue('loading error');
+  }
+});
+
+export const addProgramToFB = async (values: Program) => {
+  try {
+    await addDoc(collection(db, 'programs'), { ...values })
+    return values;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const createNewProgram = async (user: string | null, values: Program) => {
+  try {
+    await addDoc(collection(db, `usersPrograms/${user}/programs`), { ...values }).then(() => {
+      console.log('program added');
+    });
+    return values;
   } catch (e) {
     console.log(e);
   }
@@ -240,17 +298,6 @@ export const deleteProgramInFB = async (user: string, programId: string) => {
   }
 };
 
-export const deletePublication = async (user: string, postId: string) => {
-  try {
-    await deleteDoc(doc(db, `usersPublications/${user}/publications`, postId)).then((response) => {
-      return response;
-    });
-    return postId;
-  } catch (e) {
-    console.log(e);
-  }
-};
-
 export const editProgramInFB = async (user: string, programId: string | undefined, values: any) => {
   try {
     if (!programId) return false;
@@ -263,14 +310,16 @@ export const editProgramInFB = async (user: string, programId: string | undefine
   }
 };
 
-export const editPublication = async (user: string, postId: string, values: any) => {
+
+      // EXERCISES GROUPS
+
+
+export const fetchExercisesGroups = createAsyncThunk('exercisesGroups/fetchAll', async (_, thunkAPI) => {
   try {
-    if (!postId) return false;
-    const collectionRef = doc(db, `usersPublications/${user}/publications`, postId);
-    const updateObject = { ...values };
-    await setDoc(collectionRef, updateObject, { ...values });
-    return updateObject;
+    return await getDocs(collection(db, 'muscleGroups')).then((querySnapshot) => {
+      return querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    });
   } catch (e) {
-    console.log(e);
+    return thunkAPI.rejectWithValue('loading error');
   }
-};
+});

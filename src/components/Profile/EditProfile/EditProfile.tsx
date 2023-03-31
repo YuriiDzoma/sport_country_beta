@@ -79,7 +79,6 @@ const EditProfile = () => {
                     setAvatar(response);
                 }
             }))
-
         }
     }
 

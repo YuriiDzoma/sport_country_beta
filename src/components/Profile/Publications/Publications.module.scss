@@ -121,4 +121,9 @@
 .imagesLoad {
   margin-right: 10px;
   cursor: pointer;
+
+  &__counter {
+    color: #1068bf;
+    font-weight: 600;
+  }
 }
