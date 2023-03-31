@@ -10,7 +10,7 @@ import ImageIcon from '@mui/icons-material/Image';
 import {useState} from "react";
 import {v4} from "uuid";
 
-const CreateEditPublication = ({isEdit= false}) => {
+const CreateEditPublication = () => {
     const dispatch = useAppDispatch();
     const { id } = useParams();
     const myProfile = useAppSelector(currentUser);

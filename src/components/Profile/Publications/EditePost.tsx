@@ -21,7 +21,7 @@ const EditePost = ({item, setPostId}: EditePostProps) => {
         content: item.content,
         id: item.id,
         postId: item.postId,
-        picture: item.pictures,
+        pictures: item.pictures,
     }
 
     const { values, handleChange, resetForm, handleSubmit, setSubmitting, isSubmitting, dirty } = useFormik({
