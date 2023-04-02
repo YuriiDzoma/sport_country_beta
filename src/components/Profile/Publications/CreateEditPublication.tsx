@@ -24,6 +24,7 @@ const CreateEditPublication = () => {
             author: myProfile ? myProfile.id : '',
             content: '',
             postId: v4(),
+            pictures: [],
         };
 
     const loadPhoto = (e: any) => {
