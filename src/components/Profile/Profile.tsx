@@ -41,13 +41,18 @@ const Profile = () => {
                   <div className={styles.profileWrapper}>
                     <div className={styles.profileData}>
                       <ProfileName profile={profile} user={user} />
-                      <ProfileInfo profile={profile} />
-                      <MyFollowers />
-                      <button className={styles.userItems__link} onClick={() => navigate(`/training/programs/${id}/`)}>
-                        Programs
-                      </button>
+                      <div className={styles.profileData__colLeft}>
+                        <ProfileInfo profile={profile} />
+                        <MyFollowers />
+                        <button className={styles.userItems__link} onClick={() => navigate(`/training/programs/${id}/`)}>
+                          Programs
+                        </button>
+                      </div>
+                      <div className={styles.profileData__colRight}>
+                        <Publications />
+                      </div>
                     </div>
-                    <Publications />
+
                   </div>
               )}
             </>}

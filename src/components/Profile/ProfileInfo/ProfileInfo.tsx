@@ -7,7 +7,7 @@ interface ProfileInfoProps {
 
 const ProfileInfo = ({profile}: ProfileInfoProps) => {
     return (
-        <div className={styles.info}>
+        <div className={ profile.city ? styles.info : ''}>
             {profile.city && (
                 <p className={styles.info__city}>location: <span className={styles.info__text}>{profile.city}</span></p>
             )}

@@ -12,8 +12,8 @@ const FullPicture = ({picture, setShowFullImage}: FullPicturesProps) => {
             <div className={styles.wrapper__background} onClick={() => setShowFullImage(false)}></div>
             <div className={styles.imageBox} >
                 <img className={styles.imageBox__image} src={picture} alt={'image'} />
-                <button className={styles.imageBox__close}>
-                    <CloseIcon  color={'warning'}
+                <button  className={styles.imageBox__close}>
+                    <CloseIcon color={'warning'}
                                onClick={() => setShowFullImage(false)} fontSize={'large'} />
                 </button>
             </div>

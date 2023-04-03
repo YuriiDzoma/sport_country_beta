@@ -56,9 +56,14 @@
 
   &__info {
     display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dcdcde;
+    padding-bottom: 20px;
 
     @media only screen and (max-width: 768px) {
       padding: 10px;
+      margin-bottom: 0;
     }
   }
 
@@ -103,7 +108,7 @@
     position: relative;
   }
 
-  &__imageUpload {
+  &__change {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -115,7 +120,6 @@
     border-radius: 50%;
     position: absolute;
     border: 2px solid #ffffff;
-    padding: 0 2px 3px 0;
     top: 77px;
     right: -15px;
 
