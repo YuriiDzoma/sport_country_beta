@@ -9,7 +9,8 @@ interface FullPicturesProps {
 const FullPicture = ({picture, setShowFullImage}: FullPicturesProps) => {
     return (
         <div className={styles.wrapper}>
-            <div className={styles.imageBox}>
+            <div className={styles.wrapper__background} onClick={() => setShowFullImage(false)}></div>
+            <div className={styles.imageBox} >
                 <img className={styles.imageBox__image} src={picture} alt={'image'} />
                 <button>
                     <CloseIcon className={styles.imageBox__close} color={'warning'}
@@ -17,7 +18,6 @@ const FullPicture = ({picture, setShowFullImage}: FullPicturesProps) => {
                 </button>
             </div>
         </div>
-
     )
 }
 
