@@ -25,9 +25,11 @@ const Post = ({item}: {item: Publication}) => {
 
     const deletePost = (postId: string) => {
         if (id) {
-            deletePublication(id, postId)
-                .then(response => dispatch(removePost(response)))
-                .then(() => deletePostsImages(item.postId))
+            item.pictures.length !== 0
+                ? deletePublication(id, postId)
+                    .then(response => dispatch(removePost(response)))
+                    .then(() => deletePostsImages(item.postId))
+                : deletePublication(id, postId).then(response => dispatch(removePost(response)))
         }
     }
 
@@ -47,7 +49,7 @@ const Post = ({item}: {item: Publication}) => {
                 </div>
             )}
             {postEdit && postEdit === item.id
-                ? <EditePost setPostId={setPostId} item={item} />
+                ? <EditePost setPostId={setPostId} item={item}/>
                 : <p className={styles.post__content}>
                     {item.content}
                 </p>

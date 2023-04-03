@@ -22,9 +22,9 @@ const CreateEditPublication = () => {
     const initialFormValues = {
             author: myProfile ? myProfile.id : '',
             content: '',
-            postId: v4(),
+            postId: '',
             pictures: [],
-            date: new Date().toLocaleString(),
+            date: '',
         };
 
     const loadPhoto = (e: any) => {
@@ -36,12 +36,14 @@ const CreateEditPublication = () => {
 
         onSubmit: (values) => {
             setTimeout(() => {
+                values.date = new Date().toLocaleString();
+                values.postId = v4();
                 if (id && values && images) {
                     addPostsImages(images, values.postId)
                         .then(() => getPostsImages(values.postId))
                         .then(response => {
                             addPublicationToFB(id, {...values, pictures: [response]})
-                                .then(response => dispatch(addPost(response)));
+                                .then(response => dispatch(addPost(response))).then(() => console.log(values));
                         })
                 } else {
                     if (id) {

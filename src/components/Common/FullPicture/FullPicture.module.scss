@@ -29,11 +29,14 @@
   width: auto;
 
   &__image {
+    min-height: 300px;
+    min-width: 300px;
     max-height: 85%;
     max-width: 90%;
   }
 
   &__close {
+    background: none;
     position: absolute;
     top: 8px;
     right: 8px;
