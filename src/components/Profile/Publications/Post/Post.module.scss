@@ -1,19 +1,19 @@
 .post {
   display: flex;
   flex-direction: column;
-  border-radius: 4px;
   margin: 10px auto;
-  width: 90%;
+  width: 100%;
   min-height: 70px;
-  background: #c9e1e7;
   position: relative;
+  border-bottom: 1px solid #dcdcde;
+  border-top: 1px solid #dcdcde;
+  padding: 10px 0;
 
   &__delete {
     position: absolute;
     display: flex;
-    top: 4px;
-    right: 60px;
-    width: 21px;
+    top: 8px;
+    right: 0;
     height: 21px;
 
     button {
@@ -31,8 +31,6 @@
   }
 
   &__content {
-    max-width: 85%;
-    padding: 10px;
     font-size: 15px;
   }
 
@@ -40,16 +38,16 @@
     display: flex;
     justify-content: space-between;
     align-items: end;
-    padding: 4px;
     flex: 1 1;
 
     .time {
-      font-size: 12px;
+      font-size: 11px;
+      color: #737278;
     }
 
     .author {
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      color: #737278;
     }
   }
 }

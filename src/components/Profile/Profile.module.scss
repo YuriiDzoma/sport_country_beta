@@ -1,7 +1,5 @@
 .profileWrapper {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 
   @media only screen and (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -13,6 +11,29 @@
 }
 .profileData {
   padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  &__colLeft {
+    width: 50%;
+    padding-right: 10px;
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      padding-right: 0;
+    }
+  }
+
+  &__colRight {
+    width: 50%;
+    padding-left: 10px;
+
+    @media only screen and (max-width: 768px) {
+      width: 100%;
+      padding-left: 0;
+    }
+  }
 }
 
 .userItems {
@@ -29,7 +50,6 @@
     padding: 5px 12px;
     border: 1px solid #1068bf;
     border-radius: 4px;
-    margin-left: 10px;
     font-weight: 600;
     color: #ffffff;
     background-color: #1f75cb;

@@ -1,28 +1,34 @@
 .followersWrapper {
   position: relative;
-  border: 1px solid #dcdcde;
-  border-radius: 4px;
-  padding: 10px;
+  border-top: 1px solid #dcdcde;
+  border-bottom: 1px solid #dcdcde;
+  padding: 10px 0;
   width: 100%;
   min-height: 80px;
   display: flex;
+  align-items: flex-end;
+
+  @media only screen and (max-width: 768px) {
+    border-top: 0;
+  }
 
   &__allFriend {
-    position: absolute;
-    top: 0;
-    right: 10px;
+    margin-left: auto;
   }
 }
 
 .showAllFriends {
-  margin-top: 10px;
-  padding: 5px 6px;
   border-radius: 4px;
   margin-left: 10px;
   font-weight: 600;
   color: #1f75cb;
   background: none;
   transition: all 120ms;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
 
   @media only screen and (max-width: 425px) {
     font-size: 13px;
@@ -34,8 +40,8 @@
 }
 
 .follower {
-  margin: 10px;
   position: relative;
+  margin: 0 10px 10px;
 
   &__photo {
     width: 60px;
@@ -51,9 +57,9 @@
   &__name {
     pointer-events: none;
     color: #ffffff;
-    text-shadow: #131c2d 2px 2px 2px;
-    font-weight: 700;
+    text-shadow: #000000 0 1px 3px;
     position: absolute;
+    font-weight: 600;
     top: 90%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);

@@ -7,6 +7,7 @@ import emptyProfileImage from "assets/img/emptyprofile.jpg";
 import {User} from "store/users-slice.types";
 import {useState} from "react";
 import FullPicture from "components/Common/FullPicture/FullPicture";
+import SettingsIcon from '@mui/icons-material/Settings';
 
 interface ProfileInfoProps {
     profile: User,
@@ -49,16 +50,11 @@ const ProfileName = ({profile, user}: ProfileInfoProps) => {
                         <FullPicture picture={photoURL} setShowFullImage={setShowFullImage} />
                     )}
                 </div>
-                {isMyPage() && <button className={styles.profile__imageUpload}> <AddAPhotoIcon /> </button>}
+                {isMyPage() && <Link to={`/profile/edite/`} className={styles.profile__change}> <SettingsIcon /> </Link>}
             </div>
             <div className={styles.profile__infoMain}>
                 <div className={styles.profile__nameBlock}>
                     <h2 className={styles.profile__userName}>{ displayName }</h2>
-                    {
-                        isMyPage() && <Link to={`/profile/edite/`} className={styles.profile__edit}>
-                            <BorderColorIcon />
-                        </Link>
-                    }
                 </div>
             </div>
         </div>

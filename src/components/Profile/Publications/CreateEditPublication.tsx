@@ -58,7 +58,7 @@ const CreateEditPublication = () => {
     });
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className={styles.publications__form} onSubmit={handleSubmit}>
             <div className={styles.publications__field}>
                 <textarea id="content" name="content" onChange={handleChange} value={values.content} />
             </div>
