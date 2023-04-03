@@ -33,6 +33,7 @@ const WorkProcess: React.FC<WorkProcessProps> = ({ dayNumber }) => {
     : {
         error: '',
       };
+
   const showError = () => {
     alert('please set date')
   }

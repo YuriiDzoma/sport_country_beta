@@ -1,6 +1,6 @@
 import styles from "./Publications.module.scss";
-import CreateEditPublication from "components/Profile/Publications/CreateEditPublication";
-import PublicationsList from "components/Profile/Publications/PublicationsList";
+import CreateEditPublication from "./CreateEditPublication";
+import PublicationsList from "./PublicationsList";
 
 
 const Publications = () => {

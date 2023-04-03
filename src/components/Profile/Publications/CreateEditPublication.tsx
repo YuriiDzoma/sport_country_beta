@@ -20,7 +20,6 @@ const CreateEditPublication = () => {
     }
 
     const initialFormValues = {
-            date: new Date().toLocaleString(),
             author: myProfile ? myProfile.id : '',
             content: '',
             postId: v4(),
@@ -40,7 +39,7 @@ const CreateEditPublication = () => {
                     addPostsImages(images, values.postId)
                         .then(() => getPostsImages(values.postId))
                         .then(response => {
-                            addPublicationToFB(id, {...values, pictures: [response]})
+                            addPublicationToFB(id, {...values, date: new Date().toLocaleString(), pictures: [response]})
                                 .then(response => dispatch(addPost(response)));
                         })
                 } else {
@@ -48,7 +47,7 @@ const CreateEditPublication = () => {
                         addPublicationToFB(id, values).then(response => dispatch(addPost(response)));
                     }
                 }
-                setPictures('')
+                setPictures(null)
                 setSubmitting(false);
                 resetForm();
             }, 400);

@@ -1,0 +1,55 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  margin: 10px auto;
+  width: 90%;
+  min-height: 70px;
+  background: #c9e1e7;
+  position: relative;
+
+  &__delete {
+    position: absolute;
+    display: flex;
+    top: 4px;
+    right: 60px;
+    width: 21px;
+    height: 21px;
+
+    button {
+      margin-left: 15px;
+      width: 21px;
+      height: 21px;
+      background: none;
+    }
+
+    .remove {
+      svg {
+        color: #d00000;
+      }
+    }
+  }
+
+  &__content {
+    max-width: 85%;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  &__sender {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 4px;
+    flex: 1 1;
+
+    .time {
+      font-size: 12px;
+    }
+
+    .author {
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+}

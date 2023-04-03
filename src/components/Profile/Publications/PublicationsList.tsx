@@ -1,6 +1,6 @@
 import {useAppSelector} from "hooks/redux";
 import {getUserPublications} from "store/selectors";
-import Post from "./Post";
+import Post from "./Post/Post";
 
 
 const PublicationsList = () => {

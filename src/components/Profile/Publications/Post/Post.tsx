@@ -1,5 +1,5 @@
 import {Publication} from "store/users-slice.types";
-import styles from './Publications.module.scss'
+import styles from './Post.module.scss'
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser, getUserById} from "store/selectors";
 import ClearIcon from '@mui/icons-material/Clear';
@@ -8,7 +8,9 @@ import {useParams} from "react-router-dom";
 import {removePost} from "store/users-slice";
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import {useState} from "react";
-import EditePost from "./EditePost";
+import EditePost from "./../EditePost";
+import PostPictures from "components/Profile/Publications/Post/PostPictures/PostPictures";
+
 
 
 const Post = ({item}: {item: Publication}) => {
@@ -51,11 +53,7 @@ const Post = ({item}: {item: Publication}) => {
                 </p>
             }
             {item.pictures.length !== 0 && (
-                <div className={styles.post__pictures}>
-                    {item.pictures.map((picture, index) =>
-                        <img key={index} alt={'image'} src={picture} />
-                    )}
-                </div>
+                <PostPictures pictures={item.pictures} />
             )}
             {profile && (
                 <div className={styles.post__sender}>
