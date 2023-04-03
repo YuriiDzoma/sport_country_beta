@@ -24,6 +24,7 @@ const CreateEditPublication = () => {
             content: '',
             postId: v4(),
             pictures: [],
+            date: new Date().toLocaleString(),
         };
 
     const loadPhoto = (e: any) => {
@@ -39,7 +40,7 @@ const CreateEditPublication = () => {
                     addPostsImages(images, values.postId)
                         .then(() => getPostsImages(values.postId))
                         .then(response => {
-                            addPublicationToFB(id, {...values, date: new Date().toLocaleString(), pictures: [response]})
+                            addPublicationToFB(id, {...values, pictures: [response]})
                                 .then(response => dispatch(addPost(response)));
                         })
                 } else {
