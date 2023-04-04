@@ -24,7 +24,7 @@ const CreateEditPublication = () => {
             content: '',
             postId: '',
             pictures: [],
-            date: '',
+            date: 0,
         };
 
     const loadPhoto = (e: any) => {
@@ -36,7 +36,7 @@ const CreateEditPublication = () => {
 
         onSubmit: (values) => {
             setTimeout(() => {
-                values.date = new Date().toLocaleString();
+                values.date = new Date().getTime();
                 values.postId = v4();
                 if (id && values && images) {
                     addPostsImages(images, values.postId)

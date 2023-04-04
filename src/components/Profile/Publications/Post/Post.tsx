@@ -22,6 +22,7 @@ const Post = ({item}: {item: Publication}) => {
     const dispatch = useAppDispatch();
     const { id } = useParams();
     const profile = useAppSelector((state) => getUserById(state, item.author));
+    const { locale } = Intl.DateTimeFormat().resolvedOptions();
 
     const deletePost = (postId: string) => {
         if (id) {
@@ -32,6 +33,7 @@ const Post = ({item}: {item: Publication}) => {
                 : deletePublication(id, postId).then(response => dispatch(removePost(response)))
         }
     }
+
 
     return (
         <div className={styles.post}>
@@ -59,7 +61,9 @@ const Post = ({item}: {item: Publication}) => {
             )}
             {profile && (
                 <div className={styles.post__sender}>
-                    <span className={styles.time}>{item.date}</span>
+                    <span className={styles.time}>
+                        {new Intl.DateTimeFormat(locale, {"dateStyle":"short","timeStyle":"medium"}).format(item.date)}
+                    </span>
                     <Link to={'/profile/' + profile.id} className={styles.author}>
                         {profile.displayName}
                     </Link>

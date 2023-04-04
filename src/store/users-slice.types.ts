@@ -28,7 +28,7 @@ export type Publication = {
   author: string;
   content: string;
   id: string;
-  date: string;
+  date: number;
   postId: string;
   pictures: string[];
 }
