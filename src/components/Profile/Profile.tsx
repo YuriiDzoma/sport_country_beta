@@ -4,7 +4,6 @@ import {useAppDispatch, useAppSelector} from 'hooks/redux';
 import {currentUser, getIsFetchingUsers, getUserById} from 'store/selectors';
 
 import styles from './Profile.module.scss';
-import {useNavigate} from "react-router";
 import Preloader from "components/Common/Preloader/Preloader";
 import ProfileName from "components/Profile/ProfileName/ProfileName";
 import ProfileInfo from "components/Profile/ProfileInfo/ProfileInfo";
@@ -20,7 +19,7 @@ const Profile = () => {
   const isLoading = useAppSelector(getIsFetchingUsers);
   const profile = useAppSelector((state) => getUserById(state, id));
   const user = useAppSelector(currentUser);
-  const navigate = useNavigate();
+
   if (id) {
     getUserFriends(id).then(response => dispatch(setFollowers(response)));
     getUserPublications(id).then(response => dispatch(setPublications(response)));
@@ -44,9 +43,9 @@ const Profile = () => {
                       <div className={styles.profileData__colLeft}>
                         <MyFollowers />
                         <ProfileInfo profile={profile} />
-                        <button className={styles.userItems__link} onClick={() => navigate(`/training/programs/${id}/`)}>
-                          Programs
-                        </button>
+                        {/*<button className={styles.userItems__link} onClick={() => navigate(`/training/programs/${id}/`)}>*/}
+                        {/*  Programs*/}
+                        {/*</button>*/}
                       </div>
                       <div className={styles.profileData__colRight}>
                         <Publications />

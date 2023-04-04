@@ -19,10 +19,6 @@
 
 .followersList {
   display: flex;
-
-  @media only screen and (max-width: 425px) {
-    justify-content: space-around;
-  }
 }
 
 .notFollowers {
@@ -55,7 +51,7 @@
   margin: 0 10px;
 
   @media only screen and (max-width: 425px) {
-    margin: 0;
+    margin: 0 8px;
   }
 
   &__photo {

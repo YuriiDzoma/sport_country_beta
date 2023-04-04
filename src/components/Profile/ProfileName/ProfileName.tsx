@@ -1,13 +1,12 @@
 import styles from "./ProfileName.module.scss";
 import GoBack from "components/Common/GoBack/GoBack";
-import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import {Link, useParams} from "react-router-dom";
-import BorderColorIcon from "@mui/icons-material/BorderColor";
 import emptyProfileImage from "assets/img/emptyprofile.jpg";
 import {User} from "store/users-slice.types";
 import {useState} from "react";
 import FullPicture from "components/Common/FullPicture/FullPicture";
 import SettingsIcon from '@mui/icons-material/Settings';
+import {useNavigate} from "react-router";
 
 interface ProfileInfoProps {
     profile: User,
@@ -17,6 +16,7 @@ interface ProfileInfoProps {
 const ProfileName = ({profile, user}: ProfileInfoProps) => {
     const { id } = useParams();
     const { photoURL, displayName, } = profile;
+    const navigate = useNavigate();
 
     const isMyPage = () => {
         return user.id === id;
@@ -55,6 +55,11 @@ const ProfileName = ({profile, user}: ProfileInfoProps) => {
             <div className={styles.profile__infoMain}>
                 <div className={styles.profile__nameBlock}>
                     <h2 className={styles.profile__userName}>{ displayName }</h2>
+                </div>
+                <div>
+                    <button className={styles.showUserPrograms} onClick={() => navigate(`/training/programs/${id}/`)}>
+                        Programs
+                    </button>
                 </div>
             </div>
         </div>

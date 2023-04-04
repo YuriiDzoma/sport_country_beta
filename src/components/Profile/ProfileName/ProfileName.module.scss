@@ -75,7 +75,7 @@
     justify-content: center;
 
     @media only screen and (max-width: 768px) {
-      margin-left: 20px;
+      margin-left: 14%;
       margin-top: 20px;
     }
   }
@@ -134,5 +134,20 @@
     height: 120px;
     border-radius: 50%;
     overflow: hidden;
+  }
+}
+
+.showUserPrograms {
+  margin-top: 10px;
+  padding: 5px 12px;
+  border: 1px solid #1068bf;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #1f75cb;
+  transition: all 120ms;
+
+  &:hover {
+    background-color: #1068bf;
   }
 }
