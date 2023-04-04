@@ -7,7 +7,6 @@ const Publications = () => {
 
     return (
         <div className={styles.publications}>
-            <h3>Publications</h3>
             <CreateEditPublication/>
             <PublicationsList/>
         </div>

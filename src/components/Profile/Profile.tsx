@@ -42,8 +42,8 @@ const Profile = () => {
                     <div className={styles.profileData}>
                       <ProfileName profile={profile} user={user} />
                       <div className={styles.profileData__colLeft}>
-                        <ProfileInfo profile={profile} />
                         <MyFollowers />
+                        <ProfileInfo profile={profile} />
                         <button className={styles.userItems__link} onClick={() => navigate(`/training/programs/${id}/`)}>
                           Programs
                         </button>

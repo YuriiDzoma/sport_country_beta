@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import emptyProfileImage from 'assets/img/emptyprofile.jpg';
+import emptyProfileImage from 'assets/img/notAvatar.png';
 import {UserProps} from 'components/Users/User/User.types';
 
 import styles from './User.module.scss';

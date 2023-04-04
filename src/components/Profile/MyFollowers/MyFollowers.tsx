@@ -8,22 +8,27 @@ import {useParams} from "react-router-dom";
 const MyFollowers = () => {
     const { id } = useParams();
     const followers = useAppSelector(getUserFollowers);
-    const followersList = followers.slice(0,3)
+    const followersList = followers.slice(0,4)
     const navigate = useNavigate();
 
     return (
-        <div className={ styles.followersWrapper }>
-            {followersList && (
+        <div className={styles.followersWrapper}>
+            {followersList && followersList.length > 0 && (
                 <>
-                    {followersList.map((user, index) => <Follower key={index} user={user.friendId} />)}
+                    <div className={styles.followersInfo}>
+                        <div>
+                            <p className={styles.followersInfo__counter}>Friends: <span>{followersList.length}</span></p>
+                        </div>
+                        <div className={styles.followersInfo__allFriend}>
+                            <button className={styles.showAllFriends} onClick={() => navigate(`/friends/${id}`)}>
+                                See all followers
+                            </button>
+                        </div>
+                    </div>
+                    <div className={styles.followersList}>
+                        {followersList.map((user, index) => <Follower key={index} user={user.friendId} />)}
+                    </div>
                 </>
-            )}
-            {followersList.length !== 0 && (
-                <div className={styles.followersWrapper__allFriend}>
-                    <button className={styles.showAllFriends} onClick={() => navigate(`/friends/${id}`)}>
-                        See all followers
-                    </button>
-                </div>
             )}
             {followersList.length === 0 && (
                 <div className={styles.notFollowers}>

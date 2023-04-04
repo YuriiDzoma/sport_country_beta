@@ -1,7 +1,7 @@
 import {useAppSelector} from "hooks/redux";
 import {getUserById} from "store/selectors";
 import styles from './MyFollowers.module.scss'
-import emptyProfileImage from "assets/img/emptyprofile.jpg";
+import emptyProfileImage from "assets/img/notAvatar.png";
 import {Link} from "react-router-dom";
 
 

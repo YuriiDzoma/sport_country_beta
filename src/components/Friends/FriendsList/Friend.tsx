@@ -1,7 +1,7 @@
 import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser, getUserById} from "store/selectors";
 import styles from './Friend.module.scss'
-import emptyProfileImage from "assets/img/emptyprofile.jpg";
+import emptyProfileImage from "assets/img/notAvatar.png";
 import React from "react";
 import {addNewFriend, createNotification, getUserFriends, removeFriend, removeNotification} from "api/api";
 import {deleteFollower, setMyFollowers} from "store/users-slice";
