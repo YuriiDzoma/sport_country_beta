@@ -1,13 +1,14 @@
 .followersWrapper {
   position: relative;
   border-bottom: 1px solid #dcdcde;
-  padding:  0 0 15px 0;
+  padding: 0 0 15px 0;
   width: 100%;
   min-height: 80px;
   align-items: flex-end;
 
   @media only screen and (max-width: 768px) {
     border-top: 0;
+    padding:  10px 0 15px 0;
   }
 }
 
