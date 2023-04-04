@@ -4,7 +4,7 @@ import {useAppDispatch, useAppSelector} from "hooks/redux";
 import {currentUser, getUserById} from "store/selectors";
 import ClearIcon from '@mui/icons-material/Clear';
 import {deletePostsImages, deletePublication} from "api/api";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {removePost} from "store/users-slice";
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import {useState} from "react";
@@ -60,9 +60,9 @@ const Post = ({item}: {item: Publication}) => {
             {profile && (
                 <div className={styles.post__sender}>
                     <span className={styles.time}>{item.date}</span>
-                    <p className={styles.author}>
+                    <Link to={'/profile/' + profile.id} className={styles.author}>
                         {profile.displayName}
-                    </p>
+                    </Link>
                 </div>
             )}
         </div>
