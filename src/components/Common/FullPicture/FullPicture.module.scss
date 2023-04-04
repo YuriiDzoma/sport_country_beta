@@ -18,26 +18,23 @@
 }
 
 .imageBox {
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  position: absolute;
-  max-height: calc(100vh - 100px);
-  z-index: 3;
-
-
   &__image {
-    height: 100%;
-    max-height: calc(100vh - 100px);
-    width: 100%;
     object-fit: contain;
+    max-height: 80%;
+    max-width: 80%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
   }
 
   &__close {
     position: absolute;
-    top: -35px;
-    right: -35px;
+    top: 10px;
+    right: 10px;
     background-color: transparent;
+    z-index: 3;
 
     svg {
       color: #ffffff;
