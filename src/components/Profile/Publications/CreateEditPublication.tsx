@@ -43,7 +43,7 @@ const CreateEditPublication = () => {
                         .then(() => getPostsImages(values.postId))
                         .then(response => {
                             addPublicationToFB(id, {...values, pictures: [response]})
-                                .then(response => dispatch(addPost(response))).then(() => console.log(values));
+                                .then(response => dispatch(addPost(response)))
                         })
                 } else {
                     if (id) {
