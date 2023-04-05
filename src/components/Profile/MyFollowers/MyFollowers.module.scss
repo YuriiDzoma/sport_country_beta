@@ -48,7 +48,6 @@
 .follower {
   position: relative;
   width: 60px;
-  height: 60px;
   margin: 0 10px;
 
   @media only screen and (max-width: 375px) {
@@ -73,15 +72,21 @@
 
   &__name {
     pointer-events: none;
-    color: #ffffff;
-    text-shadow: #000000 0 1px 3px;
-    position: absolute;
-    font-weight: 600;
+    color: #333238;
     top: 90%;
     left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    font-size: 13px;
+    font-size: 11px;
     text-align: center;
+    line-height: 1;
+    margin-top: 4px;
+    font-weight: 500;
   }
+}
+
+.userBlock__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 

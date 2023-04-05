@@ -55,7 +55,7 @@ const User: React.FC<UserProps> = ({user}) => {
                                              title={`Add ${displayName} to friend list`}
                                              onClick={() => deleteFriend(myProfile.id, followerId)}
                         >
-                            unFollow
+                            Unfollow
                         </button>
                         : <button className={styles.userBlock__addToFriends}
                                   title={`Add ${displayName} to friend list`}

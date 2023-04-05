@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 const Follower = ({user}: {user: string}) => {
     const profile = useAppSelector((state) => getUserById(state, user));
     return (
-        <div>
+        <>
             {profile && (
                 <div className={styles.follower}>
                     <Link className={styles.userBlock__link} to={'/profile/' + user}>
@@ -16,11 +16,12 @@ const Follower = ({user}: {user: string}) => {
                             ? <img className={styles.follower__photo} alt={'name'} src={profile.photoURL}/>
                             : <img className={styles.follower__photo} alt={'name'} src={emptyProfileImage}/>
                         }
+                        <p className={styles.follower__name}>{profile.displayName}</p>
                     </Link>
-                    <p className={styles.follower__name}>{profile.displayName}</p>
+
                 </div>
             )}
-        </div>
+        </>
     )
 }
 
