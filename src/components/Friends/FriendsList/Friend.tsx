@@ -59,7 +59,7 @@ const Friend = ({friendId}: FriendProps) => {
                                           }
                                       }}
                             >
-                                unFollow
+                                Unfollow
                             </button>
                             : <>
                                 {profile.isFriend || profile.id === myProfile.id

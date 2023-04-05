@@ -1,8 +1,8 @@
 .programsContainer {
   display: flex;
   position: relative;
-  height: 100%;
-  min-height: 600px;
+  height: 10%;
+  flex-grow: 1;
 
   &__wrapper {
     height: 100%;
@@ -13,7 +13,7 @@
   &__list {
     flex: 1;
     max-width: 650px;
-    height: calc(100% - 50px);
+    height: 100%;
     overflow: auto;
 
     @media only screen and (max-width: 768px) {
@@ -57,7 +57,7 @@
         }
 
         &__buttonShowIcon {
-          transform: rotateZ(180deg);
+          transform: rotateZ(180deg) translateX(-3px);
         }
       }
     }

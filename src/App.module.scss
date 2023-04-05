@@ -36,6 +36,8 @@
 
 .mainContent {
   margin-top: 10px;
+  height: 10%;
+  flex-grow: 1;
 
   &__title {
     text-align: center;
