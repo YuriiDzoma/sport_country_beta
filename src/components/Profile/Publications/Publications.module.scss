@@ -1,0 +1,148 @@
+.publications {
+
+
+  h3 {
+    text-align: center;
+    color: #14144f;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  &__form {
+    margin-bottom: 30px;
+  }
+
+  &__field {
+    display: flex;
+    justify-content: center;
+
+    textarea {
+      width: 100%;
+      border-radius: 4px;
+      display: block;
+      border: 1px solid #89888d;
+      padding: 4px 12px;
+      transition: all 100ms;
+      min-height: 106px;
+    }
+  }
+
+  &__buttons {
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-end;
+
+    .send {
+      background: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  width: 100%;
+  min-height: 70px;
+  border-bottom: 1px solid #dcdcde;
+  position: relative;
+  border-radius: 0;
+
+  &__main {
+    padding: 10px;
+  }
+
+  &__delete {
+    position: absolute;
+    display: flex;
+    top: 8px;
+    right: 10px;
+    height: 21px;
+
+    button {
+      margin-left: 8px;
+      width: 21px;
+      height: 21px;
+      background: none;
+    }
+
+    .remove {
+      svg {
+        color: #d00000;
+      }
+    }
+  }
+
+  &__content {
+    font-size: 15px;
+  }
+
+  &__pictures {
+    margin: 5px 10px;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+
+    img {
+      max-height: 120px;
+    }
+  }
+
+  &__sender {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    padding: 0 10px 10px 10px;
+    flex: 1 1;
+
+    .time {
+      font-size: 11px;
+      color: #737278;
+    }
+
+    .author {
+      font-size: 11px;
+      color: #737278;
+    }
+  }
+}
+
+.editor {
+  padding-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  &__field {
+    border-radius: 4px;
+    padding: 5px;
+    width: 80%;
+    height: auto;
+  }
+
+  &__button {
+    padding: 2px 6px;
+    border: 1px solid #1068bf;
+    border-radius: 4px;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: #1f75cb;
+    transition: all 120ms;
+  }
+}
+
+.imagesLoad {
+  margin-right: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__counter {
+    color: #1068bf;
+    font-weight: 600;
+  }
+}

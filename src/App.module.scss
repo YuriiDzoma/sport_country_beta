@@ -35,9 +35,9 @@
 }
 
 .mainContent {
+  margin-top: 10px;
   height: 10%;
   flex-grow: 1;
-  margin-top: 10px;
 
   &__title {
     text-align: center;
@@ -63,12 +63,6 @@
     @media only screen and (max-width: 768px) {
       padding-bottom: 45px;
     }
-  }
-
-  & > div {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
   }
 
   &__newsList {

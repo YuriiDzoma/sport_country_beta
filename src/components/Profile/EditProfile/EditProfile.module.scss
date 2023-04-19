@@ -17,6 +17,22 @@
   align-items: center;
   justify-content: space-between;
 
+  &__photo::file-selector-button {
+    margin-right: 20px;
+    font-weight: 600;
+    border: none;
+    background: #1f75cb;
+    padding: 8px 8px;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+  }
+
+  &__photo::file-selector-button:hover {
+    background: #0d45a5;
+  }
+
   &__nameSurname {
     margin-left: 15px;
     border-radius: 4px;

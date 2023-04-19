@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import emptyProfileImage from 'assets/img/emptyprofile.jpg';
+import emptyProfileImage from 'assets/img/notAvatar.png';
 import {UserProps} from 'components/Users/User/User.types';
 
 import styles from './User.module.scss';
@@ -55,7 +55,7 @@ const User: React.FC<UserProps> = ({user}) => {
                                              title={`Add ${displayName} to friend list`}
                                              onClick={() => deleteFriend(myProfile.id, followerId)}
                         >
-                            unFollow
+                            Unfollow
                         </button>
                         : <button className={styles.userBlock__addToFriends}
                                   title={`Add ${displayName} to friend list`}

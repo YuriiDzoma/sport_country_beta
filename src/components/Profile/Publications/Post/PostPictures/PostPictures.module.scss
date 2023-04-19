@@ -1,0 +1,12 @@
+.pictures {
+  margin: 10px 0;
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+
+  &__image {
+    max-height: 120px;
+    max-width: 90%;
+    cursor: pointer;
+  }
+}

@@ -20,11 +20,21 @@ export type Favorite = {
 }
 
 export type Follower = {
-  id: string
+  id: string;
   friendId: string;
 }
 
+export type Publication = {
+  author: string;
+  content: string;
+  id: string;
+  date: number;
+  postId: string;
+  pictures: string[];
+}
+
 export type UsersState = {
+  userPublications: Publication[];
   users: User[];
   isLoading: boolean;
   error: string;

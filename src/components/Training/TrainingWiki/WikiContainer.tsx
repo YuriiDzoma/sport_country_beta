@@ -7,11 +7,11 @@ const WikiContainer = () => {
   return (
     <div className={styles.wikiContainer}>
       <div className={styles.wikiContainer__filter}>
-        <h3>Muscle Groups</h3>
+        <h3 className={styles.subtitle}>Muscle Groups</h3>
         <FilterExercises />
       </div>
       <div className={styles.wikiContainer__exercises}>
-        <h3>Exercises list</h3>
+        <h3 className={styles.subtitle}>Exercises list</h3>
         <ExercisesList />
       </div>
     </div>

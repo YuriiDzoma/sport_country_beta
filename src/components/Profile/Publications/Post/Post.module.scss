@@ -1,0 +1,55 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  width: 100%;
+  min-height: 70px;
+  position: relative;
+  border-bottom: 1px solid #dcdcde;
+  border-top: 1px solid #dcdcde;
+  padding: 10px 0;
+
+  &__delete {
+    position: absolute;
+    display: flex;
+    top: 8px;
+    right: 0;
+    height: 21px;
+
+    button {
+      margin-left: 15px;
+      width: 21px;
+      height: 21px;
+      background: none;
+    }
+
+    .remove {
+      svg {
+        color: #d00000;
+      }
+    }
+  }
+
+  &__content {
+    font-size: 15px;
+    padding: 0 60px 10px 0;
+    word-break: break-all;
+  }
+
+  &__sender {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex: 1 1;
+
+    .time {
+      font-size: 11px;
+      color: #737278;
+    }
+
+    .author {
+      font-size: 11px;
+      color: #737278;
+    }
+  }
+}
