@@ -2,7 +2,15 @@ import styles from "./FindSort.module.scss";
 import SearchIcon from '@mui/icons-material/Search';
 import React from "react";
 
-const FindSort = () => {
+interface FindSortProps {
+    changeSort: (value: string) => void
+}
+
+const FindSort = ({changeSort}: FindSortProps) => {
+
+    const handleChange = (value: string) => {
+        value === 'Name' ? changeSort('title') : changeSort(value.toLowerCase())
+    }
 
     return (
         <div className={styles.findSort}>
@@ -12,10 +20,11 @@ const FindSort = () => {
             </div>
             <div className={styles.sorting}>
                 <span>Sorting</span>
-                <select className={styles.sorting_change}>
+                <select onChange={(e) => handleChange(e.target.value)} className={styles.sorting_change}>
                     <option>Name</option>
-                    <option>Type</option>
+                    <option>Author</option>
                     <option>Level</option>
+                    <option>Days</option>
                 </select>
             </div>
         </div>
