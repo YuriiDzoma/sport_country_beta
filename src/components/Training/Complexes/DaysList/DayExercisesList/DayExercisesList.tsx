@@ -13,3 +13,4 @@ const DayExercisesList: React.FC<DayExercisesListProps> = ({exercises}) => {
 }
 
 export default DayExercisesList;
+

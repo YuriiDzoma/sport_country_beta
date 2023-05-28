@@ -13,9 +13,6 @@ import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
 const Complexes: React.FC<ComplexesProps> = ({allPrograms}) => {
     const [showFilters, setShowFilters] = useState(false);
-    const onFiltersShow = () => {
-        setShowFilters(!showFilters);
-    }
     const user = useAppSelector(currentUser);
     const [programs, setPrograms] = useState<Program[] | undefined>([...allPrograms]);
     const filteringPrograms = (name: string, checked: boolean) => {
@@ -27,37 +24,30 @@ const Complexes: React.FC<ComplexesProps> = ({allPrograms}) => {
                 : allPrograms.filter((program) => program.typeOf === name)
         setPrograms(filteredPrograms)
     }
-    const [sortBy, setSortBy] = useState('title');
-    const changeSort = (value: string) => {
-        setSortBy(value)
+
+    const onFiltersShow = () => {
+      setShowFilters(!showFilters);
     }
-
-    const byField = (field: string) => {
-        return (a: any, b: any) => a[field] > b[field] ? 1 : -1;
-    }
-
-    programs?.sort(byField(sortBy))
-
-
-    return(
-        <div className={styles.programsContainer__wrapper}>
-            <FindSort changeSort={changeSort} />
-            <div className={styles.programsContainer}>
-                <div className={`${styles.programsContainer__filters} ${showFilters ? styles.programsContainer__filtersShowed : ''}`}>
-                    <button onClick={onFiltersShow} className={styles.programsContainer__buttonShow}>
-                        <DoubleArrowIcon className={styles.programsContainer__buttonShowIcon} />
-                        <span>filter</span>
-                        <DoubleArrowIcon className={styles.programsContainer__buttonShowIcon} />
-                    </button>
-                    <Filters filteringPrograms={filteringPrograms} />
-                </div>
-                <div className={styles.programsContainer__list}>
-                    {user && user.isTrainer && (<CreateGlobalProgram />)}
-                    <ComplexesList programs={programs} />
-                </div>
-            </div>
-        </div>
-    );
+    
+  return(
+      <div className={styles.programsContainer__wrapper}>
+          <FindSort />
+          <div className={styles.programsContainer}>
+              <div className={`${styles.programsContainer__filters} ${showFilters ? styles.programsContainer__filtersShowed : ''}`}>
+                <button onClick={onFiltersShow} className={styles.programsContainer__buttonShow}>
+                  <DoubleArrowIcon className={styles.programsContainer__buttonShowIcon} />
+                  <span>filter</span>
+                  <DoubleArrowIcon className={styles.programsContainer__buttonShowIcon} />
+                </button>
+                <Filters filteringPrograms={filteringPrograms} />
+              </div>
+              <div className={styles.programsContainer__list}>
+                  {user && user.isTrainer && (<CreateGlobalProgram />)}
+                  <ComplexesList programs={programs} />
+              </div>
+          </div>
+      </div>
+  );
 };
 
 export default Complexes;

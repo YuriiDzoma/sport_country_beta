@@ -17,6 +17,11 @@ export const getUserById = createSelector(
   (users, id) => users.find((user) => id && user.id === id)
 );
 
+export const getExerciseByName = createSelector(
+    [(state: RootState) => state.wikiExercise.exercises, (state, name: string | undefined) => name],
+    (users, name) => users.find((user) => name && user.nameEn.replace(/ /g,'') === name)
+);
+
 export const getIsFetching = (state: RootState) => state.training.isLoading;
 export const getPrograms = (state: RootState) => state.training.programs;
 export const getMuscleGroups = (state: RootState) => state.wikiExercise.muscleGroups;

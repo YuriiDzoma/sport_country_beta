@@ -1,0 +1,65 @@
+.exerciseDetail {
+  padding: 0 10px;
+
+  &__title {
+    text-align: center;
+    margin: 20px 0 30px;
+  }
+
+  &__overview {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+  }
+}
+
+.involvedMuscles {
+  border-right: 1px solid #dcdcde;
+
+  &__isolate {
+    display: block;
+    font-size: 16px;
+    margin: 0 0 40px;
+    font-weight: 500;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+
+  &__secondaryList {
+    margin-bottom: 50px;
+
+    li {
+      margin: 12px 0 0;
+      list-style: inside;
+    }
+  }
+}
+
+.description {
+  padding: 0 10px;
+
+  &__subtitle {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  &__text {
+    color: #6d6d6d;
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+
+  &__images {
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-height: 160px;
+      margin: 0 5px;
+    }
+  }
+}
