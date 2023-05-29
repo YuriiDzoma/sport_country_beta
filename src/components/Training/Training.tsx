@@ -10,6 +10,7 @@ import {currentUser, getPrograms} from "store/selectors";
 import {setMyPrograms} from "store/actions";
 import CreateProgramForm from "components/Training/Programs/ProgramCreate/CreateProgramForm";
 import React from "react";
+import ExerciseDetail from "./TrainingWiki/ExercisesList/Exercise/ExerciseDetail/ExerciseDetail";
 
 const Training = () => {
   const user = useAppSelector(currentUser);
@@ -37,13 +38,13 @@ const Training = () => {
                     <Route path={'programs/:id/*'} element={<Programs />} />
                     <Route path={'global_create/'} element={<CreateProgramForm toGlobal />} />
                     <Route path={'wiki/*'} element={<WikiContainer />} />
+                    <Route path={'wiki/:nameEn/*'} element={<ExerciseDetail />} />
                   </Routes>
                 </div>
               </div>
             </div>
         )}
       </>
-
   );
 };
 
