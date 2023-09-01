@@ -10,7 +10,7 @@ import {useAppSelector} from "hooks/redux";
 import {currentUser} from "store/selectors";
 import {Context} from "components/Context/Context";
 
-const ProgramDay: React.FC<ProgramDayProps> = ({ day }) => {
+const ProgramDay: React.FC<ProgramDayProps> = ({ day, type }) => {
   const dayNumber = day.day;
     const user = useAppSelector(currentUser);
     const {isMyProfile}: any = useContext(Context)
@@ -19,9 +19,11 @@ const ProgramDay: React.FC<ProgramDayProps> = ({ day }) => {
         isTrainer = user.isTrainer
     }
 
+    console.log(type);
+
   return (
-    <div className={styles.trainingContainer}>
-      <ExercisesList day={day} />
+    <div className={ type === 'crossfit' ? styles.trainingContainerCrossfit : styles.trainingContainer}>
+      <ExercisesList day={day} type={type} />
       <WorkHistory day={day} />
         {isTrainer || isMyProfile
             ? <WorkProcess dayNumber={dayNumber} />

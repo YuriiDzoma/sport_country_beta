@@ -3,7 +3,20 @@
   margin-top: 15px;
   width: 35%;
 
-  h3 {
+  .dayNumber {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 20px;
+  }
+}
+
+.programExercisesCrossfit {
+  height: 10%;
+  margin-top: 15px;
+  width: 12%;
+  overflow: hidden;
+
+  .dayNumber {
     font-size: 16px;
     font-weight: bold;
     line-height: 20px;

@@ -64,7 +64,7 @@ const ProgramExpandInfo: React.FC<ProgramExpandInfoProps> = ({ program }) => {
         </div>
       </div>
 
-      <ProgramDaysList itemDays={program.days} />
+      <ProgramDaysList itemDays={program.days} type={program.typeOf} />
       <div className={styles.programSettings}>
           {isMyProfile && (
             <Favorite />

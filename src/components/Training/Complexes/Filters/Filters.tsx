@@ -19,6 +19,7 @@ const Filters: React.FC<FilterProps> = ({filteringPrograms}) => {
                     <FormControlLabel control={<Checkbox defaultChecked value={'aerobic'} onChange={handleChange} />} label="Aerobic" />
                     <FormControlLabel control={<Checkbox defaultChecked value={'anaerobic'} onChange={handleChange} />} label="Anaerobic" />
                     <FormControlLabel control={<Checkbox defaultChecked value={'mixed'} onChange={handleChange} />} label="Mixed" />
+                    <FormControlLabel control={<Checkbox defaultChecked value={'crossfit'} onChange={handleChange} />} label="Crossfit" />
                 </FormGroup>
             </div>
             <div className={styles.level}>

@@ -13,6 +13,7 @@ const CreateType = ({ handleChange, typeOf }: CreateTypeProps) => {
         <option value={'aerobic'}>Aerobic</option>
         <option value={'anaerobic'}>Anaerobic</option>
         <option value={'mixed'}>Mixed</option>
+        <option value={'crossfit'}>Crossfit</option>
       </select>
     </div>
   );

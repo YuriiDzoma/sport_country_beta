@@ -8,11 +8,15 @@
 
   &_storyBox {
     margin: 0 0 0 5px;
-    border-left: 1px solid #dcdcde;
+    //border-left: 1px solid #dcdcde;
     padding: 0 0 0 5px;
 
+    p {
+      white-space: nowrap;
+    }
+
     &:first-child {
-      border: 0;
+      //border: 0;
     }
   }
 

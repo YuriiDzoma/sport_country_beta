@@ -21,3 +21,26 @@
   }
 }
 
+.trainingContainerCrossfit {
+  display: flex;
+  justify-content: flex-start;
+  border-top: 1px solid #dcdcde;
+  margin-top: 0;
+  padding-bottom: 15px;
+  padding-right: 10px;
+
+  @media only screen and (max-width: 768px) {
+    padding-right: 0;
+  }
+
+  form {
+    width: 40%;
+    max-width: 40%;
+    min-width: 25%;
+
+    input {
+      width: 100%;
+    }
+  }
+}
+
