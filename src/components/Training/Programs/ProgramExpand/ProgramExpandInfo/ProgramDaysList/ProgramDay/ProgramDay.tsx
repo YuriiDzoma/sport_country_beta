@@ -19,8 +19,6 @@ const ProgramDay: React.FC<ProgramDayProps> = ({ day, type }) => {
         isTrainer = user.isTrainer
     }
 
-    console.log(type);
-
   return (
     <div className={ type === 'crossfit' ? styles.trainingContainerCrossfit : styles.trainingContainer}>
       <ExercisesList day={day} type={type} />

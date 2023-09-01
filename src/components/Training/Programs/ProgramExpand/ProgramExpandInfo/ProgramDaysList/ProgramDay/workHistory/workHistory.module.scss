@@ -6,6 +6,10 @@
   width: 30%;
   overflow: auto;
 
+  @media only screen and (max-width: 768px) {
+    margin: 15px 0 30px 0;
+  }
+
   &_storyBox {
     margin: 0 0 0 5px;
     //border-left: 1px solid #dcdcde;
