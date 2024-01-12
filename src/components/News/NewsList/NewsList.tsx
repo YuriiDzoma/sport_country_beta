@@ -16,7 +16,7 @@ const NEWS_ITEMS = [
     id: 2,
     title: 'New Complex!',
     sub: 'this is simple subtitle Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet assumenda beatae dignissimos dolorem, dolorum ea eius esse iure modi mollitia nam nesciunt nostrum quae, quo unde voluptatum. Fugiat, quos. this is simple subtitle Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci amet assumenda beatae dignissimos dolorem, dolorum ea eius esse iure modi mollitia nam nesciunt nostrum quae, quo unde voluptatum. Fugiat, quos.',
-    image: 'https://titanboxwear.com/wp-content/uploads/significado-y-ejercicios-complex-crossfit.jpg.webp',
+    image: 'https://cdn.shopify.com/s/files/1/0471/3332/7519/files/get-fit.jpg',
     author: 'Dobra Mamka',
     date: '8/05/2023',
     likes: 54,

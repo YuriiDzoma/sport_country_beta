@@ -11,9 +11,6 @@ const News = () => {
         src="https://damion.club/uploads/posts/2022-01/1642459097_71-damion-club-p-foni-so-sportivnimi-devushkami-78.jpg"
         alt=""
       />
-      {/*<img src="https://damion.club/uploads/posts/2022-01/1642459018_2-damion-club-p-foni-so-sportivnimi-devushkami-2.jpg" alt=""/>*/}
-      {/*<img src="https://damion.club/uploads/posts/2022-01/1642459036_7-damion-club-p-foni-so-sportivnimi-devushkami-7.jpg" alt=""/>*/}
-      {/*<img src="https://damion.club/uploads/posts/2022-01/1642458969_13-damion-club-p-foni-so-sportivnimi-devushkami-13.jpg" alt=""/>*/}
       <NewsList />
     </div>
   );
