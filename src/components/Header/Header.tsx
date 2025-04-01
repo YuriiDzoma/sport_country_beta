@@ -48,7 +48,7 @@ const Header = () => {
                         <div className={styles.profile__menu}>
                             <UserMenu showProfileMenu={showProfileMenu} />
                         </div>
-                        <button className={styles.profile__close} onClick={showProfileMenu}></button>
+                        <button className={styles.profile__close} onClick={showProfileMenu}/>
                     </> :
                     <Link to={`/login/`} className={styles.login} >
                         <ExitToAppIcon className={styles.login__buttonIcon} />
